@@ -77,16 +77,31 @@
 
         <main>
             <div class="container">
-                @yield('jumbotron')
-
-                @yield('content')
+                <div class="row">
+                    <div class="col-12">
+                        @yield('jumbotron')
+                    </div>
+                    <div class="col-3">
+                        <div class="list-group list-group-flush">
+                            <a href="#" class="list-group-item list-group-item-action">Новости</a>
+                            <a href="#" class="list-group-item list-group-item-action">Служба Service Desk</a>
+                            <a href="#" class="list-group-item list-group-item-action">Служба Service Desk</a>
+                            <a href="#" class="list-group-item list-group-item-action">Служба Service Desk</a>
+                            <a href="#" class="list-group-item list-group-item-action">Служба Service Desk</a>
+                            <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
+                        </div>
+                    </div>
+                    <div class="col-9">
+                        @yield('content')
+                    </div>
+                </div>
             </div>
         </main>
 
         <footer class="footer">
             <div class="container">
                 @section('footer')
-                <span class="text-muted">&copy; 2019 Raccoon Desk System</span>
+                    <span class="text-muted">&copy; 2019 Raccoon Desk System</span>
                 @show
             </div>
         </footer>
