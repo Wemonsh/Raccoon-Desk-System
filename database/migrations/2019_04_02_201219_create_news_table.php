@@ -17,8 +17,8 @@ class CreateNewsTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->text('text');
-            $table->integer('views');
-            $table->string('image');
+            $table->integer('views')->default(0);
+            $table->string('image')->nullable();
             $table->integer('id_category')->unsigned();
             $table->foreign('id_category')->references('id')->on('news_category');
             $table->integer('id_user')->unsigned();
