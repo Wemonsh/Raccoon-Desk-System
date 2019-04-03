@@ -14,18 +14,31 @@ class NewsController extends Controller
     public function getNewsList() {
         echo __METHOD__;
 
-        $news = News::paginate(5);
+        $news = News::with('user')->orderBy('id', 'desc')->paginate(5);
 
         $vars = [
             'news' => $news
         ];
-
         return view('news.list', $vars);
     }
 
-    public function getNews() {
-        echo __METHOD__;
-        return view('news.post');
+    public function getNews($id) {
+        if (view()->exists('news.post')) {
+            $news = News::with('newsCategory', 'user')->where('id','=',$id)->first();
+            if ($news != null) {
+                $news->views++;
+                $news->save();
+                $vars = [
+                  'news' => $news
+                ];
+                //dump($news);
+                return view('news.post', $vars);
+            } else {
+                abort(404);
+            }
+        } else {
+            abort(404);
+        }
     }
 
     public function searchNews() {

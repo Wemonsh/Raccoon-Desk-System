@@ -12,10 +12,10 @@ class News extends Model
     protected $fillable = ['title', 'text', 'image','id_category', 'id_user'];
 
     public function user(){
-        return $this->hasOne('App\User','id_user','id');
+        return $this->hasOne('App\User','id','id_user');
     }
 
     public function newsCategory(){
-        return $this->hasOne('App\NewsCategory','id_category','id');
+        return $this->hasOne('App\NewsCategory','id','id_category');
     }
 }
