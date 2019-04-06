@@ -87,8 +87,8 @@
                     </div>
                     <div class="col-3">
                         <div class="list-group list-group-flush">
-                            <a href="#" class="list-group-item list-group-item-action">Новости</a>
-                            <a href="#" class="list-group-item list-group-item-action">Служба Service Desk</a>
+                            <a href="{{ route('news') }}" class="list-group-item list-group-item-action">Новости</a>
+                            <a href="{{ route('knowledge') }}" class="list-group-item list-group-item-action">База знаний</a>
                             <a href="#" class="list-group-item list-group-item-action">Служба Service Desk</a>
                             <a href="#" class="list-group-item list-group-item-action">Служба Service Desk</a>
                             <a href="#" class="list-group-item list-group-item-action">Служба Service Desk</a>

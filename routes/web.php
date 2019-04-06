@@ -29,3 +29,7 @@ Route::group(['prefix' => 'news'], function () {
     Route::get('/post/edit/{id}' ,['uses' => 'News\NewsController@editNews']);
     Route::get('/post/delete/{id}' ,['uses' => 'News\NewsController@deleteNews']);
 });
+
+Route::group(['prefix' => 'knowledge'], function () {
+    Route::match(['get', 'post'], '/', ['uses' => 'Knowledge\KnowledgeController@index', 'as' => 'knowledge']);
+});
