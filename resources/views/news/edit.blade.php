@@ -3,7 +3,7 @@
 @section('content')
     <h1>Редактирование новости</h1>
 
-    <form method="post" action="{{'editNews'}}" enctype="multipart/form-data">
+    <form method="post" action="{{ route('editNews', $id) }}" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
             <label for="title">Заголовок</label>

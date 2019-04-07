@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+
+
 @section('jumbotron')
     <div class="jumbotron jumbotron-fluid mt-3">
         <div class="container">
