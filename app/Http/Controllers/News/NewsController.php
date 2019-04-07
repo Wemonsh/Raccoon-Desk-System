@@ -71,9 +71,47 @@ class NewsController extends Controller
         }
     }
 
-    public function editNews() {
-        echo __METHOD__;
-        return view('news.edit');
+    public function editNews($id, Request $request) {
+        if ($request->isMethod('get')){
+            if (view()->exists('news.edit')) {
+                $news = News::with('newsCategory', 'user')->where('id','=',$id)->first();
+                if ($news != null) {
+                    $vars = [
+                        'news' => $news,
+                        //'id' => $id
+                    ];
+                    return view('news.edit', $vars);
+                } else {
+                    abort(404);
+                }
+            } else {
+                abort(404);
+            }
+        }
+        if ($request->isMethod('post'))
+        {
+            $image = null;
+            if ($request->file('image') != null) {
+                $image = $request->file('image')->store('/avatars', 'public');
+            } else {
+                // Стандартная картинка
+            }
+
+            $news = News::with('newsCategory', 'user')->where('id','=',$id)->first();
+            $news->title = $request->input('title');
+            $news->text = $request->input('text');
+            $news->image = $image;
+            $news->id_category = $request->input('id_category');
+            //$news->id_user = Auth::user()->id;
+            $news->save();
+
+            return redirect('news');
+        } else {
+            return view('news');
+        }
+
+        //echo __METHOD__;
+        //return view('news.edit');
     }
 
     public function deleteNews() {
