@@ -16,8 +16,14 @@ class KnowledgeController extends Controller
             $knowledge = KnowledgeCategory::with(array('knowledge'=>function($query){
                 $query->select('id','title', 'created_at','id_category');
             }))->get()->toArray();
+            $articleNew = Knowledge::select('id', 'title', 'created_at')->orderByDesc('created_at')->take(5)->get()->toArray();
+            $articlePopular = Knowledge::select('id', 'title', 'created_at', 'views')->orderByDesc('views')->take(5)->get()->toArray();
+            $articlePinned = Knowledge::select('id', 'title', 'created_at', 'pinned')->where('pinned', '=', '1')->take(5)->get()->toArray();
             $vars = [
-                'knowledge' => $knowledge
+                'knowledge' => $knowledge,
+                'articleNew' => $articleNew,
+                'articlePopular' => $articlePopular,
+                'articlePinned' => $articlePinned
             ];
             return view('knowledge.index', $vars);
         } else {

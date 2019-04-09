@@ -30,11 +30,15 @@
             <div class="card-body">
                 <h2><i class="fas fa-newspaper"></i> Новые</h2>
                 <ul>
-                    <li><a href="#">Название статьи</a></li>
-                    <li><a href="#">Название статьи</a></li>
-                    <li><a href="#">Название статьи</a></li>
-                    <li><a href="#">Название статьи</a></li>
-                    <li><a href="#">Название статьи</a></li>
+
+                    @forelse($articleNew as $value)
+                        <li><a href="{{ route('knowledgeShow', $value['id']) }}">{{ $value['title'] }}</a> <small>{{ $value['created_at'] }}</small></li>
+                    @empty
+                        <div class="alert alert-info" role="alert">
+                            <p>Статьи в данной категории отсутсвуют</p>
+                        </div>
+                    @endforelse
+
                 </ul>
             </div>
         </div>
@@ -42,11 +46,15 @@
             <div class="card-body">
                 <h2><i class="fas fa-star"></i> Популярные</h2>
                 <ul>
-                    <li><a href="#">Название статьи</a></li>
-                    <li><a href="#">Название статьи</a></li>
-                    <li><a href="#">Название статьи</a></li>
-                    <li><a href="#">Название статьи</a></li>
-                    <li><a href="#">Название статьи</a></li>
+
+                    @forelse($articlePopular as $value)
+                        <li><a href="{{ route('knowledgeShow', $value['id']) }}">{{ $value['title'] }}</a> <small>{{ $value['created_at'] }}</small></li>
+                    @empty
+                        <div class="alert alert-info" role="alert">
+                            <p>Статьи в данной категории отсутсвуют</p>
+                        </div>
+                    @endforelse
+
                 </ul>
             </div>
         </div>
@@ -54,11 +62,15 @@
             <div class="card-body">
                 <h2><i class="fas fa-thumbtack"></i> Закрепленные</h2>
                 <ul>
-                    <li><a href="#">Название статьи</a></li>
-                    <li><a href="#">Название статьи</a></li>
-                    <li><a href="#">Название статьи</a></li>
-                    <li><a href="#">Название статьи</a></li>
-                    <li><a href="#">Название статьи</a></li>
+
+                    @forelse($articlePinned as $value)
+                        <li><a href="{{ route('knowledgeShow', $value['id']) }}">{{ $value['title'] }}</a> <small>{{ $value['created_at'] }}</small></li>
+                    @empty
+                        <div class="alert alert-info" role="alert">
+                            <p>Статьи в данной категории отсутсвуют</p>
+                        </div>
+                    @endforelse
+
                 </ul>
             </div>
         </div>
@@ -75,7 +87,6 @@
                     <ul>
 
                         @forelse($value['knowledge'] as $value)
-
                             <li><a href="{{ route('knowledgeShow', $value['id']) }}">{{ $value['title'] }}</a> <small>{{ $value['created_at'] }}</small></li>
                         @empty
                             <div class="alert alert-info" role="alert">
