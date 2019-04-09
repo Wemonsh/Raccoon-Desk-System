@@ -18,6 +18,8 @@ class CreateKnowledgeTable extends Migration
             $table->string('title');
             $table->mediumText('text');
             $table->integer('views')->default(0);
+            $table->boolean('pinned')->default(false);
+            $table->json('files')->nullable();
             $table->integer('id_category')->unsigned();
             $table->foreign('id_category')->references('id')->on('knowledge_category');
             $table->integer('id_user')->unsigned();

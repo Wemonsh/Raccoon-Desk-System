@@ -28,9 +28,11 @@ class KnowledgeController extends Controller
     public function show(Request $request, $id) {
         echo __METHOD__;
         if (view()->exists('knowledge.show')) {
-            $article = Knowledge::with('knowledgeCategory', 'user')->where('id','=', $id)->first()->toArray();
+            $article = Knowledge::with('knowledgeCategory', 'user')->where('id','=', $id)->first();
+            $article->views++;
+            $article->save();
             $vars = [
-                'article' => $article
+                'article' => $article->toArray()
             ];
             return view('knowledge.show', $vars);
         } else {
@@ -49,10 +51,27 @@ class KnowledgeController extends Controller
     public function create(Request $request) {
         if (view()->exists('knowledge.create')) {
             if ($request->isMethod('post')) {
+
+                $files = $request->file('file');
+                $json = null;
+                if ($files != null) {
+                    $array = [];
+                    $counter = 0;
+                    foreach ($files as $file) {
+                        $array[$counter]['id'] = $counter;
+                        $array[$counter]['path'] = $file->store('/knowledge', 'public');
+                        $array[$counter]['name'] = $file->getClientOriginalName();
+                        $counter++;
+                    }
+                    $json = json_encode($array);
+                }
+
                 Knowledge::create([
                     'title' => $request->input('title'),
                     'text' => $request->input('text'),
                     'id_category' => $request->input('id_category'),
+                    'files' => $json,
+                    'pinned' => $request->input('pinned') == null? 0 : 1,
                     'id_user' => Auth::user()->id
                 ]);
                 return redirect('knowledge');

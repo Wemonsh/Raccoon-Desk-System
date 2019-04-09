@@ -33,3 +33,27 @@ body {
 .card-columns {
     column-count: 2;
 }
+
+a {
+    position: relative;
+}
+
+a[href$=".pdf"]:after {
+    content: url("/img/icons/pdf.png");
+    margin-left: 3px;
+}
+
+a[href$=".xml"]:after {
+    content: url("/img/icons/xml.png");
+    margin-left: 5px;
+}
+
+a[href$=".doc"]:after, a[href$=".docx"]:after {
+    content: url("/img/icons/doc.png");
+    margin-left: 5px;
+}
+
+a[href$=".zip"]:after {
+    content: url("/img/icons/zip.png");
+    margin-left: 5px;
+}
