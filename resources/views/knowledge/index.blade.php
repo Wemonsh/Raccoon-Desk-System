@@ -49,7 +49,7 @@
                 <ul>
 
                     @forelse($articlePopular as $value)
-                        <li><a href="{{ route('knowledgeShow', $value['id']) }}">{{ $value['title'] }}</a> <small>({{ $value['views'] }})</small></li>
+                        <li><a href="{{ route('knowledgeShow', $value['id']) }}">{{ $value['title'] }}</a>  <small class="text-muted" title="Количесвто просмотров"><i class="fas fa-eye"></i> {{ $value['views'] }}</small></li>
                     @empty
                         <div class="alert alert-info" role="alert">
                             <p>Статьи в данной категории отсутсвуют</p>

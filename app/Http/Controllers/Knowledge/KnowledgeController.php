@@ -40,6 +40,7 @@ class KnowledgeController extends Controller
             $vars = [
                 'article' => $article->toArray()
             ];
+
             return view('knowledge.show', $vars);
         } else {
             abort(404);
@@ -120,7 +121,54 @@ class KnowledgeController extends Controller
 
     public function edit(Request $request, $id) {
         if (view()->exists('knowledge.edit')) {
+            if ($request->isMethod('post')) {
+                $article = Knowledge::with('knowledgeCategory', 'user')->where('id','=', $id)->first();
 
+                // Логика добавления новых файлов в статью
+                $files = $request->file('file');
+                $json = null;
+                if ($files != null) {
+                    $array = [];
+                    $counter = 0;
+                    foreach ($files as $file) {
+                        $array[$counter]['id'] = $counter;
+                        $array[$counter]['path'] = $file->store('/knowledge', 'public');
+                        $array[$counter]['name'] = $file->getClientOriginalName();
+                        $counter++;
+                    }
+                    $jsonDecode = json_decode($article->files);
+                    if ($jsonDecode != null) {
+                        foreach ($array as $file) {
+                            array_push($jsonDecode, $file);
+                        }
+                        $json = json_encode($jsonDecode);
+                    } else {
+                        $json = json_encode($array);
+                    }
+                    $article->files = $json;
+                }
+                //
+
+                $article->title = $request->input('title');
+                $article->text = $request->input('text');
+                $article->id_category = $request->input('id_category');
+                $article->pinned = $request->input('pinned') == null? 0 : 1;
+                $article->save();
+
+                return redirect('knowledge');
+            } else {
+                $article = Knowledge::with('knowledgeCategory', 'user')->where('id','=', $id)->first();
+                if ($article != null) {
+                    $vars = [
+                        'article' => $article,
+                        'id' => $id,
+                        'category' => KnowledgeCategory::all()
+                    ];
+                    return view('knowledge.edit', $vars);
+                } else {
+                    abort(404);
+                }
+            }
             return view('knowledge.edit');
         } else {
             abort(404);
