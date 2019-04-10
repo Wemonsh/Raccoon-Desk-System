@@ -25,9 +25,9 @@
 @section('breadcrumbs')
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Главная</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">Главная</a></li>
             <li class="breadcrumb-item"><a href="{{ route('knowledge') }}">База знаний</a></li>
-            <li class="breadcrumb-item"><a href="#">{{ $article['knowledge_category']['title'] }}</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('knowledgeCategory', $article['knowledge_category']['id']) }}">{{ $article['knowledge_category']['title'] }}</a></li>
             <li class="breadcrumb-item active" aria-current="page">{{ $article['title'] }}</li>
         </ol>
     </nav>

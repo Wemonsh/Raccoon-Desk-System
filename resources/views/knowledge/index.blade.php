@@ -5,9 +5,10 @@
         <div class="container">
             <h1 class="display-4">База знаний</h1>
             <p class="lead">Чем мы Вам можем помочь сегодня?</p>
-            <form action="#">
+            <form action="{{ route('knowledgeSearch') }}" method="post">
+                @csrf
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Введите ваш поисковый запрос...">
+                    <input type="text" name="value" class="form-control" placeholder="Введите ваш поисковый запрос...">
                     <div class="input-group-append">
                         <button type="submit" class="btn btn-primary">Поиск</button>
                     </div>
@@ -48,7 +49,7 @@
                 <ul>
 
                     @forelse($articlePopular as $value)
-                        <li><a href="{{ route('knowledgeShow', $value['id']) }}">{{ $value['title'] }}</a> <small>{{ $value['created_at'] }}</small></li>
+                        <li><a href="{{ route('knowledgeShow', $value['id']) }}">{{ $value['title'] }}</a> <small>({{ $value['views'] }})</small></li>
                     @empty
                         <div class="alert alert-info" role="alert">
                             <p>Статьи в данной категории отсутсвуют</p>
@@ -102,5 +103,9 @@
         @endforelse
 
     </div>
-
+    <div class="card mb-3">
+        <div class="card-body">
+            <p>В Базе Знаний Raccoon Desk System вы найдете подробные руководства с ответами на часто задаваемые вопросы по использованию сервиса и полезные советы по настройке и конфигурации.  © Raccoon Desk System RU</p>
+        </div>
+    </div>
 @endsection

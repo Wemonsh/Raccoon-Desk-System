@@ -46,12 +46,38 @@ class KnowledgeController extends Controller
         }
     }
 
-    public function showCategory() {
-        echo __METHOD__;
+    public function showCategory($id) {
+        if (view()->exists('knowledge.category')) {
+            $articles = Knowledge::select('id', 'title', 'created_at')->where('id_category','=',$id)->get()->toArray();
+
+            $vars = [
+                'articles' => $articles
+            ];
+
+            return view('knowledge.category', $vars);
+        } else {
+            abort(404);
+        }
     }
 
-    public function search() {
-        echo __METHOD__;
+    public function search(Request $request) {
+        if (view()->exists('knowledge.search')) {
+            if ($request->isMethod('post')) {
+                $value = $request->value;
+                $articles = Knowledge::select('id', 'title', 'created_at')->where('title','LIKE','%'.$value.'%')->get()->toArray();
+
+                $vars = [
+                    'value' => $value,
+                    'articles' => $articles
+                ];
+
+                return view('knowledge.search', $vars);
+            } else {
+                return redirect('knowledge');
+            }
+        } else {
+            abort(404);
+        }
     }
 
     public function create(Request $request) {
@@ -92,8 +118,13 @@ class KnowledgeController extends Controller
         }
     }
 
-    public function edit() {
-        echo __METHOD__;
+    public function edit(Request $request, $id) {
+        if (view()->exists('knowledge.edit')) {
+
+            return view('knowledge.edit');
+        } else {
+            abort(404);
+        }
     }
 
     public function delete() {
