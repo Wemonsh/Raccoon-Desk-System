@@ -7,17 +7,19 @@
         @csrf
         <div class="form-group">
             <label for="title">Заголовок</label>
-            <input name="title" type="text" class="form-control" id="title">
+            <input name="title" type="text" class="form-control" id="title" placeholder="Введите название статьи">
         </div>
         <div class="form-group">
             <label for="id_category">Категория</label>
             <select name="id_category" class="form-control" id="id_category">
-                <option>1</option>
+                @foreach($category as $value)
+                    <option value="{{ $value->id }}">{{ $value->title }}</option>
+                @endforeach
             </select>
         </div>
         <div class="form-group">
             <label for="text">Содержание</label>
-            <textarea name="text" class="form-control" id="text" rows="6"></textarea>
+            <textarea name="text" class="form-control" id="text" rows="12"></textarea>
         </div>
         <div class="form-group">
             <label for="image">Изображение</label>
@@ -25,4 +27,14 @@
         </div>
         <button type="submit" class="btn btn-primary">Создать</button>
     </form>
+
+    <script>
+        $(document).ready(function() {
+            $('#text').summernote({
+                height: 300,
+                lang: 'ru-RU',
+                placeholder: 'Введите название статьи'
+            });
+        });
+    </script>
 @endsection

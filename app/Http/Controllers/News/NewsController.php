@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\News;
 
 use App\News;
+use App\NewsCategory;
 use Illuminate\Http\File;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -12,8 +13,6 @@ class NewsController extends Controller
 {
 
     public function getNewsList() {
-        echo __METHOD__;
-
         $news = News::with('user')->orderBy('id', 'desc')->paginate(5);
 
         $vars = [
@@ -47,27 +46,34 @@ class NewsController extends Controller
     }
 
     public function createNews(Request $request) {
-        if ($request->isMethod('post'))
-        {
-            $image = null;
+        if (view()->exists('news.create')) {
+            if ($request->isMethod('post'))
+            {
+                $image = null;
 
-            if ($request->file('image') != null) {
-                $image = $request->file('image')->store('/avatars', 'public');
+                if ($request->file('image') != null) {
+                    $image = $request->file('image')->store('/avatars', 'public');
+                } else {
+                    // Стандартная картинка
+                }
+
+                News::create([
+                    'title' => $request->input('title'),
+                    'text' => $request->input('text'),
+                    'image' => $image,
+                    'id_category' => $request->input('id_category'),
+                    'id_user' => Auth::user()->id,
+                ]);
+
+                return redirect('news');
             } else {
-                // Стандартная картинка
+                $vars = [
+                    'category' => NewsCategory::all(),
+                ];
+                return view('news.create', $vars);
             }
-
-            News::create([
-                'title' => $request->input('title'),
-                'text' => $request->input('text'),
-                'image' => $image,
-                'id_category' => $request->input('id_category'),
-                'id_user' => Auth::user()->id,
-            ]);
-
-            return redirect('news');
         } else {
-            return view('news.create');
+            abort(404);
         }
     }
 
@@ -78,7 +84,8 @@ class NewsController extends Controller
                 if ($news != null) {
                     $vars = [
                         'news' => $news,
-                        'id' => $id
+                        'id' => $id,
+                        'category' => NewsCategory::all()
                     ];
                     return view('news.edit', $vars);
                 } else {

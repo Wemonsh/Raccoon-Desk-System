@@ -17,15 +17,22 @@
             <h1>{{ $news->title }}</h1>
 
             @if($news->image != null)
-                <img src="{{ asset('/storage/' . $news->image) }}" class="card-img-top" style="width: 100px">
+                <img src="{{ asset('/storage/' . $news->image) }}" class="card-img-top mb-3" style="width: 100px">
             @endif
 
-            <p>{{ $news->text }}</p>
+            {{--Старый вариант отображения текста новости--}}
+            {{--<p>{{ $news->text }}</p>--}}
+
+
+            {{--Новый вариант отображения текста новости--}}
+            <?=$textTags = $news->text;?>
+            <p>@php(strip_tags($textTags))</p>
+
         </div>
         <div class="card-footer text-muted">
-            <span class="mr-1"><i class="fas fa-user"></i> <a href="#"> {{ $news->user->last_name.' '.$news->user->first_name.' '.$news->user->middle_name }}</a></span>
-            <span class="mr-1"><i class="fas fa-calendar-alt"></i> {{ $news->created_at }}</span>
-            <span class="mr-1"><i class="fas fa-eye"></i> {{ $news->views }}</span>
+            <span class="mr-1" title="Автор новости"><i class="fas fa-user"></i> <a href="#"> {{ $news->user->last_name.' '.$news->user->first_name.' '.$news->user->middle_name }}</a></span>
+            <span class="mr-1" title="Дата и время создания"><i class="fas fa-calendar-alt"></i> {{ $news->created_at }}</span>
+            <span class="mr-1" title="Количество просмотров"><i class="fas fa-eye"></i> {{ $news->views }}</span>
         </div>
     </div>
 @endsection

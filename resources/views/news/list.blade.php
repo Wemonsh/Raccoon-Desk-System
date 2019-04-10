@@ -10,7 +10,13 @@
                 @endif
                 <div class="card-body">
                     <h5 class="card-title">{{ $value['title'] }}</h5>
-                    <p class="card-text">{{ $value['text'] }}</p>
+
+                    <?=$var = $value['text'];?>
+                    <p class="card-text">@php(strip_tags($var))</p>
+
+                    {{--Второй вариант отображения без стилей текста--}}
+                    {{--<p class="card-text">{{strip_tags($value['text'])}}</p>--}}
+
                     <a href="/news/post/{{ $value['id'] }}">Подробнее</a>
                 </div>
                 <div class="card-footer text-muted">
@@ -20,7 +26,6 @@
                     <p class="card-text">
                         <small class="text-muted">Дата/время: <a href="#">{{ $value['created_at'] }}</a></small>
                     </p>
-
                 </div>
             </div>
         @empty
