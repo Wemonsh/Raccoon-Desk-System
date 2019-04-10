@@ -7,7 +7,7 @@
         @csrf
         <div class="form-group">
             <label for="title">Заголовок</label>
-            <input name="title" type="text" class="form-control" id="title">
+            <input name="title" type="text" class="form-control" id="title" placeholder="Введите название статьи">
         </div>
         <div class="form-group form-check">
             <input type="checkbox" name="pinned" class="form-check-input" id="pinned" value="1">
@@ -36,7 +36,8 @@
         $(document).ready(function() {
             $('#text').summernote({
                 height: 300,
-                lang: 'ru-RU'
+                lang: 'ru-RU',
+                placeholder: 'Введите содержание статьи'
             });
         });
     </script>
