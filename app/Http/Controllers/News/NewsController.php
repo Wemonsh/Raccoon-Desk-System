@@ -13,7 +13,7 @@ class NewsController extends Controller
 {
 
     public function getNewsList() {
-        $news = News::with('user')->orderBy('id', 'desc')->paginate(5);
+        $news = News::with('user')->orderBy('id', 'desc')->paginate(6);
 
         $vars = [
             'news' => $news
@@ -28,7 +28,7 @@ class NewsController extends Controller
                 $news->views++;
                 $news->save();
                 $vars = [
-                  'news' => $news
+                    'news' => $news
                 ];
                 //dump($news);
                 return view('news.post', $vars);
@@ -111,6 +111,30 @@ class NewsController extends Controller
             return redirect('news');
         } else {
             return view('news');
+        }
+    }
+
+    public function showCategory($id) {
+        if (view()->exists('news.category')) {
+            // Оптимизировать запрос без подгрузки всех данных пользователей и текста новости!
+            //$news = News::with(['user' => function($query){ $query->select('id', 'first_name');}])->select('id', 'title', 'created_at', 'views')->where('id_category','=',$id)->get()->toArray();
+
+            $news = News::with('user')->where('id_category','=',$id)->orderBy('created_at', 'desc')->paginate(5);
+            $category = NewsCategory::where('id', '=', $id)->first();
+
+            if($news != null && $category != null) {
+
+                $vars = [
+                    'news' => $news,
+                    'category' => $category
+                ];
+
+                return view('news.category', $vars);
+            } else {
+                abort(404);
+            }
+        } else {
+            abort(404);
         }
     }
 
