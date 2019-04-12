@@ -5,7 +5,7 @@
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('home') }}">Главная</a></li>
             <li class="breadcrumb-item"><a href="{{ route('news') }}">Новости</a></li>
-            <li class="breadcrumb-item"><a href="#">{{ $news->newsCategory->title }}</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('newsCategory', $news->newsCategory->id) }}">{{ $news->newsCategory->title }}</a></li>
             <li class="breadcrumb-item active" aria-current="page">{{ $news->title }}</li>
         </ol>
     </nav>
