@@ -38,3 +38,8 @@ Route::group(['prefix' => 'knowledge'], function () {
     Route::match(['get', 'post'], '/category/{id}', ['uses' => 'Knowledge\KnowledgeController@showCategory', 'as' => 'knowledgeCategory']);
     Route::match(['get', 'post'], '/article/edit/{id}', ['uses' => 'Knowledge\KnowledgeController@edit', 'as' => 'knowledgeEdit']);
 });
+
+// Crypto
+Route::group(['prefix' => 'crypto'], function () {
+    Route::match(['get', 'post'], '/', ['uses' => 'Crypto\CryptoController@index', 'as' => 'crypto']);
+});
