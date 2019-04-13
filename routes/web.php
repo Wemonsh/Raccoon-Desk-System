@@ -43,4 +43,25 @@ Route::group(['prefix' => 'knowledge'], function () {
 // Crypto
 Route::group(['prefix' => 'crypto'], function () {
     Route::match(['get', 'post'], '/', ['uses' => 'Crypto\CryptoController@index', 'as' => 'crypto']);
+
+    // Organization
+    Route::match(['get', 'post'], '/organizations', ['uses' => 'Crypto\CryptoOrganizationsController@index', 'as' => 'cryptoOrganizationsIndex']);
+    Route::match(['get', 'post'], '/organizations/show/{id}', ['uses' => 'Crypto\CryptoOrganizationsController@show', 'as' => 'cryptoOrganizationsShow']);
+    Route::match(['get', 'post'], '/organizations/create', ['uses' => 'Crypto\CryptoOrganizationsController@create', 'as' => 'cryptoOrganizationsCreate']);
+    Route::match(['get', 'post'], '/organizations/edit/{id}', ['uses' => 'Crypto\CryptoOrganizationsController@edit', 'as' => 'cryptoOrganizationsEdit']);
+    Route::match(['get', 'post'], '/organizations/delete/{id}', ['uses' => 'Crypto\CryptoOrganizationsController@delete', 'as' => 'cryptoOrganizationsDelete']);
+
+    // InformationSystems
+    Route::match(['get', 'post'], '/info-systems', ['uses' => 'Crypto\CryptoInformationSystemController@index', 'as' => 'cryptoInfoSystemIndex']);
+    Route::match(['get', 'post'], '/info-systems/create', ['uses' => 'Crypto\CryptoInformationSystemController@create', 'as' => 'cryptoInfoSystemCreate']);
+    Route::match(['get', 'post'], '/info-systems/edit/{id}', ['uses' => 'Crypto\CryptoInformationSystemController@edit', 'as' => 'cryptoInfoSystemEdit']);
+    Route::match(['get', 'post'], '/info-systems/delete/{id}', ['uses' => 'Crypto\CryptoInformationSystemController@delete', 'as' => 'cryptoInfoSystemDelete']);
+
+    // Assignments
+    Route::match(['get', 'post'], '/assignments', ['uses' => 'Crypto\CryptoAssignmentsController@index', 'as' => 'cryptoAssignmentsIndex']);
+    Route::match(['get', 'post'], '/assignments/create', ['uses' => 'Crypto\CryptoAssignmentsController@create', 'as' => 'cryptoAssignmentsCreate']);
+    Route::match(['get', 'post'], '/assignments/edit/{id}', ['uses' => 'Crypto\CryptoAssignmentsController@edit', 'as' => 'cryptoAssignmentsEdit']);
+    Route::match(['get', 'post'], '/assignments/delete/{id}', ['uses' => 'Crypto\CryptoAssignmentsController@delete', 'as' => 'cryptoAssignmentsDelete']);
+
+
 });
