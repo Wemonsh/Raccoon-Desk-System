@@ -116,7 +116,6 @@ class NewsController extends Controller
 
     public function showCategory($id) {
         if (view()->exists('news.category')) {
-            // Оптимизировать запрос без подгрузки всех данных пользователей и текста новости!
             // TODO Оптимизировать запрос без подгрузки всех данных пользователей и текста новости!
             //$news = News::with(['user' => function($query){ $query->select('id', 'first_name');}])->select('id', 'title', 'created_at', 'views')->where('id_category','=',$id)->get()->toArray();
 

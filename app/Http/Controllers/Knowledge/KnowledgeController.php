@@ -35,6 +35,7 @@ class KnowledgeController extends Controller
             $article = Knowledge::with('knowledgeCategory', 'user')->where('id','=', $id)->first();
             $article->views++;
             $article->save();
+
             $vars = [
                 'article' => $article->toArray()
             ];
