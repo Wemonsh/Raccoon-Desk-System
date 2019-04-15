@@ -81,19 +81,59 @@
         </div>
     </div>
 
-
+    <div class="navbar-light bg-light">
+        <div class="container">
+            <ul class="nav">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Криптоключи
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Акт создания ключевых документов</a>
+                        <a class="dropdown-item" href="#">Акт передачи ключевых документов</a>
+                        <a class="dropdown-item" href="#">Акт ввода в эксплуатацию ключевой информации</a>
+                        <a class="dropdown-item" href="#">Акт вывода из эксплуатации ключевой информации</a>
+                        <a class="dropdown-item" href="#">Акт уничтожения ключевых документов</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        СКЗИ
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Акт поступления СКЗИ</a>
+                        <a class="dropdown-item" href="#">Акт списания СКЗИ</a>
+                        <a class="dropdown-item" href="#">Акт передачи СКЗИ</a>
+                        <a class="dropdown-item" href="#">Акт ввода СКЗИ в эксплуатацию</a>
+                        <a class="dropdown-item" href="#">Акт вывода СКЗИ в эксплуатацию</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Справочники
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Ключевая информация</a>
+                        <a class="dropdown-item" href="#">Носители ключевой информации</a>
+                        <a class="dropdown-item" href="#">Назначение ключевой информации</a>
+                        <a class="dropdown-item" href="#">Информационные системы</a>
+                        <a class="dropdown-item" href="{{ route('cryptoOrganizationsIndex') }}">Организации</a>
+                        <a class="dropdown-item" href="#">Объекты информационной инфраструктуры</a>
+                        <a class="dropdown-item" href="#">Экземпляры СКЗИ</a>
+                        <a class="dropdown-item" href="#">Модели СКЗИ</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Отчеты</a>
+                </li>
+            </ul>
+        </div>
+    </div>
 
     <main>
         @yield('jumbotron')
         <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    @yield('breadcrumbs')
-                </div>
-                <div class="col-12">
-                    @yield('content')
-                </div>
-            </div>
+            @yield('content')
         </div>
     </main>
 
