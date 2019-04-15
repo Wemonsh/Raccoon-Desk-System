@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+    <!-- TODO На данной странице логотип и название сервиса в навигации съзжает вправо!!! -->
     <h1>Новости</h1>
     <div class="card-columns">
         @forelse($news as $value)

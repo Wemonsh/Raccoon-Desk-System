@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\Auth;
 class KnowledgeController extends Controller
 {
     public function index() {
-        echo __METHOD__;
         if (view()->exists('knowledge.index')) {
             $knowledge = KnowledgeCategory::with(array('knowledge'=>function($query){
                 $query->select('id','title', 'created_at','id_category');
@@ -32,7 +31,6 @@ class KnowledgeController extends Controller
     }
 
     public function show(Request $request, $id) {
-        echo __METHOD__;
         if (view()->exists('knowledge.show')) {
             $article = Knowledge::with('knowledgeCategory', 'user')->where('id','=', $id)->first();
             $article->views++;
