@@ -12,6 +12,7 @@
         <hr>
         <label>Адрес:</label>
         <div class="form-group">
+            <!-- TODO Испрвить id и разнести элементы по разным form-group -->
             <label for="address">Название улицы, номер дома, номер офиса/помещения</label>
             <input name="address[]" type="text" class="form-control" id="address" placeholder="Введите название улицы, номер дома, номер офиса/помещения">
             <label for="address">Название населенного пункта (города, послека и т.п.)</label>
