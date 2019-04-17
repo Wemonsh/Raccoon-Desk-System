@@ -14,7 +14,11 @@ class CreateCryptoMcpiInstance extends Migration
     public function up()
     {
         Schema::create('crypto_mcpi_instance', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
+            $table->string('serial_number');
+            $table->integer('id_models')->unsigned();
+            $table->foreign('id_models')->references('id')->on('crypto_mcpi_models');
+            $table->text('comment');
             $table->timestamps();
         });
     }

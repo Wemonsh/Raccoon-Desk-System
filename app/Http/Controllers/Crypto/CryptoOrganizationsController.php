@@ -55,7 +55,7 @@ class CryptoOrganizationsController extends Controller
                     'site' => $request->input('site')
                 ]);
 
-                return redirect('crypto');
+                return redirect('cryptoOrganizationsShow');
             } else {
                 return view('crypto.organizations.create');
             }
@@ -91,7 +91,7 @@ class CryptoOrganizationsController extends Controller
                 $organization->site = $request->input('site');
                 $organization->save();
 
-                return redirect('crypto');
+                return redirect('/crypto/organizations');
             } else {
                 $organization = CryptoOrganization::where('id','=', $id)->first();
 
