@@ -81,14 +81,14 @@
     <!-- Sidebar -->
     <ul class="sidebar navbar-nav">
         <li class="nav-item">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="{{ route('home') }}">
                 <i class="fas fa-fw fa-home"></i>
                 <span>Главная</span>
             </a>
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="{{ route('news') }}">
                 <i class="fas fa-fw fa-newspaper"></i>
                 <span>Новости</span>
             </a>
@@ -109,17 +109,27 @@
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="{{ route('knowledge') }}">
                 <i class="fas fa-fw fa-book"></i>
                 <span>База знаний</span>
             </a>
         </li>
 
-        <li class="nav-item">
-            <a class="nav-link" href="index.html">
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-fw fa-headset"></i>
                 <span>Служба поддержки</span>
             </a>
+            <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+                <a class="dropdown-item" href="#">Новая заявка</a>
+                <a class="dropdown-item" href="#">Мои заявки</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Поиск</a>
+                <a class="dropdown-item" href="#">Поступившие</a>
+                <a class="dropdown-item" href="#">Принятые</a>
+                <a class="dropdown-item" href="#">История</a>
+                <a class="dropdown-item" href="#">Отчеты</a>
+            </div>
         </li>
 
         <li class="nav-item">
@@ -130,7 +140,7 @@
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="{{ route('crypto') }}">
                 <i class="fas fa-fw fa-key"></i>
                 <span>Учет СКЗИ</span>
             </a>
@@ -145,28 +155,14 @@
 
         <hr>
 
-        {{--<li class="nav-item dropdown">--}}
-            {{--<a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
-                {{--<i class="fas fa-fw fa-folder"></i>--}}
-                {{--<span>Pages</span>--}}
-            {{--</a>--}}
-            {{--<div class="dropdown-menu" aria-labelledby="pagesDropdown">--}}
-                {{--<h6 class="dropdown-header">Login Screens:</h6>--}}
-                {{--<a class="dropdown-item" href="login.html">Login</a>--}}
-                {{--<a class="dropdown-item" href="register.html">Register</a>--}}
-                {{--<a class="dropdown-item" href="forgot-password.html">Forgot Password</a>--}}
-                {{--<div class="dropdown-divider"></div>--}}
-                {{--<h6 class="dropdown-header">Other Pages:</h6>--}}
-                {{--<a class="dropdown-item" href="404.html">404 Page</a>--}}
-                {{--<a class="dropdown-item active" href="blank.html">Blank Page</a>--}}
-            {{--</div>--}}
-        {{--</li>--}}
+
         {{--<li class="nav-item">--}}
             {{--<a class="nav-link" href="charts.html">--}}
                 {{--<i class="fas fa-fw fa-chart-area"></i>--}}
                 {{--<span>Charts</span></a>--}}
         {{--</li>--}}
         {{--<li class="nav-item">--}}
+        {{--<h6 class="dropdown-header">Login Screens:</h6>--}}
             {{--<a class="nav-link" href="tables.html">--}}
                 {{--<i class="fas fa-fw fa-table"></i>--}}
                 {{--<span>Tables</span></a>--}}
