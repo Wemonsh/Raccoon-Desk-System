@@ -1,4 +1,4 @@
-@extends('layouts.crypto')
+@extends('layouts.default')
 
 @section('content')
     <h1>Добавление носителя ключевой информации</h1>
