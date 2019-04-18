@@ -30,7 +30,7 @@ class NewsController extends Controller
                 $vars = [
                     'news' => $news
                 ];
-                //dump($news);
+
                 return view('news.post', $vars);
             } else {
                 abort(404);
@@ -116,15 +116,10 @@ class NewsController extends Controller
 
     public function showCategory($id) {
         if (view()->exists('news.category')) {
-            // TODO Оптимизировать запрос без подгрузки всех данных пользователей и текста новости!
-            //$news = News::with(['user' => function($query){ $query->select('id', 'first_name');}])->select('id', 'title', 'created_at', 'views')->where('id_category','=',$id)->get()->toArray();
-
-            $news = News::with(['user' => function($query){ $query->select('id', 'first_name', 'last_name', 'middle_name');}])
-                ->where('id_category','=',$id)->orderBy('created_at', 'desc')->paginate(5);
+            $news = News::join('users', 'news.id_user', '=', 'users.id')->select('news.id', 'news.title', 'news.created_at', 'news.views', 'users.id', 'users.first_name', 'users.last_name', 'users.middle_name')->where('news.id_category', '=', $id)->orderBy('created_at', 'desc')->paginate(5);
             $category = NewsCategory::where('id', '=', $id)->first();
 
             if($news != null && $category != null) {
-
                 $vars = [
                     'news' => $news,
                     'category' => $category
