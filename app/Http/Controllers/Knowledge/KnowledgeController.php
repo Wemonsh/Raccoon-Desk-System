@@ -48,13 +48,19 @@ class KnowledgeController extends Controller
 
     public function showCategory($id) {
         if (view()->exists('knowledge.category')) {
-            $articles = Knowledge::select('id', 'title', 'created_at')->where('id_category','=',$id)->get()->toArray();
+            $articles = Knowledge::join('users', 'knowledge.id_user', '=', 'users.id')->select('knowledge.id', 'knowledge.title', 'knowledge.created_at', 'knowledge.views', 'users.first_name', 'users.last_name', 'users.middle_name', 'users.id as id_user')->where('knowledge.id_category', '=', $id)->orderBy('created_at', 'desc')->paginate(5);
+            $category = KnowledgeCategory::where('id', '=', $id)->first();
 
-            $vars = [
-                'articles' => $articles
-            ];
+            if($articles != null && $category != null) {
+                $vars = [
+                    'articles' => $articles,
+                    'category' => $category
+                ];
 
-            return view('knowledge.category', $vars);
+                return view('knowledge.category', $vars);
+            } else {
+                abort(404);
+            }
         } else {
             abort(404);
         }
