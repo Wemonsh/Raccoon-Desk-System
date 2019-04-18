@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.default')
 
 @section('content')
     <h1>Категория: {{ $category->title }}</h1>

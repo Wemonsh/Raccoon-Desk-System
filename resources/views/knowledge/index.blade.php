@@ -1,8 +1,8 @@
-@extends('layouts.knowledge')
+@extends('layouts.default')
 
 @section('jumbotron')
     <div class="jumbotron jumbotron-fluid">
-        <div class="container">
+        <div class="container-fluid">
             <h1 class="display-4">База знаний</h1>
             <p class="lead">Чем мы Вам можем помочь сегодня?</p>
             <form action="{{ route('knowledgeSearch') }}" method="post">

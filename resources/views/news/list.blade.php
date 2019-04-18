@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.default')
 
 @section('content')
     <!-- TODO На данной странице логотип и название сервиса в навигации съзжает вправо!!! -->
