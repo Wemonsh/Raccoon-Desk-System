@@ -69,4 +69,10 @@ Route::group(['prefix' => 'crypto'], function () {
     Route::match(['get', 'post'], '/storages/edit/{id}', ['uses' => 'Crypto\CryptoStoragesController@edit', 'as' => 'cryptoStoragesEdit']);
     Route::match(['get', 'post'], '/storages/delete/{id}', ['uses' => 'Crypto\CryptoStoragesController@delete', 'as' => 'cryptoStoragesDelete']);
 
+    // Certificates
+    Route::match(['get', 'post'], '/certificates', ['uses' => 'Crypto\CryptoCertificatesController@index', 'as' => 'cryptoCertificatesIndex']);
+    Route::match(['get', 'post'], '/certificates/create', ['uses' => 'Crypto\CryptoCertificatesController@create', 'as' => 'cryptoCertificatesCreate']);
+    Route::match(['get', 'post'], '/certificates/edit/{id}', ['uses' => 'Crypto\CryptoCertificatesController@edit', 'as' => 'cryptoCertificatesEdit']);
+    Route::match(['get', 'post'], '/certificates/delete/{id}', ['uses' => 'Crypto\CryptoCertificatesController@delete', 'as' => 'cryptoCertificatesDelete']);
+
 });
