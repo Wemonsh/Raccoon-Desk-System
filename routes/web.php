@@ -81,4 +81,10 @@ Route::group(['prefix' => 'crypto'], function () {
     Route::match(['get', 'post'], '/mcpi-models/edit/{id}', ['uses' => 'Crypto\CryptoMcpiModelsController@edit', 'as' => 'cryptoMcpiModelsEdit']);
     Route::match(['get', 'post'], '/mcpi-models/delete/{id}', ['uses' => 'Crypto\CryptoMcpiModelsController@delete', 'as' => 'cryptoMcpiModelsDelete']);
 
+    // Instance
+    Route::match(['get', 'post'], '/mcpi-instances', ['uses' => 'Crypto\CryptoMcpiInstanceController@index', 'as' => 'cryptoMcpiInstanceIndex']);
+    Route::match(['get', 'post'], '/mcpi-instances/create', ['uses' => 'Crypto\CryptoMcpiInstanceController@create', 'as' => 'cryptoMcpiInstanceCreate']);
+    Route::match(['get', 'post'], '/mcpi-instances/edit/{id}', ['uses' => 'Crypto\CryptoMcpiInstanceController@edit', 'as' => 'cryptoMcpiInstanceEdit']);
+    Route::match(['get', 'post'], '/mcpi-instances/delete/{id}', ['uses' => 'Crypto\CryptoMcpiInstanceController@delete', 'as' => 'cryptoMcpiInstanceDelete']);
+
 });

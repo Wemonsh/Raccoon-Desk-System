@@ -38,7 +38,7 @@
                 <a class="dropdown-item" href="{{ route('cryptoInfoSystemIndex') }}">Информационные системы</a>
                 <a class="dropdown-item" href="{{ route('cryptoOrganizationsIndex') }}">Организации</a>
                 <a class="dropdown-item" href="#">Объекты информационной инфраструктуры</a>
-                <a class="dropdown-item" href="#">Экземпляры СКЗИ</a>
+                <a class="dropdown-item" href="{{ route('cryptoMcpiInstanceIndex') }}">Экземпляры СКЗИ</a>
                 <a class="dropdown-item" href="{{ route('cryptoMcpiModelsIndex') }}">Модели СКЗИ</a>
             </div>
         </li>
