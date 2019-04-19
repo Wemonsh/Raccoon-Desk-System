@@ -40,9 +40,37 @@ class NewsController extends Controller
         }
     }
 
-    public function searchNews() {
-        echo __METHOD__;
-        return view('news.search');
+    public function searchNews(Request $request) {
+        if (view()->exists('news.search')) {
+            if ($request->isMethod('post')) {
+                $value = $request->value;
+
+                // TODO Передалать запрос, пользователь = null, доделать пагинацию
+                $news = News::with('user')->select('id', 'title', 'created_at', 'views')->where('title','LIKE','%'.$value.'%')->get();
+
+                $vars = [
+                    'value' => $value,
+                    'news' => $news
+                ];
+
+                return view('news.search', $vars);
+            } else {
+                //return redirect('news');
+                $value = $request->value;
+
+                // TODO Передалать запрос, пользователь = null, доделать пагинацию
+                $news = News::with('user')->select('id', 'title', 'created_at', 'views')->where('title','LIKE','%'.$value.'%')->get();
+
+                $vars = [
+                    'value' => $value,
+                    'news' => $news
+                ];
+
+                return view('news.search', $vars);
+            }
+        } else {
+            abort(404);
+        }
     }
 
     public function createNews(Request $request) {

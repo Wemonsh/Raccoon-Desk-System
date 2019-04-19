@@ -8,7 +8,7 @@
     @forelse($articles as $article)
         <div class="card mb-3">
             <div class="card-body">
-                <p><a href="{{ route('knowledgeShow', $article['id']) }}">{{ $article['title'] }}</a> <smal>{{ $article['created_at'] }}</smal></p>
+                <p><a href="{{ route('knowledgeShow', $article['id']) }}">{{ $article['title'] }}</a> <small>{{ $article['created_at'] }}</small></p>
             </div>
         </div>
     @empty

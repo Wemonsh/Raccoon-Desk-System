@@ -28,6 +28,7 @@ Route::group(['prefix' => 'news'], function () {
     Route::match(['get', 'post'], '/post/edit/{id}', ['uses' => 'News\NewsController@editNews', 'as' => 'editNews']);
     Route::get('/post/delete/{id}' ,['uses' => 'News\NewsController@deleteNews']);
     Route::match(['get', 'post'], '/category/{id}', ['uses' => 'News\NewsController@showCategory', 'as' => 'newsCategory']);
+    Route::match(['get', 'post'], '/search', ['uses' => 'News\NewsController@searchNews', 'as' => 'searchNews']);
 });
 
 // Knowledge Base
