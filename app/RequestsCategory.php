@@ -10,7 +10,7 @@ class RequestsCategory extends Model
     protected $primaryKey = 'id';
     public $timestamps = false;
 
-    public function news() {
+    public function requests() {
         return $this->hasMany('App\Requests');
     }
 }

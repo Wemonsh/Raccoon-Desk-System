@@ -62,6 +62,23 @@ class RequestsController extends Controller
     }
 
     public  function created() {
+        if (view()->exists('requests.created')) {
+            $my_requests = Requests::with('operator')->with('requestsCategory')->with('requestsPriority')->with('requestsStatuses')->where('id_user', '=', Auth::user()->id)->orderBy('date_of_creation', 'desc')->paginate(5);
+
+            if($my_requests != null) {
+                $vars = [
+                    'my_requests' => $my_requests,
+                    'user' => Auth::user(),
+                ];
+
+                return view('requests.created', $vars);
+            } else {
+                abort(404);
+            }
+        } else {
+            abort(404);
+        }
+
         return view('requests.created');
     }
 
