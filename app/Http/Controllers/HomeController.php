@@ -24,9 +24,6 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        $data = $request->session()->all();
-        dump($data);
-
         return view('home');
     }
 }

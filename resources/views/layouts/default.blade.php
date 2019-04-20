@@ -21,11 +21,12 @@
     <link href="{{ asset('css/summernote.css') }}" rel="stylesheet">
 
     <!-- Bootstrap core JavaScript-->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.easing.min.js') }}"></script>
 
     <!-- Custom scripts for all pages-->
+
     <script src="{{ asset('js/summernote.js') }}"></script>
     <script src="{{ asset('js/summernote-ru-RU.js') }}"></script>
 
@@ -44,12 +45,27 @@
         <i class="fas fa-bars"></i>
     </button>
 
+
+
+
     <!-- Navbar -->
     <ul class="navbar-nav ml-auto mr-0 mr-md-3 my-2 my-md-0">
+
+
+        @guest
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('login') }}">{{ __('app.login') }}</a>
+        </li>
+        @if (Route::has('register'))
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('register') }}">{{ __('app.register') }}</a>
+            </li>
+        @endif
+        @else
         <li class="nav-item dropdown no-arrow mx-1">
             <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-bell fa-fw"></i>
-                <span class="badge badge-danger">9+</span>
+                <i class="fas fa-bell fa-fw mt-1"></i>
+                <span class="badge badge-danger">999+</span>
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown">
                 <a class="dropdown-item" href="#">Action</a>
@@ -58,29 +74,43 @@
                 <a class="dropdown-item" href="#">Something else here</a>
             </div>
         </li>
-        <li class="nav-item dropdown no-arrow mx-1">
+
+        <li class="nav-item dropdown no-arrow">
+
             <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-envelope fa-fw"></i>
+                <i class="fas fa-envelope fa-fw mt-1"></i>
                 <span class="badge badge-danger">7</span>
             </a>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="messagesDropdown">
+
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="#">Action</a>
                 <a class="dropdown-item" href="#">Another action</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#">Something else here</a>
             </div>
         </li>
-        <li class="nav-item dropdown no-arrow">
-            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+
+        <li class="nav-item dropdown">
+
+            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                 <i class="fas fa-user-circle fa-fw"></i>
+                {{ Auth::user()->last_name .' '. Auth::user()->first_name }} <span class="caret"></span>
             </a>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="#">Settings</a>
-                <a class="dropdown-item" href="#">Activity Log</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
+
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{{ route('logout') }}"
+                   onclick="event.preventDefault();
+                                           document.getElementById('logout-form').submit();">
+                    {{ __('Logout') }}
+                </a>
+
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
             </div>
         </li>
+        @endguest
     </ul>
 
 </nav>
@@ -130,14 +160,14 @@
                 <span>Служба поддержки</span>
             </a>
             <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-                <a class="dropdown-item" href="#">Новая заявка</a>
-                <a class="dropdown-item" href="#">Мои заявки</a>
+                <a class="dropdown-item" href="{{ route('requestsCreate') }}">Новая заявка</a>
+                <a class="dropdown-item" href="{{ route('requestsCreated') }}">Мои заявки</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Поиск</a>
-                <a class="dropdown-item" href="#">Поступившие</a>
-                <a class="dropdown-item" href="#">Принятые</a>
-                <a class="dropdown-item" href="#">История</a>
-                <a class="dropdown-item" href="#">Отчеты</a>
+                <a class="dropdown-item" href="{{ route('requestsSearch') }}">Поиск</a>
+                <a class="dropdown-item" href="{{ route('requestsAccepted') }}">Поступившие</a>
+                <a class="dropdown-item" href="{{ route('requestsReceived') }}">Принятые</a>
+                <a class="dropdown-item" href="{{ route('requestsHistory') }}">История</a>
+                <a class="dropdown-item" href="{{ route('requestsReports') }}">Отчеты</a>
             </div>
         </li>
 
@@ -182,11 +212,8 @@
 
     <div id="content-wrapper">
         @yield('sub-navigation')
+        @yield('jumbotron')
         <div class="container-fluid">
-
-
-            <!-- Breadcrumbs-->
-
             @yield('breadcrumbs')
 
             <!-- Page Content -->
@@ -199,7 +226,7 @@
         <footer class="sticky-footer">
             <div class="container my-auto">
                 <div class="copyright text-center my-auto">
-                    <span>Copyright © Your Website 2019</span>
+                    <span>&copy; 2019 Raccoon Desk System</span>
                 </div>
             </div>
         </footer>
@@ -210,8 +237,10 @@
 </div>
 <!-- /#wrapper -->
 
+
+
 <!-- Scroll to Top Button-->
-<a class="scroll-to-top rounded" href="#page-top">
+<a class="scroll-to-top rounded" href="#page-top" style="display: none;">
     <i class="fas fa-angle-up"></i>
 </a>
 

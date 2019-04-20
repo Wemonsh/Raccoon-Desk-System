@@ -1,54 +1,48 @@
 @extends('layouts.default')
 
-@section('sub-navigation')
-<div class="navbar-light bg-light">
-    <ul class="nav">
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Криптоключи
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Акт создания ключевых документов</a>
-                <a class="dropdown-item" href="#">Акт передачи ключевых документов</a>
-                <a class="dropdown-item" href="#">Акт ввода в эксплуатацию ключевой информации</a>
-                <a class="dropdown-item" href="#">Акт вывода из эксплуатации ключевой информации</a>
-                <a class="dropdown-item" href="#">Акт уничтожения ключевых документов</a>
-            </div>
-        </li>
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                СКЗИ
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Акт поступления СКЗИ</a>
-                <a class="dropdown-item" href="#">Акт списания СКЗИ</a>
-                <a class="dropdown-item" href="#">Акт передачи СКЗИ</a>
-                <a class="dropdown-item" href="#">Акт ввода СКЗИ в эксплуатацию</a>
-                <a class="dropdown-item" href="#">Акт вывода СКЗИ в эксплуатацию</a>
-            </div>
-        </li>
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Справочники
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="{{ route('cryptoCertificatesIndex') }}">Ключевая информация</a>
-                <a class="dropdown-item" href="{{ route('cryptoStoragesIndex') }}">Носители ключевой информации</a>
-                <a class="dropdown-item" href="{{ route('cryptoAssignmentsIndex') }}">Назначение ключевой информации</a>
-                <a class="dropdown-item" href="{{ route('cryptoInfoSystemIndex') }}">Информационные системы</a>
-                <a class="dropdown-item" href="{{ route('cryptoOrganizationsIndex') }}">Организации</a>
-                <a class="dropdown-item" href="#">Объекты информационной инфраструктуры</a>
-                <a class="dropdown-item" href="{{ route('cryptoMcpiInstanceIndex') }}">Экземпляры СКЗИ</a>
-                <a class="dropdown-item" href="{{ route('cryptoMcpiModelsIndex') }}">Модели СКЗИ</a>
-            </div>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Отчеты</a>
-        </li>
-    </ul>
-</div>
-@endsection
-
 @section('content')
-123
+<h1>Учет средств криптографической защиты информации</h1>
+<hr>
+<p>Добро пожаловать на страницу сервиса учета средств криптографической защиты информации, тут вы можете осуществлять
+ведение и учет СКЗИ а так же создавать типовые отчеты согласно ФЗ №66 "О разработке, производстве,
+    реализации и эксплуатациишифровальных (криптографических) средств  защиты информации" от 9 февраля 2005 г.</p>
+
+<div class="row">
+    <div class="col-3">
+        <h2>Криптоключи</h2>
+        <ul>
+            <li><a href="#">Акт создания ключевых документов</a></li>
+            <li><a href="#">Акт передачи ключевых документов</a></li>
+            <li><a href="#">Акт ввода в эксплуатацию ключевой информации</a></li>
+            <li><a href="#">Акт вывода из эксплуатации ключевой информации</a></li>
+            <li><a href="#">Акт уничтожения ключевых документов</a></li>
+        </ul>
+    </div>
+    <div class="col-3">
+        <h2>СКЗИ</h2>
+        <ul>
+            <li><a href="#">Акт поступления СКЗИ</a></li>
+            <li><a href="#">Акт списания СКЗИ</a></li>
+            <li><a href="#">Акт передачи СКЗИ</a></li>
+            <li><a href="#">Акт ввода СКЗИ в эксплуатацию</a></li>
+            <li><a href="#">Акт вывода СКЗИ в эксплуатацию</a></li>
+        </ul>
+    </div>
+    <div class="col-3">
+        <h2>Справочники</h2>
+        <ul>
+            <li><a href="{{ route('cryptoCertificatesIndex') }}">Ключевая информация</a></li>
+            <li><a href="{{ route('cryptoStoragesIndex') }}">Носители ключевой информации</a></li>
+            <li><a href="{{ route('cryptoAssignmentsIndex') }}">Назначение ключевой информации</a></li>
+            <li><a href="{{ route('cryptoInfoSystemIndex') }}">Информационные системы</a></li>
+            <li><a href="{{ route('cryptoOrganizationsIndex') }}">Организации</a></li>
+            <li><a href="#">Объекты информационной инфраструктуры</a></li>
+            <li><a href="{{ route('cryptoMcpiInstanceIndex') }}">Экземпляры СКЗИ</a></li>
+            <li><a href="{{ route('cryptoMcpiModelsIndex') }}">Модели СКЗИ</a></li>
+        </ul>
+    </div>
+    <div class="col-3">
+        <h2>Отчеты</h2>
+    </div>
+</div>
 @endsection
