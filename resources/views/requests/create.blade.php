@@ -7,67 +7,70 @@
         для решения следующих категорий вопросов указанных в информации о сервисе. Так же перед созданием заявки рекомендуем вам
         посмотреть раздел <a href="{{ route('knowledge') }}">база знаний</a>, где описаны решения частых проблем.</p>
 
-    <form method="post" enctype="multipart/form-data">
+    <form method="post" action="{{ route('requestsCreate') }}" enctype="multipart/form-data">
+        @csrf
         <div class="row">
             <div class="col-8">
                 <div class="form-group">
-                    <label for="inputEmail4">Тема</label>
-                    <input type="text" name="title" class="form-control" id="inputEmail4">
+                    <label for="title">Тема</label>
+                    <input type="text" name="title" class="form-control" id="title">
                 </div>
                 <div class="row">
                     <div class="col-6">
-                        <label for="exampleFormControlSelect1">Категория</label>
-                        <select class="form-control" name="category" id="exampleFormControlSelect1">
+                        <label for="id_category">Категория</label>
+                        <select name="id_category" class="form-control" id="id_category">
+                            @foreach($category as $value)
+                                <option value="{{ $value->id }}">{{ $value->name }}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="col-6">
-                        <label for="exampleFormControlSelect1">Приоритет</label>
-                        <select class="form-control" name="priority" id="exampleFormControlSelect1">
-                            <option value="1">Высокий</option>
-                            <option value="2" selected="selected">Обычный</option>
-                            <option value="3">Низкий</option>
+                        <label for="id_priority">Приоритет</label>
+                        <select name="id_priority" class="form-control" id="id_priority">
+                            @foreach($priority as $value)
+                                <option value="{{ $value->id }}">{{ $value->name }}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
                 <div class="row mt-3">
                     <div class="col-12">
                         <div class="form-group">
-                            <label for="exampleFormControlTextarea1">Описание</label>
-                            <textarea class="form-control" name="description" id="exampleFormControlTextarea1" rows="3"></textarea>
+                            <label for="description">Описание</label>
+                            <textarea class="form-control" name="description" id="description" rows="3"></textarea>
                         </div>
                     </div>
 
                     <div class="col-12">
                         <div class="form-group">
-                            <label for="exampleFormControlFile1">Добавить файл</label>
-                            <input type="file" name="file" class="form-control-file" id="exampleFormControlFile1">
+                            <label for="files">Добавить файлы</label>
+                            <input type="file" name="file[]" class="form-control-file" id="files" multiple>
                         </div>
                         <button type="submit" id="submit" class="btn btn-primary">Создать</button>
                     </div>
                 </div>
             </div>
 
-
             <div class="col-4">
                 <div class="form-group">
-                    <label for="inputEmail4">ID</label>
-                    <input type="text" name="user" class="form-control"  id="inputEmail4" disabled>
+                    <label for="id_user">ID</label>
+                    <input type="text" name="id_user" class="form-control"  id="id_user" value="{{ $user->id }}" disabled>
                 </div>
                 <div class="form-group">
-                    <label for="inputEmail4">Телефон</label>
-                    <input type="text" class="form-control" disabled>
+                    <label for="phone">Телефон</label>
+                    <input type="text" class="form-control" value="{{ $user->phone }}" id="phone" disabled>
                 </div>
                 <div class="form-group">
-                    <label for="inputEmail4">Организация</label>
-                    <input type="text" class="form-control" disabled>
+                    <label for="organization">Организация</label>
+                    <input type="text" class="form-control" value="{{ $user->organization }}" id="organization" disabled>
                 </div>
                 <div class="form-group">
-                    <label for="inputEmail4">Отдел</label>
-                    <input type="text" class="form-control" disabled>
+                    <label for="department">Отдел</label>
+                    <input type="text" class="form-control" value="{{ $user->department }}" id="department" disabled>
                 </div>
                 <div class="form-group">
-                    <label for="inputEmail4">Должность</label>
-                    <input type="text" class="form-control" disabled>
+                    <label for="position">Должность</label>
+                    <input type="text" class="form-control" value="{{ $user->position }}" id="position" disabled>
                 </div>
             </div>
         </div>
