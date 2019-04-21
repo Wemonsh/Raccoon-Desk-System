@@ -86,8 +86,27 @@ class RequestsController extends Controller
         return view('requests.search');
     }
 
-    public  function accepted() {
-        return view('requests.accepted');
+    public  function accepted($id = null) {
+        if (view()->exists('requests.accepted')) {
+
+            $requestsStatuses = RequestsStatuses::all();
+            $requests = null;
+
+            if (isset($id)) {
+                $requests = Requests::where('id_status', '=', $id)->orderBy('id','desc')->paginate(5);
+            } else {
+                $requests = Requests::orderBy('id','desc')->paginate(5);
+            }
+
+            $vars = [
+                'id' => $id,
+                'requestsStatuses' => $requestsStatuses,
+                'requests' => $requests
+            ];
+            return view('requests.accepted', $vars);
+        } else {
+            abort(404);
+        }
     }
 
     public  function received() {

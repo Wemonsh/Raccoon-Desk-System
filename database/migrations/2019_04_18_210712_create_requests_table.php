@@ -18,7 +18,7 @@ class CreateRequestsTable extends Migration
             $table->string('title');
             $table->text('description');
             $table->ipAddress('ip');
-            $table->json('files');
+            $table->json('files')->nullable();
 
             $table->integer('id_priority')->unsigned();
             $table->foreign('id_priority')->references('id')->on('requests_priority');
@@ -31,9 +31,9 @@ class CreateRequestsTable extends Migration
             $table->integer('id_status')->unsigned();
             $table->foreign('id_status')->references('id')->on('requests_statuses');
 
-            $table->date('date_of_creation');
-            $table->date('date_of_planned')->nullable();
-            $table->date('date_of_closing')->nullable();
+            $table->dateTime('date_of_creation');
+            $table->dateTime('date_of_planned')->nullable();
+            $table->dateTime('date_of_closing')->nullable();
         });
     }
 

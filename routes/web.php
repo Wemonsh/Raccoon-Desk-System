@@ -95,8 +95,8 @@ Route::group(['prefix' => 'requests'], function () {
     Route::match(['get', 'post'], '/create', ['uses' => 'Requests\RequestsController@create', 'as' => 'requestsCreate']);
     Route::match(['get', 'post'], '/created', ['uses' => 'Requests\RequestsController@created', 'as' => 'requestsCreated']);
     Route::match(['get', 'post'], '/search', ['uses' => 'Requests\RequestsController@search', 'as' => 'requestsSearch']);
-    Route::match(['get', 'post'], '/accepted/{id?}', ['uses' => 'Requests\RequestsController@accepted', 'as' => 'requestsAccepted']);
-    Route::match(['get', 'post'], '/received/{id?}', ['uses' => 'Requests\RequestsController@received', 'as' => 'requestsReceived']);
+    Route::match(['get', 'post'], '/accepted/{id?}', ['uses' => 'Requests\RequestsController@accepted', 'as' => 'requestsAccepted'])->where(['id' => '[0-9]+']);
+    Route::match(['get', 'post'], '/received/{id?}', ['uses' => 'Requests\RequestsController@received', 'as' => 'requestsReceived'])->where(['id' => '[0-9]+']);
     Route::match(['get', 'post'], '/history', ['uses' => 'Requests\RequestsController@history', 'as' => 'requestsHistory']);
     Route::match(['get', 'post'], '/reports', ['uses' => 'Requests\RequestsController@reports', 'as' => 'requestsReports']);
 });

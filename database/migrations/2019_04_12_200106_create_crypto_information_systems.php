@@ -13,7 +13,7 @@ class CreateCryptoInformationSystems extends Migration
      */
     public function up()
     {
-        Schema::create('crypto_information_system', function (Blueprint $table) {
+        Schema::create('crypto_information_systems', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->text('comment');
@@ -28,6 +28,6 @@ class CreateCryptoInformationSystems extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('crypto_information_system');
+        Schema::dropIfExists('crypto_information_systems');
     }
 }

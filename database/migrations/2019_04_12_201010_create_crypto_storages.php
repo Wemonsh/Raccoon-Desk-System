@@ -28,6 +28,6 @@ class CreateCryptoStorages extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('crypto_storage');
+        Schema::dropIfExists('crypto_storages');
     }
 }
