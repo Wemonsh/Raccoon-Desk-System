@@ -90,6 +90,18 @@
             </div>
         </li>
 
+        <li class="nav-item dropdown no-arrow">
+
+            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-globe-americas"></i>
+            </a>
+
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/locale/en"><img src="{{ asset('img/flags/United-Kingdom.png') }}" alt=""> English</a>
+                <a class="dropdown-item" href="/locale/ru"><img src="{{ asset('img/flags/Russia.png') }}" alt=""> Русский</a>
+                <a class="dropdown-item" href="/locale/ua"><img src="{{ asset('img/flags/Ukraine.png') }}" alt=""> Український</a>
+            </div>
+        </li>
 
         <li class="nav-item dropdown">
 
