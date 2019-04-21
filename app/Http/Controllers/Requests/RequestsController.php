@@ -82,6 +82,12 @@ class RequestsController extends Controller
         return view('requests.created');
     }
 
+    public  function show() {
+
+
+        return view('requests.show');
+    }
+
     public  function search() {
         return view('requests.search');
     }

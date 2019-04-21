@@ -264,6 +264,9 @@
 </div>
 
 <script src="{{ asset('js/sb-admin.min.js') }}"></script>
+<script src="{{ asset('js/Chart.min.js') }}"></script>
+<script src="{{ asset('js/demo/chart-area-demo.js') }}"></script>
+<script src="{{ asset('js/demo/chart-pie-demo.js') }}"></script>
 
 </body>
 
