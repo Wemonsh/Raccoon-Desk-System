@@ -54,11 +54,11 @@
 
         @guest
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('login') }}">{{ __('app.login') }}</a>
+            <a class="nav-link" href="{{ route('login') }}">{{ __('main.login') }}</a>
         </li>
         @if (Route::has('register'))
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('register') }}">{{ __('app.register') }}</a>
+                <a class="nav-link" href="{{ route('register') }}">{{ __('main.register') }}</a>
             </li>
         @endif
         @else
@@ -122,42 +122,42 @@
         <li class="nav-item">
             <a class="nav-link" href="{{ route('home') }}">
                 <i class="fas fa-fw fa-home"></i>
-                <span>Главная</span>
+                <span>{{ __('layouts/navigation.home') }}</span>
             </a>
         </li>
 
         <li class="nav-item">
             <a class="nav-link" href="{{ route('news') }}">
                 <i class="fas fa-fw fa-newspaper"></i>
-                <span>Новости</span>
+                <span>{{ __('layouts/navigation.news') }}</span>
             </a>
         </li>
 
         <li class="nav-item">
             <a class="nav-link" href="index.html">
                 <i class="fas fa-fw fa-calendar-alt"></i>
-                <span>Календарь</span>
+                <span>{{ __('layouts/navigation.calendar') }}</span>
             </a>
         </li>
 
         <li class="nav-item">
             <a class="nav-link" href="index.html">
                 <i class="fas fa-fw fa-address-book"></i>
-                <span>Тел. справочник</span>
+                <span>{{ __('layouts/navigation.phone') }}</span>
             </a>
         </li>
 
         <li class="nav-item">
             <a class="nav-link" href="{{ route('knowledge') }}">
                 <i class="fas fa-fw fa-book"></i>
-                <span>База знаний</span>
+                <span>{{ __('layouts/navigation.knowledge') }}</span>
             </a>
         </li>
 
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-fw fa-headset"></i>
-                <span>Служба поддержки</span>
+                <span>{{ __('layouts/navigation.service') }}</span>
             </a>
             <div class="dropdown-menu" aria-labelledby="pagesDropdown">
                 <a class="dropdown-item" href="{{ route('requestsCreate') }}">Новая заявка</a>
@@ -174,21 +174,21 @@
         <li class="nav-item">
             <a class="nav-link" href="index.html">
                 <i class="fas fa-fw fa-boxes"></i>
-                <span>Активы организации</span>
+                <span>{{ __('layouts/navigation.inventory') }}</span>
             </a>
         </li>
 
         <li class="nav-item">
             <a class="nav-link" href="{{ route('crypto') }}">
                 <i class="fas fa-fw fa-key"></i>
-                <span>Учет СКЗИ</span>
+                <span>{{ __('layouts/navigation.mcpi') }}</span>
             </a>
         </li>
 
         <li class="nav-item">
             <a class="nav-link" href="index.html">
                 <i class="fas fa-fw fa-chart-area"></i>
-                <span>Статистика</span>
+                <span>{{ __('layouts/navigation.statistics') }}</span>
             </a>
         </li>
 

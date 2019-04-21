@@ -43,6 +43,7 @@
     </div>
     <div class="col-3">
         <h2>Отчеты</h2>
+
     </div>
 </div>
 @endsection

@@ -13,4 +13,10 @@
 
 @section('content')
     <h1>Привет мир!</h1>
+    <hr>
+    <ul>
+        <li><a href="locale/ua">locale/ua</a></li>
+        <li><a href="locale/en">locale/en</a></li>
+        <li><a href="locale/ru">locale/ru</a></li>
+    </ul>
 @endsection
