@@ -80,26 +80,26 @@
         <div class="card mb-3">
             <div class="card-header">
                 <i class="fas fa-chart-area"></i>
-                Area Chart Example</div>
+                Аналитическое сравнение заявок пользователей</div>
             <div class="card-body">
                 <canvas id="myAreaChart" width="100%" height="30"></canvas>
             </div>
-            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+            <div class="card-footer small text-muted">Обновлено {{ date('Y-m-d H:i:s') }}</div>
         </div>
     </div>
     <div class="col-md-3">
         <div class="card mb-3">
             <div class="card-header">
                 <i class="fas fa-chart-pie"></i>
-                Pie Chart Example</div>
+                Процентное соотношение заявок</div>
             <div class="card-body">
                 <canvas id="myPieChart" width="100%" height="100"></canvas>
             </div>
-            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+            <div class="card-footer small text-muted">Обновлено {{ date('Y-m-d H:i:s') }}</div>
         </div>
     </div>
     <div class="col-md-6">
-        <div class="card">
+        <div class="card mb-3">
             <h5 class="card-header">Новости</h5>
 
             <ul class="list-unstyled">
