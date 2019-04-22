@@ -25,8 +25,10 @@ class NewsController extends Controller
         if (view()->exists('news.post')) {
             $news = News::with('newsCategory', 'user')->where('id','=',$id)->first();
             if ($news != null) {
-                $news->views++;
-                $news->save();
+                $news->timestamps = false;
+                $news->increment('views');
+                $news->timestamps = false;
+
                 $vars = [
                     'news' => $news
                 ];

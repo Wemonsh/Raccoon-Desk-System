@@ -33,8 +33,10 @@ class KnowledgeController extends Controller
     public function show(Request $request, $id) {
         if (view()->exists('knowledge.show')) {
             $article = Knowledge::with('knowledgeCategory', 'user')->where('id','=', $id)->first();
-            $article->views++;
-            $article->save();
+
+            $article->timestamps = false;
+            $article->increment('views');
+            $article->timestamps = true;
 
             $vars = [
                 'article' => $article->toArray()

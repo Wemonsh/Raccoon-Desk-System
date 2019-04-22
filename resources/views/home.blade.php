@@ -102,42 +102,23 @@
         <div class="card mb-3">
             <h5 class="card-header">Новости</h5>
 
-            <ul class="list-unstyled">
-                <li class="media">
-                    <img src="..." class="mr-3" alt="...">
-                    <div class="media-body">
-                        <h5 class="mt-0 mb-1">List-based media object</h5>
-                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+            <ul class="list-unstyled mt-1 ml-1">
+
+                @forelse($news as $item)
+                    <li class="media my-2">
+                        <img src="{{ asset('/storage/' . $item['image']) }}" width="100px" height="100px" class="mr-3" alt="Изображение">
+                        <div class="media-body">
+                            <h5 class="mt-0 mb-1">{{ $item['title'] }}</h5>
+                            {{ mb_strimwidth(strip_tags(str_replace('&nbsp;', ' ', $item['text'])), 0, 350, '...') }}
+                            <a href="/news/post/{{ $item['id'] }}"><small>Подробнее</small></a>
+                        </div>
+                    </li>
+                @empty
+                    <div class="alert alert-info" role="alert">
+                        <p>Новости в данной категории отсутсвуют</p>
                     </div>
-                </li>
-                <li class="media my-4">
-                    <img src="..." class="mr-3" alt="...">
-                    <div class="media-body">
-                        <h5 class="mt-0 mb-1">List-based media object</h5>
-                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                    </div>
-                </li>
-                <li class="media">
-                    <img src="..." class="mr-3" alt="...">
-                    <div class="media-body">
-                        <h5 class="mt-0 mb-1">List-based media object</h5>
-                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                    </div>
-                </li>
-                <li class="media my-4">
-                    <img src="..." class="mr-3" alt="...">
-                    <div class="media-body">
-                        <h5 class="mt-0 mb-1">List-based media object</h5>
-                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                    </div>
-                </li>
-                <li class="media">
-                    <img src="..." class="mr-3" alt="...">
-                    <div class="media-body">
-                        <h5 class="mt-0 mb-1">List-based media object</h5>
-                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                    </div>
-                </li>
+                @endforelse
+
             </ul>
 
         </div>
@@ -146,42 +127,23 @@
         <div class="card">
             <h5 class="card-header">Статьи</h5>
 
-            <ul class="list-unstyled">
-                <li class="media">
-                    <img src="..." class="mr-3" alt="...">
-                    <div class="media-body">
-                        <h5 class="mt-0 mb-1">List-based media object</h5>
-                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+            <ul class="list-unstyled mt-1 ml-1">
+
+                @forelse($articles as $item)
+                    <li class="media my-2">
+                        <img src="/img/logo.png" width="100px" height="100px" class="mr-3" alt="Изображение">
+                        <div class="media-body">
+                            <h5 class="mt-0 mb-1">{{ $item['title'] }}</h5>
+                            {{ mb_strimwidth(strip_tags(str_replace('&nbsp;', ' ', $item['text'])), 0, 350, '...') }}
+                            <a href="{{ route('knowledgeShow', $item['id']) }}"><small>Подробнее</small></a>
+                        </div>
+                    </li>
+                @empty
+                    <div class="alert alert-info" role="alert">
+                        <p>Статьи в данной категории отсутсвуют</p>
                     </div>
-                </li>
-                <li class="media my-4">
-                    <img src="..." class="mr-3" alt="...">
-                    <div class="media-body">
-                        <h5 class="mt-0 mb-1">List-based media object</h5>
-                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                    </div>
-                </li>
-                <li class="media">
-                    <img src="..." class="mr-3" alt="...">
-                    <div class="media-body">
-                        <h5 class="mt-0 mb-1">List-based media object</h5>
-                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                    </div>
-                </li>
-                <li class="media my-4">
-                    <img src="..." class="mr-3" alt="...">
-                    <div class="media-body">
-                        <h5 class="mt-0 mb-1">List-based media object</h5>
-                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                    </div>
-                </li>
-                <li class="media">
-                    <img src="..." class="mr-3" alt="...">
-                    <div class="media-body">
-                        <h5 class="mt-0 mb-1">List-based media object</h5>
-                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                    </div>
-                </li>
+                @endforelse
+
             </ul>
 
         </div>

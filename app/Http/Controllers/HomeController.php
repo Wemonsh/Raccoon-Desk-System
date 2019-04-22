@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Knowledge;
+use App\News;
 use Illuminate\Http\Request;
 use function Psy\debug;
 
@@ -24,6 +26,14 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        return view('home');
+
+        $news = News::select('id', 'title', 'created_at', 'image', 'text')->orderByDesc('created_at')->take(5)->get()->toArray();
+        $articles = Knowledge::select('id', 'title', 'created_at', 'views', 'text')->orderByDesc('views')->take(5)->get()->toArray();
+
+        $vars = [
+            'news' => $news,
+            'articles' => $articles,
+        ];
+        return view('home', $vars);
     }
 }
