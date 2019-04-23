@@ -4,7 +4,7 @@
     <!-- TODO На данной странице логотип и название сервиса в навигации съзжает вправо!!! -->
     <h1>Новости</h1>
     <hr>
-    <div class="card-columns">
+    <div class="card-columns card-columns-news">
         @forelse($news as $value)
             <div class="card shadow-sm bg-white rounded">
                 @if($value['image'] != null)

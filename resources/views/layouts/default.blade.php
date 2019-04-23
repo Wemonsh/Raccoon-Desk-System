@@ -19,6 +19,7 @@
     <!-- Custom styles for this template-->
     <link href="{{ asset('css/sb-admin.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/summernote.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 
     <!-- Bootstrap core JavaScript-->
     <script src="{{ asset('js/jquery.min.js') }}"></script>
@@ -29,6 +30,8 @@
 
     <script src="{{ asset('js/summernote.js') }}"></script>
     <script src="{{ asset('js/summernote-ru-RU.js') }}"></script>
+
+
 
 </head>
 

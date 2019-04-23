@@ -1,43 +1,3 @@
-html {
-    position: relative;
-    min-height: 100%;
-}
-body {
-    margin-bottom: 60px;
-}
-.footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 60px;
-    line-height: 60px;
-    background-color: #f5f5f5;
-}
-
-.container {
-    max-width: 1440px;
-}
-
-.column {
-    -webkit-column-width: 200px;
-    -moz-column-width: 200px;
-    column-width: 200px;
-    -webkit-column-count: 2;
-    -moz-column-count: 2;
-    column-count: 2;
-    -webkit-column-gap: 30px;
-    -moz-column-gap: 30px;
-    column-gap: 30px;
-}
-
-.card-columns {
-    column-count: 2;
-}
-
-a {
-    position: relative;
-}
-
 a[href$=".pdf"]:after {
     content: url("/img/icons/pdf.png");
     margin-left: 3px;
@@ -56,4 +16,9 @@ a[href$=".doc"]:after, a[href$=".docx"]:after {
 a[href$=".zip"]:after {
     content: url("/img/icons/zip.png");
     margin-left: 5px;
+}
+
+.card-columns-news {
+    -webkit-column-count: 4;
+    column-count: 4;
 }
