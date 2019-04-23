@@ -19,4 +19,8 @@ class SocialMessages extends Model
     public function receiver(){
         return $this->hasOne('App\User','id','id_receiver');
     }
+
+    public function room(){
+        return $this->hasOne('App\User','id','id_room');
+    }
 }

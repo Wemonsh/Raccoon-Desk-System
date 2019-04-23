@@ -17,6 +17,8 @@ class CreateUserMessagesTable extends Migration
             $table->increments('id');
             $table->text('message');
             $table->json('files')->nullable();
+            $table->integer('id_room')->unsigned();
+            $table->foreign('id_room')->references('id')->on('user_message_rooms');
             $table->integer('id_sender')->unsigned();
             $table->foreign('id_sender')->references('id')->on('users');
             $table->integer('id_receiver')->unsigned();
