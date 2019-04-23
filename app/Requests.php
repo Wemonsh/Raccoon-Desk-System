@@ -17,7 +17,7 @@ class Requests extends Model
     }
 
     public function operator(){
-        return $this->hasOne('App\User','id','id_user');
+        return $this->hasOne('App\User','id','id_operator');
     }
 
     public function requestsCategory(){

@@ -82,14 +82,54 @@ class RequestsController extends Controller
         return view('requests.created');
     }
 
-    public  function show() {
+    public  function show($id) {
+        if (view()->exists('requests.show')) {
 
+            $request = Requests::with('operator')->with('requestsCategory')->with('requestsPriority')->with('requestsStatuses')->where('id', '=', $id)->first();
 
-        return view('requests.show');
+            $vars = [
+                'id' => $id,
+                'request' => $request
+            ];
+            return view('requests.show', $vars);
+        } else {
+            abort(404);
+        }
     }
 
-    public  function search() {
-        return view('requests.search');
+    public  function search(Request $request) {
+        if (view()->exists('requests.search')) {
+            if ($request->isMethod('post')) {
+                $value = $request->value;
+
+                // TODO Передалать запрос, пользователь = null, доделать пагинацию
+                $requests = Requests::with('operator')->with('requestsCategory')->with('requestsPriority')->with('requestsStatuses')->where('title','LIKE','%'.$value.'%')->paginate(5);
+
+                $vars = [
+                    'value' => $value,
+                    'requests' => $requests
+                ];
+
+                return view('requests.search', $vars);
+            } else {
+                $value = $request->value;
+
+                // TODO Передалать запрос, пользователь = null, доделать пагинацию
+                $requests = Requests::with('operator')->with('requestsCategory')->with('requestsPriority')->with('requestsStatuses')->where('title','LIKE','%'.$value.'%')->paginate(5);
+
+                $vars = [
+                    'value' => $value,
+                    'requests' => $requests
+                ];
+
+                return view('requests.search', $vars);
+            }
+        } else {
+            abort(404);
+        }
+
+
+        //return view('requests.search');
     }
 
     public  function accepted($id = null) {
@@ -99,9 +139,9 @@ class RequestsController extends Controller
             $requests = null;
 
             if (isset($id)) {
-                $requests = Requests::where('id_status', '=', $id)->orderBy('id','desc')->paginate(5);
+                $requests = Requests::with('operator')->with('requestsCategory')->with('requestsPriority')->with('requestsStatuses')->where('id_status', '=', $id)->orderBy('id','desc')->paginate(5);
             } else {
-                $requests = Requests::orderBy('id','desc')->paginate(5);
+                $requests = Requests::with('operator')->with('requestsCategory')->with('requestsPriority')->with('requestsStatuses')->orderBy('id','desc')->paginate(5);
             }
 
             $vars = [
