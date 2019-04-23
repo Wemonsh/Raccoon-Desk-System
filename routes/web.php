@@ -106,3 +106,8 @@ Route::group(['prefix' => 'requests'], function () {
     Route::match(['get', 'post'], '/history', ['uses' => 'Requests\RequestsController@history', 'as' => 'requestsHistory']);
     Route::match(['get', 'post'], '/reports', ['uses' => 'Requests\RequestsController@reports', 'as' => 'requestsReports']);
 });
+
+Route::group(['prefix' => 'social'], function () {
+    Route::match(['get', 'post'], '/messages', ['uses' => 'Social\MessageController@index', 'as' => 'messagesIndex']);
+    Route::match(['get', 'post'], '/message/send', ['uses' => 'Social\MessageController@send', 'as' => 'messageSend']);
+});
