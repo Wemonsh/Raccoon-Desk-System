@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Knowledge;
 use App\News;
+use App\Requests;
+use App\User;
 use Illuminate\Http\Request;
 use function Psy\debug;
 
@@ -33,6 +35,10 @@ class HomeController extends Controller
         $vars = [
             'news' => $news,
             'articles' => $articles,
+            'users_count' => User::count(),
+            'articles_count' => Knowledge::count(),
+            'requests_count' => Requests::count(),
+            'events_count' => '0',
         ];
         return view('home', $vars);
     }

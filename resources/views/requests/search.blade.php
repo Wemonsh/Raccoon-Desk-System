@@ -39,22 +39,22 @@
                 <td>{{ $request['user']->last_name.' '.$request['user']->first_name.' '.$request['user']->middle_name }}</td>
                 <td><p>{{ $request->date_of_creation }}</p><p>{{ $request->date_of_closing }}</p></td>
                 <td class="align-middle text-center">
-                    @if($request['requestsStatuses']->name == 'В работе')
+                    @if($request['requestsStatuses']->id == 1)
+                        <span class="badge badge-success">Открыта</span>
+                    @elseif($request['requestsStatuses']->id == 2)
                         <span class="badge badge-warning">В работе</span>
-                    @elseif($request['requestsStatuses']->name == 'Открытые')
-                        <span class="badge badge-success">Открытые</span>
-                    @elseif($request['requestsStatuses']->name == 'Завершенные')
-                        <span class="badge badge-danger">Завершенные</span>
+                    @elseif($request['requestsStatuses']->id == 3)
+                        <span class="badge badge-primary">Заморожена</span>
                     @else
-                        <span class="badge badge-primary">Замороженные</span>
+                        <span class="badge badge-danger">Закрыта</span>
                     @endif
                 </td>
                 <td class="align-middle text-center">
-                    @if($request['requestsPriority']->name == 'Низкий')
+                    @if($request['requestsPriority']->id == 1)
                         <span class="badge badge-success">Низкий</span>
-                    @elseif($request['requestsPriority']->name == 'Средний')
-                        <span class="badge badge-warning">Средний</span>
-                    @elseif($request['requestsPriority']->name == 'Высокий')
+                    @elseif($request['requestsPriority']->name == 2)
+                        <span class="badge badge-warning">Обычный</span>
+                    @elseif($request['requestsPriority']->name == 3)
                         <span class="badge badge-danger">Высокий</span>
                     @endif
                 </td>

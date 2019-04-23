@@ -13,7 +13,7 @@
                 <div class="card-body-icon">
                     <i class="fas fa-users"></i>
                 </div>
-                <div class="mr-5">26 Пользователей</div>
+                <div class="mr-5">{{ $users_count }} Пользователей</div>
             </div>
             <a class="card-footer text-white clearfix small z-1" href="#">
                 <span class="float-left">Подробнее</span>
@@ -29,9 +29,9 @@
                 <div class="card-body-icon">
                     <i class="fas fa-fw fa-book"></i>
                 </div>
-                <div class="mr-5">11 статей</div>
+                <div class="mr-5">{{ $articles_count }} статей</div>
             </div>
-            <a class="card-footer text-white clearfix small z-1" href="#">
+            <a class="card-footer text-white clearfix small z-1" href="{{ route('knowledge') }}">
                 <span class="float-left">Перейти в базу знаний</span>
                 <span class="float-right">
               <i class="fas fa-angle-right"></i>
@@ -45,9 +45,9 @@
                 <div class="card-body-icon">
                     <i class="fas fa-headset"></i>
                 </div>
-                <div class="mr-5">123 заявки(ок) в службу технической поддержки</div>
+                <div class="mr-5">{{ $requests_count }} заявки(ок) в службу технической поддержки</div>
             </div>
-            <a class="card-footer text-white clearfix small z-1" href="#">
+            <a class="card-footer text-white clearfix small z-1" href="{{ route('requestsCreate') }}">
                 <span class="float-left">Обратиться в поддержку</span>
                 <span class="float-right">
               <i class="fas fa-angle-right"></i>
@@ -61,7 +61,7 @@
                 <div class="card-body-icon">
                     <i class="fas fa-fw fa-calendar-alt"></i>
                 </div>
-                <div class="mr-5">13 предстоящих событий в этом месяце</div>
+                <div class="mr-5">{{ $events_count }} предстоящих событий в этом месяце</div>
             </div>
             <a class="card-footer text-white clearfix small z-1" href="#">
                 <span class="float-left">Подробнее</span>
