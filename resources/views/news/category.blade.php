@@ -2,6 +2,7 @@
 
 @section('content')
     <h1>{{ __('news/category.category:') }} {{ $category->title }}</h1>
+    <hr>
     @forelse($news as $value)
         <div class="card mb-3">
             <div class="card-body">

@@ -2,7 +2,7 @@
 
 @section('content')
     <h1>Редактирование статьи</h1>
-
+    <hr>
     <form method="post" action="{{ route('knowledgeEdit', $id) }}" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
@@ -20,7 +20,6 @@
         <div class="form-group">
             <label for="id_category">Категория</label>
             <select name="id_category" class="form-control" id="id_category">
-                {{--<option value="{{ $news->newsCategory->id }}">{{ $news->newsCategory->title }}</option>--}}
                 @foreach($category as $value)
                     @if($article->knowledgeCategory->id == $value->id)
                         <option selected value="{{ $value->id }}">{{ $value->title }}</option>

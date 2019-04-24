@@ -17,8 +17,8 @@
             <hr>
             <p class="lead">Не нашли ответа на свой вопрос?</p>
             <p class="lead">
-                <a class="btn btn-outline-success" href="#" role="button">Создать новую заявку</a>
-                <a class="btn btn-outline-info" href="#" role="button">Просмотр моих заявок</a>
+                <a class="btn btn-outline-success" href="{{ route('requestsCreate') }}" role="button">Создать новую заявку</a>
+                <a class="btn btn-outline-info" href="{{ route('requestsCreated') }}" role="button">Просмотр моих заявок</a>
             </p>
         </div>
     </div>
@@ -99,11 +99,11 @@
                 </div>
             </div>
         @empty
-            123
+            <p>Категории статьей отсутствуют</p>
         @endforelse
 
     </div>
-    <div class="card mb-3">
+    <div class="card mb-3 mt-3">
         <div class="card-body">
             <p>В Базе Знаний Raccoon Desk System вы найдете подробные руководства с ответами на часто задаваемые вопросы по использованию сервиса и полезные советы по настройке и конфигурации.  © Raccoon Desk System RU</p>
         </div>

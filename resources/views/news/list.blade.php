@@ -8,7 +8,7 @@
         @forelse($news as $value)
             <div class="card shadow-sm bg-white rounded">
                 @if($value['image'] != null)
-                    <img src="{{ asset('/storage/' . $value['image']) }}" class="card-img-top" alt="...">
+                    <img src="{{ asset('/storage/' . $value['image']) }}" class="card-img-top" alt="Изображение отсутствует">
                 @endif
                 <div class="card-body">
                     <h5 class="card-title">{{ $value['title'] }}</h5>
@@ -27,9 +27,7 @@
                 </div>
             </div>
         @empty
-            <div class="alert alert-info" role="alert">
                 {{ __('news/list.no_news') }}
-            </div>
         @endforelse
     </div>
 

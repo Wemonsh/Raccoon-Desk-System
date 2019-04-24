@@ -2,7 +2,7 @@
 
 @section('content')
     <h1>Добавление статьи</h1>
-
+    <hr>
     <form method="post" action="{{ route('knowledgeCreate') }}" enctype="multipart/form-data">
         @csrf
         <div class="form-group">

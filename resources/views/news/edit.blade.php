@@ -2,7 +2,7 @@
 
 @section('content')
     <h1>{{ __('news/edit.edit_new') }}</h1>
-
+    <hr>
     <form method="post" action="{{ route('editNews', $id) }}" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
@@ -12,7 +12,6 @@
         <div class="form-group">
             <label for="id_category">{{ __('news/edit.category') }}</label>
             <select name="id_category" class="form-control" id="id_category">
-                {{--<option value="{{ $news->newsCategory->id }}">{{ $news->newsCategory->title }}</option>--}}
                 @foreach($category as $value)
                     @if($news->newsCategory->id == $value->id)
                         <option selected value="{{ $value->id }}">{{ $value->title }}</option>
@@ -32,7 +31,8 @@
             @if($news->image != null)
                 <img src="{{ asset('/storage/' . $news->image) }}" class="card-img-top" style="width: 100px">
             @endif
-
+            <hr>
+            <p>{{ __('news/edit.change_image') }}</p>
             <input name="image" type="file" class="form-control-file mt-3" id="image">
         </div>
         <button type="submit" class="btn btn-primary">{{ __('news/edit.change') }}</button>

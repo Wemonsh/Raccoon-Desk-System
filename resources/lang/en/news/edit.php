@@ -8,4 +8,5 @@ return [
     'content' => 'Content',
     'image' => 'Image',
     'change' => 'Change',
+    'change_image' => 'Change image'
 ];
