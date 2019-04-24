@@ -34,10 +34,10 @@
         <tbody>
         @forelse($requests as $request)
             <tr>
-                <td>{{ $request->id }}</td>
-                <td><a href="{{ route('requestsShow', $request->id ) }}">{{ $request->title }}</a><p>{{ $request->description }}</p></td>
-                <td>{{ $request['user']->last_name.' '.$request['user']->first_name.' '.$request['user']->middle_name }}</td>
-                <td><p>{{ $request->date_of_creation }}</p><p>{{ $request->date_of_closing }}</p></td>
+                <td class="align-middle text-center">{{ $request->id }}</td>
+                <td class="align-middle text-center"><a href="{{ route('requestsShow', $request->id ) }}">{{ $request->title }}</a><p>{{ $request->description }}</p></td>
+                <td class="align-middle text-center">{{ $request['user']->last_name.' '.$request['user']->first_name.' '.$request['user']->middle_name }}</td>
+                <td class="align-middle text-center"><p>{{ $request->date_of_creation }}</p><p>{{ $request->date_of_closing }}</p></td>
                 <td class="align-middle text-center">
                     @if($request['requestsStatuses']->id == 1)
                         <span class="badge badge-success">Открыта</span>
@@ -52,13 +52,13 @@
                 <td class="align-middle text-center">
                     @if($request['requestsPriority']->id == 1)
                         <span class="badge badge-success">Низкий</span>
-                    @elseif($request['requestsPriority']->name == 2)
+                    @elseif($request['requestsPriority']->id == 2)
                         <span class="badge badge-warning">Обычный</span>
-                    @elseif($request['requestsPriority']->name == 3)
+                    @elseif($request['requestsPriority']->id == 3)
                         <span class="badge badge-danger">Высокий</span>
                     @endif
                 </td>
-                <td>
+                <td class="align-middle text-center">
                     @if($request['operator'] != null)
                         {{ $request['operator']->last_name.' '.$request['operator']->first_name.' '.$request['operator']->middle_name }}
                     @else

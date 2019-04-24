@@ -155,8 +155,27 @@ class RequestsController extends Controller
         }
     }
 
-    public  function received() {
-        return view('requests.received');
+    public  function received($id = null) {
+        if (view()->exists('requests.received')) {
+
+            $requestsStatuses = RequestsStatuses::all();
+            $requests = null;
+
+            if (isset($id)) {
+                $requests = Requests::with('operator')->with('requestsCategory')->with('requestsPriority')->with('requestsStatuses')->where('id_operator', '!=', null)->where('id_status', '=', $id)->orderBy('id','desc')->paginate(5);
+            } else {
+                $requests = Requests::with('operator')->with('requestsCategory')->with('requestsPriority')->with('requestsStatuses')->where('id_operator', '!=', null)->where('id_status', '=', 2)->orderBy('id','desc')->paginate(5);
+            }
+
+            $vars = [
+                'id' => $id,
+                'requestsStatuses' => $requestsStatuses,
+                'requests' => $requests
+            ];
+            return view('requests.received', $vars);
+        } else {
+            abort(404);
+        }
     }
 
     public  function history() {

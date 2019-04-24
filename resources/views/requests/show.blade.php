@@ -1,7 +1,7 @@
 @extends('layouts.default')
 
 @section('content')
-    <h1>Заявка № {{ $request->id }}</h1>
+    <h1>Заявка № {{ $request->id }} <a href="#" class="btn btn-secondary btn-sm btn-print" onclick="window.print();" title="Печать"><i class="fas fa-print"></i></a></h1>
     <hr>
 
     <div class="row">
@@ -22,9 +22,9 @@
             <p>Приоритет:
                 @if($request['requestsPriority']->id == 1)
                     <span class="badge badge-success">Низкий</span>
-                @elseif($request['requestsPriority']->name == 2)
+                @elseif($request['requestsPriority']->id == 2)
                     <span class="badge badge-warning">Обычный</span>
-                @elseif($request['requestsPriority']->name == 3)
+                @elseif($request['requestsPriority']->id == 3)
                     <span class="badge badge-danger">Высокий</span>
                 @endif
             </p>
@@ -38,9 +38,13 @@
             @endif
 
             <p>Загруженные файлы:
+                @if($request['files'] != null)
                 @foreach(json_decode($request['files']) as $file)
                 <a href="{{ asset('/storage/' . $file->path) }}">{{ $file->name }}</a>
                 @endforeach
+                @else
+                    Файлы отсутствуют
+                @endif
             </p>
         </div>
 
@@ -97,7 +101,7 @@
                 </li>
             </ul>
 
-            <div class="card mt-3">
+            <div class="card mt-3 input-message-card">
                 <div class="card-body">
                     <form action="/requests/send/" method="post" enctype="multipart/form-data">
                         <div class="form-group">
@@ -137,5 +141,16 @@
         </div>
 
     </div>
+
+
+    <style type="text/css" media="print">
+
+        .btn-print { display: none; }
+
+        .sidebar { display: none; }
+
+        .input-message-card { display: none; }
+
+    </style>
 
     @endsection
