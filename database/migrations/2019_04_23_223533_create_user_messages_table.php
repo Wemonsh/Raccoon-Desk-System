@@ -23,7 +23,7 @@ class CreateUserMessagesTable extends Migration
             $table->foreign('id_sender')->references('id')->on('users');
             $table->integer('id_receiver')->unsigned();
             $table->foreign('id_receiver')->references('id')->on('users');
-            $table->boolean('unread');
+            $table->boolean('unread')->default('0');
             $table->timestamps();
         });
     }

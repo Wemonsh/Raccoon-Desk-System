@@ -10,7 +10,7 @@ class SocialMessages extends Model
     protected $primaryKey = 'id';
     public $timestamps = true;
 
-    protected $fillable = ['id','message','files','id_sender','id_receiver',];
+    protected $fillable = ['id', 'message', 'files', 'id_room', 'id_sender', 'id_receiver'];
 
     public function sender(){
         return $this->hasOne('App\User','id','id_sender');
