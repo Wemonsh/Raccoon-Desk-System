@@ -1,26 +1,4 @@
-@extends('layouts.app')
-
-@section('sidebar')
-    <div class="card">
-        <div class="card-header">Информация</div>
-        <div class="card-body">
-            <p>Дата создания: {{ $article['created_at'] }}</p>
-            <p>Дата изменения: {{ $article['updated_at'] }}</p>
-            <p>Кол-во просмотров: {{ $article['views'] }}</p>
-            <p>Автор: <a href="#">{{ $article['user']['last_name'].' '.$article['user']['first_name'].' '.$article['user']['middle_name'] }}</a></p>
-        </div>
-    </div>
-    @if($article['files'] != null)
-    <div class="card mt-3">
-        <div class="card-header">Приложения</div>
-        <div class="card-body">
-            @foreach(json_decode($article['files']) as $file)
-                <p><a href="{{ asset('/storage/' . $file->path) }}">{{ $file->name }}</a></p>
-            @endforeach
-        </div>
-    </div>
-    @endif
-@endsection
+@extends('layouts.default')
 
 @section('breadcrumbs')
     <nav aria-label="breadcrumb">
@@ -43,4 +21,25 @@
         </div>
     </div>
 </div>
+
+<div class="card mt-3">
+    <div class="card-header">Информация</div>
+    <div class="card-body">
+        <p>Дата создания: {{ $article['created_at'] }}</p>
+        <p>Дата изменения: {{ $article['updated_at'] }}</p>
+        <p>Кол-во просмотров: {{ $article['views'] }}</p>
+        <p>Автор: <a href="#">{{ $article['user']['last_name'].' '.$article['user']['first_name'].' '.$article['user']['middle_name'] }}</a></p>
+    </div>
+</div>
+
+@if($article['files'] != null)
+    <div class="card mt-3">
+        <div class="card-header">Приложения</div>
+        <div class="card-body">
+            @foreach(json_decode($article['files']) as $file)
+                <p><a href="{{ asset('/storage/' . $file->path) }}">{{ $file->name }}</a></p>
+            @endforeach
+        </div>
+    </div>
+@endif
 @endsection

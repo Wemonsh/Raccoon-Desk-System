@@ -9,21 +9,1034 @@
     font-style: normal;
 }
 
-[class^="icon-"], [class*=" icon-"] {
-    /* use !important to prevent issues with browser extensions that change fonts */
+a[href$=".3dm"]:after, a[href$=".3DM"]:after {
     font-family: 'icomoon' !important;
-    speak: none;
-    font-style: normal;
-    font-weight: normal;
-    font-variant: normal;
-    text-transform: none;
-    line-height: 1;
-
-    /* Better Font Rendering =========== */
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    content: "\e900";
+    margin-left: 5px;
 }
 
-.icon-z-file-format-variant:before {
-    content: "\e900";
+a[href$=".3ds"]:after, a[href$=".3DS"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e901";
+    margin-left: 5px;
+}
+
+a[href$=".3g2"]:after, a[href$=".3G2"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e902";
+    margin-left: 5px;
+}
+
+a[href$=".3gp"]:after, a[href$=".3GP"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e903";
+    margin-left: 5px;
+}
+
+a[href$=".7z"]:after, a[href$=".7Z"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e904";
+    margin-left: 5px;
+}
+
+a[href$=".aac"]:after, a[href$=".AAC"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e905";
+    margin-left: 5px;
+}
+
+a[href$=".aif"]:after, a[href$=".AIF"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e906";
+    margin-left: 5px;
+}
+
+a[href$=".ai"]:after, a[href$=".AI"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e907";
+    margin-left: 5px;
+}
+
+a[href$=".apk"]:after, a[href$=".APK"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e908";
+    margin-left: 5px;
+}
+
+a[href$=".app"]:after,a[href$=".APP"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e909";
+    margin-left: 5px;
+}
+
+a[href$=".asf"]:after, a[href$=".ASF"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e90a";
+    margin-left: 5px;
+}
+
+a[href$=".asp"]:after, a[href$=".ASP"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e90b";
+    margin-left: 5px;
+}
+
+a[href$=".aspx"]:after, a[href$=".ASPX"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e90c";
+    margin-left: 5px;
+}
+
+a[href$=".asx"]:after, a[href$=".ASX"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e90d";
+    margin-left: 5px;
+}
+
+a[href$=".avi"]:after, a[href$=".AVI"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e90e";
+    margin-left: 5px;
+}
+
+a[href$=".bak"]:after, a[href$=".BAK"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e90f";
+    margin-left: 5px;
+}
+
+a[href$=".bat"]:after, a[href$=".BAT"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e910";
+    margin-left: 5px;
+}
+
+a[href$=".bin"]:after, a[href$=".BIN"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e911";
+    margin-left: 5px;
+}
+
+a[href$=".bmp"]:after, a[href$=".BMP"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e912";
+    margin-left: 5px;
+}
+
+a[href$=".cab"]:after, a[href$=".CAB"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e913";
+    margin-left: 5px;
+}
+
+a[href$=".cad"]:after, a[href$=".CAD"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e914";
+    margin-left: 5px;
+}
+
+a[href$=".cdr"]:after, a[href$=".CDR"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e915";
+    margin-left: 5px;
+}
+
+a[href$=".cer"]:after, a[href$=".CER"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e916";
+    margin-left: 5px;
+}
+
+a[href$=".cfg"]:after, a[href$=".CFG"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e917";
+    margin-left: 5px;
+}
+
+a[href$=".cfm"]:after, a[href$=".CFM"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e918";
+    margin-left: 5px;
+}
+
+a[href$=".cgi"]:after, a[href$=".CGI"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e919";
+    margin-left: 5px;
+}
+
+a[href$=".class"]:after, a[href$=".CLASS"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e91a";
+    margin-left: 5px;
+}
+
+a[href$=".com"]:after, a[href$=".COM"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e91b";
+    margin-left: 5px;
+}
+
+a[href$=".cpl"]:after, a[href$=".CPL"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e91c";
+    margin-left: 5px;
+}
+
+a[href$=".cpp"]:after, a[href$=".CPP"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e91d";
+    margin-left: 5px;
+}
+
+a[href$=".crx"]:after, a[href$=".CRX"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e91e";
+    margin-left: 5px;
+}
+
+a[href$=".csr"]:after, a[href$=".CSR"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e91f";
+    margin-left: 5px;
+}
+
+a[href$=".css"]:after, a[href$=".CSS"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e920";
+    margin-left: 5px;
+}
+
+a[href$=".csv"]:after, a[href$=".CSV"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e921";
+    margin-left: 5px;
+}
+
+a[href$=".cue"]:after, a[href$=".CUE"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e922";
+    margin-left: 5px;
+}
+
+a[href$=".cur"]:after, a[href$=".CUR"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e923";
+    margin-left: 5px;
+}
+
+a[href$=".dat"]:after, a[href$=".DAT"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e924";
+    margin-left: 5px;
+}
+
+a[href$=".dbf"]:after, a[href$=".DBF"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e925";
+    margin-left: 5px;
+}
+
+a[href$=".db"]:after, a[href$=".DB"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e926";
+    margin-left: 5px;
+}
+
+a[href$=".dds"]:after, a[href$=".DDS"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e927";
+    margin-left: 5px;
+}
+
+a[href$=".dem"]:after, a[href$=".DEM"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e928";
+    margin-left: 5px;
+}
+
+a[href$=".dxf"]:after, a[href$=".DXF"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e929";
+    margin-left: 5px;
+}
+
+a[href$=".dll"]:after, a[href$=".DLL"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e92a";
+    margin-left: 5px;
+}
+
+a[href$=".dmg"]:after, a[href$=".DMG"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e92b";
+    margin-left: 5px;
+}
+
+a[href$=".dmp"]:after, a[href$=".DMP"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e92c";
+    margin-left: 5px;
+}
+
+a[href$=".doc"]:after, a[href$=".DOC"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e92d";
+    margin-left: 5px;
+}
+
+a[href$=".docx"]:after, a[href$=".DOCX"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e92e";
+    margin-left: 5px;
+}
+
+a[href$=".drv"]:after, a[href$=".DRV"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e92f";
+    margin-left: 5px;
+}
+
+a[href$=".dtd"]:after, a[href$=".DTD"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e930";
+    margin-left: 5px;
+}
+
+a[href$=".dwg"]:after, a[href$=".DWG"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e931";
+    margin-left: 5px;
+}
+
+a[href$=".elf"]:after, a[href$=".ELF"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e932";
+    margin-left: 5px;
+}
+
+a[href$=".eps"]:after, a[href$=".EPS"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e933";
+    margin-left: 5px;
+}
+
+a[href$=".exe"]:after, a[href$=".EXE"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e935";
+    margin-left: 5px;
+}
+
+a[href$=".fla"]:after, a[href$=".FLA"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e936";
+    margin-left: 5px;
+}
+
+a[href$=".flash"]:after, a[href$=".FLASH"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e937";
+    margin-left: 5px;
+}
+
+a[href$=".flv"]:after, a[href$=".FLV"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e938";
+    margin-left: 5px;
+}
+
+a[href$=".fnt"]:after, a[href$=".FNT"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e939";
+    margin-left: 5px;
+}
+
+a[href$=".fon"]:after, a[href$=".FON"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e93a";
+    margin-left: 5px;
+}
+
+a[href$=".gam"]:after, a[href$=".GAM"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e93b";
+    margin-left: 5px;
+}
+
+a[href$=".gbr"]:after, a[href$=".GBR"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e93c";
+    margin-left: 5px;
+}
+
+a[href$=".ged"]:after, a[href$=".GED"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e93d";
+    margin-left: 5px;
+}
+
+a[href$=".gif"]:after, a[href$=".GIF"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e93e";
+    margin-left: 5px;
+}
+
+a[href$=".gpx"]:after, a[href$=".GPX"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e93f";
+    margin-left: 5px;
+}
+
+a[href$=".gz"]:after, a[href$=".GZ"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e940";
+    margin-left: 5px;
+}
+
+a[href$=".gzip"]:after, a[href$=".GZIP"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e941";
+    margin-left: 5px;
+}
+
+a[href$=".hqz"]:after, a[href$=".HQZ"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e942";
+    margin-left: 5px;
+}
+
+/*a[href$=".html"]:after, a[href$=".HTML"]:after {*/
+/*    font-family: 'icomoon' !important;*/
+/*    content: "\e943";*/
+/*    margin-left: 5px;*/
+/*}*/
+
+a[href$=".ibooks"]:after, a[href$=".IBOOKS"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e944";
+    margin-left: 5px;
+}
+
+a[href$=".icns"]:after, a[href$=".ICNS"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e945";
+    margin-left: 5px;
+}
+
+a[href$=".ico"]:after, a[href$=".ICO"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e946";
+    margin-left: 5px;
+}
+
+a[href$=".ics"]:after, a[href$=".ICS"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e947";
+    margin-left: 5px;
+}
+
+a[href$=".iff"]:after, a[href$=".IFF"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e948";
+    margin-left: 5px;
+}
+
+a[href$=".indd"]:after, a[href$=".INDD"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e949";
+    margin-left: 5px;
+}
+
+a[href$=".iso"]:after, a[href$=".ISO"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e94a";
+    margin-left: 5px;
+}
+
+a[href$=".jar"]:after, a[href$=".JAR"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e94c";
+    margin-left: 5px;
+}
+
+a[href$=".jpg"]:after, a[href$=".JPG"]:after, a[href$=".jpeg"]:after, a[href$=".JPEG"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e94d";
+    margin-left: 5px;
+}
+
+a[href$=".js"]:after, a[href$=".JS"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e94e";
+    margin-left: 5px;
+}
+
+a[href$=".jsp"]:after, a[href$=".JSP"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e94f";
+    margin-left: 5px;
+}
+
+a[href$=".key"]:after, a[href$=".KEY"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e950";
+    margin-left: 5px;
+}
+
+a[href$=".kml"]:after, a[href$=".KML"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e951";
+    margin-left: 5px;
+}
+
+a[href$=".kmz"]:after, a[href$=".KMZ"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e952";
+    margin-left: 5px;
+}
+
+a[href$=".lnk"]:after, a[href$=".LNK"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e953";
+    margin-left: 5px;
+}
+
+a[href$=".log"]:after, a[href$=".LOG"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e954";
+    margin-left: 5px;
+}
+
+a[href$=".lua"]:after, a[href$=".LUA"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e955";
+    margin-left: 5px;
+}
+
+a[href$=".m3u"]:after, a[href$=".M3U"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e956";
+    margin-left: 5px;
+}
+
+a[href$=".m4a"]:after, a[href$=".M4A"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e957";
+    margin-left: 5px;
+}
+
+a[href$=".m4v"]:after, a[href$=".M4V"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e958";
+    margin-left: 5px;
+}
+
+a[href$=".mach-o"]:after, a[href$=".MACH-O"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e959";
+    margin-left: 5px;
+}
+
+a[href$=".max"]:after, a[href$=".MAX"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e95a";
+    margin-left: 5px;
+}
+
+a[href$=".mdb"]:after, a[href$=".MDB"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e95b";
+    margin-left: 5px;
+}
+
+a[href$=".mdf"]:after, a[href$=".MDF"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e95c";
+    margin-left: 5px;
+}
+
+a[href$=".mid"]:after, a[href$=".MID"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e95d";
+    margin-left: 5px;
+}
+
+a[href$=".mim"]:after, a[href$=".MIM"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e95e";
+    margin-left: 5px;
+}
+
+a[href$=".mov"]:after, a[href$=".MOV"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e95f";
+    margin-left: 5px;
+}
+
+a[href$=".mp3"]:after, a[href$=".MP3"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e960";
+    margin-left: 5px;
+}
+
+a[href$=".mp4"]:after, a[href$=".MP4"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e961";
+    margin-left: 5px;
+}
+
+a[href$=".mpa"]:after, a[href$=".MPA"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e962";
+    margin-left: 5px;
+}
+
+a[href$=".mpg"]:after, a[href$=".MPG"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e963";
+    margin-left: 5px;
+}
+
+a[href$=".msg"]:after, a[href$=".MSG"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e964";
+    margin-left: 5px;
+}
+
+a[href$=".msi"]:after, a[href$=".MSI"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e965";
+    margin-left: 5px;
+}
+
+a[href$=".nes"]:after, a[href$=".NES"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e966";
+    margin-left: 5px;
+}
+
+a[href$=".obj"]:after, a[href$=".OBJ"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e967";
+    margin-left: 5px;
+}
+
+a[href$=".odb"]:after, a[href$=".ODB"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e968";
+    margin-left: 5px;
+}
+
+a[href$=".odc"]:after, a[href$=".ODC"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e969";
+    margin-left: 5px;
+}
+
+a[href$=".odf"]:after, a[href$=".ODF"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e96a";
+    margin-left: 5px;
+}
+
+a[href$=".odg"]:after, a[href$=".ODG"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e96b";
+    margin-left: 5px;
+}
+
+a[href$=".odi"]:after, a[href$=".ODI"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e96c";
+    margin-left: 5px;
+}
+
+a[href$=".odp"]:after, a[href$=".ODP"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e96d";
+    margin-left: 5px;
+}
+
+a[href$=".ods"]:after, a[href$=".ODS"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e96e";
+    margin-left: 5px;
+}
+
+a[href$=".odt"]:after, a[href$=".ODT"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e96f";
+    margin-left: 5px;
+}
+
+a[href$=".odx"]:after, a[href$=".ODX"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e971";
+    margin-left: 5px;
+}
+
+a[href$=".ogg"]:after, a[href$=".OGG"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e972";
+    margin-left: 5px;
+}
+
+a[href$=".otf"]:after, a[href$=".OTF"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e973";
+    margin-left: 5px;
+}
+
+a[href$=".pages"]:after, a[href$=".PAGES"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e975";
+    margin-left: 5px;
+}
+
+a[href$=".pct"]:after, a[href$=".PCT"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e976";
+    margin-left: 5px;
+}
+
+a[href$=".pdb"]:after, a[href$=".PDB"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e977";
+    margin-left: 5px;
+}
+
+a[href$=".pdf"]:after, a[href$=".PDF"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e978";
+    margin-left: 5px;
+}
+
+a[href$=".psd"]:after, a[href$=".PSD"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e979";
+    margin-left: 5px;
+}
+
+a[href$=".pif"]:after, a[href$=".PIF"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e97a";
+    margin-left: 5px;
+}
+
+a[href$=".pkg"]:after, a[href$=".PKG"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e97b";
+    margin-left: 5px;
+}
+
+a[href$=".pl"]:after, a[href$=".PL"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e97c";
+    margin-left: 5px;
+}
+
+a[href$=".png"]:after, a[href$=".PNG"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e97d";
+    margin-left: 5px;
+}
+
+a[href$=".pps"]:after, a[href$=".PPS"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e97e";
+    margin-left: 5px;
+}
+
+a[href$=".ppt"]:after, a[href$=".PPT"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e97f";
+    margin-left: 5px;
+}
+
+a[href$=".pptx"]:after, a[href$=".PPTX"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e980";
+    margin-left: 5px;
+}
+
+a[href$=".ps"]:after, a[href$=".PS"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e981";
+    margin-left: 5px;
+}
+
+a[href$=".pub"]:after, a[href$=".PUB"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e982";
+    margin-left: 5px;
+}
+
+a[href$=".py"]:after, a[href$=".PY"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e983";
+    margin-left: 5px;
+}
+
+a[href$=".ra"]:after, a[href$=".RA"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e984";
+    margin-left: 5px;
+}
+
+a[href$=".rar"]:after, a[href$=".RAR"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e985";
+    margin-left: 5px;
+}
+
+a[href$=".raw"]:after, a[href$=".RAW"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e986";
+    margin-left: 5px;
+}
+
+a[href$=".rm"]:after, a[href$=".RM"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e987";
+    margin-left: 5px;
+}
+
+a[href$=".rom"]:after, a[href$=".ROM"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e988";
+    margin-left: 5px;
+}
+
+a[href$=".rpm"]:after, a[href$=".RPM"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e989";
+    margin-left: 5px;
+}
+
+a[href$=".rss"]:after, a[href$=".RSS"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e98a";
+    margin-left: 5px;
+}
+
+a[href$=".rtf"]:after, a[href$=".RTF"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e98b";
+    margin-left: 5px;
+}
+
+a[href$=".sav"]:after, a[href$=".SAV"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e98c";
+    margin-left: 5px;
+}
+
+a[href$=".sdf"]:after, a[href$=".SDF"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e98d";
+    margin-left: 5px;
+}
+
+a[href$=".sitx"]:after, a[href$=".SITX"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e98e";
+    margin-left: 5px;
+}
+
+a[href$=".sql"]:after, a[href$=".SQL"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e98f";
+    margin-left: 5px;
+}
+
+a[href$=".rss"]:after, a[href$=".RSS"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e98a";
+    margin-left: 5px;
+}
+
+a[href$=".srt"]:after, a[href$=".SRT"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e991";
+    margin-left: 5px;
+}
+
+a[href$=".svg"]:after, a[href$=".SVG"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e992";
+    margin-left: 5px;
+}
+
+a[href$=".swf"]:after, a[href$=".SWF"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e993";
+    margin-left: 5px;
+}
+
+a[href$=".sys"]:after, a[href$=".SYS"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e994";
+    margin-left: 5px;
+}
+
+a[href$=".tar"]:after, a[href$=".TAR"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e995";
+    margin-left: 5px;
+}
+
+a[href$=".tex"]:after, a[href$=".TEX"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e996";
+    margin-left: 5px;
+}
+
+a[href$=".tga"]:after, a[href$=".TGA"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e997";
+    margin-left: 5px;
+}
+
+a[href$=".thm"]:after, a[href$=".THM"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e998";
+    margin-left: 5px;
+}
+
+a[href$=".tiff"]:after, a[href$=".TIFF"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e999";
+    margin-left: 5px;
+}
+
+a[href$=".tmp"]:after, a[href$=".TMP"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e99a";
+    margin-left: 5px;
+}
+
+a[href$=".torrent"]:after, a[href$=".TORRENT"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e99b";
+    margin-left: 5px;
+}
+
+a[href$=".ttf"]:after, a[href$=".TTF"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e99c";
+    margin-left: 5px;
+}
+
+a[href$=".txt"]:after, a[href$=".TXT"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e99d";
+    margin-left: 5px;
+}
+
+a[href$=".uue"]:after, a[href$=".UUE"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e99e";
+    margin-left: 5px;
+}
+
+a[href$=".vb"]:after, a[href$=".VB"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e99f";
+    margin-left: 5px;
+}
+
+a[href$=".vcd"]:after, a[href$=".VCD"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e9a0";
+    margin-left: 5px;
+}
+
+a[href$=".vcf"]:after, a[href$=".VCF"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e9a1";
+    margin-left: 5px;
+}
+
+a[href$=".vob"]:after, a[href$=".VOB"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e9a2";
+    margin-left: 5px;
+}
+
+a[href$=".wav"]:after, a[href$=".WAV"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e9a3";
+    margin-left: 5px;
+}
+
+a[href$=".wma"]:after, a[href$=".WMA"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e9a4";
+    margin-left: 5px;
+}
+
+a[href$=".wmv"]:after, a[href$=".WMV"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e9a5";
+    margin-left: 5px;
+}
+
+a[href$=".wpd"]:after, a[href$=".WPD"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e9a6";
+    margin-left: 5px;
+}
+
+a[href$=".wps"]:after, a[href$=".WPS"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e9a7";
+    margin-left: 5px;
+}
+
+a[href$=".wsf"]:after, a[href$=".WSF"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e9a8";
+    margin-left: 5px;
+}
+
+a[href$=".xhtml"]:after, a[href$=".XHTML"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e9a9";
+    margin-left: 5px;
+}
+
+a[href$=".xlr"]:after, a[href$=".XLR"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e9aa";
+    margin-left: 5px;
+}
+
+a[href$=".xls"]:after, a[href$=".XLS"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e9ab";
+    margin-left: 5px;
+}
+
+a[href$=".xlsx"]:after, a[href$=".XLSX"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e9ac";
+    margin-left: 5px;
+}
+
+a[href$=".xml"]:after, a[href$=".XML"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e9ad";
+    margin-left: 5px;
+}
+
+a[href$=".yuv"]:after, a[href$=".YUV"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e9ae";
+    margin-left: 5px;
+}
+
+a[href$=".zip"]:after, a[href$=".ZIP"]:after {
+    font-family: 'icomoon' !important;
+    content: "\e9af";
+    margin-left: 5px;
 }
