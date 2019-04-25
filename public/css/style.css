@@ -1,3 +1,5 @@
+@import "fonts.css";
+
 a[href$=".pdf"]:after {
     content: url("/img/icons/pdf.png");
     margin-left: 3px;
@@ -9,7 +11,8 @@ a[href$=".xml"]:after {
 }
 
 a[href$=".doc"]:after, a[href$=".docx"]:after {
-    content: url("/img/icons/doc.png");
+    font-family: 'icomoon' !important;
+    content: "\e900";
     margin-left: 5px;
 }
 
