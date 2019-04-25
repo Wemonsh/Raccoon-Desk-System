@@ -13,8 +13,43 @@ use function Psy\debug;
 
 class MessageController extends Controller
 {
-    public function index() {
-        return view('social.message.index');
+    public function index($id = null) {
+
+        $rooms = SocialMessageRooms::where('users', '!=', null)->whereJsonContains('users', [Auth::user()->id])->get();
+
+
+        foreach($rooms as $s){
+            $s->load(['messages'=>function($query){
+                return $query->with('sender', 'receiver')->orderBy('created_at','desc')->take(1);
+            }]);
+        }
+
+        $messages = SocialMessages::where('id_room', '=', $id)->get();
+
+        // получаем id пользователя которому шлем сообщение
+        $id_receiver = null;
+        foreach ($rooms as $room) {
+            if ($room['id'] == $id) {
+                $users = json_decode($room['users']);
+                if ($users[0] != Auth::user()->id) {
+                    $id_receiver = $users[0];
+                } else {
+                    $id_receiver = $users[1];
+                }
+            }
+        }
+
+        //dump($rooms->toArray());
+
+        $vars = [
+            'id_room' => $id,
+            'id_user' => Auth::user()->id,
+            'id_receiver' => $id_receiver,
+            'rooms' => $rooms,
+            'messages' => $messages
+        ];
+
+        return view('social.message.index', $vars);
     }
 
     public function send(Request $request) {
@@ -58,7 +93,7 @@ class MessageController extends Controller
                     'id_receiver' => $request->input('id_receiver'),
                 ]);
 
-                return redirect('social/message/send');
+                return redirect()->back();
             } else {
 
                 $users = User::select('id','first_name','last_name','middle_name')->where('id', '!=', Auth::user()->id)->get()->toArray();

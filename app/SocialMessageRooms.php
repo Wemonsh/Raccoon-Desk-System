@@ -11,4 +11,8 @@ class SocialMessageRooms extends Model
     public $timestamps = true;
 
     protected $fillable = ['id','users'];
+
+    public function messages() {
+        return $this->hasMany('App\SocialMessages','id_room','id');
+    }
 }

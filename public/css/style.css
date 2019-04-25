@@ -139,7 +139,7 @@ a[href$=".zip"]:after {
 }
 
 .inbox_chat {
-    height: 550px;
+    height: 690px;
     overflow-y: scroll;
 }
 

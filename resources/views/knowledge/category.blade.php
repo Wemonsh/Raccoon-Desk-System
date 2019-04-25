@@ -1,7 +1,6 @@
 @extends('layouts.default')
 
 @section('content')
-{{--                <p><a href="{{ route('knowledgeShow', $article['id']) }}">{{ $article['title'] }}</a> <smal>{{ $article['created_at'] }}</smal></p>--}}
     <h1>Категория: {{ $category->title }}</h1>
     <hr>
     @forelse($articles as $article)
