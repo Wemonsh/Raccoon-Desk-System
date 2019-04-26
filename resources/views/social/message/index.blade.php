@@ -4,9 +4,6 @@
     <h1>Сообщения</h1>
     <hr>
 
-
-
-
     <div class="messaging">
         <div class="inbox_msg">
             <div class="inbox_people">

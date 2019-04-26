@@ -145,7 +145,7 @@
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="{{ route('calendarShow') }}">
                 <i class="fas fa-fw fa-calendar-alt"></i>
                 <span>{{ __('layouts/navigation.calendar') }}</span>
             </a>

@@ -110,4 +110,9 @@ Route::group(['prefix' => 'requests'], function () {
 Route::group(['prefix' => 'social'], function () {
     Route::match(['get', 'post'], '/messages/{id?}', ['uses' => 'Social\MessageController@index', 'as' => 'messagesIndex']);
     Route::match(['get', 'post'], '/message/send', ['uses' => 'Social\MessageController@send', 'as' => 'messageSend']);
+
+
+    Route::match(['get', 'post'], '/calendar/show/{id?}', ['uses' => 'Social\CalendarController@show', 'as' => 'calendarShow']);
+
+
 });
