@@ -1,7 +1,7 @@
 @extends('layouts.default')
 
 @section('content')
-    <h1>{{ __('knowledge/create.add_news') }}</h1>
+    <h1>{{ __('knowledge/create.add_article') }}</h1>
     <hr>
     <form method="post" action="{{ route('knowledgeCreate') }}" enctype="multipart/form-data">
         @csrf
@@ -11,7 +11,7 @@
         </div>
         <div class="form-group form-check">
             <input type="checkbox" name="pinned" class="form-check-input" id="pinned" value="1">
-            <label class="form-check-label" for="pinned">{{ __('knowledge/create.secure_news') }}</label>
+            <label class="form-check-label" for="pinned">{{ __('knowledge/create.pin_article') }}</label>
         </div>
         <div class="form-group">
             <label for="id_category">{{ __('knowledge/create.category') }}</label>
@@ -37,7 +37,7 @@
             $('#text').summernote({
                 height: 300,
                 lang: 'ru-RU',
-                placeholder: '{{ __('knowledge/create.enter_news_content') }}'
+                placeholder: '{{ __('knowledge/create.enter_article_content') }}'
             });
         });
     </script>

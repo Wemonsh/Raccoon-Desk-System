@@ -1,7 +1,7 @@
 @extends('layouts.default')
 
 @section('content')
-    <h1>{{ __('knowledge/edit.edit_news') }}</h1>
+    <h1>{{ __('knowledge/edit.edit_article') }}</h1>
     <hr>
     <form method="post" action="{{ route('knowledgeEdit', $id) }}" enctype="multipart/form-data">
         @csrf
@@ -15,7 +15,7 @@
                 @else
                 <input type="checkbox" name="pinned" class="form-check-input" id="pinned" value="1">
             @endif
-            <label class="form-check-label" for="pinned">{{ __('knowledge/edit.secure_news') }}</label>
+            <label class="form-check-label" for="pinned">{{ __('knowledge/edit.pin_article') }}</label>
         </div>
         <div class="form-group">
             <label for="id_category">{{ __('knowledge/edit.category') }}</label>
@@ -49,7 +49,7 @@
                 </div>
                 @else
                 <div class="alert alert-info" role="alert">
-                    <p>{{ __('knowledge/edit.no_news_files') }}</p>
+                    <p>{{ __('knowledge/edit.no_article_files') }}</p>
                 </div>
                 <input type="file" name="file[]" class="form-control-file" id="files" multiple>
             @endif

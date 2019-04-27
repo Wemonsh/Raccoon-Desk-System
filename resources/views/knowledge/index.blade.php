@@ -36,7 +36,7 @@
                         <li><a href="{{ route('knowledgeShow', $value['id']) }}">{{ $value['title'] }}</a> <small>{{ $value['created_at'] }}</small></li>
                     @empty
                         <div class="alert alert-info" role="alert">
-                            <p>{{ __('knowledge/index.no_news') }}</p>
+                            <p>{{ __('knowledge/index.no_articles') }}</p>
                         </div>
                     @endforelse
 
@@ -52,7 +52,7 @@
                         <li><a href="{{ route('knowledgeShow', $value['id']) }}">{{ $value['title'] }}</a>  <small class="text-muted" title="{{ __('knowledge/index.views_number') }}"><i class="fas fa-eye"></i> {{ $value['views'] }}</small></li>
                     @empty
                         <div class="alert alert-info" role="alert">
-                            <p>{{ __('knowledge/index.no_news') }}</p>
+                            <p>{{ __('knowledge/index.no_articles') }}</p>
                         </div>
                     @endforelse
 
@@ -68,7 +68,7 @@
                         <li><a href="{{ route('knowledgeShow', $value['id']) }}">{{ $value['title'] }}</a> <small>{{ $value['created_at'] }}</small></li>
                     @empty
                         <div class="alert alert-info" role="alert">
-                            <p>{{ __('knowledge/index.no_news') }}</p>
+                            <p>{{ __('knowledge/index.no_articles') }}</p>
                         </div>
                     @endforelse
 
@@ -91,7 +91,7 @@
                             <li><a href="{{ route('knowledgeShow', $value['id']) }}">{{ $value['title'] }}</a> <small>{{ $value['created_at'] }}</small></li>
                         @empty
                             <div class="alert alert-info" role="alert">
-                                <p>{{ __('knowledge/index.no_news') }}</p>
+                                <p>{{ __('knowledge/index.no_articles') }}</p>
                             </div>
                         @endforelse
 
