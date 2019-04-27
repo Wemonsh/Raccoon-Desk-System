@@ -47,8 +47,8 @@ class NewsController extends Controller
             if ($request->isMethod('post')) {
                 $value = $request->value;
 
-                // TODO Передалать запрос, пользователь = null, доделать пагинацию
-                $news = News::with('user')->select('id', 'title', 'created_at', 'views')->where('title','LIKE','%'.$value.'%')->get();
+                //$news = News::with('user')->select('id', 'title', 'created_at', 'views')->where('title','LIKE','%'.$value.'%')->get();
+                $news = News::join('users', 'news.id_user', '=', 'users.id')->select('news.id', 'news.title', 'news.created_at', 'news.views', 'users.first_name', 'users.last_name', 'users.middle_name', 'users.id as id_user')->where('news.title', 'LIKE', '%'.$value.'%')->orderBy('created_at', 'desc')->paginate(5);
 
                 $vars = [
                     'value' => $value,
@@ -57,11 +57,10 @@ class NewsController extends Controller
 
                 return view('news.search', $vars);
             } else {
-                //return redirect('news');
                 $value = $request->value;
 
-                // TODO Передалать запрос, пользователь = null, доделать пагинацию
-                $news = News::with('user')->select('id', 'title', 'created_at', 'views')->where('title','LIKE','%'.$value.'%')->get();
+                //$news = News::with('user')->select('id', 'title', 'created_at', 'views')->where('title','LIKE','%'.$value.'%')->get();
+                $news = News::join('users', 'news.id_user', '=', 'users.id')->select('news.id', 'news.title', 'news.created_at', 'news.views', 'users.first_name', 'users.last_name', 'users.middle_name', 'users.id as id_user')->where('news.title', 'LIKE', '%'.$value.'%')->orderBy('created_at', 'desc')->paginate(5);
 
                 $vars = [
                     'value' => $value,

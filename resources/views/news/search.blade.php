@@ -21,18 +21,20 @@
     @forelse($news as $item)
         <div class="card mb-3">
             <div class="card-body">
-                <p>{{ $item['title'] }}</p>
-                <p><a href="{{ 'post/'.''.$item['id'] }}">{{ __('news/search.more') }}</a></p>
+                <p>{{ $item->title }}</p>
+                <p><a href="{{ 'post/'.''.$item->id }}">{{ __('news/search.more') }}</a></p>
             </div>
             <div class="card-footer text-muted">
-                <small><span class="mr-1" title="{{ __('news/search.news_author') }}"><i class="fas fa-user"></i> {{ $item['user']['last_name'].' '.$item['user']['first_name'].' '.$item['user']['middle_name'] }}</span></small>
-                <small><span class="mr-1" title="{{ __('news/search.date_create') }}"><i class="fas fa-calendar-alt"></i> {{ $item['created_at'] }}</span></small>
-                <small><span class="mr-1" title="{{ __('news/search.views_number') }}"><i class="fas fa-eye"></i> {{ $item['views'] }}</span></small>
+                <small><span class="mr-1" title="{{ __('news/search.news_author') }}"><i class="fas fa-user"></i> {{ $item->last_name.' '.$item->first_name.' '.$item->middle_name }}</span></small>
+                <small><span class="mr-1" title="{{ __('news/search.date_create') }}"><i class="fas fa-calendar-alt"></i> {{ $item->created_at }}</span></small>
+                <small><span class="mr-1" title="{{ __('news/search.views_number') }}"><i class="fas fa-eye"></i> {{ $item->views }}</span></small>
             </div>
         </div>
     @empty
         <p>{{ __('news/search.no_results') }}</p>
     @endforelse
+
+    {{ $news->render() }}
 
     <a href="{{ route('news') }}">{{ __('news/search.to_main') }}</a>
 @endsection

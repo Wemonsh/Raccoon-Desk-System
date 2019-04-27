@@ -72,7 +72,9 @@ class KnowledgeController extends Controller
         if (view()->exists('knowledge.search')) {
             if ($request->isMethod('post')) {
                 $value = $request->value;
-                $articles = Knowledge::select('id', 'title', 'created_at')->where('title','LIKE','%'.$value.'%')->get()->toArray();
+
+                //$articles = Knowledge::with('user')->select('id', 'title', 'created_at', 'views')->where('title','LIKE','%'.$value.'%')->paginate(5);
+                $articles = Knowledge::join('users', 'knowledge.id_user', '=', 'users.id')->select('knowledge.id', 'knowledge.title', 'knowledge.created_at', 'knowledge.views', 'users.first_name', 'users.last_name', 'users.middle_name', 'users.id as id_user')->where('knowledge.title', 'LIKE', '%'.$value.'%')->orderBy('created_at', 'desc')->paginate(5);
 
                 $vars = [
                     'value' => $value,
@@ -81,7 +83,17 @@ class KnowledgeController extends Controller
 
                 return view('knowledge.search', $vars);
             } else {
-                return redirect('knowledge');
+                $value = $request->value;
+
+                $articles = Knowledge::with('user')->select('id', 'title', 'created_at', 'views')->where('title','LIKE','%'.$value.'%')->paginate(5);
+                $articles = Knowledge::join('users', 'knowledge.id_user', '=', 'users.id')->select('knowledge.id', 'knowledge.title', 'knowledge.created_at', 'knowledge.views', 'users.first_name', 'users.last_name', 'users.middle_name', 'users.id as id_user')->where('knowledge.title', 'LIKE', '%'.$value.'%')->orderBy('created_at', 'desc')->paginate(5);
+
+                $vars = [
+                    'value' => $value,
+                    'articles' => $articles
+                ];
+
+                return view('knowledge.search', $vars);
             }
         } else {
             abort(404);
