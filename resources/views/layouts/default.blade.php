@@ -31,7 +31,11 @@
     <script src="{{ asset('js/summernote.js') }}"></script>
     <script src="{{ asset('js/summernote-ru-RU.js') }}"></script>
 
-
+    {{-- FullCallendar --}}
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.js"></script>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.css"/>
 
 </head>
 
@@ -145,7 +149,7 @@
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('calendarShow') }}">
+            <a class="nav-link" href="#">
                 <i class="fas fa-fw fa-calendar-alt"></i>
                 <span>{{ __('layouts/navigation.calendar') }}</span>
             </a>
