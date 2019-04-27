@@ -1,8 +1,22 @@
 @extends('layouts.default')
 
 @section('content')
-    <!-- TODO На данной странице логотип и название сервиса в навигации съзжает вправо!!! -->
-    <h1>{{ __('news/list.news') }}</h1>
+    <div class="row">
+        <div class="col-9">
+            <h1>{{ __('news/list.news') }}</h1>
+        </div>
+        <div class="col-3 mt-3">
+            <form action="{{ route('searchNews') }}" method="post">
+                @csrf
+                <div class="input-group">
+                    <input type="text" name="value" class="form-control" placeholder="{{ __('news/search.request_enter') }}">
+                    <div class="input-group-append">
+                        <button type="submit" class="btn btn-primary">{{ __('news/search.search') }}</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
     <hr>
     <div class="card-columns card-columns-news">
         @forelse($news as $value)

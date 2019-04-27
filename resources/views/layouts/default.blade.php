@@ -149,7 +149,7 @@
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="{{ route('events.index') }}">
                 <i class="fas fa-fw fa-calendar-alt"></i>
                 <span>{{ __('layouts/navigation.calendar') }}</span>
             </a>

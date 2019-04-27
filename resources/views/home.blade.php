@@ -106,7 +106,7 @@
 
                 @forelse($news as $item)
                     <li class="media my-2">
-                        <img src="{{ asset('/storage/' . $item['image']) }}" width="100px" height="100px" style="object-fit: cover;" class="mr-3" alt="Изображение">
+                        <img src="{{ asset('/storage/' . $item['image']) }}" width="100px" height="100px" style="object-fit: cover;" class="mr-3 rounded" alt="Изображение">
                         <div class="media-body">
                             <h5 class="mt-0 mb-1">{{ $item['title'] }}</h5>
                             {{ mb_strimwidth(strip_tags(str_replace('&nbsp;', ' ', $item['text'])), 0, 350, '...') }}
@@ -131,7 +131,7 @@
 
                 @forelse($articles as $item)
                     <li class="media my-2">
-                        <img src="/img/logo.png" width="100px" height="100px" class="mr-3" alt="Изображение">
+                        <img src="/img/logo.png" width="100px" height="100px" class="mr-3 rounded" alt="Изображение">
                         <div class="media-body">
                             <h5 class="mt-0 mb-1">{{ $item['title'] }}</h5>
                             {{ mb_strimwidth(strip_tags(str_replace('&nbsp;', ' ', $item['text'])), 0, 350, '...') }}

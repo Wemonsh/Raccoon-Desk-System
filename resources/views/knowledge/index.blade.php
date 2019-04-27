@@ -17,8 +17,8 @@
             <hr>
             <p class="lead">{{ __('knowledge/index.no_answer') }}</p>
             <p class="lead">
-                <a class="btn btn-outline-success" href="{{ route('requestsCreate') }}" role="button">{{ __('knowledge/index.create_application') }}</a>
-                <a class="btn btn-outline-info" href="{{ route('requestsCreated') }}" role="button">{{ __('knowledge/index.applications_view') }}</a>
+                <a class="btn btn-outline-success" href="{{ route('requestsCreate') }}" role="button">{{ __('knowledge/index.create_request') }}</a>
+                <a class="btn btn-outline-info" href="{{ route('requestsCreated') }}" role="button">{{ __('knowledge/index.requests_view') }}</a>
             </p>
         </div>
     </div>
