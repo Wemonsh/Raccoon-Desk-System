@@ -3,22 +3,22 @@
 @section('jumbotron')
     <div class="jumbotron jumbotron-fluid">
         <div class="container-fluid">
-            <h1 class="display-4">База знаний</h1>
-            <p class="lead">Чем мы Вам можем помочь сегодня?</p>
+            <h1 class="display-4">{{ __('knowledge/index.knowledge_base') }}</h1>
+            <p class="lead">{{ __('knowledge/index.can_we_help') }}</p>
             <form action="{{ route('knowledgeSearch') }}" method="post">
                 @csrf
                 <div class="input-group">
-                    <input type="text" name="value" class="form-control" placeholder="Введите ваш поисковый запрос...">
+                    <input type="text" name="value" class="form-control" placeholder="{{ __('knowledge/index.request_enter') }}">
                     <div class="input-group-append">
-                        <button type="submit" class="btn btn-primary">Поиск</button>
+                        <button type="submit" class="btn btn-primary">{{ __('knowledge/index.search') }}</button>
                     </div>
                 </div>
             </form>
             <hr>
-            <p class="lead">Не нашли ответа на свой вопрос?</p>
+            <p class="lead">{{ __('knowledge/index.no_answer') }}</p>
             <p class="lead">
-                <a class="btn btn-outline-success" href="{{ route('requestsCreate') }}" role="button">Создать новую заявку</a>
-                <a class="btn btn-outline-info" href="{{ route('requestsCreated') }}" role="button">Просмотр моих заявок</a>
+                <a class="btn btn-outline-success" href="{{ route('requestsCreate') }}" role="button">{{ __('knowledge/index.create_application') }}</a>
+                <a class="btn btn-outline-info" href="{{ route('requestsCreated') }}" role="button">{{ __('knowledge/index.applications_view') }}</a>
             </p>
         </div>
     </div>
@@ -29,14 +29,14 @@
     <div class="card-deck">
         <div class="card">
             <div class="card-body">
-                <h2><i class="fas fa-newspaper"></i> Новые</h2>
+                <h2><i class="fas fa-newspaper"></i> {{ __('knowledge/index.new') }}</h2>
                 <ul>
 
                     @forelse($articleNew as $value)
                         <li><a href="{{ route('knowledgeShow', $value['id']) }}">{{ $value['title'] }}</a> <small>{{ $value['created_at'] }}</small></li>
                     @empty
                         <div class="alert alert-info" role="alert">
-                            <p>Статьи в данной категории отсутсвуют</p>
+                            <p>{{ __('knowledge/index.no_news') }}</p>
                         </div>
                     @endforelse
 
@@ -45,14 +45,14 @@
         </div>
         <div class="card">
             <div class="card-body">
-                <h2><i class="fas fa-star"></i> Популярные</h2>
+                <h2><i class="fas fa-star"></i> {{ __('knowledge/index.popular') }}</h2>
                 <ul>
 
                     @forelse($articlePopular as $value)
-                        <li><a href="{{ route('knowledgeShow', $value['id']) }}">{{ $value['title'] }}</a>  <small class="text-muted" title="Количесвто просмотров"><i class="fas fa-eye"></i> {{ $value['views'] }}</small></li>
+                        <li><a href="{{ route('knowledgeShow', $value['id']) }}">{{ $value['title'] }}</a>  <small class="text-muted" title="{{ __('knowledge/index.views_number') }}"><i class="fas fa-eye"></i> {{ $value['views'] }}</small></li>
                     @empty
                         <div class="alert alert-info" role="alert">
-                            <p>Статьи в данной категории отсутсвуют</p>
+                            <p>{{ __('knowledge/index.no_news') }}</p>
                         </div>
                     @endforelse
 
@@ -61,14 +61,14 @@
         </div>
         <div class="card">
             <div class="card-body">
-                <h2><i class="fas fa-thumbtack"></i> Закрепленные</h2>
+                <h2><i class="fas fa-thumbtack"></i> {{ __('knowledge/index.pinned') }}</h2>
                 <ul>
 
                     @forelse($articlePinned as $value)
                         <li><a href="{{ route('knowledgeShow', $value['id']) }}">{{ $value['title'] }}</a> <small>{{ $value['created_at'] }}</small></li>
                     @empty
                         <div class="alert alert-info" role="alert">
-                            <p>Статьи в данной категории отсутсвуют</p>
+                            <p>{{ __('knowledge/index.no_news') }}</p>
                         </div>
                     @endforelse
 
@@ -91,7 +91,7 @@
                             <li><a href="{{ route('knowledgeShow', $value['id']) }}">{{ $value['title'] }}</a> <small>{{ $value['created_at'] }}</small></li>
                         @empty
                             <div class="alert alert-info" role="alert">
-                                <p>Статьи в данной категории отсутсвуют</p>
+                                <p>{{ __('knowledge/index.no_news') }}</p>
                             </div>
                         @endforelse
 
@@ -99,13 +99,13 @@
                 </div>
             </div>
         @empty
-            <p>Категории статьей отсутствуют</p>
+            <p>{{ __('knowledge/index.no_categories') }}</p>
         @endforelse
 
     </div>
     <div class="card mb-3 mt-3">
         <div class="card-body">
-            <p>В Базе Знаний Raccoon Desk System вы найдете подробные руководства с ответами на часто задаваемые вопросы по использованию сервиса и полезные советы по настройке и конфигурации.  © Raccoon Desk System RU</p>
+            <p>{{ __('knowledge/index.knowledge_info') }}</p>
         </div>
     </div>
 @endsection

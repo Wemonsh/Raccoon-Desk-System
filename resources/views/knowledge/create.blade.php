@@ -1,20 +1,20 @@
 @extends('layouts.default')
 
 @section('content')
-    <h1>Добавление статьи</h1>
+    <h1>{{ __('knowledge/create.add_news') }}</h1>
     <hr>
     <form method="post" action="{{ route('knowledgeCreate') }}" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
-            <label for="title">Заголовок</label>
-            <input name="title" type="text" class="form-control" id="title" placeholder="Введите название статьи">
+            <label for="title">{{ __('knowledge/create.title') }}</label>
+            <input name="title" type="text" class="form-control" id="title" placeholder="{{ __('knowledge/create.enter_title') }}">
         </div>
         <div class="form-group form-check">
             <input type="checkbox" name="pinned" class="form-check-input" id="pinned" value="1">
-            <label class="form-check-label" for="pinned">Закрепить статью</label>
+            <label class="form-check-label" for="pinned">{{ __('knowledge/create.secure_news') }}</label>
         </div>
         <div class="form-group">
-            <label for="id_category">Категория</label>
+            <label for="id_category">{{ __('knowledge/create.category') }}</label>
             <select name="id_category" class="form-control" id="id_category">
                 @foreach($category as $value)
                     <option value="{{ $value->id }}">{{ $value->title }}</option>
@@ -22,14 +22,14 @@
             </select>
         </div>
         <div class="form-group">
-            <label for="text">Содержание</label>
+            <label for="text">{{ __('knowledge/create.content') }}</label>
             <textarea name="text" class="form-control" id="text" rows="12"></textarea>
         </div>
         <div class="form-group">
-            <label for="files">Приложения</label>
+            <label for="files">{{ __('knowledge/create.attachments') }}</label>
             <input type="file" name="file[]" class="form-control-file" id="files" multiple>
         </div>
-        <button type="submit" class="btn btn-primary">Создать</button>
+        <button type="submit" class="btn btn-primary">{{ __('knowledge/create.create') }}</button>
     </form>
 
     <script>
@@ -37,7 +37,7 @@
             $('#text').summernote({
                 height: 300,
                 lang: 'ru-RU',
-                placeholder: 'Введите содержание статьи'
+                placeholder: '{{ __('knowledge/create.enter_news_content') }}'
             });
         });
     </script>

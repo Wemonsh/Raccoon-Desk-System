@@ -3,7 +3,7 @@
 
 
 @section('content')
-    <p>Поиск по запросу "{{ $value }}"</p>
+    <p>{{ __('knowledge/search.knowledge_search') }} "{{ $value }}"</p>
 
     @forelse($articles as $article)
         <div class="card mb-3">
@@ -12,8 +12,8 @@
             </div>
         </div>
     @empty
-        <p>Поик не дал результатов</p>
+        <p>{{ __('knowledge/search.no_results') }}</p>
     @endforelse
 
-    <a href="{{ route('knowledge') }}">Перейти на главную</a>
+    <a href="{{ route('knowledge') }}">{{ __('knowledge/search.to_main') }}</a>
 @endsection

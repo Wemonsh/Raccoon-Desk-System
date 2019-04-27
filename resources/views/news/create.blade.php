@@ -1,7 +1,7 @@
 @extends('layouts.default')
 
 @section('content')
-    <h1>{{ __('news/create.add_new') }}</h1>
+    <h1>{{ __('news/create.add_news') }}</h1>
     <hr>
     <form method="post" action="{{ route('createNews') }}" enctype="multipart/form-data">
         @csrf
