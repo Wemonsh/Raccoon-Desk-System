@@ -86,7 +86,7 @@
 
             <a class="nav-link" href="{{ route('messagesIndex') }}">
                 <i class="fas fa-envelope fa-fw mt-1"></i>
-                <span class="badge badge-danger">0</span>
+                <span class="badge badge-danger">{{ $messages_new }}</span>
             </a>
         </li>
 

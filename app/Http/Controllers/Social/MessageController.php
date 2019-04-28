@@ -41,6 +41,16 @@ class MessageController extends Controller
 
         //dump($rooms->toArray());
 
+
+        // Логика изменения непрочитанных сообщений при их просмотре
+        if ($id != null) {
+            $messagesRead = SocialMessages::where('id_room', '=', $id)->where('id_receiver', '=', Auth::user()->id)->where('unread', '=', 0)->get();
+            foreach ($messagesRead as $item) {
+                $item->unread = 1;
+                $item->save();
+            }
+        }
+
         $vars = [
             'id_room' => $id,
             'id_user' => Auth::user()->id,

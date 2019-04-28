@@ -34,7 +34,9 @@
                                     <span class="chat_date">{{ $room['messages'][0]['created_at'] }}</span></h5>
                                     <p>
                                         @if($room['messages'][0]['sender']['id'] == $id_user)
-                                            <strong>Вы:</strong>
+                                            <strong>Вы: </strong>
+                                            @elseif($room['messages'][0]['unread'] == 0)
+                                            <strong>Новое сообщение: </strong>
                                         @endif
                                         {{ $room['messages'][0]['message'] }}
                                     </p>
