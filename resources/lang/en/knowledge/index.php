@@ -14,4 +14,5 @@ return [
     'views_number' => 'Number of views',
     'pinned' => 'Pinned',
     'knowledge_info' => 'In the Raccoon Desk System Knowledge Base, you will find detailed guides with answers to frequently asked questions on how to use the service and helpful tips on how to set up and configure. © Raccoon Desk System EN',
+    'article_count' => 'Number of articles in the category',
 ];

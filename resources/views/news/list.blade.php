@@ -21,8 +21,10 @@
     <div class="card-columns card-columns-news">
         @forelse($news as $value)
             <div class="card shadow-sm bg-white rounded">
-                @if($value['image'] != null)
+                @if(@getimagesize(asset('/storage/' . $value['image'])))
                     <img src="{{ asset('/storage/' . $value['image']) }}" class="card-img-top" alt="{{ __('news/list.no_image') }}">
+{{--                    @else--}}
+{{--                    <img src="/img/no_image.png" width="250px" height="350px" class="card-img-top" alt="{{ __('news/list.no_image') }}">--}}
                 @endif
                 <div class="card-body">
                     <h5 class="card-title">{{ $value['title'] }}</h5>

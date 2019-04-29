@@ -63,7 +63,7 @@
                 </div>
                 <div class="mr-5">{{ $events_count }} предстоящих событий в этом месяце</div>
             </div>
-            <a class="card-footer text-white clearfix small z-1" href="#">
+            <a class="card-footer text-white clearfix small z-1" href="{{ route('events.index') }}">
                 <span class="float-left">Подробнее</span>
                 <span class="float-right">
               <i class="fas fa-angle-right"></i>

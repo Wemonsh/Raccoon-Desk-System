@@ -5,7 +5,7 @@
     <hr>
 
     <div class="messaging">
-        <div class="inbox_msg">
+        <div class="inbox_msg rounded">
             <div class="inbox_people">
                 <div class="headind_srch">
                     <div class="recent_heading">
@@ -99,6 +99,5 @@
             document.getElementById('chatArea').scrollTop = 9999;
         }
     </script>
-
 
 @endsection

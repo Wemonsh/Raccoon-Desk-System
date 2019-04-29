@@ -70,7 +70,7 @@
         @endif
         @else
         <li class="nav-item dropdown no-arrow mx-1">
-            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Уведомления">
                 <i class="fas fa-bell fa-fw mt-1"></i>
                 <span class="badge badge-danger">999+</span>
             </a>
@@ -84,7 +84,7 @@
 
         <li class="nav-item dropdown no-arrow">
 
-            <a class="nav-link" href="{{ route('messagesIndex') }}">
+            <a class="nav-link" href="{{ route('messagesIndex') }}" title="Сообщения">
                 <i class="fas fa-envelope fa-fw mt-1"></i>
                 <span class="badge badge-danger">{{ $messages_new }}</span>
             </a>
@@ -92,7 +92,7 @@
 
         <li class="nav-item dropdown no-arrow">
 
-            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Выбрать язык">
                 <i class="fas fa-globe-americas"></i>
             </a>
 

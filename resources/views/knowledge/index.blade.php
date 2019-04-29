@@ -84,7 +84,7 @@
         @forelse ($knowledge as $value)
             <div class="card">
                 <div class="card-body">
-                    <h2>{{ $value['title'] }} <span class="badge badge-secondary">{{ count($value['knowledge']) }}</span></h2>
+                    <h2>{{ $value['title'] }} <span class="badge badge-secondary" title="{{ __('knowledge/index.article_count') }}">{{ count($value['knowledge']) }}</span></h2>
                     <ul>
 
                         @forelse($value['knowledge'] as $value)

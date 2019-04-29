@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events;
 use App\Knowledge;
 use App\News;
 use App\Requests;
@@ -38,7 +39,7 @@ class HomeController extends Controller
             'users_count' => User::count(),
             'articles_count' => Knowledge::count(),
             'requests_count' => Requests::count(),
-            'events_count' => '0',
+            'events_count' => Events::count(),
         ];
         return view('home', $vars);
     }

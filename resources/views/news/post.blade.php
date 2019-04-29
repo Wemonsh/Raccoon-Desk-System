@@ -15,8 +15,8 @@
     <div class="card mt-3">
         <div class="card-body">
             <h1>{{ $news->title }}</h1>
-            @if($news->image != null)
-                <img src="{{ asset('/storage/' . $news->image) }}" class="card-img-top mb-3" style="width: 100px">
+            @if(@getimagesize(asset('/storage/' . $news->image)))
+                <img src="{{ asset('/storage/' . $news->image) }}" class="card-img-top mb-3 rounded" style="object-fit: cover; width: 500px; height: 300px;">
             @endif
             <p>{!! $news->text !!}</p>
         </div>
