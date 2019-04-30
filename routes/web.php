@@ -123,9 +123,16 @@ Route::post('events', 'Social\EventsController@addEvent')->name('events.add');
 Route::group(['prefix' => 'inventory'], function () {
     Route::match(['get', 'post'], '/', ['uses' => 'Inventory\HomeController@index', 'as' => 'inventoryIndex']);
 
-
+    // Counterparty
     Route::match(['get', 'post'], '/counterparty', ['uses' => 'Inventory\CounterpartyController@index', 'as' => 'counterpartyIndex']);
     Route::match(['get', 'post'], '/counterparty/create', ['uses' => 'Inventory\CounterpartyController@create', 'as' => 'counterpartyCreate']);
     Route::match(['get', 'post'], '/counterparty/api-response', ['uses' => 'Inventory\CounterpartyController@apiResponse']);
     Route::match(['get', 'post'], '/counterparty/edit/{id}', ['uses' => 'Inventory\CounterpartyController@edit', 'as' => 'counterpartyEdit']);
+
+
+    // Manufactures
+    Route::match(['get', 'post'], '/manufactures', ['uses' => 'Inventory\ManufacturesController@index', 'as' => 'manufacturesIndex']);
+    Route::match(['get', 'post'], '/manufactures/create', ['uses' => 'Inventory\ManufacturesController@create', 'as' => 'manufacturesCreate']);
+    Route::match(['get', 'post'], '/manufactures/api-response', ['uses' => 'Inventory\ManufacturesController@apiResponse']);
+    Route::match(['get', 'post'], '/manufactures/edit/{id}', ['uses' => 'Inventory\ManufacturesController@edit', 'as' => 'manufacturesEdit']);
 });

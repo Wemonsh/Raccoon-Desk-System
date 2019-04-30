@@ -24,7 +24,7 @@
             <h2>Справочники</h2>
             <div class="list-group">
                 <a href="{{ route('counterpartyIndex') }}" class="list-group-item list-group-item-action"><i class="fas fa-cogs fa-fw"></i> Контрагенты</a>
-                <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-cubes fa-fw"></i> Производители</a>
+                <a href="{{ route('manufacturesIndex') }}" class="list-group-item list-group-item-action"><i class="fas fa-cubes fa-fw"></i> Производители</a>
                 <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-location-arrow fa-fw"></i>Типы средств</a>
                 <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-object-group fa-fw"></i> Группы ТМЦ</a>
                 <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-location-arrow fa-fw"></i> Помещения</a>

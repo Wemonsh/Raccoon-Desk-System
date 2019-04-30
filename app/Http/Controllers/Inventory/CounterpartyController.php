@@ -77,7 +77,7 @@ class CounterpartyController extends Controller
 
                 if ($validator->fails()) {
                     \Session::flash('warning', 'Please enter the valid details');
-                    return Redirect::to('/inventory/counterparty/create')->withInput()->withErrors($validator);
+                    return Redirect::to('/inventory/counterparty/edit/'.$id)->withInput()->withErrors($validator);
                 }
 
                 $counterparty = InvCounterparty::where('id','=', $id)->first();
