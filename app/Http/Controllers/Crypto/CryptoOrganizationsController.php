@@ -55,7 +55,7 @@ class CryptoOrganizationsController extends Controller
                     'site' => $request->input('site')
                 ]);
 
-                return redirect('cryptoOrganizationsShow');
+                return redirect('crypto/organizations');
             } else {
                 return view('crypto.organizations.create');
             }

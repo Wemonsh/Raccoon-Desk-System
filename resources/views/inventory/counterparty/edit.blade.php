@@ -1,10 +1,10 @@
 @extends('layouts.default')
 
 @section('content')
-    <h1>Контрагенты</h1>
+    <h1>Редактировать контрагента</h1>
     <hr>
 
-    {!! Form::open(array('route' => 'counterpartyCreate', 'method' => 'POST', 'files' => 'true')) !!}
+    {!! Form::open(array('route' => array('counterpartyEdit', $id), 'method' => 'POST', 'files' => 'true')) !!}
 
     @if (Session::has('success'))
         <div class="alert alert-success">
@@ -19,7 +19,7 @@
     <div class="form-group">
         {!! Form::label('name', 'Название контрагента:') !!}
         <div>
-            {!! Form::text('name', null, ['class' => 'form-control']) !!}
+            {!! Form::text('name', $counterparty->name, ['class' => 'form-control']) !!}
             {!! $errors->first('name', '<p class="alert alert-danger">:message</p>') !!}
         </div>
     </div>
@@ -27,7 +27,7 @@
     <div class="form-group">
         {!! Form::label('tin', 'ИНН:') !!}
         <div>
-            {!! Form::text('tin', null, ['class' => 'form-control']) !!}
+            {!! Form::text('tin', $counterparty->tin, ['class' => 'form-control']) !!}
             {!! $errors->first('tin', '<p class="alert alert-danger">:message</p>') !!}
         </div>
     </div>
@@ -35,35 +35,35 @@
     <div class="form-group">
         {!! Form::label('code', 'КПП:') !!}
         <div>
-            {!! Form::text('code', null, ['class' => 'form-control']) !!}
+            {!! Form::text('code', $counterparty->code, ['class' => 'form-control']) !!}
             {!! $errors->first('code', '<p class="alert alert-danger">:message</p>') !!}
         </div>
     </div>
 
     <div class="form-group">
-        {!! Form::checkbox('purchase', '1', false, ['id' => 'purchase']) !!}
+        {!! Form::checkbox('purchase', $counterparty->purchase, $counterparty->purchase, ['id' => 'purchase']) !!}
         {!! Form::label('purchase', 'Покупаем:') !!}
     </div>
 
     <div class="form-group">
-        {!! Form::checkbox('sale', '1', false, ['id' => 'sale']) !!}
+        {!! Form::checkbox('sale', $counterparty->sale, $counterparty->sale, ['id' => 'sale']) !!}
         {!! Form::label('sale', 'Продаем:') !!}
     </div>
 
     <div class="form-group">
-        {!! Form::checkbox('tracking', '1', false, ['id' => 'tracking']) !!}
+        {!! Form::checkbox('tracking', $counterparty->tracking, $counterparty->tracking, ['id' => 'tracking']) !!}
         {!! Form::label('tracking', 'На контроле:') !!}
     </div>
-    
+
     <div class="form-group">
         {!! Form::label('comment', 'Комментарий:') !!}
         <div>
-            {!! Form::text('comment', null, ['class' => 'form-control']) !!}
+            {!! Form::text('comment', $counterparty->comment, ['class' => 'form-control']) !!}
             {!! $errors->first('comment', '<p class="alert alert-danger">:message</p>') !!}
         </div>
     </div>
 
-    {!! Form::submit('Добавить', ['class' => 'btn btn-primary']) !!}
+    {!! Form::submit('Изменить', ['class' => 'btn btn-primary']) !!}
 
     {!! Form::close() !!}
 @endsection

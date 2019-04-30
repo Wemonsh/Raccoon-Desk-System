@@ -127,4 +127,5 @@ Route::group(['prefix' => 'inventory'], function () {
     Route::match(['get', 'post'], '/counterparty', ['uses' => 'Inventory\CounterpartyController@index', 'as' => 'counterpartyIndex']);
     Route::match(['get', 'post'], '/counterparty/create', ['uses' => 'Inventory\CounterpartyController@create', 'as' => 'counterpartyCreate']);
     Route::match(['get', 'post'], '/counterparty/api-response', ['uses' => 'Inventory\CounterpartyController@apiResponse']);
+    Route::match(['get', 'post'], '/counterparty/edit/{id}', ['uses' => 'Inventory\CounterpartyController@edit', 'as' => 'counterpartyEdit']);
 });

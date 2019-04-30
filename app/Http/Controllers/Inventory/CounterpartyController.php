@@ -65,10 +65,50 @@ class CounterpartyController extends Controller
         } else if ($request->isMethod('get')) {
             return view('inventory.counterparty.create');
         }
+    }
 
+    public function edit (Request $request, $id) {
+        if (view()->exists('inventory.counterparty.edit')) {
+            if ($request->isMethod('post')) {
 
+                $validator = Validator::make($request->all(), [
+                    'name' => 'required',
+                ]);
 
+                if ($validator->fails()) {
+                    \Session::flash('warning', 'Please enter the valid details');
+                    return Redirect::to('/inventory/counterparty/create')->withInput()->withErrors($validator);
+                }
 
+                $counterparty = InvCounterparty::where('id','=', $id)->first();
 
+                $counterparty->name = $request->input('name');
+                $counterparty->tin = $request->input('tin');
+                $counterparty->code = $request->input('code');
+                $counterparty->tracking = $request->input('tracking') == null? 0 : 1;
+                $counterparty->comment = $request->input('comment');
+                $counterparty->purchase = $request->input('purchase') == null? 0 : 1;
+                $counterparty->sale = $request->input('sale') == null? 0 : 1;
+                $counterparty->save();
+
+                \Session::flash('success', 'Event added successfully');
+
+                return redirect('/inventory/counterparty/');
+            } else {
+                $counterparty = InvCounterparty::where('id','=', $id)->first();
+                if ($counterparty != null) {
+                    $vars = [
+                        'counterparty' => $counterparty,
+                        'id' => $id,
+                    ];
+                    return view('inventory.counterparty.edit', $vars);
+                } else {
+                    abort(404);
+                }
+            }
+            return view('inventory.counterparty.edit');
+        } else {
+            abort(404);
+        }
     }
 }
