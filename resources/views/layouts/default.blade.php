@@ -37,6 +37,8 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.js"></script>
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.css"/>
 
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.14.2/dist/bootstrap-table.min.css">
+
 </head>
 
 <body id="page-top">
@@ -187,7 +189,7 @@
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="{{ route('inventoryIndex') }}">
                 <i class="fas fa-fw fa-boxes"></i>
                 <span>{{ __('layouts/navigation.inventory') }}</span>
             </a>
@@ -282,7 +284,8 @@
 <script src="{{ asset('js/Chart.min.js') }}"></script>
 <script src="{{ asset('js/demo/chart-area-demo.js') }}"></script>
 <script src="{{ asset('js/demo/chart-pie-demo.js') }}"></script>
-
+<script src="https://unpkg.com/bootstrap-table@1.14.2/dist/bootstrap-table.min.js"></script>
+<script src="{{ asset('js/table/bootstrap-table-print.js') }}"></script>
 </body>
 
 </html>

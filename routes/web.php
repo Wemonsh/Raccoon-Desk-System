@@ -119,3 +119,12 @@ Route::group(['prefix' => 'social'], function () {
 
 Route::get('events', 'Social\EventsController@index')->name('events.index');
 Route::post('events', 'Social\EventsController@addEvent')->name('events.add');
+
+Route::group(['prefix' => 'inventory'], function () {
+    Route::match(['get', 'post'], '/', ['uses' => 'Inventory\HomeController@index', 'as' => 'inventoryIndex']);
+
+
+    Route::match(['get', 'post'], '/counterparty', ['uses' => 'Inventory\CounterpartyController@index', 'as' => 'counterpartyIndex']);
+    Route::match(['get', 'post'], '/counterparty/create', ['uses' => 'Inventory\CounterpartyController@create', 'as' => 'counterpartyCreate']);
+    Route::match(['get', 'post'], '/counterparty/api-response', ['uses' => 'Inventory\CounterpartyController@apiResponse']);
+});
