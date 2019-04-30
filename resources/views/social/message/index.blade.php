@@ -1,7 +1,7 @@
 @extends('layouts.default')
 
 @section('content')
-    <h1>Сообщения</h1>
+    <h1>{{ __('social/message/index.messages') }}</h1>
     <hr>
 
     <div class="messaging">
@@ -9,10 +9,10 @@
             <div class="inbox_people">
                 <div class="headind_srch">
                     <div class="recent_heading">
-                        <h4>Последние</h4>
+                        <h4>{{ __('social/message/index.last') }}</h4>
                     </div>
                     <div class="srch_bar">
-                        <a href="{{ route('messageSend') }}">Начать беседу</a>
+                        <a href="{{ route('messageSend') }}">{{ __('social/message/index.start_chat') }}</a>
                     </div>
                 </div>
                 <div class="inbox_chat scroll">
@@ -34,9 +34,9 @@
                                     <span class="chat_date">{{ $room['messages'][0]['created_at'] }}</span></h5>
                                     <p>
                                         @if($room['messages'][0]['sender']['id'] == $id_user)
-                                            <strong>Вы: </strong>
+                                            <strong>{{ __('social/message/index.you') }} </strong>
                                             @elseif($room['messages'][0]['unread'] == 0)
-                                            <strong>Новое сообщение: </strong>
+                                            <strong>{{ __('social/message/index.new_message') }} </strong>
                                         @endif
                                         {{ $room['messages'][0]['message'] }}
                                     </p>
@@ -71,7 +71,7 @@
                             @endif
                         @endforeach
                     @else
-                        <p>пусто</p>
+                        <p>{{ __('social/message/index.empty') }}</p>
                     @endif
                 </div>
                 <div class="type_msg pb-1 pt-1">
@@ -80,14 +80,14 @@
                         <input type="text" name="id_receiver" value="{{ $id_receiver }}" hidden>
 
                         <div class="form-group">
-                            <textarea class="form-control" name="message" id="message" rows="3" placeholder="Введите тескт собщения"></textarea>
+                            <textarea class="form-control" name="message" id="message" rows="3" placeholder="{{ __('social/message/index.enter_text') }}"></textarea>
                         </div>
 
                         <div class="form-group">
                             <input type="file" name="file[]" class="form-control-file" id="files" multiple>
                         </div>
 
-                        <button type="submit" class="btn btn-primary">Отправить</button>
+                        <button type="submit" class="btn btn-primary">{{ __('social/message/index.send') }}</button>
                     </form>
                 </div>
             </div>
