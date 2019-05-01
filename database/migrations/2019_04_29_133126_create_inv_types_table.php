@@ -17,7 +17,7 @@ class CreateInvTypesTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->text('description');
-            $table->json('properties');
+            $table->json('properties')->nullable();
             $table->string('image')->nullable();
             $table->timestamps();
         });

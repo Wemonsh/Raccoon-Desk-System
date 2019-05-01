@@ -20,6 +20,7 @@ class CreateInvDevicesTable extends Migration
             $table->foreign('id_manufacture')->references('id')->on('inv_manufactures');
             $table->integer('id_type')->unsigned();
             $table->foreign('id_type')->references('id')->on('inv_types');
+            $table->json('specifications')->nullable();
             $table->string('photo')->nullable();
             $table->timestamps();
         });

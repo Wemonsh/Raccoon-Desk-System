@@ -20,7 +20,6 @@ class CreateInvInventoriesTable extends Migration
             $table->foreign('id_counterparty')->references('id')->on('inv_counterparty');
             $table->integer('id_device')->unsigned();
             $table->foreign('id_device')->references('id')->on('inv_devices');
-            $table->json('specifications')->nullable();
             $table->string('inventory_number')->nullable();
             $table->integer('id_placement')->unsigned();
             $table->foreign('id_placement')->references('id')->on('inv_placements');
