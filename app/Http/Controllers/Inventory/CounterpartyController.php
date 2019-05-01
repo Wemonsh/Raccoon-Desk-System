@@ -19,12 +19,13 @@ class CounterpartyController extends Controller
         $pageSize = $request['pageSize'];
         $sortName = $request['sortName'];
         $sortOrder = $request['sortOrder'];
+        $searchText = $request['searchText'];
         // Сортировка
         if (empty($sortName)) {
             $sortName = 'id';
         }
         // Выбор данных и пагинация
-        $rows = InvCounterparty::orderBy($sortName, $sortOrder)->paginate($pageSize)->toArray();
+        $rows = InvCounterparty::where('name', 'LIKE', '%'.$searchText.'%')->orderBy($sortName, $sortOrder)->paginate($pageSize)->toArray();
 
         return response()->json(
             [
@@ -111,4 +112,6 @@ class CounterpartyController extends Controller
             abort(404);
         }
     }
+
+
 }

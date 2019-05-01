@@ -43,9 +43,7 @@
         // Вывод изображения в таблице вместо текста! Надо ли это вообще? Ломается при этом колонка "Действия"
         // TODO Решить убрать или оставить!
         function imageFormatter(value, row) {
-            // return '<img src="'+value+'" />';
-            return '<img src="'+'/storage/'+value+'" class="card-img-top rounded" style="object-fit: cover; width: 50px; height: 50px; />';
-            {{--return '<img src="{{ asset('/logotypes/' . value) }}" class="card-img-top mb-3 rounded" style="object-fit: cover; width: 500px; height: 300px;">';--}}
+            return '<img src="/storage/'+value+'" class="card-img-top rounded" style="max-width: 50px;"/>';
         }
 
 
