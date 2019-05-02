@@ -147,4 +147,10 @@ Route::group(['prefix' => 'inventory'], function () {
     Route::match(['get', 'post'], '/organizations/create', ['uses' => 'Inventory\OrganizationsController@create', 'as' => 'organizationsCreate']);
     Route::match(['get', 'post'], '/organizations/api-response', ['uses' => 'Inventory\OrganizationsController@apiResponse']);
     Route::match(['get', 'post'], '/organizations/edit/{id}', ['uses' => 'Inventory\OrganizationsController@edit', 'as' => 'organizationsEdit']);
+
+    // Placements
+    Route::match(['get', 'post'], '/placements', ['uses' => 'Inventory\PlacementsController@index', 'as' => 'placementsIndex']);
+    Route::match(['get', 'post'], '/placements/create', ['uses' => 'Inventory\PlacementsController@create', 'as' => 'placementsCreate']);
+    Route::match(['get', 'post'], '/placements/api-response', ['uses' => 'Inventory\PlacementsController@apiResponse']);
+    Route::match(['get', 'post'], '/placements/edit/{id}', ['uses' => 'Inventory\PlacementsController@edit', 'as' => 'placementsEdit']);
 });
