@@ -153,4 +153,10 @@ Route::group(['prefix' => 'inventory'], function () {
     Route::match(['get', 'post'], '/placements/create', ['uses' => 'Inventory\PlacementsController@create', 'as' => 'placementsCreate']);
     Route::match(['get', 'post'], '/placements/api-response', ['uses' => 'Inventory\PlacementsController@apiResponse']);
     Route::match(['get', 'post'], '/placements/edit/{id}', ['uses' => 'Inventory\PlacementsController@edit', 'as' => 'placementsEdit']);
+
+    // CounterpartyContracts
+    Route::match(['get', 'post'], '/counterparty-contracts', ['uses' => 'Inventory\CounterpartyContractsController@index', 'as' => 'counterpartyContractsIndex']);
+    Route::match(['get', 'post'], '/counterparty-contracts/create', ['uses' => 'Inventory\CounterpartyContractsController@create', 'as' => 'counterpartyContractsCreate']);
+    Route::match(['get', 'post'], '/counterparty-contracts/api-response', ['uses' => 'Inventory\CounterpartyContractsController@apiResponse']);
+    Route::match(['get', 'post'], '/counterparty-contracts/edit/{id}', ['uses' => 'Inventory\CounterpartyContractsController@edit', 'as' => 'counterpartyContractsEdit']);
 });

@@ -10,7 +10,7 @@
             <div class="list-group">
                 <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-bolt fa-fw"></i> Проверка доступности ТМЦ</a>
                 <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-bug fa-fw"></i> Менеджер по обслуживанию</a>
-                <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-check fa-fw"></i> Контроль договоров</a>
+                <a href="{{ route('counterpartyContractsIndex') }}" class="list-group-item list-group-item-action"><i class="fas fa-check fa-fw"></i> Контроль договоров</a>
                 <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-clone fa-fw"></i> ТМЦ на рабочем месте</a>
             </div>
         </div>
