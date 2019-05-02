@@ -136,9 +136,15 @@ Route::group(['prefix' => 'inventory'], function () {
     Route::match(['get', 'post'], '/manufactures/api-response', ['uses' => 'Inventory\ManufacturesController@apiResponse']);
     Route::match(['get', 'post'], '/manufactures/edit/{id}', ['uses' => 'Inventory\ManufacturesController@edit', 'as' => 'manufacturesEdit']);
 
-    //
+    // Types
     Route::match(['get', 'post'], '/types', ['uses' => 'Inventory\TypesController@index', 'as' => 'typesIndex']);
     Route::match(['get', 'post'], '/types/create', ['uses' => 'Inventory\TypesController@create', 'as' => 'typesCreate']);
     Route::match(['get', 'post'], '/types/api-response', ['uses' => 'Inventory\TypesController@apiResponse']);
     Route::match(['get', 'post'], '/types/edit/{id}', ['uses' => 'Inventory\TypesController@edit', 'as' => 'typesEdit']);
+
+    // Organizations
+    Route::match(['get', 'post'], '/organizations', ['uses' => 'Inventory\OrganizationsController@index', 'as' => 'organizationsIndex']);
+    Route::match(['get', 'post'], '/organizations/create', ['uses' => 'Inventory\OrganizationsController@create', 'as' => 'organizationsCreate']);
+    Route::match(['get', 'post'], '/organizations/api-response', ['uses' => 'Inventory\OrganizationsController@apiResponse']);
+    Route::match(['get', 'post'], '/organizations/edit/{id}', ['uses' => 'Inventory\OrganizationsController@edit', 'as' => 'organizationsEdit']);
 });

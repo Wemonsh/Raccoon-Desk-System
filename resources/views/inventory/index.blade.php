@@ -28,7 +28,7 @@
                 <a href="{{ route('typesIndex') }}" class="list-group-item list-group-item-action"><i class="fas fa-location-arrow fa-fw"></i>Типы средств</a>
                 <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-object-group fa-fw"></i> Группы ТМЦ</a>
                 <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-location-arrow fa-fw"></i> Помещения</a>
-                <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-sitemap fa-fw"></i> Организации</a>
+                <a href="{{ route('organizationsIndex') }}" class="list-group-item list-group-item-action"><i class="fas fa-sitemap fa-fw"></i> Организации</a>
             </div>
         </div>
         <div class="col-3">
