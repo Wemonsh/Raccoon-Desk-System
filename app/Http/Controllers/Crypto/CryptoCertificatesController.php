@@ -12,15 +12,29 @@ use App\Http\Controllers\Controller;
 class CryptoCertificatesController extends Controller
 {
     public function index () {
-        $certificates = CryptoCertificate::with(['user' => function($query){ $query->select('id', 'first_name', 'last_name', 'middle_name');}])
-            ->with(['organization' => function($query){ $query->select('id', 'name');}])
-            ->with(['assignment' => function($query){ $query->select('id', 'name');}])->orderBy('id', 'asc')->paginate(5);
 
-        $vars = [
-            'certificates' => $certificates
-        ];
+        return view('crypto.certificates.index');
+    }
 
-        return view('crypto.certificates.index', $vars);
+    public function apiResponse (Request $request) {
+        // получаем значения из request
+        $pageSize = $request['pageSize'];
+        $sortName = $request['sortName'];
+        $sortOrder = $request['sortOrder'];
+        $searchText = $request['searchText'];
+        // Сортировка
+        if (empty($sortName)) {
+            $sortName = 'id';
+        }
+        // Выбор данных и пагинация
+        $rows = CryptoCertificate::with('user')->with('organization')->with('assignment')->where('serial_number', 'LIKE', '%'.$searchText.'%')->orderBy($sortName, $sortOrder)->paginate($pageSize)->toArray();
+
+        return response()->json(
+            [
+                'rows' =>  $rows['data'],
+                'total' => $rows['total']
+            ]
+        );
     }
 
     public function create (Request $request) {
@@ -49,9 +63,10 @@ class CryptoCertificatesController extends Controller
             } else {
 
                 $vars = [
-                    'organizations' => CryptoOrganization::select('id', 'name')->get(),
-                    'users' => User::select('id', 'first_name', 'last_name', 'middle_name')->get(),
-                    'assignments' => CryptoAssignment::select('id', 'name')->get()
+                    'organizations' => CryptoOrganization::pluck('name', 'id'),
+                    // TODO Доработать вывод ФИО в селект!!!
+                    'users' => User::pluck('last_name', 'id'),
+                    'assignments' => CryptoAssignment::pluck('name', 'id')
                 ];
                 return view('crypto.certificates.create', $vars);
             }
@@ -93,9 +108,10 @@ class CryptoCertificatesController extends Controller
                     $vars = [
                         'certificate' => $certificate,
                         'id' => $id,
-                        'organizations' => CryptoOrganization::select('id', 'name')->get(),
-                        'users' => User::select('id', 'first_name', 'last_name', 'middle_name')->get(),
-                        'assignments' => CryptoAssignment::select('id', 'name')->get()
+                        'organizations' => CryptoOrganization::pluck('name', 'id'),
+                        // TODO Доработать вывод ФИО в селект!!!
+                        'users' => User::pluck('last_name', 'id'),
+                        'assignments' => CryptoAssignment::pluck('name', 'id')
                     ];
                     return view('crypto.certificates.edit', $vars);
                 } else {

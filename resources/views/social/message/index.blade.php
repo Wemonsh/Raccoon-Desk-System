@@ -1,5 +1,14 @@
 @extends('layouts.default')
 
+@section('breadcrumbs')
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mt-3">
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">Главная</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Сообщения</li>
+        </ol>
+    </nav>
+@endsection
+
 @section('content')
     <h1>{{ __('social/message/index.messages') }}</h1>
     <hr>
@@ -24,7 +33,7 @@
                             <div class="chat_list">
                         @endif
                             <div class="chat_people">
-                                <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                                <div class="chat_img"> <img src="/img/no_user_foto_5.png" alt="sunil"> </div>
                                 <div class="chat_ib">
                                     @if($room['messages'][0]['sender']['id'] != $id_user)
                                         <h5>{{ $room['messages'][0]['sender']['last_name'].' '.$room['messages'][0]['sender']['first_name'] }}
@@ -60,7 +69,7 @@
                                 </div>
                             @else
                                 <div class="incoming_msg mt-1">
-                                    <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                                    <div class="incoming_msg_img"> <img src="/img/no_user_foto_5.png" alt="sunil"> </div>
                                     <div class="received_msg">
                                         <div class="received_withd_msg">
                                             <p>{{ $message['message'] }}</p>

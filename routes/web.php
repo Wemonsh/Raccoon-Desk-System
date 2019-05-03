@@ -80,6 +80,7 @@ Route::group(['prefix' => 'crypto'], function () {
     Route::match(['get', 'post'], '/certificates/create', ['uses' => 'Crypto\CryptoCertificatesController@create', 'as' => 'cryptoCertificatesCreate']);
     Route::match(['get', 'post'], '/certificates/edit/{id}', ['uses' => 'Crypto\CryptoCertificatesController@edit', 'as' => 'cryptoCertificatesEdit']);
     Route::match(['get', 'post'], '/certificates/delete/{id}', ['uses' => 'Crypto\CryptoCertificatesController@delete', 'as' => 'cryptoCertificatesDelete']);
+    Route::match(['get', 'post'], '/certificates/api-response', ['uses' => 'Crypto\CryptoCertificatesController@apiResponse']);
 
     // Models
     Route::match(['get', 'post'], '/mcpi-models', ['uses' => 'Crypto\CryptoMcpiModelsController@index', 'as' => 'cryptoMcpiModelsIndex']);

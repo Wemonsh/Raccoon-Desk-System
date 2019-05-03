@@ -1,52 +1,85 @@
 @extends('layouts.default')
 
+@section('breadcrumbs')
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mt-3">
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">Главная</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('crypto') }}">Учет СКЗИ</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('cryptoCertificatesIndex') }}">Ключевая информация</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Добавление</li>
+        </ol>
+    </nav>
+@endsection
+
 @section('content')
     <h1>Добавление ключевой информации</h1>
+    <hr>
+    {!! Form::open(array('route' => 'cryptoCertificatesCreate', 'method' => 'POST', 'files' => 'true')) !!}
 
-    <form method="post" action="{{ route('cryptoCertificatesCreate') }}" enctype="multipart/form-data">
-        @csrf
-        <div class="form-group">
-            <label for="serial_number">Серийный номер</label>
-            <input name="serial_number" type="text" class="form-control" id="serial_number" placeholder="Введите серийный номер">
+    @if (Session::has('success'))
+        <div class="alert alert-success">
+            {{ Session::get('success') }}
         </div>
-        <div class="form-group">
-            <label for="id_organization">Организация</label>
-            <select name="id_organization" class="form-control" id="id_organization">
-                @foreach($organizations as $organization)
-                    <option value="{{ $organization->id }}">{{ $organization->name }}</option>
-                @endforeach
-            </select>
+    @elseif(Session::has('warning'))
+        <div class="alert alert-danger">
+            {{ Session::get('warning') }}
         </div>
-        <div class="form-group">
-            <label for="id_user">Пользователь</label>
-            <select name="id_user" class="form-control" id="id_user">
-                @foreach($users as $user)
-                    <option value="{{ $user->id }}">{{ $user->last_name.' '.$user->first_name.' '.$user->middle_name }}</option>
-                @endforeach
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="id_assignment">Назначение ключевой информации</label>
-            <select name="id_assignment" class="form-control" id="id_assignment">
-                @foreach($assignments as $assignment)
-                    <option value="{{ $assignment->id }}">{{ $assignment->name }}</option>
-                @endforeach
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="file">Файл</label>
-            <input name="file" type="file" class="form-control-file" id="file">
-        </div>
-        <div class="form-group">
-            <label for="date_from">Дата начала действия</label>
-            <input name="date_from" type="date" class="form-control" id="date_from">
-        </div>
-        <div class="form-group">
-            <label for="date_to">Дата окончания действия</label>
-            <input name="date_to" type="date" class="form-control" id="date_to">
-        </div>
+    @endif
 
-        <button type="submit" class="btn btn-primary">Создать</button>
-    </form>
+    <div class="form-group">
+        {!! Form::label('serial_number', 'Серийный номер:') !!}
+        <div>
+            {!! Form::text('serial_number', null, ['class' => 'form-control']) !!}
+            {!! $errors->first('serial_number', '<p class="alert alert-danger">:message</p>') !!}
+        </div>
+    </div>
 
+    <div class="form-group">
+        {!! Form::label('id_organization', 'Организация:') !!}
+        <div>
+            {!! Form::select('id_organization', $organizations, null, ['class' => 'form-control']) !!}
+            {!! $errors->first('id_organization', '<p class="alert alert-danger">:message</p>') !!}
+        </div>
+    </div>
+
+    <div class="form-group">
+        {!! Form::label('id_user', 'Пользователь:') !!}
+        <div>
+            {!! Form::select('id_user', $users, null, ['class' => 'form-control']) !!}
+            {!! $errors->first('id_user', '<p class="alert alert-danger">:message</p>') !!}
+        </div>
+    </div>
+
+    <div class="form-group">
+        {!! Form::label('id_assignment', 'Назначение ключевой информации:') !!}
+        <div>
+            {!! Form::select('id_assignment', $assignments, null, ['class' => 'form-control']) !!}
+            {!! $errors->first('id_assignment', '<p class="alert alert-danger">:message</p>') !!}
+        </div>
+    </div>
+
+    <div class="form-group">
+        {!! Form::label('file', 'Файл') !!}
+        {!! Form::file('file', ['id' => 'fil', 'class' => 'form-control-file']) !!}
+    </div>
+
+    <div class="form-group">
+        {!! Form::label('date_from', 'Дата начала действия договора:') !!}
+        <div>
+            {!! Form::input('date', 'date_from', null, ['class' => 'form-control']) !!}
+            {!! $errors->first('date_from', '<p class="alert alert-danger">:message</p>') !!}
+        </div>
+    </div>
+
+    <div class="form-group">
+        {!! Form::label('date_to', 'Дата окончания действия договора:') !!}
+        <div>
+            {!! Form::input('date', 'date_to', null, ['class' => 'form-control']) !!}
+            {!! $errors->first('date_to', '<p class="alert alert-danger">:message</p>') !!}
+        </div>
+    </div>
+
+    {!! Form::submit('Добавить', ['class' => 'btn btn-primary']) !!}
+
+    {!! Form::close() !!}
 @endsection
