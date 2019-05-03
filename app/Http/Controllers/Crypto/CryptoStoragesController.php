@@ -9,13 +9,29 @@ use App\Http\Controllers\Controller;
 class CryptoStoragesController extends Controller
 {
     public function index () {
-        $storages = CryptoStorage::orderBy('id', 'asc')->paginate(5);
 
-        $vars = [
-            'storages' => $storages
-        ];
+        return view('crypto.storages.index');
+    }
 
-        return view('crypto.storages.index', $vars);
+    public function apiResponse (Request $request) {
+        // получаем значения из request
+        $pageSize = $request['pageSize'];
+        $sortName = $request['sortName'];
+        $sortOrder = $request['sortOrder'];
+        $searchText = $request['searchText'];
+        // Сортировка
+        if (empty($sortName)) {
+            $sortName = 'id';
+        }
+        // Выбор данных и пагинация
+        $rows = CryptoStorage::where('serial_number', 'LIKE', '%'.$searchText.'%')->orderBy($sortName, $sortOrder)->paginate($pageSize)->toArray();
+
+        return response()->json(
+            [
+                'rows' =>  $rows['data'],
+                'total' => $rows['total']
+            ]
+        );
     }
 
     public function create (Request $request) {

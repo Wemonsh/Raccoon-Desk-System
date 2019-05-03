@@ -1,20 +1,48 @@
 @extends('layouts.default')
 
+@section('breadcrumbs')
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mt-3">
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">Главная</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('crypto') }}">Учет СКЗИ</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('cryptoStoragesIndex') }}">Носители ключевой информации</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Редактирование носителя</li>
+        </ol>
+    </nav>
+@endsection
+
 @section('content')
     <h1>Редактирование носителя ключевой информации</h1>
-    <form method="post" action="{{ route('cryptoStoragesEdit', $id) }}" enctype="multipart/form-data">
-        @csrf
-        <div class="form-group">
-            <label for="serial_number">Серийный номер</label>
-            <input name="serial_number" type="text" class="form-control" id="serial_number" value="{{ $storage->serial_number }}" placeholder="Введите серийный номер">
-        </div>
-        <hr>
-        <div class="form-group">
-            <label for="comment">Сайт</label>
-            <input name="comment" type="text" class="form-control" id="comment" value="{{ $storage->comment }}" placeholder="Введите комментарий">
-        </div>
+    <hr>
+    {!! Form::open(array('route' => array('cryptoStoragesEdit', $id), 'method' => 'POST', 'files' => 'true')) !!}
 
-        <button type="submit" class="btn btn-primary mb-3">Изменить</button>
-    </form>
+    @if (Session::has('success'))
+        <div class="alert alert-success">
+            {{ Session::get('success') }}
+        </div>
+    @elseif(Session::has('warning'))
+        <div class="alert alert-danger">
+            {{ Session::get('warning') }}
+        </div>
+    @endif
 
+    <div class="form-group">
+        {!! Form::label('serial_number', 'Серийный номер:') !!}
+        <div>
+            {!! Form::text('serial_number', $storage->serial_number, ['class' => 'form-control']) !!}
+            {!! $errors->first('serial_number', '<p class="alert alert-danger">:message</p>') !!}
+        </div>
+    </div>
+
+    <div class="form-group">
+    {!! Form::label('comment', 'Комментарий:') !!}
+    <div>
+        {!! Form::text('comment', $storage->comment, ['class' => 'form-control']) !!}
+        {!! $errors->first('comment', '<p class="alert alert-danger">:message</p>') !!}
+    </div>
+    </div>
+
+    {!! Form::submit('Изменить', ['class' => 'btn btn-primary']) !!}
+
+    {!! Form::close() !!}
 @endsection

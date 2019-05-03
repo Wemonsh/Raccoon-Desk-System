@@ -68,12 +68,14 @@ Route::group(['prefix' => 'crypto'], function () {
     Route::match(['get', 'post'], '/assignments/create', ['uses' => 'Crypto\CryptoAssignmentsController@create', 'as' => 'cryptoAssignmentsCreate']);
     Route::match(['get', 'post'], '/assignments/edit/{id}', ['uses' => 'Crypto\CryptoAssignmentsController@edit', 'as' => 'cryptoAssignmentsEdit']);
     Route::match(['get', 'post'], '/assignments/delete/{id}', ['uses' => 'Crypto\CryptoAssignmentsController@delete', 'as' => 'cryptoAssignmentsDelete']);
+    Route::match(['get', 'post'], '/assignments/api-response', ['uses' => 'Crypto\CryptoAssignmentsController@apiResponse']);
 
     // Storage
     Route::match(['get', 'post'], '/storages', ['uses' => 'Crypto\CryptoStoragesController@index', 'as' => 'cryptoStoragesIndex']);
     Route::match(['get', 'post'], '/storages/create', ['uses' => 'Crypto\CryptoStoragesController@create', 'as' => 'cryptoStoragesCreate']);
     Route::match(['get', 'post'], '/storages/edit/{id}', ['uses' => 'Crypto\CryptoStoragesController@edit', 'as' => 'cryptoStoragesEdit']);
     Route::match(['get', 'post'], '/storages/delete/{id}', ['uses' => 'Crypto\CryptoStoragesController@delete', 'as' => 'cryptoStoragesDelete']);
+    Route::match(['get', 'post'], '/storages/api-response', ['uses' => 'Crypto\CryptoStoragesController@apiResponse']);
 
     // Certificates
     Route::match(['get', 'post'], '/certificates', ['uses' => 'Crypto\CryptoCertificatesController@index', 'as' => 'cryptoCertificatesIndex']);

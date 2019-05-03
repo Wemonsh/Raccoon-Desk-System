@@ -1,20 +1,48 @@
 @extends('layouts.default')
 
+@section('breadcrumbs')
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mt-3">
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">Главная</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('crypto') }}">Учет СКЗИ</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('cryptoStoragesIndex') }}">Носители ключевой информации</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Добавление носителя</li>
+        </ol>
+    </nav>
+@endsection
+
 @section('content')
     <h1>Добавление носителя ключевой информации</h1>
+    <hr>
+    {!! Form::open(array('route' => 'cryptoStoragesCreate', 'method' => 'POST', 'files' => 'true')) !!}
 
-    <form method="post" action="{{ route('cryptoStoragesCreate') }}" enctype="multipart/form-data">
-        @csrf
-        <div class="form-group">
-            <label for="serial_number">Серийный номер</label>
-            <input name="serial_number" type="text" class="form-control" id="serial_number" placeholder="Введите серийный номер">
+    @if (Session::has('success'))
+        <div class="alert alert-success">
+            {{ Session::get('success') }}
         </div>
-        <div class="form-group">
-            <label for="comment">Комментарий</label>
-            <input name="comment" type="text" class="form-control" id="comment" placeholder="Введите комментарий">
+    @elseif(Session::has('warning'))
+        <div class="alert alert-danger">
+            {{ Session::get('warning') }}
         </div>
+    @endif
 
-        <button type="submit" class="btn btn-primary">Создать</button>
-    </form>
+    <div class="form-group">
+        {!! Form::label('serial_number', 'Серийный номер:') !!}
+        <div>
+            {!! Form::text('serial_number', null, ['class' => 'form-control']) !!}
+            {!! $errors->first('serial_number', '<p class="alert alert-danger">:message</p>') !!}
+        </div>
+    </div>
 
+    <div class="form-group">
+        {!! Form::label('comment', 'Комментарий:') !!}
+        <div>
+            {!! Form::text('comment', null, ['class' => 'form-control']) !!}
+            {!! $errors->first('comment', '<p class="alert alert-danger">:message</p>') !!}
+        </div>
+    </div>
+
+    {!! Form::submit('Добавить', ['class' => 'btn btn-primary']) !!}
+
+    {!! Form::close() !!}
 @endsection

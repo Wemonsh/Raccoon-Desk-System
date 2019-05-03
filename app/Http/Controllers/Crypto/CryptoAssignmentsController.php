@@ -9,13 +9,29 @@ use App\Http\Controllers\Controller;
 class CryptoAssignmentsController extends Controller
 {
     public function index () {
-        $assignments = CryptoAssignment::orderBy('id', 'asc')->paginate(5);
 
-        $vars = [
-            'assignments' => $assignments
-        ];
+        return view('crypto.assignments.index');
+    }
 
-        return view('crypto.assignments.index', $vars);
+    public function apiResponse (Request $request) {
+        // получаем значения из request
+        $pageSize = $request['pageSize'];
+        $sortName = $request['sortName'];
+        $sortOrder = $request['sortOrder'];
+        $searchText = $request['searchText'];
+        // Сортировка
+        if (empty($sortName)) {
+            $sortName = 'id';
+        }
+        // Выбор данных и пагинация
+        $rows = CryptoAssignment::where('name', 'LIKE', '%'.$searchText.'%')->orderBy($sortName, $sortOrder)->paginate($pageSize)->toArray();
+
+        return response()->json(
+            [
+                'rows' =>  $rows['data'],
+                'total' => $rows['total']
+            ]
+        );
     }
 
     public function create (Request $request) {
@@ -27,7 +43,7 @@ class CryptoAssignmentsController extends Controller
                     'comment' => $request->input('comment'),
                 ]);
 
-                return redirect('crypto');
+                return redirect('/crypto/assignments/');
             } else {
                 return view('crypto.assignments.create');
             }
@@ -45,7 +61,7 @@ class CryptoAssignmentsController extends Controller
                 $assignment->comment = $request->input('comment');
                 $assignment->save();
 
-                return redirect('crypto');
+                return redirect('/crypto/assignments/');
             } else {
                 $assignment = CryptoAssignment::where('id','=', $id)->first();
 
