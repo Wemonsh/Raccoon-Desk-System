@@ -1,5 +1,16 @@
 @extends('layouts.default')
 
+@section('breadcrumbs')
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mt-3">
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ __('knowledge/show.main') }}</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('knowledge') }}">{{ __('knowledge/show.knowledge_base') }}</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('knowledgeCategory', $article->knowledgeCategory->id) }}">{{ $article->knowledgeCategory->title }}</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Редактирование {{ $article->title }}</li>
+        </ol>
+    </nav>
+@endsection
+
 @section('content')
     <h1>{{ __('knowledge/edit.edit_article') }}</h1>
     <hr>

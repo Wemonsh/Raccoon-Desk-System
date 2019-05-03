@@ -1,7 +1,16 @@
 @extends('layouts.default')
 
+@section('breadcrumbs')
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mt-3">
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">Главная</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Поиск по заявкам</li>
+        </ol>
+    </nav>
+@endsection
+
 @section('content')
-    <div class="jumbotron jumbotron-fluid">
+    <div class="jumbotron jumbotron-fluid rounded">
         <div class="container-fluid">
             <h1 class="display-4">Поиск по заявкам</h1>
             <form action="{{ route('requestsSearch') }}" method="post">

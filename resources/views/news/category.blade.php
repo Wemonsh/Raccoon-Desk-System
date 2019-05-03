@@ -1,5 +1,15 @@
 @extends('layouts.default')
 
+@section('breadcrumbs')
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mt-3">
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ __('news/post.main') }}</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('news') }}">{{ __('news/post.news') }}</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Категория {{ $category->title }}</li>
+        </ol>
+    </nav>
+@endsection
+
 @section('content')
     <h1>{{ __('news/category.category:') }} {{ $category->title }}</h1>
     <hr>

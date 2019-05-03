@@ -1,5 +1,14 @@
 @extends('layouts.default')
 
+@section('breadcrumbs')
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mt-3">
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ __('news/post.main') }}</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Календарь</li>
+        </ol>
+    </nav>
+@endsection
+
 @section('content')
     <h1>{{ __('social/event/index.calendar') }}</h1>
     <hr>
@@ -62,10 +71,39 @@
 
                 </div>
             </div>
+
+            <div class="card mt-3">
+                <div class="card-header">Сегодняшние события: {{ \Carbon\Carbon::now()->format('Y-m-d') }}</div>
+                <div class="card-body">
+                    @if(count($today_events) != 0)
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr>
+                                <th>Название</th>
+                                <th>Начало</th>
+                                <th>Конец</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @forelse($today_events as $today_event)
+                                <tr>
+                                    <td>{{ $today_event['event_name'] }}</td>
+                                    <td>{{ $today_event['start_date'] }}</td>
+                                    <td>{{ $today_event['end_date'] }}</td>
+                                </tr>
+                            @empty
+                                <p>События отсутствуют</p>
+                            @endforelse
+                            </tbody>
+                        </table>
+                    </div>
+                        @else
+                            <p>События отсутствуют</p>
+                        @endif
+                </div>
+            </div>
         </div>
-
     </div>
-
-
 
 @endsection

@@ -1,5 +1,15 @@
 @extends('layouts.default')
 
+@section('breadcrumbs')
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mt-3">
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">Главная</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('requestsCreated') }}">Мои заявки</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Просмотр заявки № {{ $request->id }}</li>
+        </ol>
+    </nav>
+@endsection
+
 @section('content')
     <h1>Заявка № {{ $request->id }} <a href="#" class="btn btn-secondary btn-sm btn-print" onclick="window.print();" title="Печать"><i class="fas fa-print"></i></a></h1>
     <hr>

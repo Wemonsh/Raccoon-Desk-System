@@ -2,7 +2,7 @@
 
 @section('breadcrumbs')
     <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
+        <ol class="breadcrumb mt-3">
             <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ __('news/post.main') }}</a></li>
             <li class="breadcrumb-item"><a href="{{ route('news') }}">{{ __('news/post.news') }}</a></li>
             <li class="breadcrumb-item"><a href="{{ route('newsCategory', $news->newsCategory->id) }}">{{ $news->newsCategory->title }}</a></li>

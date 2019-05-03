@@ -1,5 +1,15 @@
 @extends('layouts.default')
 
+@section('breadcrumbs')
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mt-3">
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ __('news/post.main') }}</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('news') }}">{{ __('news/post.news') }}</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Поиск</li>
+        </ol>
+    </nav>
+@endsection
+
 @section('content')
     <div class="jumbotron jumbotron-fluid">
         <div class="container-fluid">

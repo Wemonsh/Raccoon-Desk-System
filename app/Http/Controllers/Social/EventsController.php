@@ -4,6 +4,7 @@ namespace App\Http\Controllers\social;
 
 use App\Http\Controllers\Controller;
 use App\Requests;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use MaddHatter\LaravelFullcalendar\Facades\Calendar;
@@ -25,7 +26,13 @@ class EventsController extends Controller
         }
         $calendar_details = Calendar::addEvents($events_list);
 
-        return view('social.event.index', compact('calendar_details'));
+        $today_events = Events::where([['start_date', '<=', Carbon::now()->format('Y/m/d')],['end_date', '>=', Carbon::now()->format('Y/m/d')]])->orderBy('start_date', 'asc')->get();
+
+        $vars = [
+            'today_events' => $today_events,
+        ];
+
+        return view('social.event.index', compact('calendar_details'), $vars);
     }
 
     public function addEvent(Request $request) {
