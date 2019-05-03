@@ -1,51 +1,49 @@
 @extends('layouts.default')
 
 @section('content')
-<h1>Учет средств криптографической защиты информации</h1>
+<h1>{{ __('crypto/index.cryptographic_protection') }}</h1>
 <hr>
-<p>Добро пожаловать на страницу сервиса учета средств криптографической защиты информации, тут вы можете осуществлять
-ведение и учет СКЗИ а так же создавать типовые отчеты согласно ФЗ №66 "О разработке, производстве,
-    реализации и эксплуатациишифровальных (криптографических) средств  защиты информации" от 9 февраля 2005 г.</p>
+<p>{{ __('crypto/index.welcome_crypto') }}</p>
 <hr>
 <div class="row">
     <div class="col-3">
-        <h2>Криптоключи</h2>
+        <h2>{{ __('crypto/index.crypto_keys') }}</h2>
         <div class="list-group">
-            <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-file-upload fa-fw"></i> Акт создания ключевых документов</a>
-            <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-file-download fa-fw"></i> Акт передачи ключевых документов</a>
-            <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-file-import fa-fw"></i> Акт ввода в эксплуатацию ключевой информации</a>
-            <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-file-export fa-fw"></i> Акт вывода из эксплуатации ключевой информации</a>
-            <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-trash-alt fa-fw"></i> Акт уничтожения ключевых документов</a>
+            <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-file-upload fa-fw"></i> {{ __('crypto/index.creating_key_docs') }}</a>
+            <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-file-download fa-fw"></i> {{ __('crypto/index.sending_key_docs') }}</a>
+            <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-file-import fa-fw"></i>  {{ __('crypto/index.commissioning_key_info') }}</a>
+            <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-file-export fa-fw"></i> {{ __('crypto/index.decommissioning_key_info') }}</a>
+            <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-trash-alt fa-fw"></i> {{ __('crypto/index.destruction_key_docs') }}</a>
         </div>
     </div>
     <div class="col-3">
-        <h2>СКЗИ</h2>
+        <h2>{{ __('crypto/index.mcpi') }}</h2>
         <div class="list-group">
-            <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-file-upload fa-fw"></i> Акт поступления СКЗИ</a>
-            <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-file-excel fa-fw"></i> Акт списания СКЗИ</a>
-            <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-file-download fa-fw"></i> Акт передачи СКЗИ</a>
-            <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-file-import fa-fw"></i> Акт ввода СКЗИ в эксплуатацию</a>
-            <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-file-export fa-fw"></i> Акт вывода СКЗИ в эксплуатацию</a>
+            <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-file-upload fa-fw"></i> {{ __('crypto/index.receipting_mcpi') }}</a>
+            <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-file-excel fa-fw"></i> {{ __('crypto/index.writing_off_mcpi') }}</a>
+            <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-file-download fa-fw"></i> {{ __('crypto/index.sending_mcpi') }}</a>
+            <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-file-import fa-fw"></i> {{ __('crypto/index.commissioning_mcpi') }}</a>
+            <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-file-export fa-fw"></i> {{ __('crypto/index.decommissioning_mcpi') }}</a>
         </div>
     </div>
     <div class="col-3">
-        <h2>Справочники</h2>
+        <h2>{{ __('crypto/index.directories') }}</h2>
         <div class="list-group">
-            <a href="{{ route('cryptoCertificatesIndex') }}" class="list-group-item list-group-item-action"><i class="fas fa-info-circle fa-fw"></i> Ключевая информация</a>
-            <a href="{{ route('cryptoStoragesIndex') }}" class="list-group-item list-group-item-action"><i class="fas fa-sd-card fa-fw"></i> Носители ключевой информации</a>
-            <a href="{{ route('cryptoAssignmentsIndex') }}" class="list-group-item list-group-item-action"><i class="fas fa-copy fa-fw"></i> Назначение ключевой информации</a>
-            <a href="{{ route('cryptoInfoSystemIndex') }}" class="list-group-item list-group-item-action"><i class="fas fa-sitemap fa-fw"></i> Информационные системы</a>
-            <a href="{{ route('cryptoOrganizationsIndex') }}" class="list-group-item list-group-item-action"><i class="fas fa-building fa-fw"></i> Организации</a>
-            <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-object-group fa-fw"></i> Объекты информационной инфраструктуры</a>
-            <a href="{{ route('cryptoMcpiInstanceIndex') }}" class="list-group-item list-group-item-action"><i class="fas fa-window-maximize fa-fw"></i> Экземпляры СКЗИ</a>
-            <a href="{{ route('cryptoMcpiModelsIndex') }}" class="list-group-item list-group-item-action"><i class="fas fa-window-restore fa-fw"></i> Модели СКЗИ</a>
+            <a href="{{ route('cryptoCertificatesIndex') }}" class="list-group-item list-group-item-action"><i class="fas fa-info-circle fa-fw"></i> {{ __('crypto/index.key_info') }}</a>
+            <a href="{{ route('cryptoStoragesIndex') }}" class="list-group-item list-group-item-action"><i class="fas fa-sd-card fa-fw"></i> {{ __('crypto/index.key_info_carriers') }}</a>
+            <a href="{{ route('cryptoAssignmentsIndex') }}" class="list-group-item list-group-item-action"><i class="fas fa-copy fa-fw"></i> {{ __('crypto/index.key_info_assignment') }}</a>
+            <a href="{{ route('cryptoInfoSystemIndex') }}" class="list-group-item list-group-item-action"><i class="fas fa-sitemap fa-fw"></i> {{ __('crypto/index.information_systems') }}</a>
+            <a href="{{ route('cryptoOrganizationsIndex') }}" class="list-group-item list-group-item-action"><i class="fas fa-building fa-fw"></i> {{ __('crypto/index.organizations') }}</a>
+            <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-object-group fa-fw"></i> {{ __('crypto/index.objects_info_infrastructure') }}</a>
+            <a href="{{ route('cryptoMcpiInstanceIndex') }}" class="list-group-item list-group-item-action"><i class="fas fa-window-maximize fa-fw"></i> {{ __('crypto/index.mcpi_instances') }}</a>
+            <a href="{{ route('cryptoMcpiModelsIndex') }}" class="list-group-item list-group-item-action"><i class="fas fa-window-restore fa-fw"></i> {{ __('crypto/index.mcpi_models') }}</a>
         </div>
     </div>
     <div class="col-3">
-        <h2>Отчеты</h2>
+        <h2>{{ __('crypto/index.reports') }}</h2>
         <div class="list-group">
-            <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-poll fa-fw"></i> Тест 1</a>
-            <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-poll fa-fw"></i> Тест 2</a>
+            <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-poll fa-fw"></i> {{ __('crypto/index.report_1') }}</a>
+            <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-poll fa-fw"></i> {{ __('crypto/index.report_2') }}</a>
         </div>
     </div>
 </div>

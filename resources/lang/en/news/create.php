@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'add_new' => 'Add news',
+    'add_news' => 'Add news',
     'title' => 'Title',
     'enter_title' => 'Enter news title',
     'category' => 'Category',
