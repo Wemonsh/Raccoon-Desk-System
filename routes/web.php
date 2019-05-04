@@ -132,7 +132,6 @@ Route::group(['prefix' => 'inventory'], function () {
     Route::match(['get', 'post'], '/counterparty/api-response', ['uses' => 'Inventory\CounterpartyController@apiResponse']);
     Route::match(['get', 'post'], '/counterparty/edit/{id}', ['uses' => 'Inventory\CounterpartyController@edit', 'as' => 'counterpartyEdit']);
 
-
     // Manufactures
     Route::match(['get', 'post'], '/manufactures', ['uses' => 'Inventory\ManufacturesController@index', 'as' => 'manufacturesIndex']);
     Route::match(['get', 'post'], '/manufactures/create', ['uses' => 'Inventory\ManufacturesController@create', 'as' => 'manufacturesCreate']);
@@ -162,4 +161,11 @@ Route::group(['prefix' => 'inventory'], function () {
     Route::match(['get', 'post'], '/counterparty-contracts/create', ['uses' => 'Inventory\CounterpartyContractsController@create', 'as' => 'counterpartyContractsCreate']);
     Route::match(['get', 'post'], '/counterparty-contracts/api-response', ['uses' => 'Inventory\CounterpartyContractsController@apiResponse']);
     Route::match(['get', 'post'], '/counterparty-contracts/edit/{id}', ['uses' => 'Inventory\CounterpartyContractsController@edit', 'as' => 'counterpartyContractsEdit']);
+
+
+    Route::match(['get', 'post'], '/devices/create', ['uses' => 'Inventory\DevicesController@create', 'as' => 'devicesCreate']);
+    Route::match(['get', 'post'], '/devices/show', ['uses' => 'Inventory\DevicesController@index', 'as' => 'devicesIndex']);
+    Route::match(['get', 'post'], '/devices/api/getTypes', ['uses' => 'Inventory\DevicesController@getTypes']);
+
+
 });
