@@ -1,43 +1,63 @@
 @extends('layouts.default')
 
+@section('breadcrumbs')
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mt-3">
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">Главная</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('crypto') }}">Учет СКЗИ</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Информационные системы</li>
+        </ol>
+    </nav>
+@endsection
+
 @section('content')
     <h1>Информационные системы</h1>
     <hr>
-    <a href="{{ route('cryptoInfoSystemCreate') }}" class="btn btn-primary mb-3">Добавить</a>
-    @if($info_systems->count() != 0)
-    <div class="table-responsive">
-        <table class="table table-bordered">
-            <thead>
-            <tr>
-                <th>#</th>
-                <th>Название</th>
-                <th>Комментарий</th>
-                <th>Действие</th>
-            </tr>
-            </thead>
-            <tbody>
-            @foreach($info_systems as $info_system)
-                <tr>
-                    <td>{{ $info_system->id }}</td>
-                    <td>{{ $info_system->name }}</td>
-                    <td>{{ $info_system->comment }}</td>
-                    <td width="50px">
-                        <div class="btn-group" role="group" aria-label="Basic example">
-                            <a href="/crypto/info-systems/edit/{{ $info_system->id }}" class="btn btn-secondary" title="Редактировать"><i class="far fa-edit"></i></a>
-                            <a href="#" class="btn btn-secondary" title="Удалить"><i class="far fa-trash-alt"></i></a>
-                        </div>
-                    </td>
-                </tr>
-            @endforeach
-            </tbody>
-        </table>
+    <div class="toolbar">
+        <a class="btn btn-secondary text-light" href="{{ route('cryptoInfoSystemCreate') }}">Добавить</a>
     </div>
+    <table
+            data-ajax="ajaxRequest"
+            data-side-pagination="server"
+            data-toggle="table"
+            data-pagination="true"
+            data-query-params="dataQueryParams"
+            data-page-number="1"
+            data-search="true"
+            data-query-params-type=""
+            data-show-print="true"
+            data-toolbar=".toolbar"
+            data-show-columns="true"
+            data-minimum-count-columns="2"
+            data-show-refresh="true">
+        <thead>
+        <tr>
+            <th data-sortable="true" data-field="id" class="text-center">Id</th>
+            <th data-sortable="true" data-field="name">Название</th>
+            <th data-field="comment">Комментарий</th>
+            <th data-formatter="actionFormatter" class="text-center" data-print-ignore="true" data-width="50px">Действие</th>
+        </tr>
+        </thead>
+    </table>
 
-    {{ $info_systems->render() }}
+    <script>
+        function dataQueryParams(params) {
+            params.page = params.pageNumber;
+            return params;
+        }
 
-        @else
-        <div class="alert alert-info" role="alert">
-            <p>Информационные системы отсутсвуют</p>
-        </div>
-    @endif
+        function ajaxRequest(params) {
+            var url = '/crypto/info-systems/api-response';
+            $.get(url + '?' + $.param(params.data)).then(function (res) {
+                params.success(res)
+            });
+        }
+
+        function actionFormatter(value ,rows) {
+            return '<div class="btn-group" role="group" aria-label="Basic example">' +
+                '<a class="btn btn-secondary btn-sm text-light" href="/crypto/info-systems/edit/'+ rows['id'] +'" title="Редактировать"><i class="fas fa-pen"></i></a>' +
+                '<a class="btn btn-secondary btn-sm text-light" href="" title="Удалить"><i class="fas fa-trash-alt"></i></a>' +
+                '</div>';
+        }
+    </script>
 @endsection

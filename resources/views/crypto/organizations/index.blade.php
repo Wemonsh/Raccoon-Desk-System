@@ -1,49 +1,80 @@
 @extends('layouts.default')
 
+@section('breadcrumbs')
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mt-3">
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">Главная</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('crypto') }}">Учет СКЗИ</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Организации</li>
+        </ol>
+    </nav>
+@endsection
+
 @section('content')
     <h1>Организации</h1>
     <hr>
-    <a href="{{ route('cryptoOrganizationsCreate') }}" class="btn btn-primary mb-3">Добавить</a>
-    <div class="table-responsive">
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Название</th>
-                    <th>Адрес</th>
-                    <th>Телефон</th>
-                    <th>E-mail</th>
-                    <th>Сайт</th>
-                    <th>Действие</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($organizations as $organization)
-                    <tr>
-                        <td><a href="/crypto/organizations/show/{{ $organization->id }}">{{ $organization->id }}</a></td>
-                        <td>{{ $organization->name }}</td>
-                        <td>
-                            {{ json_decode($organization->address)[0]->street_house_office.', '.
-                               json_decode($organization->address)[0]->sity.', '.
-                               json_decode($organization->address)[0]->district.', '.
-                               json_decode($organization->address)[0]->region.', '.
-                               json_decode($organization->address)[0]->country.', '.
-                               json_decode($organization->address)[0]->postcode }}
-                        </td>
-                        <td>{{ $organization->phone }}</td>
-                        <td>{{ $organization->email }}</td>
-                        <td><a href="{{ URL::to($organization->site) }}">{{ $organization->site }}</a></td>
-                        <td width="50px">
-                            <div class="btn-group" role="group" aria-label="Basic example">
-                                <a href="/crypto/organizations/edit/{{ $organization->id }}" class="btn btn-secondary" title="Редактировать"><i class="far fa-edit"></i></a>
-                                <a href="#" class="btn btn-secondary" title="Удалить"><i class="far fa-trash-alt"></i></a>
-                            </div>
-                        </td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
+    <div class="toolbar">
+        <a class="btn btn-secondary text-light" href="{{ route('cryptoOrganizationsCreate') }}">Добавить</a>
     </div>
+    <table
+            data-ajax="ajaxRequest"
+            data-side-pagination="server"
+            data-toggle="table"
+            data-pagination="true"
+            data-query-params="dataQueryParams"
+            data-page-number="1"
+            data-search="true"
+            data-query-params-type=""
+            data-show-print="true"
+            data-toolbar=".toolbar"
+            data-show-columns="true"
+            data-minimum-count-columns="2"
+            data-show-refresh="true">
+        <thead>
+        <tr>
+            <th data-sortable="true" data-field="id" class="text-center">Id</th>
+            <th data-sortable="true" data-field="name">Название</th>
+            <th data-field="address" data-formatter="addressFormatter">Адрес</th>
+            <th data-field="phone">Телефон</th>
+            <th data-field="email">E-mail</th>
+            <th data-field="site" data-formatter="siteFormatter">Сайт</th>
+            <th data-formatter="actionFormatter" class="text-center" data-print-ignore="true">Действие</th>
+        </tr>
+        </thead>
+    </table>
 
-    {{ $organizations->render() }}
+    <script>
+        function dataQueryParams(params) {
+            params.page = params.pageNumber;
+            return params;
+        }
+
+        function ajaxRequest(params) {
+            var url = '/crypto/organizations/api-response';
+            $.get(url + '?' + $.param(params.data)).then(function (res) {
+                params.success(res)
+            });
+        }
+
+        function addressFormatter(value ,rows) {
+            if (value != null) {
+                var arr = JSON.parse(value);
+                return arr[0].street_house_office + ', ' + arr[0].sity + ', ' + arr[0].region + ', ' + arr[0].district + ', ' + arr[0].country + ', ' + arr[0].postcode;
+            }
+        }
+
+        function siteFormatter(value ,rows) {
+            if (rows != null) {
+                return '<a href="//'+rows.site+'">'+rows.site+'</a>';
+            }
+        }
+
+        function actionFormatter(value ,rows) {
+            return '<div class="btn-group" role="group" aria-label="Basic example">' +
+                '<a class="btn btn-secondary btn-sm text-light" href="/crypto/organizations/show/'+ rows['id'] +'" title="Подробнее"><i class="fas fa-info-circle"></i></a>' +
+                '<a class="btn btn-secondary btn-sm text-light" href="/crypto/organizations/edit/'+ rows['id'] +'" title="Редактировать"><i class="fas fa-pen"></i></a>' +
+                '<a class="btn btn-secondary btn-sm text-light" href="" title="Удалить"><i class="fas fa-trash-alt"></i></a>' +
+                '</div>';
+        }
+    </script>
 @endsection

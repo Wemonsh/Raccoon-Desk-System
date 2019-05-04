@@ -1,84 +1,80 @@
 @extends('layouts.default')
 
-@section('sub-navigation')
-    <div class="navbar-light bg-light">
-        <ul class="nav">
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Криптоключи
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Акт создания ключевых документов</a>
-                    <a class="dropdown-item" href="#">Акт передачи ключевых документов</a>
-                    <a class="dropdown-item" href="#">Акт ввода в эксплуатацию ключевой информации</a>
-                    <a class="dropdown-item" href="#">Акт вывода из эксплуатации ключевой информации</a>
-                    <a class="dropdown-item" href="#">Акт уничтожения ключевых документов</a>
-                </div>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    СКЗИ
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Акт поступления СКЗИ</a>
-                    <a class="dropdown-item" href="#">Акт списания СКЗИ</a>
-                    <a class="dropdown-item" href="#">Акт передачи СКЗИ</a>
-                    <a class="dropdown-item" href="#">Акт ввода СКЗИ в эксплуатацию</a>
-                    <a class="dropdown-item" href="#">Акт вывода СКЗИ в эксплуатацию</a>
-                </div>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Справочники
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{{ route('cryptoCertificatesIndex') }}">Ключевая информация</a>
-                    <a class="dropdown-item" href="{{ route('cryptoStoragesIndex') }}">Носители ключевой информации</a>
-                    <a class="dropdown-item" href="{{ route('cryptoAssignmentsIndex') }}">Назначение ключевой информации</a>
-                    <a class="dropdown-item" href="{{ route('cryptoInfoSystemIndex') }}">Информационные системы</a>
-                    <a class="dropdown-item" href="{{ route('cryptoOrganizationsIndex') }}">Организации</a>
-                    <a class="dropdown-item" href="#">Объекты информационной инфраструктуры</a>
-                    <a class="dropdown-item" href="#">Экземпляры СКЗИ</a>
-                    <a class="dropdown-item" href="{{ route('cryptoMcpiModelsIndex') }}">Модели СКЗИ</a>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Отчеты</a>
-            </li>
-        </ul>
-    </div>
+@section('breadcrumbs')
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mt-3">
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">Главная</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('crypto') }}">Учет СКЗИ</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('cryptoMcpiModelsIndex') }}">Модели СКЗИ</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Добавление модели</li>
+        </ol>
+    </nav>
 @endsection
 
 @section('content')
     <h1>Добавление модели СКЗИ</h1>
+    <hr>
+    {!! Form::open(array('route' => 'cryptoMcpiModelsCreate', 'method' => 'POST', 'files' => 'true')) !!}
 
-    <form method="post" action="{{ route('cryptoMcpiModelsCreate') }}" enctype="multipart/form-data">
-        @csrf
-        <div class="form-group">
-            <label for="name">Название</label>
-            <input name="name" type="text" class="form-control" id="name" placeholder="Введите название">
+    @if (Session::has('success'))
+        <div class="alert alert-success">
+            {{ Session::get('success') }}
         </div>
-        <div class="form-group">
-            <label for="reg_number">Регистрационный номер</label>
-            <input name="reg_number" type="text" class="form-control" id="reg_number" placeholder="Введите регистрационный номер">
+    @elseif(Session::has('warning'))
+        <div class="alert alert-danger">
+            {{ Session::get('warning') }}
         </div>
-        <div class="form-group">
-            <label for="information">Информация</label>
-            <input name="information" type="text" class="form-control" id="information" placeholder="Введите информацию">
-        </div>
-        <div class="form-group">
-            <label for="comment">Комментарий</label>
-            <input name="comment" type="text" class="form-control" id="comment" placeholder="Введите комментарий">
-        </div>
-        <div class="form-group">
-            <label for="date_from">Дата начала действия</label>
-            <input name="date_from" type="date" class="form-control" id="date_from">
-        </div>
-        <div class="form-group">
-            <label for="date_to">Дата окончания действия</label>
-            <input name="date_to" type="date" class="form-control" id="date_to">
-        </div>
+    @endif
 
-        <button type="submit" class="btn btn-primary">Создать</button>
-    </form>
+    <div class="form-group">
+        {!! Form::label('name', 'Название:') !!}
+        <div>
+            {!! Form::text('name', null, ['class' => 'form-control']) !!}
+            {!! $errors->first('name', '<p class="alert alert-danger">:message</p>') !!}
+        </div>
+    </div>
+
+    <div class="form-group">
+        {!! Form::label('reg_number', 'Регистрационный номер:') !!}
+        <div>
+            {!! Form::text('reg_number', null, ['class' => 'form-control']) !!}
+            {!! $errors->first('reg_number', '<p class="alert alert-danger">:message</p>') !!}
+        </div>
+    </div>
+
+    <div class="form-group">
+        {!! Form::label('information', 'Информация:') !!}
+        <div>
+            {!! Form::text('information', null, ['class' => 'form-control']) !!}
+            {!! $errors->first('information', '<p class="alert alert-danger">:message</p>') !!}
+        </div>
+    </div>
+
+    <div class="form-group">
+        {!! Form::label('comment', 'Комментарий:') !!}
+        <div>
+            {!! Form::text('comment', null, ['class' => 'form-control']) !!}
+            {!! $errors->first('comment', '<p class="alert alert-danger">:message</p>') !!}
+        </div>
+    </div>
+
+    <div class="form-group">
+        {!! Form::label('date_from', 'Дата начала действия:') !!}
+        <div>
+            {!! Form::date('date_from', null, ['class' => 'form-control']) !!}
+            {!! $errors->first('date_from', '<p class="alert alert-danger">:message</p>') !!}
+        </div>
+    </div>
+
+    <div class="form-group">
+        {!! Form::label('date_to', 'Дата окончания действия:') !!}
+        <div>
+            {!! Form::date('date_to', null, ['class' => 'form-control']) !!}
+            {!! $errors->first('date_to', '<p class="alert alert-danger">:message</p>') !!}
+        </div>
+    </div>
+
+    {!! Form::submit('Добавить', ['class' => 'btn btn-primary mb-3']) !!}
+
+    {!! Form::close() !!}
 @endsection

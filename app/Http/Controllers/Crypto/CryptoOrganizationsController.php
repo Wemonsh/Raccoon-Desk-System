@@ -9,13 +9,29 @@ use App\Http\Controllers\Controller;
 class CryptoOrganizationsController extends Controller
 {
     public function index () {
-        $organizations = CryptoOrganization::orderBy('id', 'asc')->paginate(5);
 
-        $vars = [
-            'organizations' => $organizations
-        ];
+        return view('crypto.organizations.index');
+    }
 
-        return view('crypto.organizations.index', $vars);
+    public function apiResponse (Request $request) {
+        // получаем значения из request
+        $pageSize = $request['pageSize'];
+        $sortName = $request['sortName'];
+        $sortOrder = $request['sortOrder'];
+        $searchText = $request['searchText'];
+        // Сортировка
+        if (empty($sortName)) {
+            $sortName = 'id';
+        }
+        // Выбор данных и пагинация
+        $rows = CryptoOrganization::where('name', 'LIKE', '%'.$searchText.'%')->orderBy($sortName, $sortOrder)->paginate($pageSize)->toArray();
+
+        return response()->json(
+            [
+                'rows' =>  $rows['data'],
+                'total' => $rows['total']
+            ]
+        );
     }
 
     public function show ($id) {

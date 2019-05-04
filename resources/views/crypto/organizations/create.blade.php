@@ -1,46 +1,111 @@
 @extends('layouts.default')
 
+@section('breadcrumbs')
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mt-3">
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">Главная</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('crypto') }}">Учет СКЗИ</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('cryptoOrganizationsIndex') }}">Организации</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Добавление организации</li>
+        </ol>
+    </nav>
+@endsection
+
 @section('content')
     <h1>Добавление организации</h1>
+    <hr>
+    {!! Form::open(array('route' => 'cryptoOrganizationsCreate', 'method' => 'POST', 'files' => 'true')) !!}
 
-    <form method="post" action="{{ route('cryptoOrganizationsCreate') }}" enctype="multipart/form-data">
-        @csrf
-        <div class="form-group">
-            <label for="name">Название</label>
-            <input name="name" type="text" class="form-control" id="name" placeholder="Введите название">
+    @if (Session::has('success'))
+        <div class="alert alert-success">
+            {{ Session::get('success') }}
         </div>
-        <hr>
-        <label>Адрес:</label>
-        <div class="form-group">
-            <!-- TODO Испрвить id и разнести элементы по разным form-group -->
-            <label for="address">Название улицы, номер дома, номер офиса/помещения</label>
-            <input name="address[]" type="text" class="form-control" id="address" placeholder="Введите название улицы, номер дома, номер офиса/помещения">
-            <label for="address">Название населенного пункта (города, послека и т.п.)</label>
-            <input name="address[]" type="text" class="form-control" id="address" placeholder="Введите название населенного пункта (города, послека и т.п.)">
-            <label for="address">Название района</label>
-            <input name="address[]" type="text" class="form-control" id="address" placeholder="Введите название района">
-            <label for="address">Название республики, края, области, автономного округа (области)</label>
-            <input name="address[]" type="text" class="form-control" id="address" placeholder="Введите название республики, края, области, автономного округа (области)">
-            <label for="address">Название страны</label>
-            <input name="address[]" type="text" class="form-control" id="address" placeholder="Введите название страны">
-            <label for="address">Почтовый индекс</label>
-            <input name="address[]" type="text" class="form-control" id="address" placeholder="Введите почтовый индекс">
+    @elseif(Session::has('warning'))
+        <div class="alert alert-danger">
+            {{ Session::get('warning') }}
         </div>
-        <hr>
-        <div class="form-group">
-            <label for="phone">Телефон</label>
-            <input name="phone" type="text" class="form-control" id="phone" placeholder="Введите телефон">
-        </div>
-        <div class="form-group">
-            <label for="email">E-Mail адрес</label>
-            <input name="email" type="email" class="form-control" id="email" placeholder="Введите E-Mail адрес">
-        </div>
-        <div class="form-group">
-            <label for="site">Сайт</label>
-            <input name="site" type="text" class="form-control" id="site" placeholder="Введите сайт">
-        </div>
+    @endif
 
-        <button type="submit" class="btn btn-primary">Создать</button>
-    </form>
+    <div class="form-group">
+        {!! Form::label('name', 'Название организации:') !!}
+        <div>
+            {!! Form::text('name', null, ['class' => 'form-control']) !!}
+            {!! $errors->first('name', '<p class="alert alert-danger">:message</p>') !!}
+        </div>
+    </div>
 
+    <hr>
+    {!! Form::label('address_label', 'Адрес:') !!}
+    <div class="form-group">
+        <!-- TODO Испрвить id -->
+        <div class="form-group">
+            {!! Form::label('address_street', 'Название улицы, номер дома, номер офиса/помещения') !!}
+            <div>
+                {!! Form::text('address[]', null, ['class' => 'form-control']) !!}
+                {!! $errors->first('address[]', '<p class="alert alert-danger">:message</p>') !!}
+            </div>
+        </div>
+        <div class="form-group">
+            {!! Form::label('address_street', 'Название населенного пункта (города, послека и т.п.)') !!}
+            <div>
+                {!! Form::text('address[]', null, ['class' => 'form-control']) !!}
+                {!! $errors->first('address[]', '<p class="alert alert-danger">:message</p>') !!}
+            </div>
+        </div>
+        <div class="form-group">
+            {!! Form::label('address_street', 'Название района') !!}
+            <div>
+                {!! Form::text('address[]', null, ['class' => 'form-control']) !!}
+                {!! $errors->first('address[]', '<p class="alert alert-danger">:message</p>') !!}
+            </div>
+        </div>
+        <div class="form-group">
+            {!! Form::label('address_street', 'Название республики, края, области, автономного округа (области)') !!}
+            <div>
+                {!! Form::text('address[]', null, ['class' => 'form-control']) !!}
+                {!! $errors->first('address[]', '<p class="alert alert-danger">:message</p>') !!}
+            </div>
+        </div><div class="form-group">
+            {!! Form::label('address_street', 'Название страны') !!}
+            <div>
+                {!! Form::text('address[]', null, ['class' => 'form-control']) !!}
+                {!! $errors->first('address[]', '<p class="alert alert-danger">:message</p>') !!}
+            </div>
+        </div><div class="form-group">
+            {!! Form::label('address_street', 'Почтовый индекс') !!}
+            <div>
+                {!! Form::text('address[]', null, ['class' => 'form-control']) !!}
+                {!! $errors->first('address[]', '<p class="alert alert-danger">:message</p>') !!}
+            </div>
+        </div>
+    </div>
+    <hr>
+
+    <div class="form-group">
+        {!! Form::label('phone', 'Телефон:') !!}
+        <div>
+            {!! Form::text('phone', null, ['class' => 'form-control']) !!}
+            {!! $errors->first('phone', '<p class="alert alert-danger">:message</p>') !!}
+        </div>
+    </div>
+
+    <div class="form-group">
+        {!! Form::label('email', 'E-Mail адрес:') !!}
+        <div>
+            {!! Form::text('email', null, ['class' => 'form-control']) !!}
+            {!! $errors->first('email', '<p class="alert alert-danger">:message</p>') !!}
+        </div>
+    </div>
+
+    <div class="form-group">
+        {!! Form::label('site', 'Сайт:') !!}
+        <div>
+            {!! Form::text('site', null, ['class' => 'form-control']) !!}
+            {!! $errors->first('site', '<p class="alert alert-danger">:message</p>') !!}
+        </div>
+    </div>
+
+    {!! Form::submit('Добавить', ['class' => 'btn btn-primary mb-3']) !!}
+
+    {!! Form::close() !!}
 @endsection

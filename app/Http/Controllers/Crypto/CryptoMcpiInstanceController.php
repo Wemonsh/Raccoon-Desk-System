@@ -10,13 +10,29 @@ use App\Http\Controllers\Controller;
 class CryptoMcpiInstanceController extends Controller
 {
     public function index () {
-        $mcpi_instances = CryptoMcpiInstance::with(['model' => function($query){ $query->select('id', 'name');}])->orderBy('id', 'asc')->paginate(5);
 
-        $vars = [
-            'mcpi_instances' => $mcpi_instances
-        ];
+        return view('crypto.instance.index');
+    }
 
-        return view('crypto.instance.index', $vars);
+    public function apiResponse (Request $request) {
+        // получаем значения из request
+        $pageSize = $request['pageSize'];
+        $sortName = $request['sortName'];
+        $sortOrder = $request['sortOrder'];
+        $searchText = $request['searchText'];
+        // Сортировка
+        if (empty($sortName)) {
+            $sortName = 'id';
+        }
+        // Выбор данных и пагинация
+        $rows = CryptoMcpiInstance::with('model')->where('serial_number', 'LIKE', '%'.$searchText.'%')->orderBy($sortName, $sortOrder)->paginate($pageSize)->toArray();
+
+        return response()->json(
+            [
+                'rows' =>  $rows['data'],
+                'total' => $rows['total']
+            ]
+        );
     }
 
     public function create (Request $request) {
@@ -33,7 +49,7 @@ class CryptoMcpiInstanceController extends Controller
             } else {
 
                 $vars = [
-                    'models' => CryptoMcpiModels::select('id', 'name')->get(),
+                    'models' => CryptoMcpiModels::pluck('name', 'id'),
                 ];
                 return view('crypto.instance.create', $vars);
             }
@@ -61,7 +77,7 @@ class CryptoMcpiInstanceController extends Controller
                     $vars = [
                         'mcpi_instance' => $mcpi_instance,
                         'id' => $id,
-                        'models' => CryptoMcpiModels::select('id', 'name')->get(),
+                        'models' => CryptoMcpiModels::pluck('name', 'id'),
                     ];
                     return view('crypto.instance.edit', $vars);
                 } else {

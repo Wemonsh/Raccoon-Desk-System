@@ -9,13 +9,29 @@ use App\Http\Controllers\Controller;
 class CryptoInformationSystemController extends Controller
 {
     public function index () {
-        $info_systems = CryptoInformationSystem::orderBy('id', 'asc')->paginate(5);
 
-        $vars = [
-            'info_systems' => $info_systems
-        ];
+        return view('crypto.infosystems.index');
+    }
 
-        return view('crypto.infosystems.index', $vars);
+    public function apiResponse (Request $request) {
+        // получаем значения из request
+        $pageSize = $request['pageSize'];
+        $sortName = $request['sortName'];
+        $sortOrder = $request['sortOrder'];
+        $searchText = $request['searchText'];
+        // Сортировка
+        if (empty($sortName)) {
+            $sortName = 'id';
+        }
+        // Выбор данных и пагинация
+        $rows = CryptoInformationSystem::where('name', 'LIKE', '%'.$searchText.'%')->orderBy($sortName, $sortOrder)->paginate($pageSize)->toArray();
+
+        return response()->json(
+            [
+                'rows' =>  $rows['data'],
+                'total' => $rows['total']
+            ]
+        );
     }
 
     public function create (Request $request) {
@@ -27,7 +43,7 @@ class CryptoInformationSystemController extends Controller
                     'comment' => $request->input('comment'),
                 ]);
 
-                return redirect('crypto');
+                return redirect('/crypto/info-systems');
             } else {
                 return view('crypto.infosystems.create');
             }
@@ -45,7 +61,7 @@ class CryptoInformationSystemController extends Controller
                 $info_system->comment = $request->input('comment');
                 $info_system->save();
 
-                return redirect('crypto');
+                return redirect('/crypto/info-systems');
             } else {
                 $info_system = CryptoInformationSystem::where('id','=', $id)->first();
 

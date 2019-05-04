@@ -56,12 +56,14 @@ Route::group(['prefix' => 'crypto'], function () {
     Route::match(['get', 'post'], '/organizations/create', ['uses' => 'Crypto\CryptoOrganizationsController@create', 'as' => 'cryptoOrganizationsCreate']);
     Route::match(['get', 'post'], '/organizations/edit/{id}', ['uses' => 'Crypto\CryptoOrganizationsController@edit', 'as' => 'cryptoOrganizationsEdit']);
     Route::match(['get', 'post'], '/organizations/delete/{id}', ['uses' => 'Crypto\CryptoOrganizationsController@delete', 'as' => 'cryptoOrganizationsDelete']);
+    Route::match(['get', 'post'], '/organizations/api-response', ['uses' => 'Crypto\CryptoOrganizationsController@apiResponse']);
 
     // InformationSystems
     Route::match(['get', 'post'], '/info-systems', ['uses' => 'Crypto\CryptoInformationSystemController@index', 'as' => 'cryptoInfoSystemIndex']);
     Route::match(['get', 'post'], '/info-systems/create', ['uses' => 'Crypto\CryptoInformationSystemController@create', 'as' => 'cryptoInfoSystemCreate']);
     Route::match(['get', 'post'], '/info-systems/edit/{id}', ['uses' => 'Crypto\CryptoInformationSystemController@edit', 'as' => 'cryptoInfoSystemEdit']);
     Route::match(['get', 'post'], '/info-systems/delete/{id}', ['uses' => 'Crypto\CryptoInformationSystemController@delete', 'as' => 'cryptoInfoSystemDelete']);
+    Route::match(['get', 'post'], '/info-systems/api-response', ['uses' => 'Crypto\CryptoInformationSystemController@apiResponse']);
 
     // Assignments
     Route::match(['get', 'post'], '/assignments', ['uses' => 'Crypto\CryptoAssignmentsController@index', 'as' => 'cryptoAssignmentsIndex']);
@@ -89,12 +91,14 @@ Route::group(['prefix' => 'crypto'], function () {
     Route::match(['get', 'post'], '/mcpi-models/create', ['uses' => 'Crypto\CryptoMcpiModelsController@create', 'as' => 'cryptoMcpiModelsCreate']);
     Route::match(['get', 'post'], '/mcpi-models/edit/{id}', ['uses' => 'Crypto\CryptoMcpiModelsController@edit', 'as' => 'cryptoMcpiModelsEdit']);
     Route::match(['get', 'post'], '/mcpi-models/delete/{id}', ['uses' => 'Crypto\CryptoMcpiModelsController@delete', 'as' => 'cryptoMcpiModelsDelete']);
+    Route::match(['get', 'post'], '/mcpi-models/api-response', ['uses' => 'Crypto\CryptoMcpiModelsController@apiResponse']);
 
     // Instance
     Route::match(['get', 'post'], '/mcpi-instances', ['uses' => 'Crypto\CryptoMcpiInstanceController@index', 'as' => 'cryptoMcpiInstanceIndex']);
     Route::match(['get', 'post'], '/mcpi-instances/create', ['uses' => 'Crypto\CryptoMcpiInstanceController@create', 'as' => 'cryptoMcpiInstanceCreate']);
     Route::match(['get', 'post'], '/mcpi-instances/edit/{id}', ['uses' => 'Crypto\CryptoMcpiInstanceController@edit', 'as' => 'cryptoMcpiInstanceEdit']);
     Route::match(['get', 'post'], '/mcpi-instances/delete/{id}', ['uses' => 'Crypto\CryptoMcpiInstanceController@delete', 'as' => 'cryptoMcpiInstanceDelete']);
+    Route::match(['get', 'post'], '/mcpi-instances/api-response', ['uses' => 'Crypto\CryptoMcpiInstanceController@apiResponse']);
 
 });
 

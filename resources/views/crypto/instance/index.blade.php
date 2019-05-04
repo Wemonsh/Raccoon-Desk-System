@@ -1,96 +1,71 @@
 @extends('layouts.default')
 
-@section('sub-navigation')
-    <div class="navbar-light bg-light">
-        <ul class="nav">
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Криптоключи
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Акт создания ключевых документов</a>
-                    <a class="dropdown-item" href="#">Акт передачи ключевых документов</a>
-                    <a class="dropdown-item" href="#">Акт ввода в эксплуатацию ключевой информации</a>
-                    <a class="dropdown-item" href="#">Акт вывода из эксплуатации ключевой информации</a>
-                    <a class="dropdown-item" href="#">Акт уничтожения ключевых документов</a>
-                </div>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    СКЗИ
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Акт поступления СКЗИ</a>
-                    <a class="dropdown-item" href="#">Акт списания СКЗИ</a>
-                    <a class="dropdown-item" href="#">Акт передачи СКЗИ</a>
-                    <a class="dropdown-item" href="#">Акт ввода СКЗИ в эксплуатацию</a>
-                    <a class="dropdown-item" href="#">Акт вывода СКЗИ в эксплуатацию</a>
-                </div>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Справочники
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{{ route('cryptoCertificatesIndex') }}">Ключевая информация</a>
-                    <a class="dropdown-item" href="{{ route('cryptoStoragesIndex') }}">Носители ключевой информации</a>
-                    <a class="dropdown-item" href="{{ route('cryptoAssignmentsIndex') }}">Назначение ключевой информации</a>
-                    <a class="dropdown-item" href="{{ route('cryptoInfoSystemIndex') }}">Информационные системы</a>
-                    <a class="dropdown-item" href="{{ route('cryptoOrganizationsIndex') }}">Организации</a>
-                    <a class="dropdown-item" href="#">Объекты информационной инфраструктуры</a>
-                    <a class="dropdown-item" href="{{ route('cryptoMcpiInstanceIndex') }}">Экземпляры СКЗИ</a>
-                    <a class="dropdown-item" href="{{ route('cryptoMcpiModelsIndex') }}">Модели СКЗИ</a>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Отчеты</a>
-            </li>
-        </ul>
-    </div>
+@section('breadcrumbs')
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mt-3">
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">Главная</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('crypto') }}">Учет СКЗИ</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Экземпляры СКЗИ</li>
+        </ol>
+    </nav>
 @endsection
 
 @section('content')
     <h1>Экземпляры СКЗИ</h1>
     <hr>
-    <a href="{{ route('cryptoMcpiInstanceCreate') }}" class="btn btn-primary mb-3">Добавить</a>
-    @if($mcpi_instances->count() != 0)
-        <div class="table-responsive">
-            <table class="table table-bordered">
-                <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Серийный номер</th>
-                    <th>Название модели</th>
-                    <th>Комментарий</th>
-                    <th>Дата создания</th>
-                    <th>Действие</th>
-                </tr>
-                </thead>
-                <tbody>
-                @foreach($mcpi_instances as $mcpi_instance)
-                    <tr>
-                        <td>{{ $mcpi_instance->id }}</td>
-                        <td>{{ $mcpi_instance->serial_number }}</td>
-                        <td>{{ $mcpi_instance->model->name }}</td>
-                        <td>{{ $mcpi_instance->comment }}</td>
-                        <td>{{ $mcpi_instance->created_at }}</td>
-                        <td width="50px">
-                            <div class="btn-group" role="group" aria-label="Basic example">
-                                <a href="/crypto/mcpi-instances/edit/{{ $mcpi_instance->id }}" class="btn btn-secondary" title="Редактировать"><i class="far fa-edit"></i></a>
-                                <a href="#" class="btn btn-secondary" title="Удалить"><i class="far fa-trash-alt"></i></a>
-                            </div>
-                        </td>
-                    </tr>
-                @endforeach
-                </tbody>
-            </table>
-        </div>
+    <div class="toolbar">
+        <a class="btn btn-secondary text-light" href="{{ route('cryptoMcpiInstanceCreate') }}">Добавить</a>
+    </div>
+    <table
+            data-ajax="ajaxRequest"
+            data-side-pagination="server"
+            data-toggle="table"
+            data-pagination="true"
+            data-query-params="dataQueryParams"
+            data-page-number="1"
+            data-search="true"
+            data-query-params-type=""
+            data-show-print="true"
+            data-toolbar=".toolbar"
+            data-show-columns="true"
+            data-minimum-count-columns="2"
+            data-show-refresh="true">
+        <thead>
+        <tr>
+            <th data-sortable="true" data-field="id" class="text-center">Id</th>
+            <th data-sortable="true" data-field="serial_number">Серийный номер</th>
+            <th data-field="id_models" data-formatter="modelFormatter">Название модели</th>
+            <th data-field="comment">Комментарий</th>
+            <th data-field="created_at">Дата создания</th>
+            <th data-formatter="actionFormatter" class="text-center" data-print-ignore="true" data-width="50px">Действие</th>
+        </tr>
+        </thead>
+    </table>
 
-        {{ $mcpi_instances->render() }}
+    <script>
+        function dataQueryParams(params) {
+            params.page = params.pageNumber;
+            return params;
+        }
 
-    @else
-        <div class="alert alert-info" role="alert">
-            <p>Экземпляры СКЗИ отсутсвуют</p>
-        </div>
-    @endif
+        function ajaxRequest(params) {
+            var url = '/crypto/mcpi-instances/api-response';
+            $.get(url + '?' + $.param(params.data)).then(function (res) {
+                params.success(res)
+            });
+        }
+
+        function modelFormatter(value, rows) {
+            if (rows != null) {
+                return rows.model.name;
+            }
+        }
+
+        function actionFormatter(value ,rows) {
+            return '<div class="btn-group" role="group" aria-label="Basic example">' +
+                '<a class="btn btn-secondary btn-sm text-light" href="/crypto/mcpi-instances/edit/'+ rows['id'] +'" title="Редактировать"><i class="fas fa-pen"></i></a>' +
+                '<a class="btn btn-secondary btn-sm text-light" href="" title="Удалить"><i class="fas fa-trash-alt"></i></a>' +
+                '</div>';
+        }
+    </script>
 @endsection

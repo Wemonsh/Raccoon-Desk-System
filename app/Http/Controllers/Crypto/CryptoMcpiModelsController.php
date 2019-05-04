@@ -9,13 +9,29 @@ use App\Http\Controllers\Controller;
 class CryptoMcpiModelsController extends Controller
 {
     public function index () {
-        $mcpi_models = CryptoMcpiModels::orderBy('id', 'asc')->paginate(5);
 
-        $vars = [
-            'mcpi_models' => $mcpi_models
-        ];
+        return view('crypto.models.index');
+    }
 
-        return view('crypto.models.index', $vars);
+    public function apiResponse (Request $request) {
+        // получаем значения из request
+        $pageSize = $request['pageSize'];
+        $sortName = $request['sortName'];
+        $sortOrder = $request['sortOrder'];
+        $searchText = $request['searchText'];
+        // Сортировка
+        if (empty($sortName)) {
+            $sortName = 'id';
+        }
+        // Выбор данных и пагинация
+        $rows = CryptoMcpiModels::where('name', 'LIKE', '%'.$searchText.'%')->orderBy($sortName, $sortOrder)->paginate($pageSize)->toArray();
+
+        return response()->json(
+            [
+                'rows' =>  $rows['data'],
+                'total' => $rows['total']
+            ]
+        );
     }
 
     public function create (Request $request) {

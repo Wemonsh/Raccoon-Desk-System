@@ -1,5 +1,16 @@
 @extends('layouts.default')
 
+@section('breadcrumbs')
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mt-3">
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">Главная</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('crypto') }}">Учет СКЗИ</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('cryptoOrganizationsIndex') }}">Организации</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ $organization->name }}</li>
+        </ol>
+    </nav>
+@endsection
+
 @section('content')
     <div class="card mt-3">
         <div class="card-body">
