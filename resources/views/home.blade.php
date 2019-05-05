@@ -4,7 +4,7 @@
 
 <h1>{{ __('main/home.main') }}</h1>
 <hr>
-<p>{{ __('main/home.system_description') }}</p>
+<p>@lang('main/home.system_description')</p>
 
 <div class="row">
     <div class="col-xl-3 col-sm-6 mb-3">
@@ -129,13 +129,13 @@
     </div>
     <div class="col-md-6">
         <div class="card">
-            <h5 class="card-header">{{ __('main/home.articles') }}</h5>
+            <h5 class="card-header">{{ __('main/home.articles_2') }}</h5>
 
             <ul class="list-unstyled mt-1 ml-1">
 
                 @forelse($articles as $item)
                     <li class="media my-2">
-                        <img src="/img/no_image_article5.svg" width="100px" height="100px" class="mr-3 rounded" alt="{{ __('main/home.image') }}">
+                        <img src="/img/no_article_image.svg" width="100px" height="100px" class="mr-3 rounded" alt="{{ __('main/home.image') }}">
                         <div class="media-body">
                             <h5 class="mt-0 mb-1">{{ $item['title'] }}</h5>
                             {{ mb_strimwidth(strip_tags(str_replace('&nbsp;', ' ', $item['text'])), 0, 350, '...') }}

@@ -2,7 +2,11 @@
 
 return [
     'main' => 'Main',
-    'system_description' => 'Automated information system for processing requests and keeping accounting of the organization’s material and technical resources',
+
+    'system_description' => 'Welcome to the main page of the automated information system for processing '.'<a href="/requests/create">requests</a>'. ' 
+    and keeping records of material and technical means of the organization. Below is a brief summary statistics on major areas of service. 
+    The latest '.'<a href="/news">news</a>'. ' from the organization and '.'<a href="/knowledge">knowledge base</a>'.' articles are also displayed.',
+
     'users' => 'users',
     'more' => 'Details',
     'articles' => 'articles',
@@ -17,7 +21,7 @@ return [
     'image' => 'Image',
     'no_news' => 'There is no news in this category',
     // TODO Сделать множетвенное число
-    'articles_2' => 'articles',
+    'articles_2' => 'Articles',
     'no_articles' => 'There are no articles in this category',
 
 

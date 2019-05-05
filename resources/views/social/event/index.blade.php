@@ -76,31 +76,31 @@
                 <div class="card-header">Сегодняшние события: {{ \Carbon\Carbon::now()->format('Y-m-d') }}</div>
                 <div class="card-body">
                     @if(count($today_events) != 0)
-                    <div class="table-responsive">
-                        <table class="table table-bordered">
-                            <thead>
-                            <tr>
-                                <th>Название</th>
-                                <th>Начало</th>
-                                <th>Конец</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            @forelse($today_events as $today_event)
-                                <tr>
-                                    <td>{{ $today_event['event_name'] }}</td>
-                                    <td>{{ $today_event['start_date'] }}</td>
-                                    <td>{{ $today_event['end_date'] }}</td>
-                                </tr>
-                            @empty
-                                <p>События отсутствуют</p>
-                            @endforelse
-                            </tbody>
-                        </table>
-                    </div>
+
+                    @forelse($today_events as $today_event)
+                        <ul class="list-group list-group-flush">
+                        @if($today_event['end_date'] == \Carbon\Carbon::now()->format('Y-m-d'))
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <span>{{ $today_event['event_name'] }} <small class="text-muted" title="Дата начала и конца события"><i class="fas fa-calendar-alt"></i>
+                                <time datetime="{{ $today_event['start_date'] }}">{{ $today_event['start_date'] }} - </time></small><small class="text-muted">
+                                <time datetime="{{ $today_event['end_date'] }}">{{ $today_event['end_date'] }}</time></small></span>
+                                    <i class="fas fa-exclamation-triangle text-muted" title="Событие сегодня заканчивается!"></i>
+                                </li>
                         @else
-                            <p>События отсутствуют</p>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <span>{{ $today_event['event_name'] }} <small class="text-muted" title="Дата начала и конца события"><i class="fas fa-calendar-alt"></i>
+                                <time datetime="{{ $today_event['start_date'] }}">{{ $today_event['start_date'] }} - </time></small><small class="text-muted">
+                                <time datetime="{{ $today_event['end_date'] }}">{{ $today_event['end_date'] }}</time></small></span>
+                                </li>
                         @endif
+                        </ul>
+                    @empty
+                        <p>События отсутствуют</p>
+                    @endforelse
+
+                    @else
+                        <p>События отсутствуют</p>
+                    @endif
                 </div>
             </div>
         </div>

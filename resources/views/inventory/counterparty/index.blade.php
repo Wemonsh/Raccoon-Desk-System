@@ -1,21 +1,18 @@
 @extends('layouts.default')
 
-@section('content')
-    <ol class="breadcrumb mt-3">
-        <li class="breadcrumb-item">
-            <a href="index.html">Главная</a>
-        </li>
-        <li class="breadcrumb-item">
-            <a href="index.html">Активы предприятия</a>
-        </li>
-        <li class="breadcrumb-item active">Контрагенты</li>
-    </ol>
+@section('breadcrumbs')
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mt-3">
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">Главная</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('inventoryIndex') }}">Активы предприятия</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Контрагенты</li>
+        </ol>
+    </nav>
+@endsection
 
+@section('content')
     <h1>Контрагенты</h1>
     <hr>
-
-
-
     <div class="toolbar">
         <a class="btn btn-secondary text-light" data-toggle="modal" data-target="#exampleModalCenter">Добавить</a>
     </div>
@@ -69,8 +66,8 @@
 
         function actionFormatter(value ,rows) {
             return '<div class="btn-group" role="group" aria-label="Basic example">' +
-                '<a class="btn btn-secondary btn-sm text-light"><i class="fas fa-file-alt"></i></a>' +
-                '<a class="btn btn-secondary btn-sm text-light"><i class="fas fa-pen"></i></a>' +
+                '<a class="btn btn-secondary btn-sm text-light" href="/inventory/counterparty-contracts/" title="Редактировать"><i class="fas fa-file-alt"></i></a>' +
+                '<a class="btn btn-secondary btn-sm text-light" href="/inventory/counterparty/edit/'+ rows['id'] +'" title="Редактировать"><i class="fas fa-pen"></i></a>' +
                 '<a class="btn btn-secondary btn-sm text-light"><i class="fas fa-trash-alt"></i></a>' +
                 '</div>';
         }
@@ -143,10 +140,6 @@
                             {!! $errors->first('comment', '<p class="alert alert-danger">:message</p>') !!}
                         </div>
                     </div>
-
-
-
-
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>

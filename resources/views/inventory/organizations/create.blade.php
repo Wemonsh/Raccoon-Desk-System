@@ -1,10 +1,19 @@
 @extends('layouts.default')
 
-@section('content')
+@section('breadcrumbs')
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mt-3">
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">Главная</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('inventoryIndex') }}">Активы предприятия</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('organizationsIndex') }}">Организации</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Добавление организации</li>
+        </ol>
+    </nav>
+@endsection
 
+@section('content')
     <h1>Добавление организации</h1>
     <hr>
-
     {!! Form::open(array('route' => 'organizationsCreate', 'method' => 'POST', 'files' => 'true')) !!}
 
     @if (Session::has('success'))
@@ -76,5 +85,4 @@
     {!! Form::submit('Добавить', ['class' => 'btn btn-primary']) !!}
 
     {!! Form::close() !!}
-
 @endsection

@@ -1,19 +1,18 @@
 @extends('layouts.default')
 
-@section('content')
-    <ol class="breadcrumb mt-3">
-        <li class="breadcrumb-item">
-            <a href="{{ route('home') }}">Главная</a>
-        </li>
-        <li class="breadcrumb-item">
-            <a href="{{ route('inventoryIndex') }}">Активы организации</a>
-        </li>
-        <li class="breadcrumb-item active">Помещения</li>
-    </ol>
+@section('breadcrumbs')
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mt-3">
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">Главная</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('inventoryIndex') }}">Активы предприятия</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Помещения</li>
+        </ol>
+    </nav>
+@endsection
 
+@section('content')
     <h1>Помещения</h1>
     <hr>
-
     <div class="toolbar">
         <a class="btn btn-secondary text-light" href="{{ route('placementsCreate') }}">Добавить</a>
     </div>
@@ -38,7 +37,7 @@
             <th data-field="comment">Комментарий</th>
             {{-- TODO Оставляем вывод названия организации так??? --}}
             <th data-sortable="true" data-field="id_organization" data-formatter="organizationFormatter">Название организации</th>
-            <th data-formatter="actionFormatter" class="text-center" data-print-ignore="true">Действие</th>
+            <th data-formatter="actionFormatter" class="text-center" data-print-ignore="true" data-width="50px">Действие</th>
         </tr>
         </thead>
     </table>
