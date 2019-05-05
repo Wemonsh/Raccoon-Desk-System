@@ -10,6 +10,10 @@ use App\Http\Controllers\Controller;
 
 class DevicesController extends Controller
 {
+    public function index() {
+        return view('inventory.devices.index');
+    }
+
     public function create (Request $request) {
 
         if ($request->isMethod('POST')) {
