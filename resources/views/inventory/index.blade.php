@@ -27,7 +27,7 @@
                 <a href="{{ route('counterpartyIndex') }}" class="list-group-item list-group-item-action"><i class="fas fa-warehouse fa-fw"></i> {{ __('inventory/index.counterparties') }}</a>
                 <a href="{{ route('manufacturesIndex') }}" class="list-group-item list-group-item-action"><i class="fas fa-industry" fa-fw></i> {{ __('inventory/index.manufacturers') }}</a>
                 <a href="{{ route('typesIndex') }}" class="list-group-item list-group-item-action"><i class="fas fa-boxes fa-fw"></i> {{ __('inventory/index.types_of_means') }}</a>
-                <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-cubes fa-fw"></i> {{ __('inventory/index.TMC_groups') }}</a>
+                <a href="{{ route('devicesIndex') }}" class="list-group-item list-group-item-action"><i class="fas fa-cubes fa-fw"></i> {{ __('inventory/index.TMC_groups') }}</a>
                 <a href="{{ route('placementsIndex') }}" class="list-group-item list-group-item-action"><i class="far fa-building fa-fw"></i> {{ __('inventory/index.premises') }}</a>
                 <a href="{{ route('organizationsIndex') }}" class="list-group-item list-group-item-action"><i class="fas fa-building fa-fw"></i> {{ __('inventory/index.organizations') }}</a>
             </div>

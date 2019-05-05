@@ -166,10 +166,11 @@ Route::group(['prefix' => 'inventory'], function () {
     Route::match(['get', 'post'], '/counterparty-contracts/api-response', ['uses' => 'Inventory\CounterpartyContractsController@apiResponse']);
     Route::match(['get', 'post'], '/counterparty-contracts/edit/{id}', ['uses' => 'Inventory\CounterpartyContractsController@edit', 'as' => 'counterpartyContractsEdit']);
 
-
+    // Devices
     Route::match(['get', 'post'], '/devices/create', ['uses' => 'Inventory\DevicesController@create', 'as' => 'devicesCreate']);
-    Route::match(['get', 'post'], '/devices/show', ['uses' => 'Inventory\DevicesController@index', 'as' => 'devicesIndex']);
+    Route::match(['get', 'post'], '/devices', ['uses' => 'Inventory\DevicesController@index', 'as' => 'devicesIndex']);
     Route::match(['get', 'post'], '/devices/api/getTypes', ['uses' => 'Inventory\DevicesController@getTypes']);
-
+    Route::match(['get', 'post'], '/devices/api-response', ['uses' => 'Inventory\DevicesController@apiResponse']);
+    Route::match(['get', 'post'], '/devices/edit/{id}', ['uses' => 'Inventory\DevicesController@edit', 'as' => 'devicesEdit']);
 
 });

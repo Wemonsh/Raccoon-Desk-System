@@ -1,3 +1,4 @@
+
 @extends('layouts.default')
 
 @section('breadcrumbs')
@@ -6,15 +7,15 @@
             <li class="breadcrumb-item"><a href="{{ route('home') }}">Главная</a></li>
             <li class="breadcrumb-item"><a href="{{ route('inventoryIndex') }}">Активы предприятия</a></li>
             <li class="breadcrumb-item"><a href="{{ route('devicesIndex') }}">Группы МТС</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Добавить группу МТС</li>
+            <li class="breadcrumb-item active" aria-current="page">Редактировать группу МТС</li>
         </ol>
     </nav>
 @endsection
 
 @section('content')
-    <h1>Добавить группу МТС</h1>
+    <h1>Редактировать группу МТС</h1>
     <hr>
-    {!! Form::open(array('route' => 'devicesCreate', 'method' => 'POST', 'files' => 'true')) !!}
+    {!! Form::open(array('route' => array('devicesEdit', $id), 'method' => 'POST', 'files' => 'true')) !!}
 
     @if (Session::has('success'))
         <div class="alert alert-success">
@@ -29,28 +30,28 @@
     <div class="form-group">
         {!! Form::label('manufactures', 'Производитель') !!}
         <div>
-            {!! Form::select('manufactures', $manufactures, null, ['class' => 'form-control'] ) !!}
+            {!! Form::select('manufactures', $manufactures, $device->id_manufacture, ['class' => 'form-control'] ) !!}
         </div>
     </div>
 
     <div class="form-group">
         {!! Form::label('types', 'Тип') !!}
         <div>
-            {!! Form::select('types', $types, null, ['class' => 'form-control', 'id' => 'types'] ) !!}
+            {!! Form::select('types', $types, $device->id_type, ['class' => 'form-control', 'id' => 'types'] ) !!}
         </div>
     </div>
 
     <div class="form-group">
         {!! Form::label('name', 'Название') !!}
         <div>
-            {!! Form::text('name', null, ['class' => 'form-control']) !!}
+            {!! Form::text('name', $device->name, ['class' => 'form-control']) !!}
             {!! $errors->first('name', '<p class="alert alert-danger">:message</p>') !!}
         </div>
     </div>
 
     <hr>
     <div class="form-group">
-        {!! Form::label('name', 'Характеристики') !!}
+        {!! Form::label('specifications', 'Характеристики') !!}
         <div id="specifications">
 
         </div>
@@ -93,14 +94,24 @@
             );
         }
     </script>
-
+    
+    <div class="form-group">
+        <label for="image">Изображение</label>
+        <br>
+        @if($device->photo != null)
+            <img src="{{ asset('/storage/' . $device->photo) }}" class="card-img-top rounded" style="object-fit: cover; width: 300px; height: 250px;">
+        @else
+            <img src="/img/no_image.png" width="100px" height="100px" style="object-fit: cover; width: 300px; height: 250px;" class="mr-3 rounded" alt="Изображение отсутствует">
+        @endif
+        <hr>
+    </div>
 
     <div class="form-group">
-        {!! Form::label('photo', 'Фото') !!}
+        {!! Form::label('photo', 'Изменить изображение') !!}
         {!! Form::file('photo', ['id' => 'photo', 'class' => 'form-control-file']) !!}
     </div>
 
-    {!! Form::submit('Добавить', ['class' => 'btn btn-primary']) !!}
+    {!! Form::submit('Изменить', ['class' => 'btn btn-primary']) !!}
 
     {!! Form::close() !!}
 
