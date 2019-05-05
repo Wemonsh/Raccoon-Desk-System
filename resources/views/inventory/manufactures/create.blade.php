@@ -1,9 +1,19 @@
 @extends('layouts.default')
 
+@section('breadcrumbs')
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mt-3">
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">Главная</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('inventoryIndex') }}">Активы предприятия</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('manufacturesIndex') }}">Производители</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Добавить производителя</li>
+        </ol>
+    </nav>
+@endsection
+
 @section('content')
     <h1>Добавить производителя</h1>
     <hr>
-
     {!! Form::open(array('route' => 'manufacturesCreate', 'method' => 'POST', 'files' => 'true')) !!}
 
     @if (Session::has('success'))

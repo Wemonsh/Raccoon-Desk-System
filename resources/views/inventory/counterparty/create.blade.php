@@ -1,9 +1,19 @@
 @extends('layouts.default')
 
-@section('content')
-    <h1>Контрагенты</h1>
-    <hr>
+@section('breadcrumbs')
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mt-3">
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">Главная</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('inventoryIndex') }}">Активы предприятия</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('counterpartyIndex') }}">Контрагенты</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Добавление контрагента</li>
+        </ol>
+    </nav>
+@endsection
 
+@section('content')
+    <h1>Добавление контрагента</h1>
+    <hr>
     {!! Form::open(array('route' => 'counterpartyCreate', 'method' => 'POST', 'files' => 'true')) !!}
 
     @if (Session::has('success'))

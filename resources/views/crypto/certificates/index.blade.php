@@ -59,9 +59,9 @@
         }
 
         function fileFormatter(value ,rows) {
-            console.log(rows);
             if (rows['file'] !=null) {
-                return '<a href="/storage/'+ rows['file'] +'" class="btn btn-secondary btn-sm" title="Скачать"><i class="fas fa-arrow-down"></i></a>';
+                return '<a href="/storage/'+ rows['file'] +'" class="btn btn-secondary btn-sm" title="Скачать">Скачать</a>';
+                // return '<a href="/storage/'+ rows['file'] +'" class="btn btn-secondary btn-sm" title="Скачать"><i class="fas fa-arrow-down"></i></a>';
             } else {
                 return '<i class="fas fa-minus" title="Файл отсутствует"></i>';
             }
