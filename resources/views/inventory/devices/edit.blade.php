@@ -94,7 +94,7 @@
             );
         }
     </script>
-    
+
     <div class="form-group">
         <label for="image">Изображение</label>
         <br>

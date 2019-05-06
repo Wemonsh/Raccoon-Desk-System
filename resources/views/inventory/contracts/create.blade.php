@@ -1,5 +1,16 @@
 @extends('layouts.default')
 
+@section('breadcrumbs')
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mt-3">
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">Главная</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('inventoryIndex') }}">Активы предприятия</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('counterpartyContractsIndex') }}">Договора</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Добавление договора</li>
+        </ol>
+    </nav>
+@endsection
+
 @section('content')
 
     <h1>Добавление договора</h1>

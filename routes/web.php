@@ -176,5 +176,7 @@ Route::group(['prefix' => 'inventory'], function () {
 
     Route::match(['get', 'post'], '/inventories/', ['uses' => 'Inventory\InventoriesController@index', 'as' => 'inventoriesIndex']);
     Route::match(['get', 'post'], '/inventories/create', ['uses' => 'Inventory\InventoriesController@create', 'as' => 'inventoriesCreate']);
+    Route::match(['get', 'post'], '/inventories/api-response', ['uses' => 'Inventory\InventoriesController@apiResponse']);
+    Route::match(['get', 'post'], '/inventories/edit/{id}', ['uses' => 'Inventory\InventoriesController@edit', 'as' => 'inventoriesEdit']);
 
 });
