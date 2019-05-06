@@ -18,7 +18,7 @@
         <div class="col-3">
             <h2>{{ __('inventory/index.journals') }}</h2>
             <div class="list-group">
-                <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-archive fa-fw"></i> {{ __('inventory/index.property') }}</a>
+                <a href="{{ route('inventoriesIndex') }}" class="list-group-item list-group-item-action"><i class="fas fa-archive fa-fw"></i> {{ __('inventory/index.property') }}</a>
             </div>
         </div>
         <div class="col-3">
