@@ -16,9 +16,21 @@
     <hr>
     <form method="post" action="{{ route('knowledgeEdit', $id) }}" enctype="multipart/form-data">
         @csrf
+
+        @if (Session::has('success'))
+            <div class="alert alert-success">
+                {{ Session::get('success') }}
+            </div>
+        @elseif(Session::has('warning'))
+            <div class="alert alert-danger">
+                {{ Session::get('warning') }}
+            </div>
+        @endif
+
         <div class="form-group">
             <label for="title">{{ __('knowledge/edit.title') }}</label>
             <input name="title" type="text" class="form-control" id="title" value="{{ $article->title }}" placeholder="{{ __('knowledge/edit.enter_title') }}">
+            {!! $errors->first('title', '<p class="alert alert-danger">:message</p>') !!}
         </div>
         <div class="form-group form-check">
             @if($article->pinned == 1)
@@ -39,10 +51,12 @@
                     @endif
                 @endforeach
             </select>
+            {!! $errors->first('id_category', '<p class="alert alert-danger">:message</p>') !!}
         </div>
         <div class="form-group">
             <label for="text">{{ __('knowledge/edit.content') }}</label>
             <textarea name="text" class="form-control" id="text" rows="12">{{ $article->text }}</textarea>
+            {!! $errors->first('text', '<p class="alert alert-danger">:message</p>') !!}
         </div>
 
         <div class="form-group">

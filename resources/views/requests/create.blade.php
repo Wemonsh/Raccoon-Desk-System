@@ -19,11 +19,23 @@
 
     <form method="post" action="{{ route('requestsCreate') }}" enctype="multipart/form-data">
         @csrf
+
+        @if (Session::has('success'))
+            <div class="alert alert-success">
+                {{ Session::get('success') }}
+            </div>
+        @elseif(Session::has('warning'))
+            <div class="alert alert-danger">
+                {{ Session::get('warning') }}
+            </div>
+        @endif
+
         <div class="row">
             <div class="col-8">
                 <div class="form-group">
                     <label for="title">Тема</label>
                     <input type="text" name="title" class="form-control" id="title">
+                    {!! $errors->first('title', '<p class="alert alert-danger">:message</p>') !!}
                 </div>
                 <div class="row">
                     <div class="col-6">
@@ -33,6 +45,7 @@
                                 <option value="{{ $value->id }}">{{ $value->name }}</option>
                             @endforeach
                         </select>
+                        {!! $errors->first('id_category', '<p class="alert alert-danger">:message</p>') !!}
                     </div>
                     <div class="col-6">
                         <label for="id_priority">Приоритет</label>
@@ -41,6 +54,7 @@
                                 <option value="{{ $value->id }}">{{ $value->name }}</option>
                             @endforeach
                         </select>
+                        {!! $errors->first('id_priority', '<p class="alert alert-danger">:message</p>') !!}
                     </div>
                 </div>
                 <div class="row mt-3">
@@ -48,6 +62,7 @@
                         <div class="form-group">
                             <label for="description">Описание</label>
                             <textarea class="form-control" name="description" id="description" rows="3"></textarea>
+                            {!! $errors->first('description', '<p class="alert alert-danger">:message</p>') !!}
                         </div>
                     </div>
 

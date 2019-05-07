@@ -15,9 +15,21 @@
     <hr>
     <form method="post" action="{{ route('createNews') }}" enctype="multipart/form-data">
         @csrf
+
+        @if (Session::has('success'))
+            <div class="alert alert-success">
+                {{ Session::get('success') }}
+            </div>
+        @elseif(Session::has('warning'))
+            <div class="alert alert-danger">
+                {{ Session::get('warning') }}
+            </div>
+        @endif
+
         <div class="form-group">
             <label for="title">{{ __('news/create.title') }}</label>
             <input name="title" type="text" class="form-control" id="title" placeholder="{{ __('news/create.enter_title') }}">
+            {!! $errors->first('title', '<p class="alert alert-danger">:message</p>') !!}
         </div>
         <div class="form-group">
             <label for="id_category">{{ __('news/create.category') }}</label>
@@ -26,14 +38,17 @@
                     <option value="{{ $value->id }}">{{ $value->title }}</option>
                 @endforeach
             </select>
+            {!! $errors->first('id_category', '<p class="alert alert-danger">:message</p>') !!}
         </div>
         <div class="form-group">
             <label for="text">{{ __('news/create.content') }}</label>
             <textarea name="text" class="form-control" id="text" rows="12"></textarea>
+            {!! $errors->first('text', '<p class="alert alert-danger">:message</p>') !!}
         </div>
         <div class="form-group">
             <label for="image">{{ __('news/create.image') }}</label>
             <input name="image" type="file" class="form-control-file" id="image">
+            {!! $errors->first('image', '<p class="alert alert-danger">:message</p>') !!}
         </div>
         <button type="submit" class="btn btn-primary">{{ __('news/create.create') }}</button>
     </form>

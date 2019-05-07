@@ -10,12 +10,26 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Validator;
 
 class RequestsController extends Controller
 {
     public  function create(Request $request) {
         if (view()->exists('requests.create')) {
             if ($request->isMethod('post')) {
+
+                $validator = Validator::make($request->all(), [
+                    'title' => 'required',
+                    'description' => 'required',
+                    'id_category' => 'required',
+                    'id_priority' => 'required',
+                ]);
+
+                if ($validator->fails()) {
+                    \Session::flash('warning', 'Please enter the valid details');
+                    return Redirect::to('/requests/create/')->withInput()->withErrors($validator);
+                }
 
                 $files = $request->file('file');
                 $json = null;
@@ -44,6 +58,8 @@ class RequestsController extends Controller
                     'id_status' => $status->id,
                     'date_of_creation' => Carbon::now(),
                 ]);
+
+                \Session::flash('success', 'Request created successfully');
 
                 return redirect('/requests/created');
             } else {

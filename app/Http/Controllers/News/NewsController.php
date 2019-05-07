@@ -8,6 +8,8 @@ use Illuminate\Http\File;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Validator;
 
 class NewsController extends Controller
 {
@@ -78,6 +80,18 @@ class NewsController extends Controller
         if (view()->exists('news.create')) {
             if ($request->isMethod('post'))
             {
+                $validator = Validator::make($request->all(), [
+                    'title' => 'required',
+                    'text' => 'required',
+                    'image' => 'image',
+                    'id_category' => 'required',
+                ]);
+
+                if ($validator->fails()) {
+                    \Session::flash('warning', 'Please enter the valid details');
+                    return Redirect::to('/news/post/create/')->withInput()->withErrors($validator);
+                }
+
                 $image = null;
 
                 if ($request->file('image') != null) {
@@ -93,6 +107,8 @@ class NewsController extends Controller
                     'id_category' => $request->input('id_category'),
                     'id_user' => Auth::user()->id,
                 ]);
+
+                \Session::flash('success', 'News added successfully');
 
                 return redirect('news');
             } else {
@@ -125,6 +141,19 @@ class NewsController extends Controller
             }
         } else if ($request->isMethod('post')) {
 
+            $validator = Validator::make($request->all(), [
+                'title' => 'required',
+                // TODO Поле text не срабатывает при редактировании новости, пустые теги внутри
+                'text' => 'required',
+                'image' => 'image',
+                'id_category' => 'required',
+            ]);
+
+            if ($validator->fails()) {
+                \Session::flash('warning', 'Please enter the valid details');
+                return Redirect::to('/news/post/edit/'.$id)->withInput()->withErrors($validator);
+            }
+
             $news = News::with('newsCategory', 'user')->where('id','=',$id)->first();
             $news->title = $request->input('title');
             $news->text = $request->input('text');
@@ -136,6 +165,8 @@ class NewsController extends Controller
             }
 
             $news->save();
+
+            \Session::flash('success', 'News edited successfully');
 
             return redirect('news');
         } else {

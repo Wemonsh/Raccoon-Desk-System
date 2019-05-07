@@ -15,9 +15,21 @@
     <hr>
     <form method="post" action="{{ route('knowledgeCreate') }}" enctype="multipart/form-data">
         @csrf
+
+        @if (Session::has('success'))
+            <div class="alert alert-success">
+                {{ Session::get('success') }}
+            </div>
+        @elseif(Session::has('warning'))
+            <div class="alert alert-danger">
+                {{ Session::get('warning') }}
+            </div>
+        @endif
+
         <div class="form-group">
             <label for="title">{{ __('knowledge/create.title') }}</label>
             <input name="title" type="text" class="form-control" id="title" placeholder="{{ __('knowledge/create.enter_title') }}">
+            {!! $errors->first('title', '<p class="alert alert-danger">:message</p>') !!}
         </div>
         <div class="form-group form-check">
             <input type="checkbox" name="pinned" class="form-check-input" id="pinned" value="1">
@@ -30,10 +42,12 @@
                     <option value="{{ $value->id }}">{{ $value->title }}</option>
                 @endforeach
             </select>
+            {!! $errors->first('id_category', '<p class="alert alert-danger">:message</p>') !!}
         </div>
         <div class="form-group">
             <label for="text">{{ __('knowledge/create.content') }}</label>
             <textarea name="text" class="form-control" id="text" rows="12"></textarea>
+            {!! $errors->first('text', '<p class="alert alert-danger">:message</p>') !!}
         </div>
         <div class="form-group">
             <label for="files">{{ __('knowledge/create.attachments') }}</label>

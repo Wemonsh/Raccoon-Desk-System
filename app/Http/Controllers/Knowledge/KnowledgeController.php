@@ -7,6 +7,8 @@ use App\KnowledgeCategory;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Validator;
 
 class KnowledgeController extends Controller
 {
@@ -104,6 +106,17 @@ class KnowledgeController extends Controller
         if (view()->exists('knowledge.create')) {
             if ($request->isMethod('post')) {
 
+                $validator = Validator::make($request->all(), [
+                    'title' => 'required',
+                    'text' => 'required',
+                    'id_category' => 'required',
+                ]);
+
+                if ($validator->fails()) {
+                    \Session::flash('warning', 'Please enter the valid details');
+                    return Redirect::to('/knowledge/article/create/')->withInput()->withErrors($validator);
+                }
+
                 $files = $request->file('file');
                 $json = null;
                 if ($files != null) {
@@ -126,6 +139,9 @@ class KnowledgeController extends Controller
                     'pinned' => $request->input('pinned') == null? 0 : 1,
                     'id_user' => Auth::user()->id
                 ]);
+
+                \Session::flash('success', 'Article added successfully');
+
                 return redirect('knowledge');
             } else {
                 $vars = [
@@ -142,6 +158,17 @@ class KnowledgeController extends Controller
         if (view()->exists('knowledge.edit')) {
             if ($request->isMethod('post')) {
                 $article = Knowledge::with('knowledgeCategory', 'user')->where('id','=', $id)->first();
+
+                $validator = Validator::make($request->all(), [
+                    'title' => 'required',
+                    'text' => 'required',
+                    'id_category' => 'required',
+                ]);
+
+                if ($validator->fails()) {
+                    \Session::flash('warning', 'Please enter the valid details');
+                    return Redirect::to('/knowledge/article/edit/'.$id)->withInput()->withErrors($validator);
+                }
 
                 // Логика добавления новых файлов в статью
                 $files = $request->file('file');
@@ -173,6 +200,8 @@ class KnowledgeController extends Controller
                 $article->id_category = $request->input('id_category');
                 $article->pinned = $request->input('pinned') == null? 0 : 1;
                 $article->save();
+
+                \Session::flash('success', 'Article edited successfully');
 
                 return redirect('knowledge');
             } else {
