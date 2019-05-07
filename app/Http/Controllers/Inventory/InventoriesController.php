@@ -8,6 +8,7 @@ use App\InvInventories;
 use App\InvPlacements;
 use App\InvStatuses;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -149,5 +150,37 @@ class InventoriesController extends Controller
         } else {
             abort(404);
         }
+    }
+
+    public function workplace() {
+
+        $vars = [
+            'responsible' => User::select(DB::raw("CONCAT(last_name,' ',first_name,' ',middle_name) AS name"),'id')->orderBy('id', 'asc')->pluck('name', 'id'),
+        ];
+        return view('inventory.inventories.workplace', $vars);
+    }
+
+    public function workplaceApiResponse (Request $request) {
+        // получаем значения из request
+        $pageSize = $request['pageSize'];
+        $sortName = $request['sortName'];
+        $sortOrder = $request['sortOrder'];
+        $searchText = $request['searchText'];
+        // Сортировка
+        if (empty($sortName)) {
+            $sortName = 'id';
+        }
+        // Выбор данных и пагинация
+        $rows = InvInventories::with('counterparty')->with('device')->with('placement')->with('responsible')->with('status')->with('operator')
+            ->where('serial_number', 'LIKE', '%'.$searchText.'%')
+            ->where([['id_responsible', '!=', null],['id_responsible', '=', $request['id_responsible']]])
+            ->orderBy($sortName, $sortOrder)->paginate($pageSize)->toArray();
+
+        return response()->json(
+            [
+                'rows' =>  $rows['data'],
+                'total' => $rows['total']
+            ]
+        );
     }
 }

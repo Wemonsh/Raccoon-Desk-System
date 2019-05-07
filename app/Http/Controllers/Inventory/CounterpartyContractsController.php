@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Inventory;
 
 use App\InvCounterparty;
 use App\InvCounterpartyContracts;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
@@ -157,5 +158,33 @@ class CounterpartyContractsController extends Controller
         } else {
             abort(404);
         }
+    }
+
+    public function control() {
+
+        return view('inventory.contracts.control');
+    }
+
+    public function controlApiResponse (Request $request) {
+        // получаем значения из request
+        $pageSize = $request['pageSize'];
+        $sortName = $request['sortName'];
+        $sortOrder = $request['sortOrder'];
+        $searchText = $request['searchText'];
+        // Сортировка
+        if (empty($sortName)) {
+            $sortName = 'id';
+        }
+        // Выбор данных и пагинация
+        $rows = InvCounterpartyContracts::with('counterparty')->where('name', 'LIKE', '%'.$searchText.'%')
+            ->where([['valid', '=', '1'],['date_to', '>=', Carbon::now()->format('Y/m/d')]])
+            ->orderBy($sortName, $sortOrder)->paginate($pageSize)->toArray();
+
+        return response()->json(
+            [
+                'rows' =>  $rows['data'],
+                'total' => $rows['total']
+            ]
+        );
     }
 }

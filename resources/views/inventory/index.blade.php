@@ -11,14 +11,15 @@
             <div class="list-group">
                 <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-wifi fa-fw"></i> {{ __('inventory/index.availability_checking') }}</a>
                 <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-hammer fa-fw"></i> {{ __('inventory/index.service_manager') }}</a>
-                <a href="{{ route('counterpartyContractsIndex') }}" class="list-group-item list-group-item-action"><i class="fas fa-check-square fa-fw"></i> {{ __('inventory/index.contracts_control') }}</a>
-                <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-portrait fa-fw"></i> {{ __('inventory/index.goods_materials') }}</a>
+                <a href="{{ route('counterpartyContractsControl') }}" class="list-group-item list-group-item-action"><i class="fas fa-check-square fa-fw"></i> {{ __('inventory/index.contracts_control') }}</a>
+                <a href="{{ route('inventoriesWorkplace') }}" class="list-group-item list-group-item-action"><i class="fas fa-portrait fa-fw"></i> {{ __('inventory/index.goods_materials') }}</a>
             </div>
         </div>
         <div class="col-3">
             <h2>{{ __('inventory/index.journals') }}</h2>
             <div class="list-group">
                 <a href="{{ route('inventoriesIndex') }}" class="list-group-item list-group-item-action"><i class="fas fa-archive fa-fw"></i> {{ __('inventory/index.property') }}</a>
+                <a href="{{ route('counterpartyContractsIndex') }}" class="list-group-item list-group-item-action"><i class="fas fa-file-alt fa-fw"></i> Договора</a>
             </div>
         </div>
         <div class="col-3">

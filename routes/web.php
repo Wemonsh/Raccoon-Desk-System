@@ -165,6 +165,8 @@ Route::group(['prefix' => 'inventory'], function () {
     Route::match(['get', 'post'], '/counterparty-contracts/create', ['uses' => 'Inventory\CounterpartyContractsController@create', 'as' => 'counterpartyContractsCreate']);
     Route::match(['get', 'post'], '/counterparty-contracts/api-response', ['uses' => 'Inventory\CounterpartyContractsController@apiResponse']);
     Route::match(['get', 'post'], '/counterparty-contracts/edit/{id}', ['uses' => 'Inventory\CounterpartyContractsController@edit', 'as' => 'counterpartyContractsEdit']);
+    Route::match(['get', 'post'], '/counterparty-contracts/control', ['uses' => 'Inventory\CounterpartyContractsController@control', 'as' => 'counterpartyContractsControl']);
+    Route::match(['get', 'post'], '/counterparty-contracts/control-api-response', ['uses' => 'Inventory\CounterpartyContractsController@controlApiResponse']);
 
     // Devices
     Route::match(['get', 'post'], '/devices/create', ['uses' => 'Inventory\DevicesController@create', 'as' => 'devicesCreate']);
@@ -173,10 +175,12 @@ Route::group(['prefix' => 'inventory'], function () {
     Route::match(['get', 'post'], '/devices/api-response', ['uses' => 'Inventory\DevicesController@apiResponse']);
     Route::match(['get', 'post'], '/devices/edit/{id}', ['uses' => 'Inventory\DevicesController@edit', 'as' => 'devicesEdit']);
 
-
+    // Inventories
     Route::match(['get', 'post'], '/inventories/', ['uses' => 'Inventory\InventoriesController@index', 'as' => 'inventoriesIndex']);
     Route::match(['get', 'post'], '/inventories/create', ['uses' => 'Inventory\InventoriesController@create', 'as' => 'inventoriesCreate']);
     Route::match(['get', 'post'], '/inventories/api-response', ['uses' => 'Inventory\InventoriesController@apiResponse']);
     Route::match(['get', 'post'], '/inventories/edit/{id}', ['uses' => 'Inventory\InventoriesController@edit', 'as' => 'inventoriesEdit']);
+    Route::match(['get', 'post'], '/inventories/workplace-api-response', ['uses' => 'Inventory\InventoriesController@workplaceApiResponse']);
+    Route::match(['get', 'post'], '/inventories/workplace', ['uses' => 'Inventory\InventoriesController@workplace', 'as' => 'inventoriesWorkplace']);
 
 });
