@@ -16,7 +16,6 @@
     <hr>
     <div class="toolbar">
         <div class="form-group">
-            {!! Form::label('id_responsible', 'Ответственный:') !!}
             <div class="form-inline">
                 {!! Form::select('id_responsible', $responsible, null, ['class' => 'form-control mr-1'] ) !!}
                 {!! Form::button('Отобразить', ['class' => 'btn btn-secondary', 'id' => 'btn_show', 'name' => 'btn_show', 'onClick' => 'showResponsible()']) !!}

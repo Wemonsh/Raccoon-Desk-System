@@ -183,4 +183,19 @@ class InventoriesController extends Controller
             ]
         );
     }
+
+    public function show (Request $request, $id) {
+
+        $object = InvInventories::with('counterparty')->with('device')->with('placement')->with('responsible')->with('status')->with('operator')
+            ->where('id', '=', $id)->first();
+
+
+        //dump($object);
+
+        $vars = [
+            'object' => $object
+        ];
+
+        return view('inventory.inventories.show', $vars);
+    }
 }
