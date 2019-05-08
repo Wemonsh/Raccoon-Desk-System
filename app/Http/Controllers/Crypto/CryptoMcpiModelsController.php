@@ -5,6 +5,8 @@ namespace App\Http\Controllers\crypto;
 use App\CryptoMcpiModels;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Validator;
 
 class CryptoMcpiModelsController extends Controller
 {
@@ -38,6 +40,20 @@ class CryptoMcpiModelsController extends Controller
         if (view()->exists('crypto.models.create')) {
             if ($request->isMethod('post')) {
 
+                $validator = Validator::make($request->all(), [
+                    'name' => 'required',
+                    'reg_number' => 'required',
+                    'information' => 'required',
+                    'comment' => 'required',
+                    'date_from' => 'date|required',
+                    'date_to' => 'date|required',
+                ]);
+
+                if ($validator->fails()) {
+                    \Session::flash('warning', 'Please enter the valid details');
+                    return Redirect::to('/crypto/mcpi-models/create/')->withInput()->withErrors($validator);
+                }
+
                 CryptoMcpiModels::create([
                     'name' => $request->input('name'),
                     'reg_number' => $request->input('reg_number'),
@@ -46,6 +62,8 @@ class CryptoMcpiModelsController extends Controller
                     'date_from' => $request->input('date_from'),
                     'date_to' => $request->input('date_to'),
                 ]);
+
+                \Session::flash('success', 'Model added successfully');
 
                 return redirect('/crypto/mcpi-models');
             } else {
@@ -59,6 +77,21 @@ class CryptoMcpiModelsController extends Controller
     public function edit (Request $request, $id) {
         if (view()->exists('crypto.models.edit')) {
             if ($request->isMethod('post')) {
+
+                $validator = Validator::make($request->all(), [
+                    'name' => 'required',
+                    'reg_number' => 'required',
+                    'information' => 'required',
+                    'comment' => 'required',
+                    'date_from' => 'date|required',
+                    'date_to' => 'date|required',
+                ]);
+
+                if ($validator->fails()) {
+                    \Session::flash('warning', 'Please enter the valid details');
+                    return Redirect::to('/crypto/mcpi-models/edit/'.$id)->withInput()->withErrors($validator);
+                }
+
                 $mcpi_model = CryptoMcpiModels::where('id','=', $id)->first();
 
                 $mcpi_model->name = $request->input('name');
@@ -68,6 +101,8 @@ class CryptoMcpiModelsController extends Controller
                 $mcpi_model->date_from = $request->input('date_from');
                 $mcpi_model->date_to = $request->input('date_to');
                 $mcpi_model->save();
+
+                \Session::flash('success', 'Model edited successfully');
 
                 return redirect('/crypto/mcpi-models');
             } else {

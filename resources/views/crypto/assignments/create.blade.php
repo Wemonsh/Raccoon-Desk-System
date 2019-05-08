@@ -1,4 +1,4 @@
-@extends('layouts.default')
+    @extends('layouts.default')
 
 @section('breadcrumbs')
     <nav aria-label="breadcrumb">

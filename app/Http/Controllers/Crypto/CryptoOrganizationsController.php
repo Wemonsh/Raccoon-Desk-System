@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Crypto;
 use App\CryptoOrganization;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Validator;
 
 class CryptoOrganizationsController extends Controller
 {
@@ -47,6 +49,19 @@ class CryptoOrganizationsController extends Controller
     public function create (Request $request) {
         if (view()->exists('crypto.organizations.create')) {
             if ($request->isMethod('post')) {
+
+                $validator = Validator::make($request->all(), [
+                    'name' => 'required',
+                    'phone' => 'required',
+                    'email' => 'email|required',
+                    'site' => 'required',
+                ]);
+
+                if ($validator->fails()) {
+                    \Session::flash('warning', 'Please enter the valid details');
+                    return Redirect::to('/crypto/organizations/create/')->withInput()->withErrors($validator);
+                }
+
                 $json = null;
                 $address = $request->input('address');
 
@@ -71,6 +86,8 @@ class CryptoOrganizationsController extends Controller
                     'site' => $request->input('site')
                 ]);
 
+                \Session::flash('success', 'Organization added successfully');
+
                 return redirect('crypto/organizations');
             } else {
                 return view('crypto.organizations.create');
@@ -83,6 +100,19 @@ class CryptoOrganizationsController extends Controller
     public function edit (Request $request, $id) {
         if (view()->exists('crypto.organizations.edit')) {
             if ($request->isMethod('post')) {
+
+                $validator = Validator::make($request->all(), [
+                    'name' => 'required',
+                    'phone' => 'required',
+                    'email' => 'email|required',
+                    'site' => 'required',
+                ]);
+
+                if ($validator->fails()) {
+                    \Session::flash('warning', 'Please enter the valid details');
+                    return Redirect::to('/crypto/organizations/edit/'.$id)->withInput()->withErrors($validator);
+                }
+
                 $organization = CryptoOrganization::where('id','=', $id)->first();
 
                 $address = $request->input('address');
@@ -106,6 +136,8 @@ class CryptoOrganizationsController extends Controller
                 $organization->email = $request->input('email');
                 $organization->site = $request->input('site');
                 $organization->save();
+
+                \Session::flash('success', 'Organization edited successfully');
 
                 return redirect('/crypto/organizations');
             } else {

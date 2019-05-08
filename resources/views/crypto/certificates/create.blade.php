@@ -60,7 +60,7 @@
 
     <div class="form-group">
         {!! Form::label('file', 'Файл') !!}
-        {!! Form::file('file', ['id' => 'fil', 'class' => 'form-control-file']) !!}
+        {!! Form::file('file', ['id' => 'file', 'class' => 'form-control-file']) !!}
     </div>
 
     <div class="form-group">

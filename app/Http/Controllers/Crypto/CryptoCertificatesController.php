@@ -8,6 +8,9 @@ use App\CryptoOrganization;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Validator;
 
 class CryptoCertificatesController extends Controller
 {
@@ -41,6 +44,20 @@ class CryptoCertificatesController extends Controller
         if (view()->exists('crypto.certificates.create')) {
             if ($request->isMethod('post')) {
 
+                $validator = Validator::make($request->all(), [
+                    'serial_number' => 'required',
+                    'id_organization' => 'required',
+                    'id_user' => 'required',
+                    'id_assignment' => 'required',
+                    'date_from' => 'date|required',
+                    'date_to' => 'date|required',
+                ]);
+
+                if ($validator->fails()) {
+                    \Session::flash('warning', 'Please enter the valid details');
+                    return Redirect::to('/crypto/certificates/create/')->withInput()->withErrors($validator);
+                }
+
                 $file = null;
 
                 if ($request->file('file') != null) {
@@ -59,13 +76,14 @@ class CryptoCertificatesController extends Controller
                     'date_to' => $request->input('date_to'),
                 ]);
 
+                \Session::flash('success', 'Certificate added successfully');
+
                 return redirect('/crypto/certificates');
             } else {
 
                 $vars = [
                     'organizations' => CryptoOrganization::pluck('name', 'id'),
-                    // TODO Доработать вывод ФИО в селект!!!
-                    'users' => User::pluck('last_name', 'id'),
+                    'users' => User::select(DB::raw("CONCAT(last_name,' ',first_name,' ',middle_name) AS name"),'id')->pluck('name', 'id'),
                     'assignments' => CryptoAssignment::pluck('name', 'id')
                 ];
                 return view('crypto.certificates.create', $vars);
@@ -78,6 +96,21 @@ class CryptoCertificatesController extends Controller
     public function edit (Request $request, $id) {
         if (view()->exists('crypto.certificates.edit')) {
             if ($request->isMethod('post')) {
+
+                $validator = Validator::make($request->all(), [
+                    'serial_number' => 'required',
+                    'id_organization' => 'required',
+                    'id_user' => 'required',
+                    'id_assignment' => 'required',
+                    'date_from' => 'date|required',
+                    'date_to' => 'date|required',
+                ]);
+
+                if ($validator->fails()) {
+                    \Session::flash('warning', 'Please enter the valid details');
+                    return Redirect::to('/crypto/certificates/edit/'.$id)->withInput()->withErrors($validator);
+                }
+
                 $certificate = CryptoCertificate::where('id','=', $id)->first();
 
                 $file = $request->file('file');
@@ -96,6 +129,8 @@ class CryptoCertificatesController extends Controller
                 $certificate->date_to = $request->input('date_to');
                 $certificate->save();
 
+                \Session::flash('success', 'Certificate edited successfully');
+
                 return redirect('/crypto/certificates');
             } else {
 
@@ -109,8 +144,7 @@ class CryptoCertificatesController extends Controller
                         'certificate' => $certificate,
                         'id' => $id,
                         'organizations' => CryptoOrganization::pluck('name', 'id'),
-                        // TODO Доработать вывод ФИО в селект!!!
-                        'users' => User::pluck('last_name', 'id'),
+                        'users' => User::select(DB::raw("CONCAT(last_name,' ',first_name,' ',middle_name) AS name"),'id')->pluck('name', 'id'),
                         'assignments' => CryptoAssignment::pluck('name', 'id')
                     ];
                     return view('crypto.certificates.edit', $vars);

@@ -5,6 +5,8 @@ namespace App\Http\Controllers\crypto;
 use App\CryptoStorage;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Validator;
 
 class CryptoStoragesController extends Controller
 {
@@ -38,10 +40,22 @@ class CryptoStoragesController extends Controller
         if (view()->exists('crypto.storages.create')) {
             if ($request->isMethod('post')) {
 
+                $validator = Validator::make($request->all(), [
+                    'serial_number' => 'required',
+                    'comment' => 'required',
+                ]);
+
+                if ($validator->fails()) {
+                    \Session::flash('warning', 'Please enter the valid details');
+                    return Redirect::to('/crypto/storages/create/')->withInput()->withErrors($validator);
+                }
+
                 CryptoStorage::create([
                     'serial_number' => $request->input('serial_number'),
                     'comment' => $request->input('comment'),
                 ]);
+
+                \Session::flash('success', 'Storage added successfully');
 
                 return redirect('/crypto/storages');
             } else {
@@ -55,11 +69,24 @@ class CryptoStoragesController extends Controller
     public function edit (Request $request, $id) {
         if (view()->exists('crypto.storages.edit')) {
             if ($request->isMethod('post')) {
+
+                $validator = Validator::make($request->all(), [
+                    'serial_number' => 'required',
+                    'comment' => 'required',
+                ]);
+
+                if ($validator->fails()) {
+                    \Session::flash('warning', 'Please enter the valid details');
+                    return Redirect::to('/crypto/storages/edit/'.$id)->withInput()->withErrors($validator);
+                }
+
                 $storage = CryptoStorage::where('id','=', $id)->first();
 
                 $storage->serial_number = $request->input('serial_number');
                 $storage->comment = $request->input('comment');
                 $storage->save();
+
+                \Session::flash('success', 'Storage edited successfully');
 
                 return redirect('/crypto/storages');
             } else {

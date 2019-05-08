@@ -5,6 +5,8 @@ namespace App\Http\Controllers\crypto;
 use App\CryptoInformationSystem;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Validator;
 
 class CryptoInformationSystemController extends Controller
 {
@@ -38,10 +40,22 @@ class CryptoInformationSystemController extends Controller
         if (view()->exists('crypto.infosystems.create')) {
             if ($request->isMethod('post')) {
 
+                $validator = Validator::make($request->all(), [
+                    'name' => 'required',
+                    'comment' => 'required',
+                ]);
+
+                if ($validator->fails()) {
+                    \Session::flash('warning', 'Please enter the valid details');
+                    return Redirect::to('/crypto/info-systems/create/')->withInput()->withErrors($validator);
+                }
+
                 CryptoInformationSystem::create([
                     'name' => $request->input('name'),
                     'comment' => $request->input('comment'),
                 ]);
+
+                \Session::flash('success', 'Info-system added successfully');
 
                 return redirect('/crypto/info-systems');
             } else {
@@ -55,11 +69,24 @@ class CryptoInformationSystemController extends Controller
     public function edit (Request $request, $id) {
         if (view()->exists('crypto.infosystems.edit')) {
             if ($request->isMethod('post')) {
+
+                $validator = Validator::make($request->all(), [
+                    'name' => 'required',
+                    'comment' => 'required',
+                ]);
+
+                if ($validator->fails()) {
+                    \Session::flash('warning', 'Please enter the valid details');
+                    return Redirect::to('/crypto/info-systems/edit/'.$id)->withInput()->withErrors($validator);
+                }
+
                 $info_system = CryptoInformationSystem::where('id','=', $id)->first();
 
                 $info_system->name = $request->input('name');
                 $info_system->comment = $request->input('comment');
                 $info_system->save();
+
+                \Session::flash('success', 'Info-system edited successfully');
 
                 return redirect('/crypto/info-systems');
             } else {
