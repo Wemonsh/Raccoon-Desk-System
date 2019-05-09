@@ -160,7 +160,7 @@
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="{{ route('phonesIndex') }}">
                 <i class="fas fa-fw fa-address-book"></i>
                 <span>{{ __('layouts/navigation.phone') }}</span>
             </a>
