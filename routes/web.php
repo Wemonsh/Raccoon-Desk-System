@@ -186,3 +186,8 @@ Route::group(['prefix' => 'inventory'], function () {
     Route::match(['get', 'post'], '/inventories/show/{id}', ['uses' => 'Inventory\InventoriesController@show', 'as' => 'inventoriesShow']);
 
 });
+
+Route::group(['prefix' => 'account'], function () {
+    Route::match(['get', 'post'], '/profile/{id?}', ['uses' => 'Auth\AccountController@profile', 'as' => 'accountProfile']);
+    Route::match(['get', 'post'], '/setting', ['uses' => 'Auth\AccountController@setting', 'as' => 'accountSetting']);
+});

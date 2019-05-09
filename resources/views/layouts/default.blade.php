@@ -115,8 +115,8 @@
             </a>
 
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Профиль</a>
-                <a class="dropdown-item" href="#">Настройки</a>
+                <a class="dropdown-item" href="{{ route('accountProfile') }}">Профиль</a>
+                <a class="dropdown-item" href="{{ route('accountSetting') }}">Настройки</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="{{ route('logout') }}"
                    onclick="event.preventDefault();
