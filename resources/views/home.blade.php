@@ -15,7 +15,7 @@
                 </div>
                 <div class="mr-5">{{ $users_count }} {{ __('main/home.users') }}</div>
             </div>
-            <a class="card-footer text-white clearfix small z-1" href="#">
+            <a class="card-footer text-white clearfix small z-1" href="{{ route('phonesIndex') }}">
                 <span class="float-left">{{ __('main/home.more') }}</span>
                 <span class="float-right">
               <i class="fas fa-angle-right"></i>

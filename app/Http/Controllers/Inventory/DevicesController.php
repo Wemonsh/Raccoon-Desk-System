@@ -7,6 +7,7 @@ use App\InvManufactures;
 use App\InvTypes;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 
 class DevicesController extends Controller
@@ -40,6 +41,19 @@ class DevicesController extends Controller
     public function create (Request $request) {
 
         if ($request->isMethod('POST')) {
+
+            $validator = Validator::make($request->all(), [
+                'name' => 'required',
+                'id_manufacture' => 'required',
+                'id_type' => 'required',
+                'photo' => 'image',
+            ]);
+
+            if ($validator->fails()) {
+                \Session::flash('warning', 'Please enter the valid details');
+                return Redirect::to('/inventory/devices/create/')->withInput()->withErrors($validator);
+            }
+
             $manufactures = $request['manufactures'];
             $types = $request['types'];
             $name = $request['name'];
@@ -57,6 +71,8 @@ class DevicesController extends Controller
                 'specifications' => $specifications,
                 'photo' => $photo,
             ]);
+
+            \Session::flash('success', 'Device added successfully');
 
             return redirect('/inventory/devices');
         }
@@ -83,6 +99,9 @@ class DevicesController extends Controller
 
                 $validator = Validator::make($request->all(), [
                     'name' => 'required',
+                    'id_manufacture' => 'required',
+                    'id_type' => 'required',
+                    'photo' => 'image',
                 ]);
 
                 if ($validator->fails()) {
@@ -106,7 +125,7 @@ class DevicesController extends Controller
 
                 $type->save();
 
-                \Session::flash('success', 'Device added successfully');
+                \Session::flash('success', 'Device edited successfully');
 
                 return redirect('/inventory/devices/');
             } else {

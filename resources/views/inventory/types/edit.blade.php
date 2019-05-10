@@ -64,6 +64,7 @@
     <div class="form-group">
         {!! Form::label('image', 'Изменить изображение') !!}
         {!! Form::file('image', ['id' => 'image', 'class' => 'form-control-file']) !!}
+        {!! $errors->first('image', '<p class="alert alert-danger">:message</p>') !!}
     </div>
 
     {!! Form::submit('Изменить', ['class' => 'btn btn-primary']) !!}

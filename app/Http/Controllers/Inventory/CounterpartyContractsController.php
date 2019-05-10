@@ -7,6 +7,7 @@ use App\InvCounterpartyContracts;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 
 class CounterpartyContractsController extends Controller
@@ -40,7 +41,10 @@ class CounterpartyContractsController extends Controller
     public function create (Request $request) {
         if ($request->isMethod('post')) {
             $validator = Validator::make($request->all(), [
+                'number' => 'required',
                 'name' => 'required',
+                'date_from' => 'date|required',
+                'id_counterparty' => 'required',
             ]);
 
             if ($validator->fails()) {
@@ -75,7 +79,7 @@ class CounterpartyContractsController extends Controller
                 ]
             );
 
-            \Session::flash('success', 'Placement added successfully');
+            \Session::flash('success', 'Counterparty contract added successfully');
 
             return redirect('/inventory/counterparty-contracts');
 
@@ -95,7 +99,10 @@ class CounterpartyContractsController extends Controller
             if ($request->isMethod('post')) {
 
                 $validator = Validator::make($request->all(), [
+                    'number' => 'required',
                     'name' => 'required',
+                    'date_from' => 'date|required',
+                    'id_counterparty' => 'required',
                 ]);
 
                 if ($validator->fails()) {
@@ -137,7 +144,7 @@ class CounterpartyContractsController extends Controller
                 $contract->id_counterparty = $request->input('id_counterparty');
                 $contract->save();
 
-                \Session::flash('success', 'Placements added successfully');
+                \Session::flash('success', 'Counterparty contract edited successfully');
 
                 return redirect('/inventory/counterparty-contracts/');
             } else {

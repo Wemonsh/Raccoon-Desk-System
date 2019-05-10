@@ -25,12 +25,30 @@
         <div class="col-3">
             <h2>{{ __('inventory/index.directories') }}</h2>
             <div class="list-group">
-                <a href="{{ route('counterpartyIndex') }}" class="list-group-item list-group-item-action"><i class="fas fa-warehouse fa-fw"></i> {{ __('inventory/index.counterparties') }}</a>
-                <a href="{{ route('manufacturesIndex') }}" class="list-group-item list-group-item-action"><i class="fas fa-industry" fa-fw></i> {{ __('inventory/index.manufacturers') }}</a>
-                <a href="{{ route('typesIndex') }}" class="list-group-item list-group-item-action"><i class="fas fa-boxes fa-fw"></i> {{ __('inventory/index.types_of_means') }}</a>
-                <a href="{{ route('devicesIndex') }}" class="list-group-item list-group-item-action"><i class="fas fa-cubes fa-fw"></i> {{ __('inventory/index.TMC_groups') }}</a>
-                <a href="{{ route('placementsIndex') }}" class="list-group-item list-group-item-action"><i class="far fa-building fa-fw"></i> {{ __('inventory/index.premises') }}</a>
-                <a href="{{ route('organizationsIndex') }}" class="list-group-item list-group-item-action"><i class="fas fa-building fa-fw"></i> {{ __('inventory/index.organizations') }}</a>
+                <a href="{{ route('counterpartyIndex') }}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                    <span><i class="fas fa-warehouse fa-fw"></i> {{ __('inventory/index.counterparties') }}</span>
+                    <span class="badge badge-secondary">{{ $counterparty }}</span>
+                </a>
+                <a href="{{ route('manufacturesIndex') }}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                    <span><i class="fas fa-industry fa-fw"></i> {{ __('inventory/index.manufacturers') }}</span>
+                    <span class="badge badge-secondary">{{ $manufactures }}</span>
+                </a>
+                <a href="{{ route('typesIndex') }}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                    <span><i class="fas fa-boxes fa-fw"></i> {{ __('inventory/index.types_of_means') }}</span>
+                    <span class="badge badge-secondary">{{ $types }}</span>
+                </a>
+                <a href="{{ route('devicesIndex') }}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                    <span><i class="fas fa-cubes fa-fw"></i> {{ __('inventory/index.TMC_groups') }}</span>
+                    <span class="badge badge-secondary">{{ $devices }}</span>
+                </a>
+                <a href="{{ route('placementsIndex') }}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                    <span><i class="far fa-building fa-fw"></i> {{ __('inventory/index.premises') }}</span>
+                    <span class="badge badge-secondary">{{ $placements }}</span>
+                </a>
+                <a href="{{ route('organizationsIndex') }}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                    <span><i class="fas fa-building fa-fw"></i> {{ __('inventory/index.organizations') }}</span>
+                    <span class="badge badge-secondary">{{ $organizations }}</span>
+                </a>
             </div>
         </div>
         <div class="col-3">

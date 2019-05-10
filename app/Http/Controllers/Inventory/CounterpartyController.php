@@ -59,7 +59,7 @@ class CounterpartyController extends Controller
                 ]
             );
 
-            \Session::flash('success', 'Event added successfully');
+            \Session::flash('success', 'Counterparty added successfully');
 
             return redirect('/inventory/counterparty');
 
@@ -92,7 +92,7 @@ class CounterpartyController extends Controller
                 $counterparty->sale = $request->input('sale') == null? 0 : 1;
                 $counterparty->save();
 
-                \Session::flash('success', 'Event added successfully');
+                \Session::flash('success', 'Counterparty edited successfully');
 
                 return redirect('/inventory/counterparty/');
             } else {

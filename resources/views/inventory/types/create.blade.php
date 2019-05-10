@@ -53,6 +53,7 @@
     <div class="form-group">
         {!! Form::label('image', 'Фото') !!}
         {!! Form::file('image', ['id' => 'image', 'class' => 'form-control-file']) !!}
+        {!! $errors->first('image', '<p class="alert alert-danger">:message</p>') !!}
     </div>
 
     {!! Form::submit('Добавить', ['class' => 'btn btn-primary']) !!}

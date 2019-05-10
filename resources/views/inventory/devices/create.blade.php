@@ -30,6 +30,7 @@
         {!! Form::label('manufactures', 'Производитель') !!}
         <div>
             {!! Form::select('manufactures', $manufactures, null, ['class' => 'form-control'] ) !!}
+            {!! $errors->first('manufactures', '<p class="alert alert-danger">:message</p>') !!}
         </div>
     </div>
 
@@ -37,6 +38,7 @@
         {!! Form::label('types', 'Тип') !!}
         <div>
             {!! Form::select('types', $types, null, ['class' => 'form-control', 'id' => 'types'] ) !!}
+            {!! $errors->first('types', '<p class="alert alert-danger">:message</p>') !!}
         </div>
     </div>
 
@@ -98,6 +100,7 @@
     <div class="form-group">
         {!! Form::label('photo', 'Фото') !!}
         {!! Form::file('photo', ['id' => 'photo', 'class' => 'form-control-file']) !!}
+        {!! $errors->first('photo', '<p class="alert alert-danger">:message</p>') !!}
     </div>
 
     {!! Form::submit('Добавить', ['class' => 'btn btn-primary']) !!}

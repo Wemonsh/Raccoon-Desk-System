@@ -6,6 +6,7 @@ use App\InvOrganizations;
 use App\InvPlacements;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 
 class PlacementsController extends Controller
@@ -40,6 +41,8 @@ class PlacementsController extends Controller
         if ($request->isMethod('post')) {
             $validator = Validator::make($request->all(), [
                 'name' => 'required',
+                'comment' => 'required',
+                'id_organization' => 'required',
             ]);
 
             if ($validator->fails()) {
@@ -76,6 +79,8 @@ class PlacementsController extends Controller
 
                 $validator = Validator::make($request->all(), [
                     'name' => 'required',
+                    'comment' => 'required',
+                    'id_organization' => 'required',
                 ]);
 
                 if ($validator->fails()) {
@@ -90,7 +95,7 @@ class PlacementsController extends Controller
                 $placement->id_organization = $request->input('id_organization');
                 $placement->save();
 
-                \Session::flash('success', 'Placements added successfully');
+                \Session::flash('success', 'Placements edited successfully');
 
                 return redirect('/inventory/placements/');
             } else {

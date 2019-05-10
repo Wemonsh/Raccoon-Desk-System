@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Inventory;
 use App\InvOrganizations;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 
 class OrganizationsController extends Controller
@@ -37,8 +38,10 @@ class OrganizationsController extends Controller
 
     public function create (Request $request) {
         if ($request->isMethod('post')) {
+
             $validator = Validator::make($request->all(), [
                 'name' => 'required',
+                'address.*' => 'required',
             ]);
 
             if ($validator->fails()) {
@@ -86,6 +89,7 @@ class OrganizationsController extends Controller
 
                 $validator = Validator::make($request->all(), [
                     'name' => 'required',
+                    'address.*' => 'required',
                 ]);
 
                 if ($validator->fails()) {
@@ -114,7 +118,7 @@ class OrganizationsController extends Controller
                 $organization->address = $json;
                 $organization->save();
 
-                \Session::flash('success', 'Organization added successfully');
+                \Session::flash('success', 'Organization edited successfully');
 
                 return redirect('/inventory/organizations/');
             } else {

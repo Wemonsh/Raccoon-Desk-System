@@ -37,8 +37,10 @@ class ManufacturesController extends Controller
 
     public function create (Request $request) {
         if ($request->isMethod('post')) {
+
             $validator = Validator::make($request->all(), [
                 'name' => 'required',
+                'logotype' => 'image',
             ]);
 
             if ($validator->fails()) {
@@ -77,6 +79,7 @@ class ManufacturesController extends Controller
 
                 $validator = Validator::make($request->all(), [
                     'name' => 'required',
+                    'logotype' => 'image',
                 ]);
 
                 if ($validator->fails()) {
@@ -96,7 +99,7 @@ class ManufacturesController extends Controller
 
                 $manufacture->save();
 
-                \Session::flash('success', 'Manufacture added successfully');
+                \Session::flash('success', 'Manufacture edited successfully');
 
                 return redirect('/inventory/manufactures/');
             } else {

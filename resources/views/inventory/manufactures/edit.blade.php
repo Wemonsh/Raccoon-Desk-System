@@ -56,6 +56,7 @@
     <div class="form-group">
         {!! Form::label('logotype', 'Изменить логотип') !!}
         {!! Form::file('logotype', ['id' => 'logotype', 'class' => 'form-control-file']) !!}
+        {!! $errors->first('logotype', '<p class="alert alert-danger">:message</p>') !!}
     </div>
 
     {!! Form::submit('Изменить', ['class' => 'btn btn-primary']) !!}

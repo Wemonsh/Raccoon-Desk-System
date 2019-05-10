@@ -42,40 +42,40 @@
             {!! Form::label('address_street', 'Название улицы, номер дома, номер офиса/помещения') !!}
             <div>
                 {!! Form::text('address[]', null, ['class' => 'form-control']) !!}
-                {!! $errors->first('address[]', '<p class="alert alert-danger">:message</p>') !!}
+                {!! $errors->first('address*0', '<p class="alert alert-danger">:message</p>') !!}
             </div>
         </div>
         <div class="form-group">
             {!! Form::label('address_street', 'Название населенного пункта (города, послека и т.п.)') !!}
             <div>
                 {!! Form::text('address[]', null, ['class' => 'form-control']) !!}
-                {!! $errors->first('address[]', '<p class="alert alert-danger">:message</p>') !!}
+                {!! $errors->first('address*1', '<p class="alert alert-danger">:message</p>') !!}
             </div>
         </div>
         <div class="form-group">
             {!! Form::label('address_street', 'Название района') !!}
             <div>
                 {!! Form::text('address[]', null, ['class' => 'form-control']) !!}
-                {!! $errors->first('address[]', '<p class="alert alert-danger">:message</p>') !!}
+                {!! $errors->first('address*2', '<p class="alert alert-danger">:message</p>') !!}
             </div>
         </div>
         <div class="form-group">
             {!! Form::label('address_street', 'Название республики, края, области, автономного округа (области)') !!}
             <div>
                 {!! Form::text('address[]', null, ['class' => 'form-control']) !!}
-                {!! $errors->first('address[]', '<p class="alert alert-danger">:message</p>') !!}
+                {!! $errors->first('address*3', '<p class="alert alert-danger">:message</p>') !!}
             </div>
         </div><div class="form-group">
             {!! Form::label('address_street', 'Название страны') !!}
             <div>
                 {!! Form::text('address[]', null, ['class' => 'form-control']) !!}
-                {!! $errors->first('address[]', '<p class="alert alert-danger">:message</p>') !!}
+                {!! $errors->first('address*4', '<p class="alert alert-danger">:message</p>') !!}
             </div>
         </div><div class="form-group">
             {!! Form::label('address_street', 'Почтовый индекс') !!}
             <div>
                 {!! Form::text('address[]', null, ['class' => 'form-control']) !!}
-                {!! $errors->first('address[]', '<p class="alert alert-danger">:message</p>') !!}
+                {!! $errors->first('address*5', '<p class="alert alert-danger">:message</p>') !!}
             </div>
         </div>
 

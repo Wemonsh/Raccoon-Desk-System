@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Inventory;
 
 use App\InvTypes;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -39,6 +40,8 @@ class TypesController extends Controller
         if ($request->isMethod('post')) {
             $validator = Validator::make($request->all(), [
                 'name' => 'required',
+                'description' => 'required',
+                'image' => 'image',
             ]);
 
             if ($validator->fails()) {
@@ -80,6 +83,8 @@ class TypesController extends Controller
 
                 $validator = Validator::make($request->all(), [
                     'name' => 'required',
+                    'description' => 'required',
+                    'image' => 'image',
                 ]);
 
                 if ($validator->fails()) {
@@ -100,7 +105,7 @@ class TypesController extends Controller
 
                 $type->save();
 
-                \Session::flash('success', 'Type added successfully');
+                \Session::flash('success', 'Type edited successfully');
 
                 return redirect('/inventory/types/');
             } else {
