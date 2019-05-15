@@ -2,13 +2,13 @@
 @section('breadcrumbs')
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb mt-3">
-            <li class="breadcrumb-item"><a href="{{ route('home') }}">Главная</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Профиль</li>
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ __('auth/account/profile.main') }}</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ __('auth/account/profile.profile') }}</li>
         </ol>
     </nav>
 @endsection
 @section('content')
-    <h1>Профиль</h1>
+    <h1>{{ __('auth/account/profile.profile') }}</h1>
     <hr>
 
     <div class="row">
@@ -20,27 +20,27 @@
             @endif
         </div>
         <div class="col-9">
-            <h2>Общая информация</h2>
+            <h2>{{ __('auth/account/profile.general_info') }}</h2>
             <table class="table">
                 <tbody>
                     <tr>
-                        <td>ФИО</td>
+                        <td>{{ __('auth/account/profile.full_name') }}</td>
                         <td>{{ $user->last_name.' '.$user->first_name.' '.$user->middle_name }}</td>
                     </tr>
                     <tr>
-                        <td>Телефон</td>
+                        <td>{{ __('auth/account/profile.phone') }}</td>
                         <td>{{ $user->phone }}</td>
                     </tr>
                     <tr>
-                        <td>Email</td>
+                        <td>{{ __('auth/account/profile.email') }}</td>
                         <td>{{ $user->email }}</td>
                     </tr>
                     <tr>
-                        <td>Дата рождения</td>
+                        <td>{{ __('auth/account/profile.date_birth') }}</td>
                         <td>{{ $user->date_birth }}</td>
                     </tr>
                     <tr>
-                        <td>Дата регистрации:</td>
+                        <td>{{ __('auth/account/profile.created_at') }}</td>
                         <td>{{ $user->created_at }}</td>
                     </tr>
                 </tbody>

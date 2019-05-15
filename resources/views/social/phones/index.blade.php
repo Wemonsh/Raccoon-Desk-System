@@ -3,19 +3,19 @@
 @section('breadcrumbs')
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb mt-3">
-            <li class="breadcrumb-item"><a href="{{ route('home') }}">Главная</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Телефонный справочник</li>
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ __('social/phones/index.main') }}</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ __('social/phones/index.phone_book') }}</li>
         </ol>
     </nav>
 @endsection
 
 @section('content')
-<h1>Телефонный справочник</h1>
+<h1>{{ __('social/phones/index.phone_book') }}</h1>
 <hr>
 
 <div class="card mt-3">
     <div class="card-header">
-        Телефонный справочник
+        {{ __('social/phones/index.phone_book') }}
     </div>
     <div class="card-body">
         {!! Form::open(array('route' => 'phonesIndex', 'method' => 'POST')) !!}
@@ -27,7 +27,7 @@
                 </div>
 
                 <div class="col-2">
-                    {!! Form::submit('Поиск', ['class' => 'btn btn-primary btn-block']) !!}
+                    {!! Form::submit(__('social/phones/index.search'), ['class' => 'btn btn-primary btn-block']) !!}
                 </div>
             </div>
         {!! Form::close() !!}
@@ -38,9 +38,9 @@
         <table class="table table-bordered mt-3">
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>ФИО</th>
-                    <th>Телефон</th>
+                    <th>{{ __('social/phones/index.id') }}</th>
+                    <th>{{ __('social/phones/index.full_name') }}</th>
+                    <th>{{ __('social/phones/index.phone') }}</th>
                 </tr>
             </thead>
             <tbody>
@@ -55,8 +55,7 @@
         </table>
     @elseif(isset($users))
         <div class="alert alert-info mt-3" role="alert">
-            По вашему запросу в телефонном справочнике не найден не один сотрудник, можете выбрать поиск по отделу или ввести ФИО другого сотрудника,
-            либо пользователь еще не прошел регистрацию на внутреннем портале.
+            {{ __('social/phones/index.no_employee') }}
         </div>
     @endif
 
