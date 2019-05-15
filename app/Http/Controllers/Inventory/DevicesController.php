@@ -54,8 +54,8 @@ class DevicesController extends Controller
                 return Redirect::to('/inventory/devices/create/')->withInput()->withErrors($validator);
             }
 
-            $manufactures = $request['manufactures'];
-            $types = $request['types'];
+            $manufactures = $request['id_manufacture'];
+            $types = $request['id_type'];
             $name = $request['name'];
             $specifications = json_encode($request['specifications']);
             $photo = null;
@@ -114,8 +114,8 @@ class DevicesController extends Controller
                 $json = json_encode($request->input('specifications'));
 
                 $type->name = $request->input('name');
-                $type->id_manufacture = $request->input('manufactures');
-                $type->id_type = $request->input('types');
+                $type->id_manufacture = $request->input('id_manufacture');
+                $type->id_type = $request->input('id_type');
                 $type->specifications = $json;
 
                 if ($request->file('photo') != null) {

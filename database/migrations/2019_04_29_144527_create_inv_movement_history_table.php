@@ -15,7 +15,8 @@ class CreateInvMovementHistoryTable extends Migration
     {
         Schema::create('inv_movement_history', function (Blueprint $table) {
             $table->increments('id');
-            $table->date('date');
+            $table->integer('id_inventory')->unsigned();
+            $table->foreign('id_inventory')->references('id')->on('inv_inventories');
             $table->integer('id_placement_from')->unsigned();
             $table->foreign('id_placement_from')->references('id')->on('inv_placements');
             $table->integer('id_responsible_from')->unsigned();

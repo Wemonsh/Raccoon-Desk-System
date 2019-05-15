@@ -205,7 +205,7 @@
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="{{ route('statisticsIndex') }}">
                 <i class="fas fa-fw fa-chart-area"></i>
                 <span>{{ __('layouts/navigation.statistics') }}</span>
             </a>

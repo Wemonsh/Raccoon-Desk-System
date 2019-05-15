@@ -27,18 +27,18 @@
     @endif
 
     <div class="form-group">
-        {!! Form::label('manufactures', 'Производитель') !!}
+        {!! Form::label('id_manufacture', 'Производитель') !!}
         <div>
-            {!! Form::select('manufactures', $manufactures, null, ['class' => 'form-control'] ) !!}
-            {!! $errors->first('manufactures', '<p class="alert alert-danger">:message</p>') !!}
+            {!! Form::select('id_manufacture', $manufactures, null, ['class' => 'form-control'] ) !!}
+            {!! $errors->first('id_manufacture', '<p class="alert alert-danger">:message</p>') !!}
         </div>
     </div>
 
     <div class="form-group">
-        {!! Form::label('types', 'Тип') !!}
+        {!! Form::label('id_type', 'Тип') !!}
         <div>
-            {!! Form::select('types', $types, null, ['class' => 'form-control', 'id' => 'types'] ) !!}
-            {!! $errors->first('types', '<p class="alert alert-danger">:message</p>') !!}
+            {!! Form::select('id_type', $types, null, ['class' => 'form-control', 'id' => 'types'] ) !!}
+            {!! $errors->first('id_type', '<p class="alert alert-danger">:message</p>') !!}
         </div>
     </div>
 

@@ -188,12 +188,17 @@ class InventoriesController extends Controller
 
         $object = InvInventories::with('counterparty')->with('device')->with('placement')->with('responsible')->with('status')->with('operator')
             ->where('id', '=', $id)->first();
+        $placements = InvPlacements::pluck('name', 'id');
+        $users = User::select(DB::raw("CONCAT(last_name,' ',first_name,' ',middle_name) AS name"),'id')->pluck('name', 'id');
 
 
-        //dump($object);
+
+
 
         $vars = [
-            'object' => $object
+            'object' => $object,
+            'placements' => $placements,
+            'users' => $users
         ];
 
         return view('inventory.inventories.show', $vars);

@@ -1,8 +1,8 @@
 @import "fonts.css";
 
 .card-columns-news {
-    -webkit-column-count: 4;
-    column-count: 4;
+    -webkit-column-count: 3 !important;
+    column-count: 3 !important;
 }
 
 /*---------chat window---------------*/

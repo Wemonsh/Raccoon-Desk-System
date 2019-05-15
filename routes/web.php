@@ -11,10 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::get('locale/{locale}', function ($locale) {
     Session::put('locale', $locale);
     return redirect()->back();
@@ -23,6 +19,7 @@ Route::get('locale/{locale}', function ($locale) {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 
 
 // News
@@ -185,9 +182,17 @@ Route::group(['prefix' => 'inventory'], function () {
     Route::match(['get', 'post'], '/inventories/workplace', ['uses' => 'Inventory\InventoriesController@workplace', 'as' => 'inventoriesWorkplace']);
     Route::match(['get', 'post'], '/inventories/show/{id}', ['uses' => 'Inventory\InventoriesController@show', 'as' => 'inventoriesShow']);
 
+
+    Route::match(['post'], '/movement/move', ['uses' => 'Inventory\MovementController@move', 'as' => 'movementMove']);
+    Route::match(['get', 'post'], '/movement/move-api-response', ['uses' => 'Inventory\MovementController@moveApiResponse']);
+
 });
 
 Route::group(['prefix' => 'account'], function () {
     Route::match(['get', 'post'], '/profile/{id?}', ['uses' => 'Auth\AccountController@profile', 'as' => 'accountProfile']);
     Route::match(['get', 'post'], '/setting', ['uses' => 'Auth\AccountController@setting', 'as' => 'accountSetting']);
+});
+
+Route::group(['prefix' => 'statistics'], function () {
+    Route::match(['get', 'post'], '/', ['uses' => 'Statistics\HomeController@index', 'as' => 'statisticsIndex']);
 });
