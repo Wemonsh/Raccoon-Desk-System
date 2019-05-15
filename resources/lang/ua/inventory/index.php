@@ -20,5 +20,5 @@ return [
     'organizations' => 'Організації',
     'reports' => 'Звіти',
     'TMC_movement' => 'Рух МТЗ',
-
+    'contracts' => 'Договори'
 ];

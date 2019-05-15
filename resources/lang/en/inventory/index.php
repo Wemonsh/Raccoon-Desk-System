@@ -20,5 +20,5 @@ return [
     'organizations' => 'Organizations',
     'reports' => 'Reports',
     'TMC_movement' => 'MTM movement',
-
+    'contracts' => 'Contacts'
 ];

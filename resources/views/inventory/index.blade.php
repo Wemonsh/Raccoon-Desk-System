@@ -19,7 +19,7 @@
             <h2>{{ __('inventory/index.journals') }}</h2>
             <div class="list-group">
                 <a href="{{ route('inventoriesIndex') }}" class="list-group-item list-group-item-action"><i class="fas fa-archive fa-fw"></i> {{ __('inventory/index.property') }}</a>
-                <a href="{{ route('counterpartyContractsIndex') }}" class="list-group-item list-group-item-action"><i class="fas fa-file-alt fa-fw"></i> Договора</a>
+                <a href="{{ route('counterpartyContractsIndex') }}" class="list-group-item list-group-item-action"><i class="fas fa-file-alt fa-fw"></i> {{ __('inventory/index.contracts') }}</a>
             </div>
         </div>
         <div class="col-3">
