@@ -3,18 +3,18 @@
 @section('breadcrumbs')
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb mt-3">
-            <li class="breadcrumb-item"><a href="{{ route('home') }}">Главная</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('inventoryIndex') }}">Активы предприятия</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Контрагенты</li>
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ __('inventory/counterparty/index.main') }}</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('inventoryIndex') }}">{{ __('inventory/counterparty/index.enterprise_assets') }}</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ __('inventory/counterparty/index.counter_parties') }}</li>
         </ol>
     </nav>
 @endsection
 
 @section('content')
-    <h1>Контрагенты</h1>
+    <h1>{{ __('inventory/counterparty/index.counter_parties') }}</h1>
     <hr>
     <div class="toolbar">
-        <a class="btn btn-secondary text-light" data-toggle="modal" data-target="#exampleModalCenter">Добавить</a>
+        <a class="btn btn-secondary text-light" data-toggle="modal" data-target="#exampleModalCenter">{{ __('inventory/counterparty/index.add') }}</a>
     </div>
     <table
             data-ajax="ajaxRequest"
@@ -32,15 +32,15 @@
             data-show-refresh="true">
         <thead>
         <tr>
-            <th data-sortable="true" data-field="id" class="text-center">Id</th>
-            <th data-sortable="true" data-field="name">Имя</th>
-            <th data-field="tin">ИНН</th>
-            <th data-field="code">КПП</th>
-            <th data-sortable="true" data-field="purchase" data-formatter="checkFormatter" class="text-center">Покупка</th>
-            <th data-sortable="true" data-field="sale" data-formatter="checkFormatter" class="text-center">Продажа</th>
-            <th data-sortable="true" data-field="tracking" data-formatter="checkFormatter" class="text-center">Контроль</th>
-            <th data-field="comment">Комментарий</th>
-            <th data-formatter="actionFormatter" class="text-center" data-print-ignore="true">Действие</th>
+            <th data-sortable="true" data-field="id" class="text-center">{{ __('inventory/counterparty/index.id') }}</th>
+            <th data-sortable="true" data-field="name">{{ __('inventory/counterparty/index.name') }}</th>
+            <th data-field="tin">{{ __('inventory/counterparty/index.itn') }}</th>
+            <th data-field="code">{{ __('inventory/counterparty/index.iec') }}</th>
+            <th data-sortable="true" data-field="purchase" data-formatter="checkFormatter" class="text-center">{{ __('inventory/counterparty/index.purchase') }}</th>
+            <th data-sortable="true" data-field="sale" data-formatter="checkFormatter" class="text-center">{{ __('inventory/counterparty/index.sale') }}</th>
+            <th data-sortable="true" data-field="tracking" data-formatter="checkFormatter" class="text-center">{{ __('inventory/counterparty/index.control') }}</th>
+            <th data-field="comment">{{ __('inventory/counterparty/index.comment') }}</th>
+            <th data-formatter="actionFormatter" class="text-center" data-print-ignore="true">{{ __('inventory/counterparty/index.action') }}</th>
         </tr>
         </thead>
     </table>
@@ -65,6 +65,7 @@
         }
 
         function actionFormatter(value ,rows) {
+            //TODO изменить title у обоих кнопок - редактировать согласно переводу!!!
             return '<div class="btn-group" role="group" aria-label="Basic example">' +
                 '<a class="btn btn-secondary btn-sm text-light" href="/inventory/counterparty-contracts/" title="Редактировать"><i class="fas fa-file-alt"></i></a>' +
                 '<a class="btn btn-secondary btn-sm text-light" href="/inventory/counterparty/edit/'+ rows['id'] +'" title="Редактировать"><i class="fas fa-pen"></i></a>' +
@@ -78,7 +79,7 @@
             <div class="modal-content">
                 {!! Form::open(array('route' => 'counterpartyCreate', 'method' => 'POST', 'files' => 'true')) !!}
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Добавить</h5>
+                    <h5 class="modal-title" id="exampleModalLongTitle">{{ __('inventory/counterparty/index.add') }}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -95,7 +96,7 @@
                     @endif
 
                     <div class="form-group">
-                        {!! Form::label('name', 'Название контрагента:') !!}
+                        {!! Form::label('name', __('inventory/counterparty/index.counter_party_name')) !!}
                         <div>
                             {!! Form::text('name', null, ['class' => 'form-control']) !!}
                             {!! $errors->first('name', '<p class="alert alert-danger">:message</p>') !!}
@@ -103,7 +104,7 @@
                     </div>
 
                     <div class="form-group">
-                        {!! Form::label('tin', 'ИНН:') !!}
+                        {!! Form::label('tin', __('inventory/counterparty/index.itn')) !!}
                         <div>
                             {!! Form::text('tin', null, ['class' => 'form-control']) !!}
                             {!! $errors->first('tin', '<p class="alert alert-danger">:message</p>') !!}
@@ -111,7 +112,7 @@
                     </div>
 
                     <div class="form-group">
-                        {!! Form::label('code', 'КПП:') !!}
+                        {!! Form::label('code', __('inventory/counterparty/index.iec')) !!}
                         <div>
                             {!! Form::text('code', null, ['class' => 'form-control']) !!}
                             {!! $errors->first('code', '<p class="alert alert-danger">:message</p>') !!}
@@ -120,21 +121,21 @@
 
                     <div class="form-group">
                         {!! Form::checkbox('purchase', '1', false, ['id' => 'purchase']) !!}
-                        {!! Form::label('purchase', 'Покупаем:') !!}
+                        {!! Form::label('purchase', __('inventory/counterparty/index.we_buy')) !!}
                     </div>
 
                     <div class="form-group">
                         {!! Form::checkbox('sale', '1', false, ['id' => 'sale']) !!}
-                        {!! Form::label('sale', 'Продаем:') !!}
+                        {!! Form::label('sale', __('inventory/counterparty/index.we_sell')) !!}
                     </div>
 
                     <div class="form-group">
                         {!! Form::checkbox('tracking', '1', false, ['id' => 'tracking']) !!}
-                        {!! Form::label('tracking', 'На контроле:') !!}
+                        {!! Form::label('tracking', __('inventory/counterparty/index.under_control')) !!}
                     </div>
 
                     <div class="form-group">
-                        {!! Form::label('comment', 'Комментарий:') !!}
+                        {!! Form::label('comment', __('inventory/counterparty/index.comment1')) !!}
                         <div>
                             {!! Form::text('comment', null, ['class' => 'form-control']) !!}
                             {!! $errors->first('comment', '<p class="alert alert-danger">:message</p>') !!}
@@ -142,8 +143,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
-                    {!! Form::submit('Добавить', ['class' => 'btn btn-primary']) !!}
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ __('inventory/counterparty/index.cancel') }}</button>
+                    {!! Form::submit( __('inventory/counterparty/index.add') , ['class' => 'btn btn-primary']) !!}
                 </div>
                 {!! Form::close() !!}
             </div>
