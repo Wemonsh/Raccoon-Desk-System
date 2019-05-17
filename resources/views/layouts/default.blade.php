@@ -74,21 +74,21 @@
         @endif
         @else
         <li class="nav-item dropdown no-arrow mx-1">
-            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Уведомления">
+            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="{{ __('layouts/navigation.notifications') }}">
                 <i class="fas fa-bell fa-fw mt-1"></i>
-                <span class="badge badge-danger">999+</span>
+                <span class="badge badge-danger">0</span>
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">{{ __('layouts/navigation.action') }}</a>
+                <a class="dropdown-item" href="#">{{ __('layouts/navigation.action_2') }}</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Something else here</a>
+                <a class="dropdown-item" href="#">{{ __('layouts/navigation.action_3') }}</a>
             </div>
         </li>
 
         <li class="nav-item dropdown no-arrow">
 
-            <a class="nav-link" href="{{ route('messagesIndex') }}" title="Сообщения">
+            <a class="nav-link" href="{{ route('messagesIndex') }}" title="{{ __('layouts/navigation.messages') }}">
                 <i class="fas fa-envelope fa-fw mt-1"></i>
                 <span class="badge badge-danger">{{ $messages_new }}</span>
             </a>
@@ -96,7 +96,7 @@
 
         <li class="nav-item dropdown no-arrow">
 
-            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Выбрать язык">
+            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="{{ __('layouts/navigation.choose_language') }}">
                 <i class="fas fa-globe-americas"></i>
             </a>
 
@@ -115,13 +115,13 @@
             </a>
 
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="{{ route('accountProfile') }}">Профиль</a>
-                <a class="dropdown-item" href="{{ route('accountSetting') }}">Настройки</a>
+                <a class="dropdown-item" href="{{ route('accountProfile') }}">{{ __('layouts/navigation.profile') }}</a>
+                <a class="dropdown-item" href="{{ route('accountSetting') }}">{{ __('layouts/navigation.settings') }}</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="{{ route('logout') }}"
                    onclick="event.preventDefault();
                                            document.getElementById('logout-form').submit();">
-                    {{ __('Logout') }}
+                    {{ __('layouts/navigation.logout') }}
                 </a>
 
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -179,14 +179,14 @@
                 <span>{{ __('layouts/navigation.service') }}</span>
             </a>
             <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-                <a class="dropdown-item" href="{{ route('requestsCreate') }}">Новая заявка</a>
-                <a class="dropdown-item" href="{{ route('requestsCreated') }}">Мои заявки</a>
+                <a class="dropdown-item" href="{{ route('requestsCreate') }}">{{ __('layouts/navigation.new_request') }}</a>
+                <a class="dropdown-item" href="{{ route('requestsCreated') }}">{{ __('layouts/navigation.my_requests') }}</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="{{ route('requestsSearch') }}">Поиск</a>
-                <a class="dropdown-item" href="{{ route('requestsAccepted') }}">Поступившие</a>
-                <a class="dropdown-item" href="{{ route('requestsReceived') }}">Принятые</a>
-                <a class="dropdown-item" href="{{ route('requestsHistory') }}">История</a>
-                <a class="dropdown-item" href="{{ route('requestsReports') }}">Отчеты</a>
+                <a class="dropdown-item" href="{{ route('requestsSearch') }}">{{ __('layouts/navigation.search') }}</a>
+                <a class="dropdown-item" href="{{ route('requestsAccepted') }}">{{ __('layouts/navigation.received') }}</a>
+                <a class="dropdown-item" href="{{ route('requestsReceived') }}">{{ __('layouts/navigation.accepted') }}</a>
+                <a class="dropdown-item" href="{{ route('requestsHistory') }}">{{ __('layouts/navigation.history') }}</a>
+                <a class="dropdown-item" href="{{ route('requestsReports') }}">{{ __('layouts/navigation.reports') }}</a>
             </div>
         </li>
 

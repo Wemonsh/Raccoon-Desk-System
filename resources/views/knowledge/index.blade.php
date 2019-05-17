@@ -1,7 +1,31 @@
 @extends('layouts.default')
 
-@section('jumbotron')
-    <div class="jumbotron jumbotron-fluid">
+{{--@section('jumbotron')--}}
+{{--    <div class="jumbotron">--}}
+{{--        <div class="container-fluid">--}}
+{{--            <h1 class="display-4">{{ __('knowledge/index.knowledge_base') }}</h1>--}}
+{{--            <p class="lead">{{ __('knowledge/index.can_we_help') }}</p>--}}
+{{--            <form action="{{ route('knowledgeSearch') }}" method="post">--}}
+{{--                @csrf--}}
+{{--                <div class="input-group">--}}
+{{--                    <input type="text" name="value" class="form-control" placeholder="{{ __('knowledge/index.request_enter') }}">--}}
+{{--                    <div class="input-group-append">--}}
+{{--                        <button type="submit" class="btn btn-primary">{{ __('knowledge/index.search') }}</button>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </form>--}}
+{{--            <hr>--}}
+{{--            <p class="lead">{{ __('knowledge/index.no_answer') }}</p>--}}
+{{--            <p class="lead">--}}
+{{--                <a class="btn btn-outline-success" href="{{ route('requestsCreate') }}" role="button">{{ __('knowledge/index.create_request') }}</a>--}}
+{{--                <a class="btn btn-outline-info" href="{{ route('requestsCreated') }}" role="button">{{ __('knowledge/index.requests_view') }}</a>--}}
+{{--            </p>--}}
+{{--        </div>--}}
+{{--    </div>--}}
+{{--@endsection--}}
+
+@section('content')
+    <div class="jumbotron mt-3 mb-3">
         <div class="container-fluid">
             <h1 class="display-4">{{ __('knowledge/index.knowledge_base') }}</h1>
             <p class="lead">{{ __('knowledge/index.can_we_help') }}</p>
@@ -22,10 +46,6 @@
             </p>
         </div>
     </div>
-@endsection
-
-@section('content')
-
     <div class="card-deck">
         <div class="card">
             <div class="card-body">
