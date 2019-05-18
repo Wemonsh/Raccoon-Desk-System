@@ -3,18 +3,18 @@
 @section('breadcrumbs')
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb mt-3">
-            <li class="breadcrumb-item"><a href="{{ route('home') }}">Главная</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('inventoryIndex') }}">Активы предприятия</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Группы МТС</li>
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ __('inventory/devices/index.main') }}</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('inventoryIndex') }}">{{ __('inventory/devices/index.enterprise_assets') }}</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ __('inventory/devices/index.mtm_groups') }}</li>
         </ol>
     </nav>
 @endsection
 
 @section('content')
-    <h1>Группы МТС</h1>
+    <h1>{{ __('inventory/devices/index.mtm_groups') }}</h1>
     <hr>
     <div class="toolbar">
-        <a class="btn btn-secondary text-light" href="{{ route('devicesCreate') }}">Добавить</a>
+        <a class="btn btn-secondary text-light" href="{{ route('devicesCreate') }}">{{ __('inventory/devices/index.add') }}</a>
     </div>
     <table
             data-ajax="ajaxRequest"
@@ -33,12 +33,12 @@
         <thead>
         <tr>
             <th data-sortable="true" data-field="id">Id</th>
-            <th data-sortable="true" data-field="name">Название</th>
-            <th data-field="id_manufacture">Производитель</th>
-            <th data-field="id_type">Тип</th>
-            <th data-field="specifications">Особенности</th>
-            <th data-field="photo" data-formatter="imageFormatter">Изображение</th>
-            <th data-formatter="actionFormatter" class="text-center" data-print-ignore="true" data-width="50px">Действие</th>
+            <th data-sortable="true" data-field="name">{{ __('inventory/devices/index.name') }}</th>
+            <th data-field="id_manufacture">{{ __('inventory/devices/index.manufacturer') }}</th>
+            <th data-field="id_type">{{ __('inventory/devices/index.type') }}</th>
+            <th data-field="specifications">{{ __('inventory/devices/index.specifications') }}</th>
+            <th data-field="photo" data-formatter="imageFormatter">{{ __('inventory/devices/index.image') }}</th>
+            <th data-formatter="actionFormatter" class="text-center" data-print-ignore="true" data-width="50px">{{ __('inventory/devices/index.action') }}</th>
         </tr>
         </thead>
     </table>

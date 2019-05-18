@@ -1,21 +1,20 @@
 <?php
 
 return [
-    'title' => 'Регистрация',
+    'register_account' => 'Регистрация',
     'first_name' => 'Имя',
     'last_name' => 'Фамилия',
     'middle_name' => 'Отчество',
-    'phone' => 'Телефон',
-    'photo' => 'Фотография',
+    'gender' => 'Пол',
     'date_birth' => 'Дата рождения',
+    'phone' => 'Телефон',
     'email' => 'E-Mail адрес',
     'password' => 'Пароль',
     'confirm_password' => 'Подтвердите пароль',
-    'department' => 'Отдел',
-    'division' => 'Подразделение',
-    'position' => 'Должность',
-    'gender' => 'Пол',
+    'register' => 'Регистрация',
+    'login_page' => 'Страница авторизации',
+    'forgot_password' => 'Забыли пароль?',
+    'select_file' => 'Выбрать файл',
     'browse' => 'Обзор',
-    'select_file' => 'Выберите файл',
 
 ];

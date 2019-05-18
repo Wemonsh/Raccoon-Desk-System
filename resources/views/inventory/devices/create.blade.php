@@ -3,16 +3,16 @@
 @section('breadcrumbs')
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb mt-3">
-            <li class="breadcrumb-item"><a href="{{ route('home') }}">Главная</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('inventoryIndex') }}">Активы предприятия</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('devicesIndex') }}">Группы МТС</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Добавить группу МТС</li>
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ __('inventory/devices/create.main') }}</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('inventoryIndex') }}">{{ __('inventory/devices/create.enterprise_assets') }}</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('devicesIndex') }}">{{ __('inventory/devices/create.mtm_groups') }}</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ __('inventory/devices/create.add_mtm_group') }}</li>
         </ol>
     </nav>
 @endsection
 
 @section('content')
-    <h1>Добавить группу МТС</h1>
+    <h1>{{ __('inventory/devices/create.add_mtm_group') }}</h1>
     <hr>
     {!! Form::open(array('route' => 'devicesCreate', 'method' => 'POST', 'files' => 'true')) !!}
 
@@ -27,7 +27,7 @@
     @endif
 
     <div class="form-group">
-        {!! Form::label('id_manufacture', 'Производитель') !!}
+        {!! Form::label('id_manufacture',  __('inventory/devices/create.manufacturer')) !!}
         <div>
             {!! Form::select('id_manufacture', $manufactures, null, ['class' => 'form-control'] ) !!}
             {!! $errors->first('id_manufacture', '<p class="alert alert-danger">:message</p>') !!}
@@ -35,7 +35,7 @@
     </div>
 
     <div class="form-group">
-        {!! Form::label('id_type', 'Тип') !!}
+        {!! Form::label('id_type', __('inventory/devices/create.type')) !!}
         <div>
             {!! Form::select('id_type', $types, null, ['class' => 'form-control', 'id' => 'types'] ) !!}
             {!! $errors->first('id_type', '<p class="alert alert-danger">:message</p>') !!}
@@ -43,7 +43,7 @@
     </div>
 
     <div class="form-group">
-        {!! Form::label('name', 'Название') !!}
+        {!! Form::label('name', __('inventory/devices/create.name')) !!}
         <div>
             {!! Form::text('name', null, ['class' => 'form-control']) !!}
             {!! $errors->first('name', '<p class="alert alert-danger">:message</p>') !!}
@@ -52,7 +52,7 @@
 
     <hr>
     <div class="form-group">
-        {!! Form::label('name', 'Характеристики') !!}
+        {!! Form::label('name', __('inventory/devices/create.specifications')) !!}
         <div id="specifications">
 
         </div>
@@ -98,12 +98,12 @@
 
 
     <div class="form-group">
-        {!! Form::label('photo', 'Фото') !!}
+        {!! Form::label('photo', __('inventory/devices/create.photo')) !!}
         {!! Form::file('photo', ['id' => 'photo', 'class' => 'form-control-file']) !!}
         {!! $errors->first('photo', '<p class="alert alert-danger">:message</p>') !!}
     </div>
 
-    {!! Form::submit('Добавить', ['class' => 'btn btn-primary']) !!}
+    {!! Form::submit(__('inventory/devices/create.add'), ['class' => 'btn btn-primary']) !!}
 
     {!! Form::close() !!}
 

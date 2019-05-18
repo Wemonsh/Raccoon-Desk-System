@@ -4,16 +4,16 @@
 @section('breadcrumbs')
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb mt-3">
-            <li class="breadcrumb-item"><a href="{{ route('home') }}">Главная</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('inventoryIndex') }}">Активы предприятия</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('devicesIndex') }}">Группы МТС</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Редактировать группу МТС</li>
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ __('inventory/devices/edit.main') }}</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('inventoryIndex') }}">{{ __('inventory/devices/edit.enterprise_assets') }}</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('devicesIndex') }}">{{ __('inventory/devices/edit.mtm_groups') }}</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ __('inventory/devices/edit.edit_mtm_group') }}</li>
         </ol>
     </nav>
 @endsection
 
 @section('content')
-    <h1>Редактировать группу МТС</h1>
+    <h1>{{ __('inventory/devices/edit.edit_mtm_group') }}</h1>
     <hr>
     {!! Form::open(array('route' => array('devicesEdit', $id), 'method' => 'POST', 'files' => 'true')) !!}
 
@@ -28,7 +28,7 @@
     @endif
 
     <div class="form-group">
-        {!! Form::label('id_manufacture', 'Производитель') !!}
+        {!! Form::label('id_manufacture', __('inventory/devices/edit.manufacturer')) !!}
         <div>
             {!! Form::select('id_manufacture', $manufactures, $device->id_manufacture, ['class' => 'form-control'] ) !!}
             {!! $errors->first('id_manufacture', '<p class="alert alert-danger">:message</p>') !!}
@@ -36,7 +36,7 @@
     </div>
 
     <div class="form-group">
-        {!! Form::label('id_type', 'Тип') !!}
+        {!! Form::label('id_type', __('inventory/devices/edit.type')) !!}
         <div>
             {!! Form::select('id_type', $types, $device->id_type, ['class' => 'form-control', 'id' => 'types'] ) !!}
             {!! $errors->first('id_type', '<p class="alert alert-danger">:message</p>') !!}
@@ -44,7 +44,7 @@
     </div>
 
     <div class="form-group">
-        {!! Form::label('name', 'Название') !!}
+        {!! Form::label('name', __('inventory/devices/edit.name')) !!}
         <div>
             {!! Form::text('name', $device->name, ['class' => 'form-control']) !!}
             {!! $errors->first('name', '<p class="alert alert-danger">:message</p>') !!}
@@ -53,7 +53,7 @@
 
     <hr>
     <div class="form-group">
-        {!! Form::label('specifications', 'Характеристики') !!}
+        {!! Form::label('specifications', __('inventory/devices/edit.specifications')) !!}
         <div id="specifications">
 
         </div>
@@ -98,7 +98,9 @@
     </script>
 
     <div class="form-group">
-        <label for="image">Изображение</label>
+
+        //TO DO "Изображение отсутствует" заполнить! 108 строка
+        <label for="image">{{ __('inventory/devices/edit.image') }}</label>
         <br>
         @if($device->photo != null)
             <img src="{{ asset('/storage/' . $device->photo) }}" class="card-img-top rounded" style="object-fit: cover; width: 300px; height: 250px;">
@@ -109,12 +111,12 @@
     </div>
 
     <div class="form-group">
-        {!! Form::label('photo', 'Изменить изображение') !!}
+        {!! Form::label('photo', __('inventory/devices/edit.change_image')) !!}
         {!! Form::file('photo', ['id' => 'photo', 'class' => 'form-control-file']) !!}
         {!! $errors->first('photo', '<p class="alert alert-danger">:message</p>') !!}
     </div>
 
-    {!! Form::submit('Изменить', ['class' => 'btn btn-primary']) !!}
+    {!! Form::submit(__('inventory/devices/edit.change'), ['class' => 'btn btn-primary']) !!}
 
     {!! Form::close() !!}
 

@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="card card-register mx-auto mt-5">
-            <div class="card-header">Register an Account</div>
+            <div class="card-header">{{ __('auth/register.register_account') }}</div>
             <div class="card-body">
                 <form method="POST" action="{{ route('register') }}">
                     @csrf
@@ -12,7 +12,7 @@
                             <div class="col-md-4">
                                 <div class="form-label-group">
                                     <input id="last_name" type="text" class="form-control{{ $errors->has('last_name') ? ' is-invalid' : '' }}" name="last_name" value="{{ old('last_name') }}" required>
-                                    <label for="last_name">Last name</label>
+                                    <label for="last_name">{{ __('auth/register.last_name') }}</label>
                                     @if ($errors->has('last_name'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('last_name') }}</strong>
@@ -23,7 +23,7 @@
                             <div class="col-md-4">
                                 <div class="form-label-group">
                                     <input id="first_name" type="text" class="form-control{{ $errors->has('first_name') ? ' is-invalid' : '' }}" name="first_name" value="{{ old('first_name') }}" required>
-                                    <label for="first_name">First name</label>
+                                    <label for="first_name">{{ __('auth/register.first_name') }}</label>
                                     @if ($errors->has('first_name'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('first_name') }}</strong>
@@ -34,7 +34,7 @@
                             <div class="col-md-4">
                                 <div class="form-label-group">
                                     <input id="middle_name" type="text" class="form-control{{ $errors->has('middle_name') ? ' is-invalid' : '' }}" name="middle_name" value="{{ old('middle_name') }}" required>
-                                    <label for="middle_name">Middle name</label>
+                                    <label for="middle_name">{{ __('auth/register.middle_name') }}</label>
                                     @if ($errors->has('middle_name'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('middle_name') }}</strong>
@@ -47,7 +47,7 @@
                     <div class="form-group">
                         <div class="form-row">
                             <div class="col-md-6">
-                                <label for="gender">Gender</label>
+                                <label for="gender">{{ __('auth/register.gender') }}</label>
                                 <select id="gender" class="form-control{{ $errors->has('gender') ? ' is-invalid' : '' }}" name="gender" required>
                                     <option>1</option>
                                 </select>
@@ -59,7 +59,7 @@
                                 @endif
                             </div>
                             <div class="col-md-6">
-                                <label for="date_birth">Date Birth</label>
+                                <label for="date_birth">{{ __('auth/register.date_birth') }}</label>
                                 <input id="date_birth" type="date" class="form-control{{ $errors->has('date_birth') ? ' is-invalid' : '' }}" name="date_birth" value="{{ old('date_birth') }}" required>
 
                                 @if ($errors->has('date_birth'))
@@ -74,7 +74,7 @@
                     <div class="form-group">
                         <div class="form-label-group">
                             <input id="phone" type="tel" class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" name="phone" value="{{ old('phone') }}" required>
-                            <label for="phone">Phone</label>
+                            <label for="phone">{{ __('auth/register.phone') }}</label>
 
                             @if ($errors->has('phone'))
                             <span class="invalid-feedback" role="alert">
@@ -140,7 +140,7 @@
                     <div class="form-group">
                         <div class="form-label-group">
                             <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
-                            <label for="email">Email address</label>
+                            <label for="email">{{ __('auth/register.email') }}</label>
                             @if ($errors->has('email'))
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $errors->first('email') }}</strong>
@@ -153,7 +153,7 @@
                             <div class="col-md-6">
                                 <div class="form-label-group">
                                     <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
-                                    <label for="password">Password</label>
+                                    <label for="password">{{ __('auth/register.password') }}</label>
                                     @if ($errors->has('password'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('password') }}</strong>
@@ -164,18 +164,18 @@
                             <div class="col-md-6">
                                 <div class="form-label-group">
                                     <input id="password_confirm" type="password" class="form-control" name="password_confirmation" required>
-                                    <label for="password_confirm">Confirm password</label>
+                                    <label for="password_confirm">{{ __('auth/register.confirm_password') }}</label>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary btn-block">
-                        Register
+                        {{ __('auth/register.register') }}
                     </button>
                 </form>
                 <div class="text-center">
-                    <a class="d-block small mt-3" href="login.html">Login Page</a>
-                    <a class="d-block small" href="forgot-password.html">Forgot Password?</a>
+                    <a class="d-block small mt-3" href="login.html">{{ __('auth/register.login_page') }}</a>
+                    <a class="d-block small" href="forgot-password.html">{{ __('auth/register.forgot_password') }}</a>
                 </div>
             </div>
         </div>
