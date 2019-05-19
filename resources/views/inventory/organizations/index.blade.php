@@ -3,18 +3,18 @@
 @section('breadcrumbs')
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb mt-3">
-            <li class="breadcrumb-item"><a href="{{ route('home') }}">Главная</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('inventoryIndex') }}">Активы предприятия</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Организации</li>
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ __('inventory/organizations/index.main') }}</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('inventoryIndex') }}">{{ __('inventory/organizations/index.enterprise_assets') }}</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ __('inventory/organizations/index.organizations') }}</li>
         </ol>
     </nav>
 @endsection
 
 @section('content')
-    <h1>Организации</h1>
+    <h1>{{ __('inventory/organizations/index.organizations') }}</h1>
     <hr>
     <div class="toolbar">
-        <a class="btn btn-secondary text-light" href="{{ route('organizationsCreate') }}">Добавить</a>
+        <a class="btn btn-secondary text-light" href="{{ route('organizationsCreate') }}">{{ __('inventory/organizations/index.add') }}</a>
     </div>
     <table
             data-ajax="ajaxRequest"
@@ -32,10 +32,10 @@
             data-show-refresh="true">
         <thead>
         <tr>
-            <th data-sortable="true" data-field="id" class="text-center">Id</th>
-            <th data-sortable="true" data-field="name">Название</th>
-            <th data-field="address" data-formatter="addressFormatter">Адрес</th>
-            <th data-formatter="actionFormatter" class="text-center" data-print-ignore="true" data-width="50px">Действие</th>
+            <th data-sortable="true" data-field="id" class="text-center">{{ __('inventory/organizations/index.id') }}</th>
+            <th data-sortable="true" data-field="name">{{ __('inventory/organizations/index.name') }}</th>
+            <th data-field="address" data-formatter="addressFormatter">{{ __('inventory/organizations/index.address') }}</th>
+            <th data-formatter="actionFormatter" class="text-center" data-print-ignore="true" data-width="50px">{{ __('inventory/organizations/index.action') }}</th>
         </tr>
         </thead>
     </table>
@@ -59,7 +59,7 @@
                 return arr[0].street_house_office + ', ' + arr[0].sity + ', ' + arr[0].region + ', ' + arr[0].district + ', ' + arr[0].country + ', ' + arr[0].postcode;
             }
         }
-
+        {{--TODO "Basic example"  "Договора"  "Редактировать"  "Удалить" исправить!!!--}}
         function actionFormatter(value ,rows) {
             return '<div class="btn-group" role="group" aria-label="Basic example">' +
                 '<a class="btn btn-secondary btn-sm text-light" href="" title="Договора"><i class="fas fa-file-alt"></i></a>' +

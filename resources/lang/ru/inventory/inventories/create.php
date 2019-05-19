@@ -6,7 +6,7 @@ return [
     'enterprise_assets' => 'Активы предприятия',
     'property' => 'Имущество',
     'adding_property' => 'Добавление имущества',
-    'when_where_to:' => 'Когда/Куда/Кому:',
+    'when_to_to' => 'Когда/Куда/Кому:',
     'date_added' => 'Дата добавления',
     'placement' => 'Помещение',
     'responsible' => 'Ответственный',
@@ -24,5 +24,4 @@ return [
     'accounting_code' => 'Бухгалтерский код',
     'ip' => 'IP адрес',
     'cancelled' => 'Списано:',
-    'current_cost' => 'Текущая стоимость',
 ];

@@ -29,7 +29,7 @@
 
     <div class="row">
         <div class="col-4">
-            <h2>{{ __('inventory/inventories/create.when_where_to') }}</h2>
+            <h2>{{ __('inventory/inventories/create.when_to_to') }}</h2>
 
             <div class="form-group">
                 {!! Form::label('date_arrival', __('inventory/inventories/create.date_added')) !!}
