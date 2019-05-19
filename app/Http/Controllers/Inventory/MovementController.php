@@ -32,6 +32,7 @@ class MovementController extends Controller
 
     public function moveApiResponse (Request $request) {
         // получаем значения из request
+        $id = $request['id'];
         $pageSize = $request['pageSize'];
         $sortName = $request['sortName'];
         $sortOrder = $request['sortOrder'];
@@ -42,7 +43,7 @@ class MovementController extends Controller
 //        }
         // Выбор данных и пагинация
 
-        $rows = InvMovement::paginate($pageSize)->toArray();
+        $rows = InvMovement::where('id_inventory', '=', $id)->paginate($pageSize)->toArray();
 
 //        $rows = InvInventories::with('counterparty')->with('device')->with('placement')->with('responsible')->with('status')->with('operator')
 //            ->where('serial_number', 'LIKE', '%'.$searchText.'%')

@@ -12,7 +12,7 @@
 @endsection
 
 @section('content')
-    <h1>{{ $object->device->name }}</h1>
+    <h1 id="deviceName" data-id="{{ $object->id }}">{{ $object->device->name }}</h1>
     <hr>
 
     <div class="row">
@@ -97,7 +97,9 @@
 
         <script>
             function dataQueryParams(params) {
+                var deviceId = document.getElementById('deviceName');
                 params.page = params.pageNumber;
+                params.id = deviceId.dataset.id;
                 return params;
             }
 
