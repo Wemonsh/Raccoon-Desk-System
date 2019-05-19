@@ -189,6 +189,10 @@ Route::group(['prefix' => 'inventory'], function () {
     Route::match(['post'], '/movement/move', ['uses' => 'Inventory\MovementController@move', 'as' => 'movementMove']);
     Route::match(['get', 'post'], '/movement/move-api-response', ['uses' => 'Inventory\MovementController@moveApiResponse']);
 
+    // Reports
+    Route::match(['get', 'post'], '/reports/movement', ['uses' => 'Inventory\ReportsController@movement', 'as' => 'movementReport']);
+    Route::match(['get', 'post'], '/reports/movement/movement-report-api-response', ['uses' => 'Inventory\ReportsController@movementReportApiResponse']);
+
 });
 
 Route::group(['prefix' => 'account'], function () {

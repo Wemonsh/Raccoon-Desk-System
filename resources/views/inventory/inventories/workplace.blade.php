@@ -5,7 +5,7 @@
         <ol class="breadcrumb mt-3">
             <li class="breadcrumb-item"><a href="{{ route('home') }}">Главная</a></li>
             <li class="breadcrumb-item"><a href="{{ route('inventoryIndex') }}">Активы предприятия</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('inventoryIndex') }}">Имущество</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('inventoriesIndex') }}">Имущество</a></li>
             <li class="breadcrumb-item active" aria-current="page">МТС на рабочем месте</li>
         </ol>
     </nav>

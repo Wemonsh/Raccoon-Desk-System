@@ -27,4 +27,7 @@ return [
     'accepted' => 'Accepted',
     'history' => 'History',
     'reports' => 'Reports',
+
+    'login' => 'Login',
+    'registration' => 'Registration',
 ];

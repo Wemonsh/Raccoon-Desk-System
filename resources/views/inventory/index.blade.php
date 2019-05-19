@@ -55,7 +55,7 @@
             <h2>{{ __('inventory/index.reports') }}</h2>
             <div class="list-group">
                 <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-chart-area fa-fw"></i> {{ __('inventory/index.property') }}</a>
-                <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-chart-line fa-fw"></i> {{ __('inventory/index.TMC_movement') }}</a>
+                <a href="{{ route('movementReport') }}" class="list-group-item list-group-item-action"><i class="fas fa-chart-line fa-fw"></i> {{ __('inventory/index.TMC_movement') }}</a>
             </div>
         </div>
     </div>

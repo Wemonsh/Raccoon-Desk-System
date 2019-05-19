@@ -27,4 +27,7 @@ return [
     'accepted' => 'Принятые',
     'history' => 'История',
     'reports' => 'Отчеты',
+
+    'login' => 'Вход',
+    'registration' => 'Регистрация',
 ];
