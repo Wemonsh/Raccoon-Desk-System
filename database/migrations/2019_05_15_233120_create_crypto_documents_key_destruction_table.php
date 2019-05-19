@@ -14,7 +14,17 @@ class CreateCryptoDocumentsKeyDestructionTable extends Migration
     public function up()
     {
         Schema::create('crypto_documents_key_destruction', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
+            $table->date('date');
+            $table->integer('id_certificate')->unsigned();
+            $table->foreign('id_certificate')->references('id')->on('crypto_certificates');
+            $table->integer('id_user')->unsigned();
+            $table->foreign('id_user')->references('id')->on('users');
+            $table->integer('id_operator')->unsigned();
+            $table->foreign('id_operator')->references('id')->on('users');
+            $table->integer('id_storage')->unsigned();
+            $table->foreign('id_storage')->references('id')->on('crypto_storages');
+            $table->string('file')->nullable();
             $table->timestamps();
         });
     }

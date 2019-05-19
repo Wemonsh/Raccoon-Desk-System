@@ -9,7 +9,7 @@
     <div class="col-3">
         <h2>{{ __('crypto/index.crypto_keys') }}</h2>
         <div class="list-group">
-            <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-file-upload fa-fw"></i> {{ __('crypto/index.creating_key_docs') }}</a>
+            <a href="{{ route('keyCreateIndex') }}" class="list-group-item list-group-item-action"><i class="fas fa-file-upload fa-fw"></i> {{ __('crypto/index.creating_key_docs') }}</a>
             <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-file-download fa-fw"></i> {{ __('crypto/index.sending_key_docs') }}</a>
             <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-file-import fa-fw"></i>  {{ __('crypto/index.commissioning_key_info') }}</a>
             <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-file-export fa-fw"></i> {{ __('crypto/index.decommissioning_key_info') }}</a>

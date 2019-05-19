@@ -97,6 +97,9 @@ Route::group(['prefix' => 'crypto'], function () {
     Route::match(['get', 'post'], '/mcpi-instances/delete/{id}', ['uses' => 'Crypto\CryptoMcpiInstanceController@delete', 'as' => 'cryptoMcpiInstanceDelete']);
     Route::match(['get', 'post'], '/mcpi-instances/api-response', ['uses' => 'Crypto\CryptoMcpiInstanceController@apiResponse']);
 
+
+    Route::match(['get', 'post'], '/document/key-create/', ['uses' => 'Crypto\Documents\DocumentsKeyCreateController@index', 'as' => 'keyCreateIndex']);
+    Route::match(['get', 'post'], '/document/key-create/create', ['uses' => 'Crypto\Documents\DocumentsKeyCreateController@create', 'as' => 'keyCreateCreate']);
 });
 
 

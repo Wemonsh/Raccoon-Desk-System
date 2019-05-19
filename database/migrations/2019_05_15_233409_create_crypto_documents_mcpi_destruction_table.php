@@ -14,7 +14,13 @@ class CreateCryptoDocumentsMcpiDestructionTable extends Migration
     public function up()
     {
         Schema::create('crypto_documents_mcpi_destruction', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
+            $table->date('date');
+            $table->integer('id_instance')->unsigned();
+            $table->foreign('id_instance')->references('id')->on('crypto_mcpi_instance');
+            $table->integer('id_operator')->unsigned();
+            $table->foreign('id_operator')->references('id')->on('users');
+            $table->string('file')->nullable();
             $table->timestamps();
         });
     }

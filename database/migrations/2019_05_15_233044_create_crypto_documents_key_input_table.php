@@ -22,6 +22,9 @@ class CreateCryptoDocumentsKeyInputTable extends Migration
             $table->foreign('id_information_system')->references('id')->on('crypto_information_systems');
             $table->integer('id_operator')->unsigned();
             $table->foreign('id_operator')->references('id')->on('users');
+            $table->integer('id_inventory')->unsigned();
+            $table->foreign('id_inventory')->references('id')->on('inv_inventories');
+            $table->string('file')->nullable();
             $table->timestamps();
         });
     }
