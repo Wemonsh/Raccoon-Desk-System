@@ -3,13 +3,12 @@
 return [
 
     'main' => 'Main',
-    'enterprise_assets' => 'Assets of the enterprise',
-    'placements' => 'Placements',
+    'mcpi_accounting' => 'Accounting of MCPI',
+    'key_info_assignment' => 'Assignment of the key information',
     'add' => 'Add',
     'id' => 'Id',
     'name' => 'Name',
     'comment' => 'Comment',
-    'organization_name' => 'The name of the organization',
     'action' => 'Action',
 
     'basic_example' => 'Basic example', // Исправить в blade

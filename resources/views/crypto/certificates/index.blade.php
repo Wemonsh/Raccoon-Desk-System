@@ -3,18 +3,18 @@
 @section('breadcrumbs')
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb mt-3">
-            <li class="breadcrumb-item"><a href="{{ route('home') }}">Главная</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('crypto') }}">Учет СКЗИ</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Ключевая информация</li>
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ __('crypto/certificates/index.main') }}</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('crypto') }}">{{ __('crypto/certificates/index.mcpi_accounting') }}</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ __('crypto/certificates/index.key_info') }}</li>
         </ol>
     </nav>
 @endsection
 
 @section('content')
-    <h1>Ключевая информация</h1>
+    <h1>{{ __('crypto/certificates/index.key_info') }}</h1>
     <hr>
     <div class="toolbar">
-        <a class="btn btn-secondary text-light" href="{{ route('cryptoCertificatesCreate') }}">Добавить</a>
+        <a class="btn btn-secondary text-light" href="{{ route('cryptoCertificatesCreate') }}">{{ __('crypto/certificates/index.add') }}</a>
     </div>
     <table
             data-ajax="ajaxRequest"
@@ -32,15 +32,15 @@
             data-show-refresh="true">
         <thead>
         <tr>
-            <th data-sortable="true" data-field="id" class="text-center">Id</th>
-            <th data-sortable="true" data-field="serial_number">Серийный номер</th>
-            <th data-sortable="true" data-field="id_organization" data-formatter="organizationFormatter">Организация</th>
-            <th data-sortable="true" data-field="id_user" data-formatter="userFormatter">Пользователь</th>
-            <th data-field="id_assignment" data-formatter="assignmentFormatter">Назначение</th>
-            <th data-field="file" data-formatter="fileFormatter" data-width="50px" data-class="align-middle text-center">Файл</th>
-            <th data-field="date_from">Дата начала</th>
-            <th data-field="date_to">Дата окончания</th>
-            <th data-formatter="actionFormatter" class="text-center" data-print-ignore="true" data-width="50px">Действие</th>
+            <th data-sortable="true" data-field="id" class="text-center">{{ __('crypto/certificates/index.id') }}</th>
+            <th data-sortable="true" data-field="serial_number">{{ __('crypto/certificates/index.serial_number') }}</th>
+            <th data-sortable="true" data-field="id_organization" data-formatter="organizationFormatter">{{ __('crypto/certificates/index.organization') }}</th>
+            <th data-sortable="true" data-field="id_user" data-formatter="userFormatter">{{ __('crypto/certificates/index.user') }}</th>
+            <th data-field="id_assignment" data-formatter="assignmentFormatter">{{ __('crypto/certificates/index.assignment') }}</th>
+            <th data-field="file" data-formatter="fileFormatter" data-width="50px" data-class="align-middle text-center">{{ __('crypto/certificates/index.file') }}</th>
+            <th data-field="date_from">{{ __('crypto/certificates/index.date_from') }}</th>
+            <th data-field="date_to">{{ __('crypto/certificates/index.date_to') }}</th>
+            <th data-formatter="actionFormatter" class="text-center" data-print-ignore="true" data-width="50px">{{ __('crypto/certificates/index.action') }}</th>
         </tr>
         </thead>
     </table>
@@ -58,6 +58,7 @@
             });
         }
 
+        {{--TODO "Скачать"  "Файл отсутствует"  изменить!!!  --}}
         function fileFormatter(value ,rows) {
             if (rows['file'] !=null) {
                 return '<a href="/storage/'+ rows['file'] +'" class="btn btn-secondary btn-sm" title="Скачать">Скачать</a>';
@@ -85,6 +86,7 @@
             }
         }
 
+        {{--TODO "Basic example"  "Редактировать"  "Удалить" изменить!!!  --}}
         function actionFormatter(value ,rows) {
             return '<div class="btn-group" role="group" aria-label="Basic example">' +
                 '<a class="btn btn-secondary btn-sm text-light" href="/crypto/certificates/edit/'+ rows['id'] +'" title="Редактировать"><i class="fas fa-pen"></i></a>' +
