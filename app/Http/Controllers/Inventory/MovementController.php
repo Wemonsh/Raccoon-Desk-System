@@ -38,17 +38,15 @@ class MovementController extends Controller
         $sortOrder = $request['sortOrder'];
         $searchText = $request['searchText'];
         // Сортировка
-//        if (empty($sortName)) {
-//            $sortName = 'id';
-//        }
+        if (empty($sortName)) {
+            $sortName = 'id';
+        }
         // Выбор данных и пагинация
 
-        $rows = InvMovement::where('id_inventory', '=', $id)->paginate($pageSize)->toArray();
-
-//        $rows = InvInventories::with('counterparty')->with('device')->with('placement')->with('responsible')->with('status')->with('operator')
-//            ->where('serial_number', 'LIKE', '%'.$searchText.'%')
-//            ->where([['id_responsible', '!=', null],['id_responsible', '=', $request['id_responsible']]])
-//            ->orderBy($sortName, $sortOrder)->paginate($pageSize)->toArray();
+        // TODO Доделать поиск если он тут необходим!
+        $rows = InvMovement::with('placementFrom')->with('placementTo')->with('responsibleFrom')
+            ->with('responsibleTo')->where('id_inventory', '=', $id)
+            ->orderBy($sortName, $sortOrder)->paginate($pageSize)->toArray();
 
         return response()->json(
             [
