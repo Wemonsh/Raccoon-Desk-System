@@ -3,16 +3,16 @@
 @section('breadcrumbs')
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb mt-3">
-            <li class="breadcrumb-item"><a href="{{ route('home') }}">Главная</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('crypto') }}">Учет СКЗИ</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('cryptoInfoSystemIndex') }}">Информационные системы</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Добавление системы</li>
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ __('crypto/infosystems/create.main') }}</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('crypto') }}">{{ __('crypto/infosystems/create.mcpi_accounting') }}</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('cryptoInfoSystemIndex') }}">{{ __('crypto/infosystems/create.info_systems') }}</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ __('crypto/infosystems/create.add_info_system') }}</li>
         </ol>
     </nav>
 @endsection
 
 @section('content')
-    <h1>Добавление информационной системы</h1>
+    <h1>{{ __('crypto/infosystems/create.add_info_system') }}</h1>
     <hr>
     {!! Form::open(array('route' => 'cryptoInfoSystemCreate', 'method' => 'POST', 'files' => 'true')) !!}
 
@@ -27,7 +27,7 @@
     @endif
 
     <div class="form-group">
-        {!! Form::label('name', 'Название:') !!}
+        {!! Form::label('name', __('crypto/infosystems/create.name')) !!}
         <div>
             {!! Form::text('name', null, ['class' => 'form-control']) !!}
             {!! $errors->first('name', '<p class="alert alert-danger">:message</p>') !!}
@@ -35,14 +35,14 @@
     </div>
 
     <div class="form-group">
-        {!! Form::label('comment', 'Комментарий:') !!}
+        {!! Form::label('comment', __('crypto/infosystems/create.comment')) !!}
         <div>
             {!! Form::text('comment', null, ['class' => 'form-control']) !!}
             {!! $errors->first('comment', '<p class="alert alert-danger">:message</p>') !!}
         </div>
     </div>
 
-    {!! Form::submit('Добавить', ['class' => 'btn btn-primary']) !!}
+    {!! Form::submit(__('crypto/infosystems/create.add'), ['class' => 'btn btn-primary']) !!}
 
     {!! Form::close() !!}
 @endsection
