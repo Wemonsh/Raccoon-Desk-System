@@ -17,9 +17,9 @@
         <div class="form-group">
             <div class="form-inline mb-3">
                 {!! Form::label('date_from', 'Дата от', ['class' => 'mr-1']) !!}
-                {!! Form::date('date_from', null, ['class' => 'form-control mr-1', 'id' => 'date_from', 'name' => 'date_from']) !!}
+                {!! Form::date('date_from', $date_from, ['class' => 'form-control mr-1', 'id' => 'date_from', 'name' => 'date_from']) !!}
                 {!! Form::label('date_to', 'Дата до', ['class' => 'mr-1']) !!}
-                {!! Form::date('date_to', null, ['class' => 'form-control mr-1', 'id' => 'date_to', 'name' => 'date_to']) !!}
+                {!! Form::date('date_to', $date_to, ['class' => 'form-control mr-1', 'id' => 'date_to', 'name' => 'date_to']) !!}
             </div>
             <div class="form-inline mb-3">
                 <div class="form-check mr-2">
