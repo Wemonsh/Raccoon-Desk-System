@@ -3,9 +3,9 @@
 @section('breadcrumbs')
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb mt-3">
-            <li class="breadcrumb-item"><a href="{{ route('home') }}">Главная</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('crypto') }}">Учет СКЗИ</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('cryptoOrganizationsIndex') }}">Организации</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ __('crypto/organizations/show.main') }}</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('crypto') }}">{{ __('crypto/organizations/show.mcpi_accounting') }}</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('cryptoOrganizationsIndex') }}">{{ __('crypto/organizations/show.organizations') }}</a></li>
             <li class="breadcrumb-item active" aria-current="page">{{ $organization->name }}</li>
         </ol>
     </nav>

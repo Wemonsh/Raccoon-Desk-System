@@ -3,16 +3,16 @@
 @section('breadcrumbs')
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb mt-3">
-            <li class="breadcrumb-item"><a href="{{ route('home') }}">Главная</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('crypto') }}">Учет СКЗИ</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('cryptoStoragesIndex') }}">Носители ключевой информации</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Редактирование носителя</li>
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ __('crypto/storages/edit.main') }}</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('crypto') }}">{{ __('crypto/storages/edit.mcpi_accounting') }}</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('cryptoStoragesIndex') }}">{{ __('crypto/storages/edit.key_info_carriers') }}</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ __('crypto/storages/edit.edit_key_info_carrier') }}</li>
         </ol>
     </nav>
 @endsection
 
 @section('content')
-    <h1>Редактирование носителя ключевой информации</h1>
+    <h1>{{ __('crypto/storages/edit.edit_key_info_carrier') }}</h1>
     <hr>
     {!! Form::open(array('route' => array('cryptoStoragesEdit', $id), 'method' => 'POST', 'files' => 'true')) !!}
 
@@ -27,7 +27,7 @@
     @endif
 
     <div class="form-group">
-        {!! Form::label('serial_number', 'Серийный номер:') !!}
+        {!! Form::label('serial_number', __('crypto/storages/edit.serial_number')) !!}
         <div>
             {!! Form::text('serial_number', $storage->serial_number, ['class' => 'form-control']) !!}
             {!! $errors->first('serial_number', '<p class="alert alert-danger">:message</p>') !!}
@@ -35,14 +35,14 @@
     </div>
 
     <div class="form-group">
-    {!! Form::label('comment', 'Комментарий:') !!}
+    {!! Form::label('comment', __('crypto/storages/edit.comment')) !!}
     <div>
         {!! Form::text('comment', $storage->comment, ['class' => 'form-control']) !!}
         {!! $errors->first('comment', '<p class="alert alert-danger">:message</p>') !!}
     </div>
     </div>
 
-    {!! Form::submit('Изменить', ['class' => 'btn btn-primary']) !!}
+    {!! Form::submit(__('crypto/storages/edit.change'), ['class' => 'btn btn-primary']) !!}
 
     {!! Form::close() !!}
 @endsection

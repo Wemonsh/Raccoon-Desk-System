@@ -3,18 +3,18 @@
 @section('breadcrumbs')
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb mt-3">
-            <li class="breadcrumb-item"><a href="{{ route('home') }}">Главная</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('crypto') }}">Учет СКЗИ</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Организации</li>
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ __('crypto/organizations/index.main') }}</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('crypto') }}">{{ __('crypto/organizations/index.mcpi_accounting') }}</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ __('crypto/organizations/index.organizations') }}</li>
         </ol>
     </nav>
 @endsection
 
 @section('content')
-    <h1>Организации</h1>
+    <h1>{{ __('crypto/organizations/index.organizations') }}</h1>
     <hr>
     <div class="toolbar">
-        <a class="btn btn-secondary text-light" href="{{ route('cryptoOrganizationsCreate') }}">Добавить</a>
+        <a class="btn btn-secondary text-light" href="{{ route('cryptoOrganizationsCreate') }}">{{ __('crypto/organizations/index.add') }}</a>
     </div>
     <table
             data-ajax="ajaxRequest"
@@ -32,13 +32,13 @@
             data-show-refresh="true">
         <thead>
         <tr>
-            <th data-sortable="true" data-field="id" class="text-center">Id</th>
-            <th data-sortable="true" data-field="name">Название</th>
-            <th data-field="address" data-formatter="addressFormatter">Адрес</th>
-            <th data-field="phone">Телефон</th>
-            <th data-field="email">E-mail</th>
-            <th data-field="site" data-formatter="siteFormatter">Сайт</th>
-            <th data-formatter="actionFormatter" class="text-center" data-print-ignore="true">Действие</th>
+            <th data-sortable="true" data-field="id" class="text-center">{{ __('crypto/organizations/index.id') }}</th>
+            <th data-sortable="true" data-field="name">{{ __('crypto/organizations/index.name') }}</th>
+            <th data-field="address" data-formatter="addressFormatter">{{ __('crypto/organizations/index.address') }}</th>
+            <th data-field="phone">{{ __('crypto/organizations/index.phone') }}</th>
+            <th data-field="email">{{ __('crypto/organizations/index.email') }}</th>
+            <th data-field="site" data-formatter="siteFormatter">{{ __('crypto/organizations/index.site') }}</th>
+            <th data-formatter="actionFormatter" class="text-center" data-print-ignore="true">{{ __('crypto/organizations/index.action') }}</th>
         </tr>
         </thead>
     </table>
@@ -68,7 +68,7 @@
                 return '<a href="//'+rows.site+'">'+rows.site+'</a>';
             }
         }
-
+        {{--TODO "Basic example"  "Подробнее"  "Редактировать"  "Удалить"--}}
         function actionFormatter(value ,rows) {
             return '<div class="btn-group" role="group" aria-label="Basic example">' +
                 '<a class="btn btn-secondary btn-sm text-light" href="/crypto/organizations/show/'+ rows['id'] +'" title="Подробнее"><i class="fas fa-info-circle"></i></a>' +
