@@ -43,7 +43,7 @@
             </div>
             <div class="form-inline">
                 {!! Form::select('idPlacementFrom', $placements, null, ['class' => 'form-control mr-1', 'id' => 'idPlacementFrom', 'name' => 'idPlacementFrom', 'placeholder' => 'Все помещения'] ) !!}
-                {!! Form::button('Сформировать', ['class' => 'btn btn-secondary', 'id' => 'btn_show', 'name' => 'btn_show', 'onClick' => 'showResponsible()']) !!}
+                {!! Form::button('Сформировать', ['class' => 'btn btn-secondary', 'id' => 'btn_show', 'name' => 'btn_show', 'onClick' => 'formReport();']) !!}
             </div>
         </div>
     </div>
@@ -81,12 +81,10 @@
             var date_from = $('#date_from');
             var date_to = $('#date_to');
             var radio =  $('input[name=movements]:checked').val();
-
             params.idPlacementFrom = select.val();
             params.date_from = date_from.val();
             params.date_to = date_to.val();
             params.radio = radio;
-            console.log(params);
             return params;
         }
 
@@ -103,26 +101,22 @@
                 return '<a href="/inventory/inventories/show/'+ rows.inventory.device.id +'" title="Перейти к имуществу">' +
                     ''+rows.inventory.device.name+ ' / ' + rows.inventory.inventory_number+'' +
                     '</a>';
-
-                //return rows.device_name;
             }
         }
 
         function placementFromFormatter(value ,rows) {
             if (rows != null) {
                 return rows.placement_from.name;
-                //return rows.placement_name;
             }
         }
 
         function placementToFormatter(value ,rows) {
             if (rows != null) {
                 return rows.placement_to.name;
-                //return rows.placement_name;
             }
         }
 
-        function showResponsible () {
+        function formReport () {
             $('#btable').bootstrapTable('refresh');
         }
 

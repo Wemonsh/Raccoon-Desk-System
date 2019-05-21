@@ -36,6 +36,7 @@ class CreateInvInventoriesTable extends Migration
             $table->ipAddress('ip')->nullable();
             $table->string('qr_code')->nullable();
             $table->boolean('cancelled')->nullable();
+            $table->date('date_cancelled')->nullable();
             $table->integer('id_operator')->unsigned();
             $table->foreign('id_operator')->references('id')->on('users');
             $table->timestamps();

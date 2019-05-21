@@ -154,12 +154,34 @@
     <hr>
 
     <div class="form-group">
-        {!! Form::checkbox('cancelled', '1', false, ['id' => 'sale']) !!}
+        {!! Form::checkbox('cancelled', '1', false, ['id' => 'cancelled', 'onchange' => 'fun1();']) !!}
         {!! Form::label('cancelled', __('inventory/inventories/create.cancelled')) !!}
+    </div>
+
+    <div id="date_cancelled_div" class="form-group d-none">
+        {!! Form::label('date_cancelled', 'Дата списания') !!}
+        <div>
+            {!! Form::date('date_cancelled', null, ['class' => 'form-control', 'id' => 'date_cancelled']) !!}
+            {!! $errors->first('date_cancelled', '<p class="alert alert-danger">:message</p>') !!}
+        </div>
     </div>
 
     {!! Form::submit(__('social/event/index.add'), ['class' => 'btn btn-primary']) !!}
 
     {!! Form::close() !!}
 
+    <script>
+
+        function fun1() {
+            var chbox;
+            chbox=document.getElementById('cancelled');
+            if (chbox.checked) {
+                $('#date_cancelled_div').removeClass('d-none');
+            }
+            else {
+                $('#date_cancelled_div').addClass('d-none');
+            }
+        }
+
+    </script>
 @endsection

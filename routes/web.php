@@ -193,6 +193,12 @@ Route::group(['prefix' => 'inventory'], function () {
     Route::match(['get', 'post'], '/reports/movement', ['uses' => 'Inventory\ReportsController@movement', 'as' => 'movementReport']);
     Route::match(['get', 'post'], '/reports/movement/movement-report-api-response', ['uses' => 'Inventory\ReportsController@movementReportApiResponse']);
 
+    Route::match(['get', 'post'], '/reports/incoming-property', ['uses' => 'Inventory\ReportsController@incoming', 'as' => 'incomingPropertyReport']);
+    Route::match(['get', 'post'], '/reports/incoming-property/incoming-property-report-api-response', ['uses' => 'Inventory\ReportsController@incomingPropertyReportApiResponse']);
+
+    Route::match(['get', 'post'], '/reports/written-off-property', ['uses' => 'Inventory\ReportsController@writtenOff', 'as' => 'writtenOffPropertyReport']);
+    Route::match(['get', 'post'], '/reports/written-off-property/written-off-property-report-api-response', ['uses' => 'Inventory\ReportsController@writtenOffPropertyReportApiResponse']);
+
 });
 
 Route::group(['prefix' => 'account'], function () {

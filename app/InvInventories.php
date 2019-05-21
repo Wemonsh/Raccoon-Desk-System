@@ -11,7 +11,7 @@ class InvInventories extends Model
 
     protected $fillable = ['date_arrival', 'id_counterparty', 'id_device', 'inventory_number',
         'id_placement', 'id_responsible', 'id_status', 'cost', 'cost_current', 'date_warranty',
-        'accounting_code', 'barcode', 'serial_number', 'ip', 'qr_code', 'cancelled', 'id_operator',];
+        'accounting_code', 'barcode', 'serial_number', 'ip', 'qr_code', 'cancelled', 'date_cancelled', 'id_operator',];
 
     public function counterparty(){
         return $this->hasOne('App\InvCounterparty','id','id_counterparty');

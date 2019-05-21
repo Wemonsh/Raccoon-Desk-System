@@ -64,6 +64,7 @@ class InventoriesController extends Controller
                 'ip' => $request['ip'],
                 'qr_code' => null,
                 'cancelled' => $request['cancelled'],
+                'date_cancelled' => $request['date_cancelled'],
                 'id_operator' => Auth::user()->id,
                 ]);
 
@@ -115,6 +116,13 @@ class InventoriesController extends Controller
                 $inventory->ip = $request->input('ip');
                 $inventory->qr_code = $request->input('qr_code');
                 $inventory->cancelled = $request->input('cancelled') == null? 0 : 1;
+
+                if ($request->input('cancelled') == 1) {
+                    $inventory->date_cancelled = $request->input('date_cancelled');
+                } else {
+                    $inventory->date_cancelled = null;
+                }
+
                 $inventory->id_operator = Auth::user()->id;
 
                 $inventory->save();
@@ -190,10 +198,6 @@ class InventoriesController extends Controller
             ->where('id', '=', $id)->first();
         $placements = InvPlacements::pluck('name', 'id');
         $users = User::select(DB::raw("CONCAT(last_name,' ',first_name,' ',middle_name) AS name"),'id')->pluck('name', 'id');
-
-
-
-
 
         $vars = [
             'object' => $object,

@@ -154,12 +154,44 @@
     <hr>
 
     <div class="form-group">
-        {!! Form::checkbox('cancelled', '1', $inventory->cancelled, ['id' => 'sale']) !!}
+        {!! Form::checkbox('cancelled', '1', $inventory->cancelled, ['id' => 'cancelled', 'onchange' => 'fun1();']) !!}
         {!! Form::label('cancelled', 'Списано:') !!}
     </div>
+
+    @if($inventory->cancelled == "1")
+    <div id="date_cancelled_div" class="form-group">
+        {!! Form::label('date_cancelled', 'Дата списания') !!}
+        <div>
+            {!! Form::date('date_cancelled', $inventory->date_cancelled, ['class' => 'form-control', 'id' => 'date_cancelled']) !!}
+            {!! $errors->first('date_cancelled', '<p class="alert alert-danger">:message</p>') !!}
+        </div>
+    </div>
+        @else
+        <div id="date_cancelled_div" class="form-group d-none">
+            {!! Form::label('date_cancelled', 'Дата списания') !!}
+            <div>
+                {!! Form::date('date_cancelled', $inventory->date_cancelled, ['class' => 'form-control', 'id' => 'date_cancelled']) !!}
+                {!! $errors->first('date_cancelled', '<p class="alert alert-danger">:message</p>') !!}
+            </div>
+        </div>
+    @endif
 
     {!! Form::submit('Изменить', ['class' => 'btn btn-primary']) !!}
 
     {!! Form::close() !!}
 
+    <script>
+
+        function fun1() {
+            var chbox;
+            chbox=document.getElementById('cancelled');
+            if (chbox.checked) {
+                $('#date_cancelled_div').removeClass('d-none');
+            }
+            else {
+                $('#date_cancelled_div').addClass('d-none');
+            }
+        }
+
+    </script>
 @endsection
