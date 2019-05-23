@@ -3,47 +3,47 @@
 @section('breadcrumbs')
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb mt-3">
-            <li class="breadcrumb-item"><a href="{{ route('home') }}">Главная</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('inventoryIndex') }}">Активы предприятия</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Движение МТС</li>
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ __('inventory/reports/movement.main') }}</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('inventoryIndex') }}">{{ __('inventory/reports/movement.enterprise_assets') }}</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ __('inventory/reports/movement.MTM_movement') }}</li>
         </ol>
     </nav>
 @endsection
 
 @section('content')
-    <h1>Движение материально-технических средств</h1>
+    <h1>{{ __('inventory/reports/movement.MTM_movement') }}</h1>
     <hr>
     <div class="toolbar">
         <div class="form-group">
             <div class="form-inline mb-3">
-                {!! Form::label('date_from', 'Дата от', ['class' => 'mr-1']) !!}
+                {!! Form::label('date_from', __('inventory/reports/movement.date_from'), ['class' => 'mr-1']) !!}
                 {!! Form::date('date_from', $date_from, ['class' => 'form-control mr-1', 'id' => 'date_from', 'name' => 'date_from']) !!}
-                {!! Form::label('date_to', 'Дата до', ['class' => 'mr-1']) !!}
+                {!! Form::label('date_to', __('inventory/reports/movement.date_to'), ['class' => 'mr-1']) !!}
                 {!! Form::date('date_to', $date_to, ['class' => 'form-control mr-1', 'id' => 'date_to', 'name' => 'date_to']) !!}
             </div>
             <div class="form-inline mb-3">
                 <div class="form-check mr-2">
                     <input class="form-check-input" type="radio" name="movements" id="exampleRadios1" value="1">
                     <label class="form-check-label" for="exampleRadios1">
-                        Перемещено
+                        {{ __('inventory/reports/movement.moved') }}
                     </label>
                 </div>
                 <div class="form-check mr-2">
                     <input class="form-check-input" type="radio" name="movements" id="exampleRadios2" value="2">
                     <label class="form-check-label" for="exampleRadios2">
-                        Поступило
+                        {{ __('inventory/reports/movement.received') }}
                     </label>
                 </div>
                 <div class="form-check mr-2">
                     <input class="form-check-input" type="radio" name="movements" id="exampleRadios3" value="3" checked>
                     <label class="form-check-label" for="exampleRadios3">
-                        Перемещено и поступило
+                        {{ __('inventory/reports/movement.moved_and_received') }}
                     </label>
                 </div>
             </div>
             <div class="form-inline">
-                {!! Form::select('idPlacementFrom', $placements, null, ['class' => 'form-control mr-1', 'id' => 'idPlacementFrom', 'name' => 'idPlacementFrom', 'placeholder' => 'Все помещения'] ) !!}
-                {!! Form::button('Сформировать', ['class' => 'btn btn-secondary', 'id' => 'btn_show', 'name' => 'btn_show', 'onClick' => 'formReport();']) !!}
+                {!! Form::select('idPlacementFrom', $placements, null, ['class' => 'form-control mr-1', 'id' => 'idPlacementFrom', 'name' => 'idPlacementFrom', 'placeholder' => __('inventory/reports/movement.all_placements')] ) !!}
+                {!! Form::button(__('inventory/reports/movement.form'), ['class' => 'btn btn-secondary', 'id' => 'btn_show', 'name' => 'btn_show', 'onClick' => 'formReport();']) !!}
             </div>
         </div>
     </div>
@@ -64,12 +64,12 @@
             id="btable">
         <thead>
         <tr>
-            <th data-sortable="true" data-field="id" class="text-center">Id</th>
-            <th data-sortable="true" data-field="created_at">Дата</th>
-            <th data-field="id_inventory" data-formatter="inventoryFormatter">Имущество / Серийный номер</th>
-            <th data-field="id_placement_from" data-formatter="placementFromFormatter">Откуда</th>
-            <th data-field="id_placement_to" data-formatter="placementToFormatter">Куда</th>
-            <th data-field="comment">Комментарий</th>
+            <th data-sortable="true" data-field="id" class="text-center"> {{ __('inventory/reports/movement.id') }}</th>
+            <th data-sortable="true" data-field="created_at"> {{ __('inventory/reports/movement.date') }}</th>
+            <th data-field="id_inventory" data-formatter="inventoryFormatter"> {{ __('inventory/reports/movement.property_serial_number') }}</th>
+            <th data-field="id_placement_from" data-formatter="placementFromFormatter"> {{ __('inventory/reports/movement.from') }}</th>
+            <th data-field="id_placement_to" data-formatter="placementToFormatter"> {{ __('inventory/reports/movement.to') }}</th>
+            <th data-field="comment"> {{ __('inventory/reports/movement.comment') }}</th>
         </tr>
         </thead>
     </table>
@@ -94,7 +94,7 @@
                 params.success(res)
             });
         }
-
+        {{--TODO "Перейти к имуществу" !!!!--}}
         function inventoryFormatter(value ,rows) {
             if (rows != null) {
                 console.log(rows);

@@ -3,9 +3,9 @@
 @section('breadcrumbs')
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb mt-3">
-            <li class="breadcrumb-item"><a href="{{ route('home') }}">Главная</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('inventoryIndex') }}">Активы предприятия</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('inventoriesIndex') }}">Имущество</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ __('inventory/inventories/show.main') }}</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('inventoryIndex') }}">{{ __('inventory/inventories/show.enterprise_assets') }}</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('inventoriesIndex') }}">{{ __('inventory/inventories/show.property') }}</a></li>
             <li class="breadcrumb-item active" aria-current="page">{{ $object->device->name }}</li>
         </ol>
     </nav>
@@ -14,7 +14,7 @@
 @section('content')
     <h1 id="deviceName" data-id="{{ $object->id }}">{{ $object->device->name }}</h1>
     <hr>
-
+{{--TODO "Изображение отсутствует" !!!!!!!!!--}}
     <div class="row">
         <div class="col-12 col-md-12 col-sm-12 col-lg-4 col-xl-4 mb-3">
             <img src="{{ asset('/storage/' . $object->device->photo) }}" class="img-fluid img-thumbnail" alt="Изображение отсутствует">
@@ -22,7 +22,7 @@
         <div class="col-12 col-md-12 col-sm-12 col-lg-4 col-xl-4 mb-3">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Характеристики:</h5>
+                    <h5 class="card-title">{{ __('inventory/inventories/show.features') }}</h5>
                     <table class="table table-sm">
                         <tbody>
                         @foreach(json_decode($object->device->specifications) as $key => $specification)
@@ -39,14 +39,14 @@
         <div class="col-12 col-md-12 col-sm-12 col-lg-4 col-xl-4">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Основная информация:</h5>
-                    <p><strong>Дата регистрации:</strong> {{ $object->date_arrival }} </p>
-                    <p><strong>Серийный номер:</strong> {{ $object->serial_number }} </p>
-                    <p><strong>Инвентарный номер:</strong> {{ $object->inventory_number }} </p>
-                    <p><strong>Бухгалтерский код:</strong> {{ $object->accounting_code }} </p>
-                    <p><strong>Стоимость:</strong> {{ $object->cost }} </p>
-                    <p><strong>Текущая стоимость:</strong> {{ $object->cost_current }} </p>
-                    <p><strong>IP адрес:</strong> {{ $object->ip }} </p>
+                    <h5 class="card-title">{{ __('inventory/inventories/show.main_info') }}</h5>
+                    <p><strong>{{ __('inventory/inventories/show.registration_date') }}</strong> {{ $object->date_arrival }} </p>
+                    <p><strong>{{ __('inventory/inventories/show.serial_number') }}</strong> {{ $object->serial_number }} </p>
+                    <p><strong>{{ __('inventory/inventories/show.inventory_number') }}</strong> {{ $object->inventory_number }} </p>
+                    <p><strong>{{ __('inventory/inventories/show.accounting_code') }}</strong> {{ $object->accounting_code }} </p>
+                    <p><strong>{{ __('inventory/inventories/show.cost') }}</strong> {{ $object->cost }} </p>
+                    <p><strong>{{ __('inventory/inventories/show.current_cost') }}</strong> {{ $object->cost_current }} </p>
+                    <p><strong>{{ __('inventory/inventories/show.ip') }}</strong> {{ $object->ip }} </p>
                 </div>
             </div>
         </div>
@@ -54,9 +54,9 @@
         <div class="col-12">
             <div class="card mt-3 mb-3">
                 <div class="card-body">
-                    <h5 class="card-title">История перемещений:</h5>
+                    <h5 class="card-title">{{ __('inventory/inventories/show.moving_history') }}</h5>
                     <div class="toolbar">
-                        <a class="btn btn-secondary text-light" data-toggle="modal" data-target="#movementModal">Переместить</a>
+                        <a class="btn btn-secondary text-light" data-toggle="modal" data-target="#movementModal">{{ __('inventory/inventories/show.move') }}</a>
                     </div>
                     <table
                             data-ajax="ajaxRequest"
@@ -75,16 +75,16 @@
                         <thead>
 
                         <tr>
-                            <th data-sortable="true" data-field="created_at" rowspan="2">Дата</th>
-                            <th rowspan="1" colspan="2">Откуда</th>
-                            <th rowspan="1" colspan="2">Куда</th>
-                            <th data-field="comment" rowspan="2">Комментарий</th>
+                            <th data-sortable="true" data-field="created_at" rowspan="2">{{ __('inventory/inventories/show.date') }}</th>
+                            <th rowspan="1" colspan="2">{{ __('inventory/inventories/show.from') }}</th>
+                            <th rowspan="1" colspan="2">{{ __('inventory/inventories/show.to') }}</th>
+                            <th data-field="comment" rowspan="2">{{ __('inventory/inventories/show.comment') }}</th>
                         </tr>
                         <tr>
-                            <th data-sortable="true" data-field="id_placement_from" data-formatter="placementFromFormatter">Помещение</th>
-                            <th data-field="id_responsible_from" data-formatter="responsibleFromFormatter">Сотрудник</th>
-                            <th data-sortable="true" data-field="id_placement_to" data-formatter="placementToFormatter">Помещение</th>
-                            <th data-field="id_responsible_to" data-formatter="responsibleToFormatter">Сотрудник</th>
+                            <th data-sortable="true" data-field="id_placement_from" data-formatter="placementFromFormatter">{{ __('inventory/inventories/show.placement') }}</th>
+                            <th data-field="id_responsible_from" data-formatter="responsibleFromFormatter">{{ __('inventory/inventories/show.employee') }}</th>
+                            <th data-sortable="true" data-field="id_placement_to" data-formatter="placementToFormatter">{{ __('inventory/inventories/show.placement') }}</th>
+                            <th data-field="id_responsible_to" data-formatter="responsibleToFormatter">{{ __('inventory/inventories/show.employee') }}</th>
                         </tr>
                         </thead>
                     </table>
@@ -137,7 +137,7 @@
                 <div class="modal-content">
                     {!! Form::open(array('route' => 'movementMove', 'method' => 'POST')) !!}
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Перемещение МТС</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">{{ __('inventory/inventories/show.MTM_moving') }}</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -154,25 +154,25 @@
                         @endif
 
                         {!! Form::hidden('id_inventory', $object->id ) !!}
-
+                         {{--TODO placement c : !!!--}}
                         <div class="form-group">
-                            {!! Form::label('id_placement_to', 'Помещение:') !!}
+                            {!! Form::label('id_placement_to', __('inventory/inventories/show.placement')) !!}
                             <div>
                                 {!! Form::select('id_placement_to', $placements, null, ['class' => 'form-control']) !!}
                                 {!! $errors->first('id_placement_to', '<p class="alert alert-danger">:message</p>') !!}
                             </div>
                         </div>
-
+                            {{--TODO responsible c : !!!--}}
                         <div class="form-group">
-                            {!! Form::label('id_responsible_to', 'Ответственный:') !!}
+                            {!! Form::label('id_responsible_to', __('inventory/inventories/show.responsible')) !!}
                             <div>
                                 {!! Form::select('id_responsible_to', $users, null, ['class' => 'form-control']) !!}
                                 {!! $errors->first('id_responsible_to', '<p class="alert alert-danger">:message</p>') !!}
                             </div>
                         </div>
-
+                            {{--TODO comment c : !!!--}}
                         <div class="form-group">
-                            {!! Form::label('comment', 'Комментарий:') !!}
+                            {!! Form::label('comment', __('inventory/inventories/show.comment')) !!}
                             <div>
                                 {!! Form::textarea('comment', null, ['rows'=> '3', 'class' => 'form-control']) !!}
                                 {!! $errors->first('comment', '<p class="alert alert-danger">:message</p>') !!}
@@ -181,8 +181,8 @@
 
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
-                        {!! Form::submit('Добавить', ['class' => 'btn btn-primary']) !!}
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ __('inventory/inventories/show.cancel') }}</button>
+                        {!! Form::submit(__('inventory/inventories/show.add'), ['class' => 'btn btn-primary']) !!}
                     </div>
 
                     {!! Form::close() !!}

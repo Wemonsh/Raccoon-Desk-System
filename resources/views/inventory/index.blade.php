@@ -54,8 +54,8 @@
         <div class="col-3">
             <h2>{{ __('inventory/index.reports') }}</h2>
             <div class="list-group">
-                <a href="{{ route('incomingPropertyReport') }}" class="list-group-item list-group-item-action"><i class="fas fa-chart-area fa-fw"></i> Поступишее имущество</a>
-                <a href="{{ route('writtenOffPropertyReport') }}" class="list-group-item list-group-item-action"><i class="fas fa-chart-area fa-fw"></i> Списанное имущество</a>
+                <a href="{{ route('incomingPropertyReport') }}" class="list-group-item list-group-item-action"><i class="fas fa-chart-area fa-fw"></i> {{ __('inventory/index.incoming_property') }}</a>
+                <a href="{{ route('writtenOffPropertyReport') }}" class="list-group-item list-group-item-action"><i class="fas fa-chart-area fa-fw"></i> {{ __('inventory/index.writtenoff_property') }}</a>
                 <a href="{{ route('movementReport') }}" class="list-group-item list-group-item-action"><i class="fas fa-chart-line fa-fw"></i> {{ __('inventory/index.TMC_movement') }}</a>
             </div>
         </div>

@@ -20,5 +20,7 @@ return [
     'organizations' => 'Organizations',
     'reports' => 'Reports',
     'TMC_movement' => 'MTM movement',
-    'contracts' => 'Contacts'
+    'contracts' => 'Contacts',
+    'incoming_property' => 'Incoming property',
+    'writtenoff_property' => 'Written off property',
 ];

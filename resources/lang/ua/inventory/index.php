@@ -20,5 +20,7 @@ return [
     'organizations' => 'Організації',
     'reports' => 'Звіти',
     'TMC_movement' => 'Рух МТЗ',
-    'contracts' => 'Договори'
+    'contracts' => 'Договори',
+    'incoming_property' => 'Надійшло майно',
+    'writtenoff_property' => 'Cписане майно',
 ];
