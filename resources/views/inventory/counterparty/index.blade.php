@@ -59,7 +59,7 @@
         }
 
         function checkFormatter(value ,rows) {
-            if (value != null) {
+            if (value != null && value != "0") {
                 return '<i class="fas fa-check"></i>';
             }
         }
