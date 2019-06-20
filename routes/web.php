@@ -209,3 +209,23 @@ Route::group(['prefix' => 'account'], function () {
 Route::group(['prefix' => 'statistics'], function () {
     Route::match(['get', 'post'], '/', ['uses' => 'Statistics\HomeController@index', 'as' => 'statisticsIndex']);
 });
+
+// Admin
+//Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
+//    Route::get('login', 'LoginController@index');
+//    Route::post('login', 'LoginController@login')->name('admin.login');
+//
+//    Route::group(['middleware' => 'admin'], function() {
+//        Route::get('/', 'Admin\MainController')->name('admin.index');
+//    });
+//});
+
+Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
+    Route::match(['get', 'post'], '/', ['uses' => 'Admin\MainController@index', 'as' => 'dashboard']);
+
+    // Users
+    Route::match(['get', 'post'], '/users' ,['uses' => 'Admin\UsersController@index', 'as' => 'usersIndex']);
+    Route::match(['get', 'post'], '/users/edit/{id}' ,['uses' => 'Admin\UsersController@edit', 'as' => 'usersEdit']);
+    Route::match(['get', 'post'], '/users/delete/{id}', ['uses' => 'Admin\UsersController@delete', 'as' => 'usersDelete']);
+
+});

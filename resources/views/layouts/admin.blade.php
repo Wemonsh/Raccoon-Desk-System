@@ -64,71 +64,71 @@
 
 
         @guest
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('login') }}">{{ __('layouts/navigation.login') }}</a>
-        </li>
-        @if (Route::has('register'))
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('register') }}">{{ __('layouts/navigation.registration') }}</a>
+                <a class="nav-link" href="{{ route('login') }}">{{ __('layouts/navigation.login') }}</a>
             </li>
-        @endif
+            @if (Route::has('register'))
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('register') }}">{{ __('layouts/navigation.registration') }}</a>
+                </li>
+            @endif
         @else
-        <li class="nav-item dropdown no-arrow mx-1">
-            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="{{ __('layouts/navigation.notifications') }}">
-                <i class="fas fa-bell fa-fw mt-1"></i>
-                <span class="badge badge-danger">0</span>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown">
-                <a class="dropdown-item" href="#">{{ __('layouts/navigation.action') }}</a>
-                <a class="dropdown-item" href="#">{{ __('layouts/navigation.action_2') }}</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">{{ __('layouts/navigation.action_3') }}</a>
-            </div>
-        </li>
+            <li class="nav-item dropdown no-arrow mx-1">
+                <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="{{ __('layouts/navigation.notifications') }}">
+                    <i class="fas fa-bell fa-fw mt-1"></i>
+                    <span class="badge badge-danger">0</span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown">
+                    <a class="dropdown-item" href="#">{{ __('layouts/navigation.action') }}</a>
+                    <a class="dropdown-item" href="#">{{ __('layouts/navigation.action_2') }}</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">{{ __('layouts/navigation.action_3') }}</a>
+                </div>
+            </li>
 
-        <li class="nav-item dropdown no-arrow">
+            <li class="nav-item dropdown no-arrow">
 
-            <a class="nav-link" href="{{ route('messagesIndex') }}" title="{{ __('layouts/navigation.messages') }}">
-                <i class="fas fa-envelope fa-fw mt-1"></i>
-                <span class="badge badge-danger">{{ $messages_new }}</span>
-            </a>
-        </li>
+                <a class="nav-link" href="{{ route('messagesIndex') }}" title="{{ __('layouts/navigation.messages') }}">
+                    <i class="fas fa-envelope fa-fw mt-1"></i>
+{{--                    <span class="badge badge-danger">{{ $messages_new }}</span>--}}
+                </a>
+            </li>
 
-        <li class="nav-item dropdown no-arrow">
+            <li class="nav-item dropdown no-arrow">
 
-            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="{{ __('layouts/navigation.choose_language') }}">
-                <i class="fas fa-globe-americas"></i>
-            </a>
-
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="/locale/en"><img src="{{ asset('img/flags/United-Kingdom.png') }}" alt=""> English</a>
-                <a class="dropdown-item" href="/locale/ru"><img src="{{ asset('img/flags/Russia.png') }}" alt=""> Русский</a>
-                <a class="dropdown-item" href="/locale/ua"><img src="{{ asset('img/flags/Ukraine.png') }}" alt=""> Український</a>
-            </div>
-        </li>
-
-        <li class="nav-item dropdown">
-
-            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                <i class="fas fa-user-circle fa-fw"></i>
-                {{ Auth::user()->last_name .' '. Auth::user()->first_name }} <span class="caret"></span>
-            </a>
-
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="{{ route('accountProfile') }}">{{ __('layouts/navigation.profile') }}</a>
-                <a class="dropdown-item" href="{{ route('accountSetting') }}">{{ __('layouts/navigation.settings') }}</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="{{ route('logout') }}"
-                   onclick="event.preventDefault();
-                                           document.getElementById('logout-form').submit();">
-                    {{ __('layouts/navigation.logout') }}
+                <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="{{ __('layouts/navigation.choose_language') }}">
+                    <i class="fas fa-globe-americas"></i>
                 </a>
 
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                    @csrf
-                </form>
-            </div>
-        </li>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="/locale/en"><img src="{{ asset('img/flags/United-Kingdom.png') }}" alt=""> English</a>
+                    <a class="dropdown-item" href="/locale/ru"><img src="{{ asset('img/flags/Russia.png') }}" alt=""> Русский</a>
+                    <a class="dropdown-item" href="/locale/ua"><img src="{{ asset('img/flags/Ukraine.png') }}" alt=""> Український</a>
+                </div>
+            </li>
+
+            <li class="nav-item dropdown">
+
+                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                    <i class="fas fa-user-circle fa-fw"></i>
+                    {{ Auth::user()->last_name .' '. Auth::user()->first_name }} <span class="caret"></span>
+                </a>
+
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{ route('accountProfile') }}">{{ __('layouts/navigation.profile') }}</a>
+                    <a class="dropdown-item" href="{{ route('accountSetting') }}">{{ __('layouts/navigation.settings') }}</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{{ route('logout') }}"
+                       onclick="event.preventDefault();
+                                           document.getElementById('logout-form').submit();">
+                        {{ __('layouts/navigation.logout') }}
+                    </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style=" display: none;">
+                        @csrf
+                    </form>
+                </div>
+            </li>
         @endguest
     </ul>
 
@@ -142,6 +142,13 @@
             <a class="nav-link" href="{{ route('home') }}">
                 <i class="fas fa-fw fa-home"></i>
                 <span>{{ __('layouts/navigation.home') }}</span>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('usersIndex') }}">
+                <i class="fas fa-fw fa-users"></i>
+                <span>Пользователи</span>
             </a>
         </li>
 
@@ -211,28 +218,28 @@
             </a>
         </li>
 
-        @if(\Auth::user() != null && \Auth::user()->isAdmin('admin'))
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('dashboard') }}">
-                    <i class="fas fa-fw fa-users-cog"></i>
-                    <span>Админ панель</span>
-                </a>
-            </li>
-        @endif
+{{--        @if(\Auth::user() != null && \Auth::user()->isAdmin('admin'))--}}
+{{--            <li class="nav-item">--}}
+{{--                <a class="nav-link" href="{{ route('dashboard') }}">--}}
+{{--                    <i class="fas fa-fw fa-users-cog"></i>--}}
+{{--                    <span>Админ панель</span>--}}
+{{--                </a>--}}
+{{--            </li>--}}
+{{--        @endif--}}
 
         <hr>
 
 
         {{--<li class="nav-item">--}}
-            {{--<a class="nav-link" href="charts.html">--}}
-                {{--<i class="fas fa-fw fa-chart-area"></i>--}}
-                {{--<span>Charts</span></a>--}}
+        {{--<a class="nav-link" href="charts.html">--}}
+        {{--<i class="fas fa-fw fa-chart-area"></i>--}}
+        {{--<span>Charts</span></a>--}}
         {{--</li>--}}
         {{--<li class="nav-item">--}}
         {{--<h6 class="dropdown-header">Login Screens:</h6>--}}
-            {{--<a class="nav-link" href="tables.html">--}}
-                {{--<i class="fas fa-fw fa-table"></i>--}}
-                {{--<span>Tables</span></a>--}}
+        {{--<a class="nav-link" href="tables.html">--}}
+        {{--<i class="fas fa-fw fa-table"></i>--}}
+        {{--<span>Tables</span></a>--}}
         {{--</li>--}}
     </ul>
 
@@ -242,9 +249,9 @@
         @yield('sub-navigation')
         @yield('jumbotron')
         <div class="container-fluid">
-            @yield('breadcrumbs')
+        @yield('breadcrumbs')
 
-            <!-- Page Content -->
+        <!-- Page Content -->
             @yield('content')
 
         </div>

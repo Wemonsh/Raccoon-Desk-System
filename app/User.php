@@ -41,4 +41,14 @@ class User extends Authenticatable
     public function news() {
         return $this->hasMany('App\News');
     }
+
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class);
+    }
+
+    public function isAdmin()
+    {
+        return (boolean)$this->roles->where('name', 'admin')->count();
+    }
 }
