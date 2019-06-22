@@ -228,4 +228,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::match(['get', 'post'], '/users/edit/{id}' ,['uses' => 'Admin\UsersController@edit', 'as' => 'usersEdit']);
     Route::match(['get', 'post'], '/users/delete/{id}', ['uses' => 'Admin\UsersController@delete', 'as' => 'usersDelete']);
 
+    Route::match(['get', 'post'], '/users/deleted' ,['uses' => 'Admin\UsersController@deleted', 'as' => 'usersDeleted']);
+
 });
