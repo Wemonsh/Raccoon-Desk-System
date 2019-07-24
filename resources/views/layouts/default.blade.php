@@ -175,6 +175,21 @@
 
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-fw fa-file-alt "></i>
+                <span>Документы</span>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+                <a class="dropdown-item" href="{{ route('documentsIncoming') }}">Входящие</a>
+                <a class="dropdown-item" href="{{ route('documentsOutgoing') }}">Исходящие</a>
+                <a class="dropdown-item" href="{{ route('documentsStatistic') }}">Статистика</a>
+                <a class="dropdown-item" href="{{ route('documentsReport') }}">Отчеты</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="{{ route('documents') }}">Мои документы</a>
+            </div>
+        </li>
+
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-fw fa-headset"></i>
                 <span>{{ __('layouts/navigation.service') }}</span>
             </a>

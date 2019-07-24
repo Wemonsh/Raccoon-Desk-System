@@ -21,6 +21,24 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', 'HomeController@index')->name('home');
 
+Route::group(['prefix' => 'documents'], function () {
+    Route::match(['get', 'post'], '/myDocuments', ['uses' => 'Documents\MainController@index', 'as' => 'documents']);
+    Route::match(['get', 'post'], '/myDocuments/api-response', ['uses' => 'Documents\MainController@apiResponse']);
+    Route::match(['get', 'post'], '/statistics', ['uses' => 'Documents\MainController@index', 'as' => 'documentsStatistic']);
+    Route::match(['get', 'post'], '/reports', ['uses' => 'Documents\MainController@index', 'as' => 'documentsReport']);
+
+    Route::group(['prefix' => 'incoming'], function () {
+        Route::match(['get', 'post'], '/', ['uses' => 'Documents\IncomingController@index', 'as' => 'documentsIncoming']);
+        Route::match(['get', 'post'], '/api-response', ['uses' => 'Documents\IncomingController@apiResponse']);
+        Route::match(['get', 'post'], '/create', ['uses' => 'Documents\IncomingController@create', 'as' => 'documentsIncomingCreate']);
+        Route::match(['get', 'post'], '/show/{id}', ['uses' => 'Documents\IncomingController@show', 'as' => 'documentsIncomingShow']);
+
+    });
+    Route::group(['prefix' => 'outgoing'], function () {
+        Route::match(['get', 'post'], '/', ['uses' => 'Documents\OutgoingController@index', 'as' => 'documentsOutgoing']);
+
+    });
+});
 
 // News
 Route::group(['prefix' => 'news'], function () {

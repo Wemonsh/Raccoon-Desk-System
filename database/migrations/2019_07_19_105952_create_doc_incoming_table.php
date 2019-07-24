@@ -15,18 +15,19 @@ class CreateDocIncomingTable extends Migration
     {
         Schema::create('doc_incoming', function (Blueprint $table) {
             $table->increments('id');
-            $table->date('date_of_registration');
-            $table->string('pages');
-            $table->string('other_korrespondent');
-            $table->string('index_korrespondent');
-            $table->date('date');
-            $table->string('content');
-            $table->date('date_of_resolution');
-            $table->string('resolution');
-            $table->date('date_of_execution');
-            $table->date('date_of_end_execution');
-            $table->string('performance_mark');
-            $table->json('files');
+            $table->date('date_of_registration')->nullable();
+            $table->string('pages')->nullable();
+            $table->string('other_korrespondent')->nullable();
+            $table->string('index_korrespondent')->nullable();
+            $table->date('date')->nullable();;
+            $table->string('content')->nullable();
+            $table->date('date_of_resolution')->nullable();
+            $table->string('resolution')->nullable();
+            $table->date('date_of_execution')->nullable();
+            $table->date('date_of_end_execution')->nullable();
+            $table->string('performance_mark')->nullable();
+            $table->json('files')->nullable();
+            $table->json('users')->nullable();
 
             $table->integer('id_departament')->unsigned();
             $table->foreign('id_departament')->references('id')->on('doc_departaments');
@@ -41,7 +42,7 @@ class CreateDocIncomingTable extends Migration
             $table->foreign('id_kurator')->references('id')->on('doc_kurators');
 
             $table->integer('id_executor')->unsigned();
-            $table->foreign('id_executor')->references('id')->on('doc_executors');
+            $table->foreign('id_executor')->references('id')->on('users');
 
             $table->integer('id_user')->unsigned();
             $table->foreign('id_user')->references('id')->on('users');
