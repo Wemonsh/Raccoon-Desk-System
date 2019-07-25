@@ -162,7 +162,7 @@
         <div class="form-group row">
             <label class="col-sm-3" for="exampleFormControlFile1">Файл</label>
             <div class="col-sm-9">
-                <input name="files" type="file" class="form-control-file" id="exampleFormControlFile1">
+                <input name="files[]" type="file" class="form-control-file" id="exampleFormControlFile1" multiple>
             </div>
         </div>
         <div class="row">

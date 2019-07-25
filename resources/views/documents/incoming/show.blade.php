@@ -13,7 +13,7 @@
     <hr>
     <div class="row">
         <div class="col-6">
-            <table>
+            <table class="table table-bordered table-sm">
                 <tbody>
                 <tr>
                     <td>Отдел</td>
@@ -78,7 +78,11 @@
                 <tr>
                     <td>Файл</td>
                     <td>
-                        <a href="#">###</a>
+                        @if(!empty($document['files']))
+                            @foreach(json_decode($document['files']) as $file)
+                                <p><a href="{{ asset('/storage/' . $file->path) }}">{{ $file->name }}</a></p>
+                            @endforeach
+                        @endif
                     </td>
                 </tr>
                 </tbody>
