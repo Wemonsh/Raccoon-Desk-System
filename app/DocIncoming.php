@@ -13,4 +13,16 @@ class DocIncoming extends Model
         'date', 'content', 'date_of_resolution', 'resolution', 'date_of_execution', 'date_of_end_execution',
         'performance_mark', 'files', 'users', 'id_departament', 'id_korrespondent', 'id_type',
         'id_kurator', 'id_executor', 'id_user'];
+
+    public function departament(){
+        return $this->hasOne('App\DocDepartament','id','id_departament');
+    }
+
+    public function executor(){
+        return $this->hasOne('App\User','id','id_executor');
+    }
+
+    public function user(){
+        return $this->hasOne('App\User','id','id_user');
+    }
 }

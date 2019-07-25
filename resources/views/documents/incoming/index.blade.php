@@ -40,11 +40,11 @@
         <tr>
             <th data-sortable="true" data-field="id" class="text-center">Номер</th>
             <th data-sortable="true" data-field="id_type" class="text-center">Тип</th>
-            <th data-sortable="true" data-field="id_departament" class="text-center">Отдел</th>
+            <th data-sortable="true" data-formatter="modelFormatter" class="text-center">Отдел</th>
             <th data-sortable="true" data-field="date_of_registration" class="text-center">Дата регистрации</th>
             <th data-sortable="true" data-field="id_korrespondent" class="text-center">Корреспондент</th>
             <th data-sortable="true" data-field="content" class="text-center">Содержание</th>
-            <th data-sortable="true" data-field="id_executor" class="text-center">Исполнитель</th>
+            <th data-sortable="true" data-formatter="executorFormatter" class="text-center">Исполнитель</th>
             <th data-sortable="true" data-field="date_of_execution" class="text-center">Срок исполнения</th>
             <th data-sortable="true" data-field="date_of_end_execution" class="text-center">Фактическое исполнение</th>
             <th data-sortable="true" data-field="performance_mark" class="text-center">Отметка</th>
@@ -69,7 +69,13 @@
 
         function modelFormatter(value, rows) {
             if (rows != null) {
-                return rows.model.name;
+                return rows.departament.number + ' - ' + rows.departament.name;
+            }
+        }
+
+        function executorFormatter(value, rows) {
+            if (rows != null) {
+                return rows.executor.last_name + ' ' + rows.executor.first_name + ' ' + rows.executor.middle_name;
             }
         }
         {{--TODO "Basic example"  "Редактировать"  "Удалить" изменить!!!  --}}

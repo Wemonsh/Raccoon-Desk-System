@@ -74,9 +74,18 @@ class IncomingController extends Controller
     }
 
     public function show(Request $request) {
-        $document = DocIncoming::where('id', '=', $request['id'])->first();
+        $document = DocIncoming::with('user')->where('id', '=', $request['id'])->first();
+
+        $users = array();
+        if ($document->users != null) {
+            foreach (json_decode($document->users) as $value) {
+                $users[] = User::where('id', '=', $value)->first();
+            }
+        }
+
         $vars = [
-          'document' => $document
+            'document' => $document,
+            'users' => $users
         ];
         return view('documents.incoming.show', $vars);
     }
@@ -91,7 +100,7 @@ class IncomingController extends Controller
             $sortName = 'id';
         }
 
-        $rows = DocIncoming::orderBy($sortName, $sortOrder)->paginate($pageSize)->toArray();
+        $rows = DocIncoming::with('departament')->with('executor')->orderBy($sortName, $sortOrder)->paginate($pageSize)->toArray();
 
         return response()->json(
             [

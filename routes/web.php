@@ -26,6 +26,8 @@ Route::group(['prefix' => 'documents'], function () {
     Route::match(['get', 'post'], '/myDocuments/api-response', ['uses' => 'Documents\MainController@apiResponse']);
     Route::match(['get', 'post'], '/statistics', ['uses' => 'Documents\MainController@index', 'as' => 'documentsStatistic']);
     Route::match(['get', 'post'], '/reports', ['uses' => 'Documents\MainController@index', 'as' => 'documentsReport']);
+    Route::match(['get', 'post'], '/api-share', ['uses' => 'Documents\MainController@apiShare']);
+    Route::match(['get', 'post'], '/share', ['uses' => 'Documents\MainController@share']);
 
     Route::group(['prefix' => 'incoming'], function () {
         Route::match(['get', 'post'], '/', ['uses' => 'Documents\IncomingController@index', 'as' => 'documentsIncoming']);

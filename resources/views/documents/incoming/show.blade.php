@@ -9,15 +9,16 @@
     </nav>
 @endsection
 @section('content')
-    <h1>Входящие {{ $document->id }}</h1>
+    <h1>#{{ $document->id }}</h1>
     <hr>
     <div class="row">
         <div class="col-6">
+            <h2>Основная информация:</h2>
             <table class="table table-bordered table-sm">
                 <tbody>
                 <tr>
                     <td>Отдел</td>
-                    <td></td>
+                    <td>{{ $document->id_departament }}</td>
                 </tr>
                 <tr>
                     <td>Дата регистрации</td>
@@ -89,7 +90,14 @@
             </table>
         </div>
         <div class="col-6">
-
+            <h2>Дополнительная информация:</h2>
+            <hr>
+            <p><strong>Создан:</strong> <a href="#">{{ $document->user->last_name.' '.$document->user->first_name.' '.$document->user->middle_name }}</a></p>
+            <p><strong>Предоставлен доступ:</strong>
+                @foreach($users as $user)
+                    <a href="#">{{ $user->last_name.' '.$user->first_name.' '.$user->middle_name }}</a>
+                @endforeach
+            </p>
         </div>
     </div>
 @endsection
